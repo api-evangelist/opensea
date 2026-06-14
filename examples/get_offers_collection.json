@@ -1,0 +1,26 @@
+{
+  "operationId": "get_offers_collection",
+  "method": "GET",
+  "path": "/api/v2/offers/collection/{slug}",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "offers": [
+        {
+          "order_hash": null,
+          "chain": null,
+          "protocol_data": null,
+          "protocol_address": null,
+          "asset": null
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionCriteria",
+  "title": "CollectionCriteria",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "slug"
+  ]
+}

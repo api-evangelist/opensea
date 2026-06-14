@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapExecuteResponse",
+  "title": "SwapExecuteResponse",
+  "type": "object",
+  "description": "Response containing quote details and executable swap transactions",
+  "properties": {
+    "quote": {
+      "$ref": "#/components/schemas/SwapQuoteDetails",
+      "description": "Price and fee details for the swap"
+    },
+    "transactions": {
+      "type": "array",
+      "description": "Ordered list of transactions to execute the swap",
+      "items": {
+        "$ref": "#/components/schemas/SwapTransactionResponse"
+      }
+    }
+  },
+  "required": [
+    "quote",
+    "transactions"
+  ]
+}

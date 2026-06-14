@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OfferWithCriteriaRequest",
+  "title": "OfferWithCriteriaRequest",
+  "type": "object",
+  "properties": {
+    "protocol_data": {
+      "$ref": "#/components/schemas/SeaportProtocolDataModel"
+    },
+    "criteria": {
+      "$ref": "#/components/schemas/CriteriaRequest"
+    },
+    "protocol_address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "criteria",
+    "protocol_address",
+    "protocol_data"
+  ]
+}

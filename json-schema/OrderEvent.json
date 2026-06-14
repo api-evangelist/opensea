@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OrderEvent",
+  "title": "OrderEvent",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Event"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "type": "string"
+        },
+        "event_timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "transaction": {
+          "type": "string"
+        },
+        "order_hash": {
+          "type": "string"
+        },
+        "protocol_address": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "payment": {
+          "$ref": "#/components/schemas/Payment"
+        },
+        "order_type": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiration_date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "asset": {
+          "$ref": "#/components/schemas/Nft"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maker": {
+          "type": "string"
+        },
+        "taker": {
+          "type": "string"
+        },
+        "criteria": {
+          "$ref": "#/components/schemas/Criteria"
+        },
+        "is_private_listing": {
+          "type": "boolean"
+        }
+      }
+    }
+  ],
+  "required": [
+    "chain",
+    "event_timestamp",
+    "event_type",
+    "is_private_listing",
+    "maker",
+    "order_type",
+    "quantity"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FloorPriceHistoryResponse",
+  "title": "FloorPriceHistoryResponse",
+  "type": "object",
+  "description": "Floor price history for a collection",
+  "properties": {
+    "floor_prices": {
+      "type": "array",
+      "description": "List of floor price data points",
+      "items": {
+        "$ref": "#/components/schemas/FloorPricePointResponse"
+      }
+    }
+  },
+  "required": [
+    "floor_prices"
+  ]
+}

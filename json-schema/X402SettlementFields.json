@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/X402SettlementFields",
+  "title": "X402SettlementFields",
+  "type": "object",
+  "properties": {
+    "caller_address": {
+      "type": "string"
+    },
+    "tx_hash": {
+      "type": "string"
+    },
+    "chain_id": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

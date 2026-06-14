@@ -1,0 +1,25 @@
+{
+  "operationId": "get_collections_batch",
+  "method": "POST",
+  "path": "/api/v2/collections/batch",
+  "request": {
+    "requestBody": {
+      "slugs": [
+        "string"
+      ]
+    }
+  },
+  "response": {
+    "200": {
+      "collections": [
+        {
+          "collection": "string",
+          "name": "string",
+          "description": "string",
+          "image_url": "string",
+          "banner_image_url": "string"
+        }
+      ]
+    }
+  }
+}

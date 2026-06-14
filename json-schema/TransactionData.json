@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransactionData",
+  "title": "TransactionData",
+  "type": "object",
+  "properties": {
+    "function": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "input_data": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/FulfillAdvancedOrder"
+        },
+        {
+          "$ref": "#/components/schemas/FulfillAvailableAdvancedOrders"
+        },
+        {
+          "$ref": "#/components/schemas/FulfillAvailableOrders"
+        },
+        {
+          "$ref": "#/components/schemas/FulfillBasicOrder"
+        },
+        {
+          "$ref": "#/components/schemas/FulfillOrder"
+        },
+        {
+          "$ref": "#/components/schemas/MatchAdvancedOrders"
+        },
+        {
+          "$ref": "#/components/schemas/MatchOrders"
+        }
+      ]
+    }
+  },
+  "required": [
+    "chain",
+    "function",
+    "input_data",
+    "to",
+    "value"
+  ]
+}

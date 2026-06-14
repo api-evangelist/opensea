@@ -1,0 +1,24 @@
+{
+  "operationId": "list_events",
+  "method": "GET",
+  "path": "/api/v2/events",
+  "request": {
+    "parameters": {
+      "after": 0,
+      "before": 0,
+      "event_type": [
+        "sale"
+      ],
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "asset_events": [
+        {}
+      ],
+      "next": "string"
+    }
+  }
+}

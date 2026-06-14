@@ -1,0 +1,78 @@
+{
+  "operationId": "build_offer_v2",
+  "method": "POST",
+  "path": "/api/v2/offers/build",
+  "request": {
+    "requestBody": {
+      "offerer": "string",
+      "quantity": 0,
+      "criteria": {
+        "collection": {
+          "slug": "string"
+        },
+        "trait": {
+          "type": "string",
+          "value": "string"
+        },
+        "traits": [
+          {
+            "type": null,
+            "value": null
+          }
+        ],
+        "numericTraits": [
+          {
+            "type": null,
+            "min": null,
+            "max": null
+          }
+        ]
+      },
+      "protocol_address": "string",
+      "offer_protection_enabled": true
+    }
+  },
+  "response": {
+    "200": {
+      "partialParameters": {
+        "consideration": [
+          {
+            "itemType": null,
+            "token": null,
+            "identifierOrCriteria": null,
+            "startAmount": null,
+            "endAmount": null
+          }
+        ],
+        "zone": "string",
+        "zoneHash": "string"
+      },
+      "criteria": {
+        "collection": {
+          "slug": "string"
+        },
+        "contract": {
+          "address": "string"
+        },
+        "trait": {
+          "type": "string",
+          "value": "string"
+        },
+        "traits": [
+          {
+            "type": null,
+            "value": null
+          }
+        ],
+        "numericTraits": [
+          {
+            "type": null,
+            "min": null,
+            "max": null
+          }
+        ]
+      },
+      "encodedTokenIds": "string"
+    }
+  }
+}

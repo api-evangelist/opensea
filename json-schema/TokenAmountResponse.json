@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenAmountResponse",
+  "title": "TokenAmountResponse",
+  "type": "object",
+  "description": "Token amount with contract and value information",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Contract address of the token"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain the token is on"
+    },
+    "amount_token": {
+      "type": "number",
+      "format": "double",
+      "description": "Amount in token units"
+    },
+    "amount_usd": {
+      "type": "string",
+      "description": "Amount in USD"
+    },
+    "amount_native": {
+      "type": "number",
+      "format": "double",
+      "description": "Amount in chain-native units"
+    }
+  },
+  "required": [
+    "address",
+    "amount_native",
+    "amount_token",
+    "amount_usd",
+    "chain"
+  ]
+}

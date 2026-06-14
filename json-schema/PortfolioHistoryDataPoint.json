@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PortfolioHistoryDataPoint",
+  "title": "PortfolioHistoryDataPoint",
+  "type": "object",
+  "description": "A single net worth data point",
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the data point",
+      "example": "2026-04-28T00:00:00Z"
+    },
+    "value_usd": {
+      "type": "string",
+      "description": "Total portfolio value in USD",
+      "example": 124180
+    },
+    "token_value_usd": {
+      "type": "string",
+      "description": "Token value in USD",
+      "example": 26000
+    },
+    "nft_value_usd": {
+      "type": "string",
+      "description": "NFT value in USD",
+      "example": 98180
+    }
+  },
+  "required": [
+    "nft_value_usd",
+    "timestamp",
+    "token_value_usd",
+    "value_usd"
+  ]
+}

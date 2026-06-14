@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillBasicOrder",
+  "title": "FulfillBasicOrder",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "parameters": {
+          "$ref": "#/components/schemas/BasicOrderParameters"
+        }
+      }
+    }
+  ],
+  "required": [
+    "parameters"
+  ]
+}

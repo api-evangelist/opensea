@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CrossChainFulfillmentRequest",
+  "title": "CrossChainFulfillmentRequest",
+  "type": "object",
+  "description": "Request to fulfill one or more listings using a payment token on a different chain or a different token on the same chain",
+  "properties": {
+    "listings": {
+      "type": "array",
+      "description": "One or more listings to fulfill",
+      "items": {
+        "$ref": "#/components/schemas/ListingObject"
+      }
+    },
+    "fulfiller": {
+      "$ref": "#/components/schemas/FulfillerObject"
+    },
+    "payment": {
+      "$ref": "#/components/schemas/CrossChainPaymentToken",
+      "description": "The token to pay with"
+    },
+    "recipient": {
+      "type": "string",
+      "description": "Optional recipient address for the purchased items"
+    }
+  },
+  "required": [
+    "fulfiller",
+    "listings",
+    "payment"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CriteriaResolver",
+  "title": "CriteriaResolver",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Type"
+      }
+    },
+    "orderIndex": {
+      "type": "integer"
+    },
+    "side": {
+      "type": "integer"
+    },
+    "index": {
+      "type": "integer"
+    },
+    "identifier": {
+      "type": "integer"
+    },
+    "criteriaProof": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "byte"
+      }
+    },
+    "typeAsString": {
+      "type": "string"
+    },
+    "nativeValueCopy": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

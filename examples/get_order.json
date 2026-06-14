@@ -1,0 +1,23 @@
+{
+  "operationId": "get_order",
+  "method": "GET",
+  "path": "/api/v2/orders/chain/{chain}/protocol/{protocol_address}/{order_hash}",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "protocol_address": "string",
+      "order_hash": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "order": {
+        "order_hash": null,
+        "chain": null,
+        "protocol_data": null,
+        "protocol_address": null,
+        "asset": null
+      }
+    }
+  }
+}

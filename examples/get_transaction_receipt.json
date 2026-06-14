@@ -1,0 +1,81 @@
+{
+  "operationId": "get_transaction_receipt",
+  "method": "POST",
+  "path": "/api/v2/transactions/receipt",
+  "request": {
+    "requestBody": {
+      "transaction_identifiers": [
+        {
+          "transaction_hash": "0xabc123...",
+          "chain": "ethereum",
+          "swap_provider": "RELAY"
+        }
+      ],
+      "swap_quote": {
+        "from_assets": [
+          {
+            "chain": null,
+            "contract": null,
+            "token_id": null,
+            "amount": null
+          }
+        ],
+        "to_assets": [
+          {
+            "chain": null,
+            "contract": null,
+            "token_id": null,
+            "amount": null
+          }
+        ]
+      },
+      "relay_request_id": "string",
+      "request_id": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "status": "SUCCESS",
+      "fail_reason": "string",
+      "asset_receipts": [
+        {
+          "asset": {
+            "chain": null,
+            "contract": null,
+            "token_id": null
+          },
+          "quantity": 1,
+          "price": {
+            "amount": null,
+            "currency": null,
+            "usd": null
+          }
+        }
+      ],
+      "failed_asset_receipts": [
+        {
+          "asset": {
+            "chain": null,
+            "contract": null,
+            "token_id": null
+          },
+          "quantity": 1,
+          "price": {
+            "amount": null,
+            "currency": null,
+            "usd": null
+          }
+        }
+      ],
+      "total_spent": {
+        "price_per_token": [
+          {
+            "amount": null,
+            "currency": null,
+            "usd": null
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapQuoteInput",
+  "title": "SwapQuoteInput",
+  "type": "object",
+  "description": "The original swap quote assets",
+  "properties": {
+    "from_assets": {
+      "type": "array",
+      "description": "Assets being sent/spent",
+      "items": {
+        "$ref": "#/components/schemas/AssetQuantityInput"
+      },
+      "maxItems": 100,
+      "minItems": 0
+    },
+    "to_assets": {
+      "type": "array",
+      "description": "Assets being received",
+      "items": {
+        "$ref": "#/components/schemas/AssetQuantityInput"
+      },
+      "maxItems": 100,
+      "minItems": 0
+    }
+  },
+  "required": [
+    "from_assets"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "operationId": "get_offers_collection_trait",
+  "method": "GET",
+  "path": "/api/v2/offers/collection/{slug}/traits",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "mode": "STRING",
+      "type": "string",
+      "value": "string",
+      "float_value": 0.0
+    }
+  },
+  "response": {
+    "200": {
+      "offers": [
+        {
+          "order_hash": null,
+          "chain": null,
+          "protocol_data": null,
+          "protocol_address": null,
+          "asset": null
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

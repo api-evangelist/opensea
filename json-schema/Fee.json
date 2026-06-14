@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Fee",
+  "title": "Fee",
+  "type": "object",
+  "properties": {
+    "fee": {
+      "type": "number",
+      "format": "double"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "fee",
+    "recipient",
+    "required"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropMintRequest",
+  "title": "DropMintRequest",
+  "type": "object",
+  "description": "Mint request parameters",
+  "properties": {
+    "minter": {
+      "type": "string",
+      "description": "Wallet address that will receive the minted tokens",
+      "example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "minLength": 1
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of tokens to mint",
+      "example": 1,
+      "maximum": 100,
+      "minimum": 1
+    }
+  },
+  "required": [
+    "minter",
+    "quantity"
+  ]
+}

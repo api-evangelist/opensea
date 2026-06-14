@@ -1,0 +1,38 @@
+{
+  "operationId": "get_collection_offer_aggregates",
+  "method": "GET",
+  "path": "/api/v2/collections/{slug}/offer_aggregates",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "limit": 0,
+      "cursor": "string",
+      "sort_direction": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "offer_aggregates": [
+        {
+          "offer_price": {
+            "usd_price": null,
+            "token_unit": null,
+            "symbol": null,
+            "chain": null
+          },
+          "total_value": {
+            "usd_price": null,
+            "token_unit": null,
+            "symbol": null,
+            "chain": null
+          },
+          "total_offers": 0,
+          "bidders": [
+            null
+          ]
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

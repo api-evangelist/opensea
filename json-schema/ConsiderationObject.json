@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ConsiderationObject",
+  "title": "ConsiderationObject",
+  "type": "object",
+  "properties": {
+    "asset_contract_address": {
+      "type": "string"
+    },
+    "token_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_contract_address",
+    "token_id"
+  ]
+}

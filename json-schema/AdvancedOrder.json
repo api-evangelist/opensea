@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AdvancedOrder",
+  "title": "AdvancedOrder",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Type"
+      }
+    },
+    "parameters": {
+      "$ref": "#/components/schemas/OrderParameters"
+    },
+    "numerator": {
+      "type": "integer"
+    },
+    "denominator": {
+      "type": "integer"
+    },
+    "signature": {
+      "type": "string",
+      "format": "byte"
+    },
+    "extraData": {
+      "type": "string",
+      "format": "byte"
+    },
+    "typeAsString": {
+      "type": "string"
+    },
+    "nativeValueCopy": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

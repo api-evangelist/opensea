@@ -1,0 +1,19 @@
+{
+  "operationId": "get_deploy_contract_receipt",
+  "method": "GET",
+  "path": "/api/v2/drops/deploy/{chain}/{tx_hash}/receipt",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "tx_hash": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "status": "success",
+      "contract_address": "string",
+      "chain": "string",
+      "collection_slug": "string"
+    }
+  }
+}

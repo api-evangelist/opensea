@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ToolUsageResponse",
+  "title": "ToolUsageResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "verification_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "verification_type",
+    "verified"
+  ]
+}

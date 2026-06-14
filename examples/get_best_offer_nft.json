@@ -1,0 +1,32 @@
+{
+  "operationId": "get_best_offer_nft",
+  "method": "GET",
+  "path": "/api/v2/offers/collection/{slug}/nfts/{identifier}/best",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "identifier": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "order_hash": "string",
+      "chain": "string",
+      "protocol_data": {
+        "parameters": {
+          "offerer": null,
+          "offer": null,
+          "consideration": null,
+          "startTime": null,
+          "endTime": null
+        },
+        "signature": "string"
+      },
+      "protocol_address": "string",
+      "asset": {
+        "identifier": "string",
+        "contract": "string"
+      }
+    }
+  }
+}

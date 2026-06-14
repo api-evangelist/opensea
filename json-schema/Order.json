@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Order",
+  "title": "Order",
+  "type": "object",
+  "properties": {
+    "order_hash": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "string"
+    },
+    "protocol_data": {
+      "$ref": "#/components/schemas/ProtocolData"
+    },
+    "protocol_address": {
+      "type": "string"
+    },
+    "asset": {
+      "$ref": "#/components/schemas/OrderAsset"
+    },
+    "remaining_quantity": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "order_created_at": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "chain",
+    "order_hash",
+    "remaining_quantity"
+  ]
+}

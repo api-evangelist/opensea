@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PaymentToken",
+  "title": "PaymentToken",
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "eth_price": {
+      "type": "string"
+    },
+    "usd_price": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address",
+    "chain",
+    "decimals",
+    "eth_price",
+    "image",
+    "name",
+    "symbol",
+    "usd_price"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "operationId": "generate_offer_fulfillment_data_v2",
+  "method": "POST",
+  "path": "/api/v2/offers/fulfillment_data",
+  "request": {
+    "requestBody": {
+      "offer": {
+        "hash": "string",
+        "chain": "string",
+        "protocol_address": "string"
+      },
+      "fulfiller": {
+        "address": "string"
+      },
+      "consideration": {
+        "asset_contract_address": "string",
+        "token_id": "string"
+      },
+      "units_to_fill": 0,
+      "include_optional_creator_fees": true
+    }
+  },
+  "response": {
+    "200": {
+      "protocol": "string",
+      "fulfillment_data": {
+        "transaction": {
+          "function": "string",
+          "chain": 0,
+          "to": "string",
+          "value": "string",
+          "input_data": null
+        },
+        "orders": [
+          {
+            "parameters": null,
+            "signature": null
+          }
+        ]
+      }
+    }
+  }
+}

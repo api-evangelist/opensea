@@ -1,0 +1,30 @@
+{
+  "operationId": "get_trending_collections",
+  "method": "GET",
+  "path": "/api/v2/collections/trending",
+  "request": {
+    "parameters": {
+      "timeframe": "string",
+      "chains": [
+        "blast"
+      ],
+      "category": "string",
+      "limit": 0,
+      "cursor": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "collections": [
+        {
+          "collection": "string",
+          "name": "string",
+          "description": "string",
+          "image_url": "string",
+          "banner_image_url": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

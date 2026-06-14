@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PriceHistoryResponse",
+  "title": "PriceHistoryResponse",
+  "type": "object",
+  "description": "List of price history data points",
+  "properties": {
+    "prices": {
+      "type": "array",
+      "description": "List of price history points",
+      "items": {
+        "$ref": "#/components/schemas/PriceHistoryPointResponse"
+      }
+    }
+  },
+  "required": [
+    "prices"
+  ]
+}

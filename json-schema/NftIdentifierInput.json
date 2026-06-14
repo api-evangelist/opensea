@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NftIdentifierInput",
+  "title": "NftIdentifierInput",
+  "type": "object",
+  "description": "An NFT identifier consisting of chain, contract address, and token ID",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The blockchain the NFT is on",
+      "example": "ethereum"
+    },
+    "contract_address": {
+      "type": "string",
+      "description": "The contract address of the NFT",
+      "example": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
+    },
+    "token_id": {
+      "type": "string",
+      "description": "The token ID of the NFT",
+      "example": 1
+    }
+  },
+  "required": [
+    "chain",
+    "contract_address",
+    "token_id"
+  ]
+}

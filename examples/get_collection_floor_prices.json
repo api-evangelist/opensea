@@ -1,0 +1,25 @@
+{
+  "operationId": "get_collection_floor_prices",
+  "method": "GET",
+  "path": "/api/v2/collections/{slug}/floor_prices",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "timeframe": "string",
+      "resolution": 0
+    }
+  },
+  "response": {
+    "200": {
+      "floor_prices": [
+        {
+          "time": "2024-01-01T00:00:00Z",
+          "usd_price": "string",
+          "token_unit": 0.0,
+          "symbol": "string",
+          "chain": "string"
+        }
+      ]
+    }
+  }
+}

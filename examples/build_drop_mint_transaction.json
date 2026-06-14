@@ -1,0 +1,22 @@
+{
+  "operationId": "build_drop_mint_transaction",
+  "method": "POST",
+  "path": "/api/v2/drops/{slug}/mint",
+  "request": {
+    "parameters": {
+      "slug": "string"
+    },
+    "requestBody": {
+      "minter": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "quantity": 1
+    }
+  },
+  "response": {
+    "200": {
+      "to": "string",
+      "data": "string",
+      "value": "string",
+      "chain": "string"
+    }
+  }
+}

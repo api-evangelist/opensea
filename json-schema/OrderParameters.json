@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OrderParameters",
+  "title": "OrderParameters",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Type"
+      }
+    },
+    "offerer": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OfferItem"
+      }
+    },
+    "consideration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConsiderationItem"
+      }
+    },
+    "orderType": {
+      "type": "integer"
+    },
+    "startTime": {
+      "type": "integer"
+    },
+    "endTime": {
+      "type": "integer"
+    },
+    "zoneHash": {
+      "type": "string",
+      "format": "byte"
+    },
+    "salt": {
+      "type": "integer"
+    },
+    "conduitKey": {
+      "type": "string",
+      "format": "byte"
+    },
+    "totalOriginalConsiderationItems": {
+      "type": "integer"
+    },
+    "typeAsString": {
+      "type": "string"
+    },
+    "nativeValueCopy": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

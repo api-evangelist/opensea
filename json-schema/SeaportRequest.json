@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SeaportRequest",
+  "title": "SeaportRequest",
+  "type": "object",
+  "properties": {
+    "parameters": {
+      "$ref": "#/components/schemas/SeaportParameters"
+    },
+    "protocol_address": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "parameters",
+    "protocol_address",
+    "signature"
+  ]
+}

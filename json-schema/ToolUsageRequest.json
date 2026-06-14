@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ToolUsageRequest",
+  "title": "ToolUsageRequest",
+  "type": "object",
+  "properties": {
+    "verification_type": {
+      "type": "string"
+    },
+    "tool_chain_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "tool_registry_address": {
+      "type": "string"
+    },
+    "tool_onchain_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "latency_ms": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "eip3009": {
+      "$ref": "#/components/schemas/Eip3009Fields"
+    },
+    "x402": {
+      "$ref": "#/components/schemas/X402SettlementFields"
+    }
+  }
+}

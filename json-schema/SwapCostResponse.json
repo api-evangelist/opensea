@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapCostResponse",
+  "title": "SwapCostResponse",
+  "type": "object",
+  "description": "A cost component of the swap",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of cost",
+      "enum": [
+        "GAS",
+        "PROVIDER",
+        "PROTOCOL",
+        "SWAP",
+        "MARKETPLACE",
+        "CREATOR",
+        "MEV_PROTECTION"
+      ],
+      "example": "GAS"
+    },
+    "usd": {
+      "type": "string",
+      "description": "Cost amount in USD",
+      "example": 0.5
+    }
+  },
+  "required": [
+    "type",
+    "usd"
+  ]
+}

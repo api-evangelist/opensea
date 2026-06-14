@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CancelResponse",
+  "title": "CancelResponse",
+  "type": "object",
+  "properties": {
+    "last_signature_issued_valid_until": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "last_signature_issued_valid_until"
+  ]
+}

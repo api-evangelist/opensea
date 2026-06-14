@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenGroupResponse",
+  "title": "TokenGroupResponse",
+  "type": "object",
+  "description": "A token group representing equivalent currencies across different blockchains",
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "Unique slug identifier for the token group",
+      "example": "eth"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Display name of the token group",
+      "example": "Ethereum"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Ticker symbol of the token group",
+      "example": "ETH"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the token group"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the token group's image"
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "URL to the token group page on OpenSea"
+    },
+    "currencies": {
+      "type": "array",
+      "description": "Currencies in this token group",
+      "items": {
+        "$ref": "#/components/schemas/TokenGroupCurrencyResponse"
+      }
+    },
+    "primary_currency": {
+      "$ref": "#/components/schemas/TokenGroupCurrencyResponse",
+      "description": "The primary currency for this token group"
+    },
+    "stats": {
+      "$ref": "#/components/schemas/TokenGroupStatsResponse",
+      "description": "Market statistics for the token group"
+    },
+    "socials": {
+      "$ref": "#/components/schemas/TokenGroupSocialsResponse",
+      "description": "Social media links for the token group"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the token group was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the token group was last updated"
+    }
+  },
+  "required": [
+    "created_at",
+    "currencies",
+    "display_name",
+    "opensea_url",
+    "primary_currency",
+    "slug",
+    "updated_at"
+  ]
+}

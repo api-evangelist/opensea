@@ -1,0 +1,26 @@
+{
+  "operationId": "get_collection_holders",
+  "method": "GET",
+  "path": "/api/v2/collections/{slug}/holders",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "limit": 0,
+      "cursor": "string",
+      "sort_direction": "string",
+      "owned_by": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "holders": [
+        {
+          "address": "string",
+          "quantity": 0,
+          "percentage": 0.0
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

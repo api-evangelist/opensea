@@ -1,0 +1,21 @@
+{
+  "operationId": "get_nft_collection",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/collection",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "identifier": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "collection": "string",
+      "name": "string",
+      "description": "string",
+      "image_url": "string",
+      "banner_image_url": "string"
+    }
+  }
+}

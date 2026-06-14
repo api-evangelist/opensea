@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Eip3009Fields",
+  "title": "Eip3009Fields",
+  "type": "object",
+  "properties": {
+    "caller_address": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "chain_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    },
+    "valid_after": {
+      "type": "integer"
+    },
+    "valid_before": {
+      "type": "integer"
+    },
+    "nonce": {
+      "type": "string"
+    }
+  }
+}

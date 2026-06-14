@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillAdvancedOrder",
+  "title": "FulfillAdvancedOrder",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "advancedOrder": {
+          "$ref": "#/components/schemas/AdvancedOrder"
+        },
+        "criteriaResolvers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CriteriaResolver"
+          }
+        },
+        "fulfillerConduitKey": {
+          "type": "string"
+        },
+        "recipient": {
+          "$ref": "#/components/schemas/Address"
+        }
+      }
+    }
+  ],
+  "required": [
+    "advancedOrder",
+    "criteriaResolvers",
+    "fulfillerConduitKey",
+    "recipient"
+  ]
+}

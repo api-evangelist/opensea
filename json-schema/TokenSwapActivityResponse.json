@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenSwapActivityResponse",
+  "title": "TokenSwapActivityResponse",
+  "type": "object",
+  "description": "A token swap activity event",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the swap event"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the swap"
+    },
+    "sender_address": {
+      "type": "string",
+      "description": "Address of the sender"
+    },
+    "from_token": {
+      "$ref": "#/components/schemas/TokenAmountResponse",
+      "description": "Token sold in the swap"
+    },
+    "to_token": {
+      "$ref": "#/components/schemas/TokenAmountResponse",
+      "description": "Token bought in the swap"
+    },
+    "transaction_hash": {
+      "type": "string",
+      "description": "Transaction hash"
+    },
+    "user_op_hash": {
+      "type": "string",
+      "description": "User operation hash (for account abstraction)"
+    },
+    "swap_protocol": {
+      "type": "string",
+      "description": "Swap protocol used"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain the swap occurred on"
+    }
+  },
+  "required": [
+    "chain",
+    "from_token",
+    "id",
+    "sender_address",
+    "timestamp",
+    "to_token",
+    "transaction_hash"
+  ]
+}

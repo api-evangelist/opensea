@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Consideration",
+  "title": "Consideration",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "token": {
+      "type": "string"
+    },
+    "identifierOrCriteria": {
+      "type": "string",
+      "description": "For criteria-based offers, this is the merkle root of eligible token IDs. For trait offers on supported collections, this will be '0' \u2014 trait matching is validated server-side at fulfillment time instead of via onchain merkle proof."
+    },
+    "startAmount": {
+      "type": "string"
+    },
+    "endAmount": {
+      "type": "string"
+    },
+    "recipient": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "endAmount",
+    "identifierOrCriteria",
+    "itemType",
+    "recipient",
+    "startAmount",
+    "token"
+  ]
+}

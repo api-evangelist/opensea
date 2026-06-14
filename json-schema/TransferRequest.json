@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransferRequest",
+  "title": "TransferRequest",
+  "type": "object",
+  "description": "Request to transfer NFTs or tokens between wallets",
+  "properties": {
+    "assets": {
+      "type": "array",
+      "description": "List of assets to transfer",
+      "items": {
+        "$ref": "#/components/schemas/TransferAsset"
+      }
+    },
+    "from_address": {
+      "type": "string",
+      "description": "Address of the sender wallet",
+      "example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+    },
+    "to_address": {
+      "type": "string",
+      "description": "Address of the recipient wallet",
+      "example": "0x28c6c06298d514db089934071355e5743bf21d60"
+    }
+  },
+  "required": [
+    "assets",
+    "from_address",
+    "to_address"
+  ]
+}

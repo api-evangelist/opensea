@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OfferAggregatePriceResponse",
+  "title": "OfferAggregatePriceResponse",
+  "type": "object",
+  "description": "Price information for an offer aggregate",
+  "properties": {
+    "usd_price": {
+      "type": "string",
+      "description": "Price in USD"
+    },
+    "token_unit": {
+      "type": "number",
+      "format": "double",
+      "description": "Price in token units"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Payment token symbol"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain chain"
+    }
+  },
+  "required": [
+    "chain",
+    "token_unit",
+    "usd_price"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Owner",
+  "title": "Owner",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "quantity_string": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address",
+    "quantity",
+    "quantity_string"
+  ]
+}

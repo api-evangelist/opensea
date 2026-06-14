@@ -1,0 +1,21 @@
+{
+  "operationId": "get_tool",
+  "method": "GET",
+  "path": "/api/v2/tools/{registry_chain}/{registry_addr}/{tool_id}",
+  "request": {
+    "parameters": {
+      "registry_chain": "string",
+      "registry_addr": "string",
+      "tool_id": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "tool_id": "string",
+      "registry_chain": "string",
+      "registry_addr": "string",
+      "creator": "string",
+      "metadata_uri": "string"
+    }
+  }
+}

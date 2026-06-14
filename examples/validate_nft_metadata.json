@@ -1,0 +1,36 @@
+{
+  "operationId": "validate_nft_metadata",
+  "method": "POST",
+  "path": "/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/validate-metadata",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "identifier": "string",
+      "ignoreCachedItemUrls": true
+    }
+  },
+  "response": {
+    "200": {
+      "assetIdentifier": {
+        "chain": "string",
+        "contractAddress": "string",
+        "tokenId": "string"
+      },
+      "tokenUri": "string",
+      "metadata": {
+        "name": "string",
+        "description": "string",
+        "originalImageUrl": "string",
+        "processedImageUrl": "string",
+        "originalAnimationUrl": "string"
+      },
+      "error": {
+        "errorType": "string",
+        "message": "string",
+        "url": "string",
+        "statusCode": 0
+      }
+    }
+  }
+}

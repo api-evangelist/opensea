@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BuildOfferResponse",
+  "title": "BuildOfferResponse",
+  "type": "object",
+  "properties": {
+    "partialParameters": {
+      "$ref": "#/components/schemas/PartialParameters"
+    },
+    "criteria": {
+      "$ref": "#/components/schemas/CriteriaRequest",
+      "description": "The criteria to pass through to the POST /api/v2/offers submit step. Includes collection and trait information so trait offers are not accidentally submitted as collection offers."
+    },
+    "encodedTokenIds": {
+      "type": "string",
+      "description": "Encoded token IDs that can be used to fulfill the criteria offer. When identifierOrCriteria is '0', this field is informational only and not required for order construction."
+    }
+  },
+  "required": [
+    "criteria",
+    "partialParameters"
+  ]
+}

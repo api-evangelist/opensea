@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapQuoteDetails",
+  "title": "SwapQuoteDetails",
+  "type": "object",
+  "description": "Price and fee details for a swap quote",
+  "properties": {
+    "total_price_usd": {
+      "type": "number",
+      "format": "double",
+      "description": "Total value of tokens received in USD",
+      "example": 1850.5
+    },
+    "total_cost_usd": {
+      "type": "number",
+      "format": "double",
+      "description": "Total cost of tokens sent in USD",
+      "example": 1869
+    },
+    "slippage_tolerance": {
+      "type": "number",
+      "format": "double",
+      "description": "Slippage tolerance as a decimal (e.g. 0.01 = 1%)",
+      "example": 0.01
+    },
+    "estimated_duration_ms": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Estimated swap duration in milliseconds",
+      "example": 30000
+    },
+    "marketplace_fee_bps": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Marketplace fee in basis points",
+      "example": 50
+    },
+    "price_impact": {
+      "$ref": "#/components/schemas/SwapPriceImpact",
+      "description": "Price impact of the swap (null if unavailable)"
+    },
+    "swap_provider": {
+      "type": "string",
+      "description": "The swap provider that fulfilled this quote (null if unavailable)",
+      "example": "RELAY"
+    },
+    "recommended_slippage": {
+      "type": "number",
+      "format": "double",
+      "description": "Recommended slippage tolerance based on volatility analysis (null if unavailable)",
+      "example": 2
+    },
+    "costs": {
+      "type": "array",
+      "description": "Breakdown of costs for the swap",
+      "items": {
+        "$ref": "#/components/schemas/SwapCostResponse"
+      }
+    },
+    "route_errors": {
+      "type": "array",
+      "description": "Errors encountered for individual swap routes",
+      "items": {
+        "$ref": "#/components/schemas/SwapRouteErrorResponse"
+      }
+    }
+  },
+  "required": [
+    "costs",
+    "estimated_duration_ms",
+    "marketplace_fee_bps",
+    "route_errors",
+    "slippage_tolerance",
+    "total_cost_usd",
+    "total_price_usd"
+  ]
+}

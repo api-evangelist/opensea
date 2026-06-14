@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenContractInput",
+  "title": "TokenContractInput",
+  "type": "object",
+  "description": "A token contract identifier consisting of chain and address",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The blockchain the token is on",
+      "example": "ethereum"
+    },
+    "address": {
+      "type": "string",
+      "description": "The contract address of the token",
+      "example": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    }
+  },
+  "required": [
+    "address",
+    "chain"
+  ]
+}

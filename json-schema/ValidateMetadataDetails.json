@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ValidateMetadataDetails",
+  "title": "ValidateMetadataDetails",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "originalImageUrl": {
+      "type": "string"
+    },
+    "processedImageUrl": {
+      "type": "string"
+    },
+    "originalAnimationUrl": {
+      "type": "string"
+    },
+    "processedAnimationUrl": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidateMetadataAttribute"
+      }
+    }
+  },
+  "required": [
+    "attributes"
+  ]
+}

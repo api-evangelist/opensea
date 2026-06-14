@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SweepCollectionRequest",
+  "title": "SweepCollectionRequest",
+  "type": "object",
+  "description": "Request to sweep buy items from a collection",
+  "properties": {
+    "collection_slug": {
+      "type": "string",
+      "description": "The slug of the collection to sweep",
+      "example": "pudgypenguins"
+    },
+    "payment": {
+      "$ref": "#/components/schemas/CrossChainPaymentToken",
+      "description": "The token to pay with"
+    },
+    "max_items": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Maximum number of items to buy (1-50)",
+      "example": 5
+    },
+    "max_price_per_item": {
+      "type": "string",
+      "description": "Maximum price per item in the payment token's units",
+      "example": 10
+    },
+    "buyer": {
+      "type": "string",
+      "description": "Address of the buyer",
+      "example": "0x..."
+    },
+    "recipient": {
+      "type": "string",
+      "description": "Optional recipient address for the purchased items"
+    }
+  },
+  "required": [
+    "buyer",
+    "collection_slug",
+    "max_items",
+    "max_price_per_item",
+    "payment"
+  ]
+}

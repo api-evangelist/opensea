@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenSwapActivityPaginatedResponse",
+  "title": "TokenSwapActivityPaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of token swap activity events",
+  "properties": {
+    "swap_events": {
+      "type": "array",
+      "description": "List of swap activity events",
+      "items": {
+        "$ref": "#/components/schemas/TokenSwapActivityResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "swap_events"
+  ]
+}

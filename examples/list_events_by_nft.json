@@ -1,0 +1,22 @@
+{
+  "operationId": "list_events_by_nft",
+  "method": "GET",
+  "path": "/api/v2/events/chain/{chain}/contract/{address}/nfts/{identifier}",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "identifier": "string",
+      "after": 0,
+      "before": 0
+    }
+  },
+  "response": {
+    "200": {
+      "asset_events": [
+        {}
+      ],
+      "next": "string"
+    }
+  }
+}

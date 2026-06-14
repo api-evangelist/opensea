@@ -1,0 +1,28 @@
+{
+  "operationId": "get_nfts_by_account",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/account/{address}/nfts",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "chain": "string",
+      "collection": "string",
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "nfts": [
+        {
+          "identifier": "string",
+          "collection": "string",
+          "contract": "string",
+          "token_standard": "string",
+          "name": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

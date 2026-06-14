@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransactionReceiptRequest",
+  "title": "TransactionReceiptRequest",
+  "type": "object",
+  "description": "Request to get a transaction receipt/status",
+  "properties": {
+    "transaction_identifiers": {
+      "type": "array",
+      "description": "Transaction identifiers to look up",
+      "items": {
+        "$ref": "#/components/schemas/TransactionIdentifierInput"
+      },
+      "maxItems": 100,
+      "minItems": 0
+    },
+    "swap_quote": {
+      "$ref": "#/components/schemas/SwapQuoteInput",
+      "description": "The swap quote that was originally submitted"
+    },
+    "relay_request_id": {
+      "type": "string",
+      "description": "Relay request ID for cross-chain tracking"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Request ID for workflow tracking"
+    }
+  },
+  "required": [
+    "swap_quote"
+  ]
+}

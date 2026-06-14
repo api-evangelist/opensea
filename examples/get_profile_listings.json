@@ -1,0 +1,32 @@
+{
+  "operationId": "get_profile_listings",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/listings",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "after": "string",
+      "limit": 0,
+      "collection_slugs": [
+        "string"
+      ],
+      "chains": [
+        "blast"
+      ]
+    }
+  },
+  "response": {
+    "200": {
+      "listings": [
+        {
+          "order_hash": null,
+          "chain": null,
+          "protocol_data": null,
+          "protocol_address": null,
+          "asset": null
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

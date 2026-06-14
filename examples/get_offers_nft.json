@@ -1,0 +1,27 @@
+{
+  "operationId": "get_offers_nft",
+  "method": "GET",
+  "path": "/api/v2/offers/collection/{slug}/nfts/{identifier}",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "identifier": "string",
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "offers": [
+        {
+          "order_hash": null,
+          "chain": null,
+          "protocol_data": null,
+          "protocol_address": null,
+          "asset": null
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

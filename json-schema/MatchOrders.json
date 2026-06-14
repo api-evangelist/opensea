@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/MatchOrders",
+  "title": "MatchOrders",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Order"
+          }
+        },
+        "fulfillments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Fulfillment"
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "fulfillments",
+    "orders"
+  ]
+}

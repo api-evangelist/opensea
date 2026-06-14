@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenBalancePaginatedResponse",
+  "title": "TokenBalancePaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of token balances",
+  "properties": {
+    "token_balances": {
+      "type": "array",
+      "description": "List of token balances",
+      "items": {
+        "$ref": "#/components/schemas/TokenBalanceResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "token_balances"
+  ]
+}

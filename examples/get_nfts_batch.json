@@ -1,0 +1,29 @@
+{
+  "operationId": "get_nfts_batch",
+  "method": "POST",
+  "path": "/api/v2/nfts/batch",
+  "request": {
+    "requestBody": {
+      "identifiers": [
+        {
+          "chain": "ethereum",
+          "contract_address": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
+          "token_id": 1
+        }
+      ]
+    }
+  },
+  "response": {
+    "200": {
+      "nfts": [
+        {
+          "identifier": "string",
+          "collection": "string",
+          "contract": "string",
+          "token_standard": "string",
+          "name": "string"
+        }
+      ]
+    }
+  }
+}

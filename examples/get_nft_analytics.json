@@ -1,0 +1,34 @@
+{
+  "operationId": "get_nft_analytics",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/analytics",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "identifier": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "sales": [
+        {
+          "time": "2024-01-01T00:00:00Z",
+          "usd_price": "string",
+          "token_unit": 0.0,
+          "symbol": "string",
+          "chain": "string"
+        }
+      ],
+      "floor_prices": [
+        {
+          "time": "2024-01-01T00:00:00Z",
+          "usd_price": "string",
+          "token_unit": 0.0,
+          "symbol": "string",
+          "chain": "string"
+        }
+      ]
+    }
+  }
+}

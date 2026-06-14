@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AssetReceiptResponse",
+  "title": "AssetReceiptResponse",
+  "type": "object",
+  "description": "Receipt for a single asset in a transaction",
+  "properties": {
+    "asset": {
+      "$ref": "#/components/schemas/AssetIdentifierResponse",
+      "description": "The asset received"
+    },
+    "quantity": {
+      "type": "string",
+      "description": "Quantity received in base units",
+      "example": 1
+    },
+    "price": {
+      "$ref": "#/components/schemas/PriceResponse",
+      "description": "Price paid per item"
+    }
+  },
+  "required": [
+    "asset",
+    "price",
+    "quantity"
+  ]
+}

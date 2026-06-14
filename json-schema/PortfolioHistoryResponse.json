@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PortfolioHistoryResponse",
+  "title": "PortfolioHistoryResponse",
+  "type": "object",
+  "description": "Net worth time series data",
+  "properties": {
+    "data_points": {
+      "type": "array",
+      "description": "Time series data points",
+      "items": {
+        "$ref": "#/components/schemas/PortfolioHistoryDataPoint"
+      }
+    },
+    "timeframe": {
+      "type": "string",
+      "description": "The queried timeframe",
+      "example": "WEEK"
+    }
+  },
+  "required": [
+    "data_points",
+    "timeframe"
+  ]
+}

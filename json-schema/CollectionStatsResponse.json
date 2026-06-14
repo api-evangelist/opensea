@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionStatsResponse",
+  "title": "CollectionStatsResponse",
+  "type": "object",
+  "properties": {
+    "total": {
+      "$ref": "#/components/schemas/Total"
+    },
+    "intervals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IntervalStat"
+      }
+    }
+  },
+  "required": [
+    "intervals",
+    "total"
+  ]
+}

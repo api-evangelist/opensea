@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransactionReceiptResponse",
+  "title": "TransactionReceiptResponse",
+  "type": "object",
+  "description": "Transaction receipt with status and asset details",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Transaction status: PENDING, SUCCESS, PARTIAL_SUCCESS, or FAILED",
+      "example": "SUCCESS"
+    },
+    "fail_reason": {
+      "type": "string",
+      "description": "Reason for failure, if applicable"
+    },
+    "asset_receipts": {
+      "type": "array",
+      "description": "Successfully received assets",
+      "items": {
+        "$ref": "#/components/schemas/AssetReceiptResponse"
+      }
+    },
+    "failed_asset_receipts": {
+      "type": "array",
+      "description": "Assets that failed to be received",
+      "items": {
+        "$ref": "#/components/schemas/AssetReceiptResponse"
+      }
+    },
+    "total_spent": {
+      "$ref": "#/components/schemas/TotalSpentResponse",
+      "description": "Total amount spent across all assets"
+    },
+    "missing_assets": {
+      "type": "array",
+      "description": "Assets that are missing from the receipt",
+      "items": {
+        "$ref": "#/components/schemas/AssetIdentifierResponse"
+      }
+    },
+    "cross_chain_refunded": {
+      "type": "boolean",
+      "description": "Whether a cross-chain refund was issued"
+    }
+  },
+  "required": [
+    "asset_receipts",
+    "failed_asset_receipts",
+    "missing_assets",
+    "status",
+    "total_spent"
+  ]
+}

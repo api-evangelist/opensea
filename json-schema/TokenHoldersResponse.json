@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenHoldersResponse",
+  "title": "TokenHoldersResponse",
+  "type": "object",
+  "description": "Paginated list of token holders",
+  "properties": {
+    "holders": {
+      "type": "array",
+      "description": "List of token holders",
+      "items": {
+        "$ref": "#/components/schemas/TokenHolderResponse"
+      }
+    },
+    "total_count": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Total number of holders"
+    },
+    "distribution": {
+      "$ref": "#/components/schemas/TokenHolderDistributionResponse",
+      "description": "Holder distribution health metrics"
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "holders"
+  ]
+}

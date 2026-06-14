@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/RegisteredToolResponse",
+  "title": "RegisteredToolResponse",
+  "type": "object",
+  "properties": {
+    "tool_id": {
+      "type": "string"
+    },
+    "registry_chain": {
+      "type": "string"
+    },
+    "registry_addr": {
+      "type": "string"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "metadata_uri": {
+      "type": "string"
+    },
+    "manifest_hash": {
+      "type": "string"
+    },
+    "endpoint_url": {
+      "type": "string"
+    },
+    "endpoint_domain": {
+      "type": "string"
+    },
+    "manifest_hash_verified": {
+      "type": "boolean"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {},
+    "outputs": {},
+    "creator_address": {
+      "type": "string"
+    },
+    "endpoint": {
+      "type": "string"
+    },
+    "access": {
+      "$ref": "#/components/schemas/ToolAccessResponse"
+    },
+    "pricing_recipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ToolPricingRecipientResponse"
+      }
+    }
+  },
+  "required": [
+    "created_at",
+    "creator",
+    "is_active",
+    "manifest_hash",
+    "manifest_hash_verified",
+    "metadata_uri",
+    "pricing_recipients",
+    "registry_addr",
+    "registry_chain",
+    "tool_id",
+    "updated_at"
+  ]
+}

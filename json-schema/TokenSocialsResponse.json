@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenSocialsResponse",
+  "title": "TokenSocialsResponse",
+  "type": "object",
+  "description": "Social media links for a token",
+  "properties": {
+    "website": {
+      "type": "string",
+      "description": "The token's website URL"
+    },
+    "twitter_handle": {
+      "type": "string",
+      "description": "The token's Twitter/X handle"
+    },
+    "telegram_identifier": {
+      "type": "string",
+      "description": "The token's Telegram identifier"
+    },
+    "twitter_follower_count": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Twitter/X follower count"
+    }
+  }
+}

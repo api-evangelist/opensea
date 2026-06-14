@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionRarity",
+  "title": "CollectionRarity",
+  "type": "object",
+  "properties": {
+    "calculated_at": {
+      "type": "string"
+    },
+    "max_rank": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "total_supply": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "strategy_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "calculated_at",
+    "max_rank",
+    "strategy_id",
+    "strategy_version",
+    "total_supply"
+  ]
+}

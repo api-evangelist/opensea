@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ToolAccessResponse",
+  "title": "ToolAccessResponse",
+  "type": "object",
+  "properties": {
+    "open_access": {
+      "type": "boolean"
+    },
+    "logic": {
+      "type": "string"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ToolRequirementResponse"
+      }
+    }
+  },
+  "required": [
+    "logic",
+    "open_access",
+    "requirements"
+  ]
+}

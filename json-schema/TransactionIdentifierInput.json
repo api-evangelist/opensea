@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransactionIdentifierInput",
+  "title": "TransactionIdentifierInput",
+  "type": "object",
+  "description": "A transaction identifier with optional swap provider",
+  "properties": {
+    "transaction_hash": {
+      "type": "string",
+      "description": "The transaction hash",
+      "example": "0xabc123..."
+    },
+    "chain": {
+      "type": "string",
+      "description": "The blockchain chain",
+      "example": "ethereum"
+    },
+    "swap_provider": {
+      "type": "string",
+      "description": "The swap provider used (e.g. RELAY, JUPITER, ZERO_EX, LOCAL_BUY_NFT). Required when relay_request_id is not provided. Can be omitted for cross-chain flows that use relay_request_id.",
+      "example": "RELAY"
+    }
+  },
+  "required": [
+    "chain",
+    "transaction_hash"
+  ]
+}

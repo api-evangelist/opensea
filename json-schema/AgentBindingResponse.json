@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AgentBindingResponse",
+  "title": "AgentBindingResponse",
+  "type": "object",
+  "properties": {
+    "agent_id": {
+      "type": "string"
+    },
+    "binding_contract": {
+      "type": "string"
+    },
+    "agent": {
+      "$ref": "#/components/schemas/AgentNftResponse"
+    },
+    "registered_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "agent",
+    "agent_id",
+    "binding_contract"
+  ]
+}

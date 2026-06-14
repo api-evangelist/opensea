@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransferEvent",
+  "title": "TransferEvent",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Event"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "type": "string"
+        },
+        "event_timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "transaction": {
+          "type": "string"
+        },
+        "order_hash": {
+          "type": "string"
+        },
+        "protocol_address": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "payment": {
+          "$ref": "#/components/schemas/Payment"
+        },
+        "transfer_type": {
+          "type": "string"
+        },
+        "from_address": {
+          "type": "string"
+        },
+        "to_address": {
+          "type": "string"
+        },
+        "nft": {
+          "$ref": "#/components/schemas/Nft"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  ],
+  "required": [
+    "chain",
+    "event_timestamp",
+    "event_type",
+    "from_address",
+    "quantity",
+    "to_address",
+    "transfer_type"
+  ]
+}

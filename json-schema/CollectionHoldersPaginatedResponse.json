@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionHoldersPaginatedResponse",
+  "title": "CollectionHoldersPaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of collection holders",
+  "properties": {
+    "holders": {
+      "type": "array",
+      "description": "List of holders",
+      "items": {
+        "$ref": "#/components/schemas/CollectionHolderResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "holders"
+  ]
+}

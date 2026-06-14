@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenGroupSocialsResponse",
+  "title": "TokenGroupSocialsResponse",
+  "type": "object",
+  "description": "Social media links for a token group",
+  "properties": {
+    "website": {
+      "type": "string",
+      "description": "The token group's website URL"
+    },
+    "twitter": {
+      "type": "string",
+      "description": "The token group's Twitter/X handle"
+    },
+    "discord": {
+      "type": "string",
+      "description": "The token group's Discord invite URL"
+    },
+    "telegram": {
+      "type": "string",
+      "description": "The token group's Telegram identifier"
+    },
+    "coinmarketcap": {
+      "type": "string",
+      "description": "CoinMarketCap listing URL"
+    },
+    "coingecko": {
+      "type": "string",
+      "description": "CoinGecko listing URL"
+    }
+  }
+}

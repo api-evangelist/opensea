@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Nft",
+  "title": "Nft",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "collection": {
+      "type": "string"
+    },
+    "contract": {
+      "type": "string"
+    },
+    "token_standard": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "display_image_url": {
+      "type": "string"
+    },
+    "display_animation_url": {
+      "type": "string"
+    },
+    "metadata_url": {
+      "type": "string"
+    },
+    "opensea_url": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "is_disabled": {
+      "type": "boolean"
+    },
+    "is_nsfw": {
+      "type": "boolean"
+    },
+    "original_image_url": {
+      "type": "string"
+    },
+    "original_animation_url": {
+      "type": "string"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Trait"
+      }
+    }
+  },
+  "required": [
+    "collection",
+    "contract",
+    "identifier",
+    "is_disabled",
+    "is_nsfw",
+    "opensea_url",
+    "token_standard",
+    "traits",
+    "updated_at"
+  ]
+}

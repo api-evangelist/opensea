@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropResponse",
+  "title": "DropResponse",
+  "type": "object",
+  "description": "Summary of an NFT drop",
+  "properties": {
+    "collection_slug": {
+      "type": "string",
+      "description": "Collection slug",
+      "example": "cool-cats"
+    },
+    "collection_name": {
+      "type": "string",
+      "description": "Collection name",
+      "example": "Cool Cats"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain the drop is on",
+      "example": "ethereum"
+    },
+    "contract_address": {
+      "type": "string",
+      "description": "Contract address"
+    },
+    "drop_type": {
+      "type": "string",
+      "description": "Drop type",
+      "example": "seadrop_v1_erc721"
+    },
+    "is_minting": {
+      "type": "boolean",
+      "description": "Whether the drop is currently minting"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Collection image URL"
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "OpenSea URL for the drop"
+    },
+    "active_stage": {
+      "$ref": "#/components/schemas/DropStageResponse",
+      "description": "The currently-minting stage, if the drop is live. Null if not minting."
+    },
+    "next_stage": {
+      "$ref": "#/components/schemas/DropStageResponse",
+      "description": "The earliest upcoming stage by start_time when the drop is not currently minting (e.g. before it starts or between stages). Null if the drop is live or has no future stages."
+    }
+  },
+  "required": [
+    "chain",
+    "collection_slug",
+    "contract_address",
+    "drop_type",
+    "is_minting",
+    "opensea_url"
+  ]
+}

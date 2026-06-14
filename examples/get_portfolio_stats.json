@@ -1,0 +1,20 @@
+{
+  "operationId": "get_portfolio_stats",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/portfolio",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "timeframe": "HOUR"
+    }
+  },
+  "response": {
+    "200": {
+      "total_value_usd": 125430.5,
+      "nft_value_usd": 98200,
+      "token_value_usd": 27230.5,
+      "pnl_absolute": "+1250.00",
+      "pnl_percentage": "+1.01"
+    }
+  }
+}

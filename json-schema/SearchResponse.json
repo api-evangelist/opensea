@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SearchResponse",
+  "title": "SearchResponse",
+  "type": "object",
+  "description": "Search results response",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "List of search results ranked by relevance",
+      "items": {
+        "$ref": "#/components/schemas/SearchResultResponse"
+      }
+    }
+  },
+  "required": [
+    "results"
+  ]
+}

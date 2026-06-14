@@ -1,0 +1,28 @@
+{
+  "operationId": "get_collection_stats",
+  "method": "GET",
+  "path": "/api/v2/collections/{slug}/stats",
+  "request": {
+    "parameters": {
+      "slug": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "total": {
+        "volume": 0.0,
+        "sales": 0,
+        "num_owners": 0,
+        "floor_price": 0.0,
+        "floor_price_symbol": "string"
+      },
+      "intervals": [
+        {
+          "interval": "string",
+          "volume": 0.0,
+          "sales": 0
+        }
+      ]
+    }
+  }
+}

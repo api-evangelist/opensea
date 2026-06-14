@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PriceHistoryPointResponse",
+  "title": "PriceHistoryPointResponse",
+  "type": "object",
+  "description": "A price history data point",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the price point"
+    },
+    "usd_price": {
+      "type": "string",
+      "description": "Price in USD",
+      "example": 1
+    }
+  },
+  "required": [
+    "time",
+    "usd_price"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ListingItem",
+  "title": "ListingItem",
+  "type": "object",
+  "description": "An item to list for sale",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "Chain of the item (e.g. 'ethereum', 'base')",
+      "example": "ethereum"
+    },
+    "contract": {
+      "type": "string",
+      "description": "Contract address of the NFT",
+      "example": "0x..."
+    },
+    "token_id": {
+      "type": "string",
+      "description": "Token ID of the NFT",
+      "example": 1234
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Quantity to list (use 1 for ERC-721)",
+      "example": 1
+    },
+    "price": {
+      "$ref": "#/components/schemas/ListingPrice",
+      "description": "Price per item"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Listing start time in ISO 8601 format. Defaults to now.",
+      "example": "2026-05-01T00:00:00Z"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "Listing end time in ISO 8601 format. Defaults to 30 days from start.",
+      "example": "2026-06-01T00:00:00Z"
+    }
+  },
+  "required": [
+    "chain",
+    "contract",
+    "price",
+    "quantity",
+    "token_id"
+  ]
+}

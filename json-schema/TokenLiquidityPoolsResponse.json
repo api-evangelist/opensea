@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenLiquidityPoolsResponse",
+  "title": "TokenLiquidityPoolsResponse",
+  "type": "object",
+  "description": "Paginated list of liquidity pools for a token",
+  "properties": {
+    "pools": {
+      "type": "array",
+      "description": "List of liquidity pools",
+      "items": {
+        "$ref": "#/components/schemas/TokenLiquidityPoolResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "pools"
+  ]
+}

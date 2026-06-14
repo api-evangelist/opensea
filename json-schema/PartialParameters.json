@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PartialParameters",
+  "title": "PartialParameters",
+  "type": "object",
+  "properties": {
+    "consideration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Consideration"
+      }
+    },
+    "zone": {
+      "type": "string"
+    },
+    "zoneHash": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "consideration",
+    "zone",
+    "zoneHash"
+  ]
+}

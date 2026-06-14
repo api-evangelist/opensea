@@ -1,0 +1,28 @@
+{
+  "operationId": "get_best_listings_collection",
+  "method": "GET",
+  "path": "/api/v2/listings/collection/{slug}/best",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "include_private_listings": true,
+      "traits": "string",
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "listings": [
+        {
+          "order_hash": null,
+          "chain": null,
+          "protocol_data": null,
+          "protocol_address": null,
+          "asset": null
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

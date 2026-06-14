@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/MatchAdvancedOrders",
+  "title": "MatchAdvancedOrders",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AdvancedOrder"
+          }
+        },
+        "criteriaResolvers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CriteriaResolver"
+          }
+        },
+        "fulfillments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Fulfillment"
+          }
+        },
+        "recipient": {
+          "$ref": "#/components/schemas/Address"
+        }
+      }
+    }
+  ],
+  "required": [
+    "criteriaResolvers",
+    "fulfillments",
+    "orders",
+    "recipient"
+  ]
+}

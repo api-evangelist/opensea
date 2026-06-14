@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillerObject",
+  "title": "FulfillerObject",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address"
+  ]
+}

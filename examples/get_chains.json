@@ -1,0 +1,19 @@
+{
+  "operationId": "get_chains",
+  "method": "GET",
+  "path": "/api/v2/chains",
+  "request": {},
+  "response": {
+    "200": {
+      "chains": [
+        {
+          "chain": "ethereum",
+          "name": "Ethereum",
+          "symbol": "ETH",
+          "supports_swaps": true,
+          "block_explorer": "Etherscan"
+        }
+      ]
+    }
+  }
+}

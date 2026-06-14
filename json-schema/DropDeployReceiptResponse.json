@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropDeployReceiptResponse",
+  "title": "DropDeployReceiptResponse",
+  "type": "object",
+  "description": "Deploy contract receipt status",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Deployment status: pending, success, or failed",
+      "example": "success"
+    },
+    "contract_address": {
+      "type": "string",
+      "description": "Deployed contract address (only present on success)"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Chain slug (only present on success)"
+    },
+    "collection_slug": {
+      "type": "string",
+      "description": "Linked collection slug (only present on success, may take time to materialize)"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "operationId": "deploy_drop_contract",
+  "method": "POST",
+  "path": "/api/v2/drops/deploy",
+  "request": {
+    "requestBody": {
+      "chain": "ethereum",
+      "contract_name": "My NFT Collection",
+      "contract_symbol": "MNFT",
+      "drop_type": "seadrop_v1_erc721",
+      "token_type": "erc721_standard"
+    }
+  },
+  "response": {
+    "200": {
+      "to": "string",
+      "data": "string",
+      "value": "string",
+      "chain": "string"
+    }
+  }
+}

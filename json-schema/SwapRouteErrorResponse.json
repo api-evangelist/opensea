@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapRouteErrorResponse",
+  "title": "SwapRouteErrorResponse",
+  "type": "object",
+  "description": "An error encountered for a specific swap route",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The error type",
+      "example": "INSUFFICIENT_FUNDS"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

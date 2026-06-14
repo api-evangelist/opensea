@@ -1,0 +1,30 @@
+{
+  "operationId": "get_token_balances_by_account",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/tokens",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "limit": 0,
+      "chains": [
+        "blast"
+      ],
+      "sort_by": "USD_VALUE",
+      "sort_direction": "asc"
+    }
+  },
+  "response": {
+    "200": {
+      "token_balances": [
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "chain": "ethereum",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "image_url": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

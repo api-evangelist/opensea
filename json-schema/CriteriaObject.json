@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CriteriaObject",
+  "title": "CriteriaObject",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "$ref": "#/components/schemas/CollectionObject"
+    },
+    "trait": {
+      "$ref": "#/components/schemas/TraitObject",
+      "deprecated": true,
+      "description": "Deprecated: Use 'traits' array instead which supports both single and multiple traits."
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TraitObject"
+      }
+    },
+    "numericTraits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NumericTraitCriteria"
+      }
+    }
+  },
+  "required": [
+    "collection"
+  ]
+}

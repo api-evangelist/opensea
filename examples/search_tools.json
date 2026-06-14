@@ -1,0 +1,30 @@
+{
+  "operationId": "search_tools",
+  "method": "GET",
+  "path": "/api/v2/tools/search",
+  "request": {
+    "parameters": {
+      "query": "string",
+      "registry_chain": "string",
+      "tags": [
+        "string"
+      ],
+      "access_type": "string",
+      "creator": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "results": [
+        {
+          "tool_id": "string",
+          "registry_chain": "string",
+          "registry_addr": "string",
+          "name": "string",
+          "description": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

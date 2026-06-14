@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionOfferAggregatesPaginatedResponse",
+  "title": "CollectionOfferAggregatesPaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of collection offer aggregates",
+  "properties": {
+    "offer_aggregates": {
+      "type": "array",
+      "description": "List of offer aggregates",
+      "items": {
+        "$ref": "#/components/schemas/CollectionOfferAggregateResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "offer_aggregates"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AssetEventsResponse",
+  "title": "AssetEventsResponse",
+  "type": "object",
+  "properties": {
+    "asset_events": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OrderEvent"
+          },
+          {
+            "$ref": "#/components/schemas/SaleEvent"
+          },
+          {
+            "$ref": "#/components/schemas/TransferEvent"
+          }
+        ]
+      }
+    },
+    "next": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_events"
+  ]
+}

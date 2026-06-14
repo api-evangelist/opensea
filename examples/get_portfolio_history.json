@@ -1,0 +1,24 @@
+{
+  "operationId": "get_portfolio_history",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/portfolio/history",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "timeframe": "HOUR"
+    }
+  },
+  "response": {
+    "200": {
+      "data_points": [
+        {
+          "timestamp": "2024-01-01T00:00:00Z",
+          "value_usd": 124180,
+          "token_value_usd": 26000,
+          "nft_value_usd": 98180
+        }
+      ],
+      "timeframe": "WEEK"
+    }
+  }
+}

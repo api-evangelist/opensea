@@ -1,0 +1,45 @@
+{
+  "operationId": "post_swap_execute",
+  "method": "POST",
+  "path": "/api/v2/swap/execute",
+  "request": {
+    "requestBody": {
+      "from_assets": [
+        {
+          "chain": "ethereum",
+          "contract": "0x0000000000000000000000000000000000000000",
+          "amount": 1000000000000000000
+        }
+      ],
+      "to_assets": [
+        {
+          "chain": "ethereum",
+          "contract": "0x0000000000000000000000000000000000000000",
+          "amount": 1000000000000000000
+        }
+      ],
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "recipient": "string",
+      "slippage_tolerance": 0.01
+    }
+  },
+  "response": {
+    "200": {
+      "quote": {
+        "total_price_usd": 1850.5,
+        "total_cost_usd": 1869,
+        "slippage_tolerance": 0.01,
+        "estimated_duration_ms": 30000,
+        "marketplace_fee_bps": 50
+      },
+      "transactions": [
+        {
+          "chain": "ethereum",
+          "to": "string",
+          "data": "string",
+          "value": "string"
+        }
+      ]
+    }
+  }
+}

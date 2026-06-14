@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenLiquidityPoolResponse",
+  "title": "TokenLiquidityPoolResponse",
+  "type": "object",
+  "description": "A liquidity pool for a token",
+  "properties": {
+    "pool_type": {
+      "type": "string",
+      "description": "Pool protocol type (e.g. UNISWAP_V2, UNISWAP_V3)"
+    },
+    "pool_identifier": {
+      "type": "string",
+      "description": "Unique identifier for the pool"
+    },
+    "pool_address": {
+      "type": "string",
+      "description": "On-chain address of the pool contract"
+    },
+    "base_token": {
+      "type": "string",
+      "description": "Base token contract identifier (chain/address)"
+    },
+    "quote_token": {
+      "type": "string",
+      "description": "Quote token contract identifier (chain/address)"
+    },
+    "base_reserve_usd": {
+      "type": "number",
+      "description": "USD value of base token reserves"
+    },
+    "quote_reserve_usd": {
+      "type": "number",
+      "description": "USD value of quote token reserves"
+    },
+    "total_reserve_usd": {
+      "type": "number",
+      "description": "Total USD value of reserves in the pool"
+    },
+    "bonding_curve_progress": {
+      "type": "number",
+      "format": "float",
+      "description": "Bonding curve progress percentage (0-100)"
+    },
+    "is_graduated": {
+      "type": "boolean",
+      "description": "Whether the token has graduated from its bonding curve"
+    }
+  },
+  "required": [
+    "base_token",
+    "pool_identifier",
+    "pool_type",
+    "quote_token"
+  ]
+}

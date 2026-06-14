@@ -1,0 +1,19 @@
+{
+  "operationId": "get_collection",
+  "method": "GET",
+  "path": "/api/v2/collections/{slug}",
+  "request": {
+    "parameters": {
+      "slug": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "collection": "string",
+      "name": "string",
+      "description": "string",
+      "image_url": "string",
+      "banner_image_url": "string"
+    }
+  }
+}

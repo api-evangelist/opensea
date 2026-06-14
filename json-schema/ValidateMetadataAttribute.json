@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ValidateMetadataAttribute",
+  "title": "ValidateMetadataAttribute",
+  "type": "object",
+  "properties": {
+    "traitType": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "displayType": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "traitType",
+    "value"
+  ]
+}

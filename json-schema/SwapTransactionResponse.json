@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapTransactionResponse",
+  "title": "SwapTransactionResponse",
+  "type": "object",
+  "description": "A transaction to be submitted onchain to execute a swap",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The blockchain for this transaction",
+      "example": "ethereum"
+    },
+    "to": {
+      "type": "string",
+      "description": "The destination address for the transaction"
+    },
+    "data": {
+      "type": "string",
+      "description": "The transaction data. For EVM chains: hex-encoded calldata. For SVM chains: comma-separated instructions in programId:data format."
+    },
+    "value": {
+      "type": "string",
+      "description": "The native token value to send with the transaction"
+    }
+  },
+  "required": [
+    "chain",
+    "data"
+  ]
+}

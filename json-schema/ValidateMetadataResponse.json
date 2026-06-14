@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ValidateMetadataResponse",
+  "title": "ValidateMetadataResponse",
+  "type": "object",
+  "properties": {
+    "assetIdentifier": {
+      "$ref": "#/components/schemas/ValidateMetadataAssetIdentifier"
+    },
+    "tokenUri": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/ValidateMetadataDetails"
+    },
+    "error": {
+      "$ref": "#/components/schemas/MetadataIngestionError"
+    }
+  },
+  "required": [
+    "assetIdentifier"
+  ]
+}

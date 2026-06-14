@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SearchResultResponse",
+  "title": "SearchResultResponse",
+  "type": "object",
+  "description": "A single search result with a type discriminator and the corresponding typed object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of search result",
+      "example": "collection"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionSearchResponse",
+      "description": "Collection details, present when type is 'collection'"
+    },
+    "token": {
+      "$ref": "#/components/schemas/TokenSearchResponse",
+      "description": "Token details, present when type is 'token'"
+    },
+    "nft": {
+      "$ref": "#/components/schemas/NftSearchResponse",
+      "description": "NFT details, present when type is 'nft'"
+    },
+    "account": {
+      "$ref": "#/components/schemas/AccountSearchResponse",
+      "description": "Account details, present when type is 'account'"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

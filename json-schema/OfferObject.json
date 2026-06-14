@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OfferObject",
+  "title": "OfferObject",
+  "type": "object",
+  "properties": {
+    "hash": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "string"
+    },
+    "protocol_address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "chain",
+    "hash",
+    "protocol_address"
+  ]
+}

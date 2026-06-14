@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapAssetInput",
+  "title": "SwapAssetInput",
+  "type": "object",
+  "description": "An asset to swap with chain, contract address, and amount",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "Chain slug (e.g. ethereum, base, solana)",
+      "example": "ethereum"
+    },
+    "contract": {
+      "type": "string",
+      "description": "Contract address of the token",
+      "example": "0x0000000000000000000000000000000000000000"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Amount in the smallest unit of the token (e.g. wei for ETH). Use \"0\" for to_assets to receive the market rate.",
+      "example": 1000000000000000000
+    }
+  },
+  "required": [
+    "amount",
+    "chain",
+    "contract"
+  ]
+}

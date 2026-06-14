@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OhlcvResponse",
+  "title": "OhlcvResponse",
+  "type": "object",
+  "description": "List of OHLCV candle data points",
+  "properties": {
+    "candles": {
+      "type": "array",
+      "description": "List of OHLCV candles",
+      "items": {
+        "$ref": "#/components/schemas/OhlcvCandleResponse"
+      }
+    }
+  },
+  "required": [
+    "candles"
+  ]
+}

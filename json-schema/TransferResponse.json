@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransferResponse",
+  "title": "TransferResponse",
+  "type": "object",
+  "description": "Response containing ordered blockchain actions to execute for an asset transfer",
+  "properties": {
+    "steps": {
+      "type": "array",
+      "description": "Ordered list of blockchain actions to execute. Each action is a JSON object with a single field indicating the type (e.g. transferAction, approvalAction) and its associated data. Serialized using proto3 JSON format \u2014 fields with default values (empty string, 0, false) may be omitted.",
+      "items": {
+        "$ref": "#/components/schemas/JsonNode"
+      }
+    }
+  },
+  "required": [
+    "steps"
+  ]
+}

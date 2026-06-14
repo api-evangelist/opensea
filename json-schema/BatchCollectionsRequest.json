@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BatchCollectionsRequest",
+  "title": "BatchCollectionsRequest",
+  "type": "object",
+  "description": "Request body for batch collection retrieval by slugs",
+  "properties": {
+    "slugs": {
+      "type": "array",
+      "description": "List of collection slugs to retrieve",
+      "example": [
+        "boredapeyachtclub",
+        "doodles-official"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "slugs"
+  ]
+}

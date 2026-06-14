@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillAvailableOrders",
+  "title": "FulfillAvailableOrders",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Order"
+          }
+        },
+        "offerFulfillments": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FulfillmentComponent"
+            }
+          }
+        },
+        "considerationFulfillments": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FulfillmentComponent"
+            }
+          }
+        },
+        "fulfillerConduitKey": {
+          "type": "string"
+        },
+        "maximumFulfilled": {
+          "$ref": "#/components/schemas/Uint256"
+        }
+      }
+    }
+  ],
+  "required": [
+    "considerationFulfillments",
+    "fulfillerConduitKey",
+    "maximumFulfilled",
+    "offerFulfillments",
+    "orders"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AssetIdentifierResponse",
+  "title": "AssetIdentifierResponse",
+  "type": "object",
+  "description": "Asset identifier with chain, contract address, and optional token ID",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The blockchain chain",
+      "example": "ethereum"
+    },
+    "contract": {
+      "type": "string",
+      "description": "The contract address",
+      "example": "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8"
+    },
+    "token_id": {
+      "type": "string",
+      "description": "Token ID for NFTs",
+      "example": 1234
+    }
+  },
+  "required": [
+    "chain",
+    "contract"
+  ]
+}

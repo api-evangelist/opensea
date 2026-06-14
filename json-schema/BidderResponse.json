@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BidderResponse",
+  "title": "BidderResponse",
+  "type": "object",
+  "description": "A bidder in an offer aggregate",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Wallet address of the bidder"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of offers from this bidder"
+    }
+  },
+  "required": [
+    "address",
+    "quantity"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/MetadataIngestionError",
+  "title": "MetadataIngestionError",
+  "type": "object",
+  "properties": {
+    "errorType": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "statusCode": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "required": [
+    "errorType",
+    "message"
+  ]
+}

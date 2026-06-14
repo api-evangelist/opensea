@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AccountResolveResponse",
+  "title": "AccountResolveResponse",
+  "type": "object",
+  "description": "Resolved account info",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The resolved wallet address",
+      "example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+    },
+    "username": {
+      "type": "string",
+      "description": "OpenSea username, if available"
+    },
+    "ens_name": {
+      "type": "string",
+      "description": "Primary ENS name, if available",
+      "example": "vitalik.eth"
+    }
+  },
+  "required": [
+    "address"
+  ]
+}

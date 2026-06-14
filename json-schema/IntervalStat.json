@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/IntervalStat",
+  "title": "IntervalStat",
+  "type": "object",
+  "properties": {
+    "interval": {
+      "type": "string"
+    },
+    "volume": {
+      "type": "number",
+      "format": "double"
+    },
+    "sales": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "required": [
+    "interval",
+    "sales",
+    "volume"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Trait",
+  "title": "Trait",
+  "type": "object",
+  "properties": {
+    "trait_type": {
+      "type": "string"
+    },
+    "display_type": {
+      "type": "string"
+    },
+    "max_value": {
+      "type": "string"
+    },
+    "value": {}
+  },
+  "required": [
+    "trait_type",
+    "value"
+  ]
+}

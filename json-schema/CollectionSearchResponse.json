@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionSearchResponse",
+  "title": "CollectionSearchResponse",
+  "type": "object",
+  "description": "Collection search result",
+  "properties": {
+    "collection": {
+      "type": "string",
+      "description": "The collection slug",
+      "example": "bored-ape-yacht-club"
+    },
+    "name": {
+      "type": "string",
+      "description": "The collection name",
+      "example": "Bored Ape Yacht Club"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the collection image"
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "description": "Whether trading is disabled for this collection"
+    },
+    "is_nsfw": {
+      "type": "boolean",
+      "description": "Whether this collection is marked as NSFW"
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "URL to the collection on OpenSea"
+    }
+  },
+  "required": [
+    "collection",
+    "is_disabled",
+    "is_nsfw",
+    "name",
+    "opensea_url"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "operationId": "get_drops",
+  "method": "GET",
+  "path": "/api/v2/drops",
+  "request": {
+    "parameters": {
+      "type": "string",
+      "limit": 0,
+      "chains": [
+        "blast"
+      ],
+      "cursor": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "drops": [
+        {
+          "collection_slug": "cool-cats",
+          "collection_name": "Cool Cats",
+          "chain": "ethereum",
+          "contract_address": "string",
+          "drop_type": "seadrop_v1_erc721"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

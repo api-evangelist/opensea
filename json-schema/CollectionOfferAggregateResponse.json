@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionOfferAggregateResponse",
+  "title": "CollectionOfferAggregateResponse",
+  "type": "object",
+  "description": "An aggregated offer bucket",
+  "properties": {
+    "offer_price": {
+      "$ref": "#/components/schemas/OfferAggregatePriceResponse",
+      "description": "Offer price level"
+    },
+    "total_value": {
+      "$ref": "#/components/schemas/OfferAggregatePriceResponse",
+      "description": "Total value of offers at this level"
+    },
+    "total_offers": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Total number of offers at this level"
+    },
+    "bidders": {
+      "type": "array",
+      "description": "Bidders at this price level",
+      "items": {
+        "$ref": "#/components/schemas/BidderResponse"
+      }
+    }
+  },
+  "required": [
+    "bidders",
+    "offer_price",
+    "total_offers",
+    "total_value"
+  ]
+}

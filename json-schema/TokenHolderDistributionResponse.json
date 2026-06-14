@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenHolderDistributionResponse",
+  "title": "TokenHolderDistributionResponse",
+  "type": "object",
+  "description": "Holder distribution health metrics for a token",
+  "properties": {
+    "total_holders": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Total number of holders with a non-zero balance"
+    },
+    "top_one_percent_concentration": {
+      "type": "number",
+      "format": "float",
+      "description": "Percentage of total supply held by the top 1% of holders (0-100)"
+    },
+    "health_score": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Health score from 0-100 (higher = more distributed)"
+    },
+    "health_label": {
+      "type": "string",
+      "description": "Human-readable label for the health score",
+      "enum": [
+        "STRONG",
+        "HEALTHY",
+        "CONCERNING",
+        "BAD"
+      ]
+    }
+  },
+  "required": [
+    "health_label",
+    "health_score",
+    "top_one_percent_concentration",
+    "total_holders"
+  ]
+}

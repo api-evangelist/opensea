@@ -1,0 +1,19 @@
+{
+  "operationId": "create_instant_api_key",
+  "method": "POST",
+  "path": "/api/v2/auth/keys",
+  "request": {},
+  "response": {
+    "201": {
+      "api_key": "string",
+      "name": "string",
+      "expires_at": "2024-01-01T00:00:00Z",
+      "rate_limits": {
+        "read": "60/m",
+        "write": "5/m",
+        "fulfillment": "5/m"
+      },
+      "upgrade_url": "string"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NftDetailed",
+  "title": "NftDetailed",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "collection": {
+      "type": "string"
+    },
+    "contract": {
+      "type": "string"
+    },
+    "token_standard": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "display_image_url": {
+      "type": "string"
+    },
+    "display_animation_url": {
+      "type": "string"
+    },
+    "metadata_url": {
+      "type": "string"
+    },
+    "opensea_url": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "is_disabled": {
+      "type": "boolean"
+    },
+    "is_nsfw": {
+      "type": "boolean"
+    },
+    "original_image_url": {
+      "type": "string"
+    },
+    "original_animation_url": {
+      "type": "string"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Trait"
+      }
+    },
+    "animation_url": {
+      "type": "string"
+    },
+    "is_suspicious": {
+      "type": "boolean"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Owner"
+      }
+    },
+    "rarity": {
+      "$ref": "#/components/schemas/Rarity"
+    },
+    "subscription": {
+      "$ref": "#/components/schemas/SubscriptionInfoResponse"
+    },
+    "agent_binding": {
+      "$ref": "#/components/schemas/AgentBindingResponse"
+    }
+  },
+  "required": [
+    "collection",
+    "contract",
+    "creator",
+    "identifier",
+    "is_disabled",
+    "is_nsfw",
+    "is_suspicious",
+    "opensea_url",
+    "owners",
+    "token_standard",
+    "traits",
+    "updated_at"
+  ]
+}

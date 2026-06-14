@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionBatchResponse",
+  "title": "CollectionBatchResponse",
+  "type": "object",
+  "properties": {
+    "collections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CollectionResponse"
+      }
+    }
+  },
+  "required": [
+    "collections"
+  ]
+}

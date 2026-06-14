@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Listing",
+  "title": "Listing",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ListingOrOffer"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "order_hash": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "protocol_data": {
+          "$ref": "#/components/schemas/ProtocolData"
+        },
+        "protocol_address": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/components/schemas/OrderAsset"
+        },
+        "remaining_quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order_created_at": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "price": {
+          "$ref": "#/components/schemas/ListingPrice"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "FULFILLED",
+            "EXPIRED",
+            "CANCELLED"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "chain",
+    "order_hash",
+    "price",
+    "remaining_quantity",
+    "status",
+    "type"
+  ]
+}

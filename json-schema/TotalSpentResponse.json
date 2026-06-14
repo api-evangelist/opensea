@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TotalSpentResponse",
+  "title": "TotalSpentResponse",
+  "type": "object",
+  "description": "Total spent across all assets in a transaction",
+  "properties": {
+    "price_per_token": {
+      "type": "array",
+      "description": "Price breakdown per token type",
+      "items": {
+        "$ref": "#/components/schemas/PriceResponse"
+      }
+    }
+  },
+  "required": [
+    "price_per_token"
+  ]
+}

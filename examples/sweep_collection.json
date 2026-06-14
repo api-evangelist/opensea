@@ -1,0 +1,29 @@
+{
+  "operationId": "sweep_collection",
+  "method": "POST",
+  "path": "/api/v2/listings/sweep",
+  "request": {
+    "requestBody": {
+      "collection_slug": "pudgypenguins",
+      "payment": {
+        "chain": "base",
+        "token_address": "0x0000000000000000000000000000000000000000"
+      },
+      "max_items": 5,
+      "max_price_per_item": 10,
+      "buyer": "0x..."
+    }
+  },
+  "response": {
+    "200": {
+      "steps": [
+        null
+      ],
+      "errors": [
+        {
+          "message": "string"
+        }
+      ]
+    }
+  }
+}

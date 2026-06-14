@@ -1,0 +1,19 @@
+{
+  "operationId": "get_account",
+  "method": "GET",
+  "path": "/api/v2/accounts/{address_or_username}",
+  "request": {
+    "parameters": {
+      "address_or_username": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "address": "string",
+      "username": "string",
+      "profile_image_url": "string",
+      "banner_image_url": "string",
+      "website": "string"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CreateListingActionsRequest",
+  "title": "CreateListingActionsRequest",
+  "type": "object",
+  "description": "Request to get listing creation actions",
+  "properties": {
+    "items": {
+      "type": "array",
+      "description": "Items to list for sale",
+      "items": {
+        "$ref": "#/components/schemas/ListingItem"
+      }
+    },
+    "address": {
+      "type": "string",
+      "description": "Maker (seller) wallet address",
+      "example": "0x..."
+    },
+    "use_creator_fee": {
+      "type": "boolean",
+      "description": "Whether to include creator fees. Defaults to true."
+    },
+    "taker": {
+      "type": "string",
+      "description": "Optional taker address for private listings"
+    }
+  },
+  "required": [
+    "address",
+    "items"
+  ]
+}

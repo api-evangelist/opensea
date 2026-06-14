@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ListingPrice",
+  "title": "ListingPrice",
+  "type": "object",
+  "properties": {
+    "current": {
+      "$ref": "#/components/schemas/Price"
+    }
+  },
+  "required": [
+    "current"
+  ]
+}

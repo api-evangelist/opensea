@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BatchNftsRequest",
+  "title": "BatchNftsRequest",
+  "type": "object",
+  "description": "Request body for batch NFT retrieval by identifiers",
+  "properties": {
+    "identifiers": {
+      "type": "array",
+      "description": "List of NFT identifiers to retrieve",
+      "items": {
+        "$ref": "#/components/schemas/NftIdentifierInput"
+      }
+    }
+  },
+  "required": [
+    "identifiers"
+  ]
+}

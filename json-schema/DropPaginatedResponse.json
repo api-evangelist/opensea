@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropPaginatedResponse",
+  "title": "DropPaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of drops",
+  "properties": {
+    "drops": {
+      "type": "array",
+      "description": "List of drops",
+      "items": {
+        "$ref": "#/components/schemas/DropResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page. May be present even when drops is empty if all items in the page were filtered by visibility rules; continue paginating until next is null."
+    }
+  },
+  "required": [
+    "drops"
+  ]
+}

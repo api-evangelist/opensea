@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ProtocolData",
+  "title": "ProtocolData",
+  "type": "object",
+  "properties": {
+    "parameters": {
+      "$ref": "#/components/schemas/Parameters"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "parameters"
+  ]
+}

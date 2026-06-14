@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CrossChainFulfillmentResponse",
+  "title": "CrossChainFulfillmentResponse",
+  "type": "object",
+  "description": "Response containing ordered transactions to execute for cross-chain fulfillment",
+  "properties": {
+    "transactions": {
+      "type": "array",
+      "description": "Ordered list of transactions to execute. May include approval and buy/swap transactions.",
+      "items": {
+        "$ref": "#/components/schemas/SwapTransactionResponse"
+      }
+    }
+  },
+  "required": [
+    "transactions"
+  ]
+}

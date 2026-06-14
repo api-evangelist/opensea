@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FullfillListingRequest",
+  "title": "FullfillListingRequest",
+  "type": "object",
+  "properties": {
+    "listing": {
+      "$ref": "#/components/schemas/ListingObject"
+    },
+    "fulfiller": {
+      "$ref": "#/components/schemas/FulfillerObject"
+    },
+    "consideration": {
+      "$ref": "#/components/schemas/ConsiderationObject"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "units_to_fill": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Optional quantity of units to fulfill; defaults to remaining units for listings"
+    },
+    "include_optional_creator_fees": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include optional creator fees in the fulfillment. If creator fees are already required, this is a no-op. Defaults to false."
+    }
+  },
+  "required": [
+    "fulfiller",
+    "listing"
+  ]
+}

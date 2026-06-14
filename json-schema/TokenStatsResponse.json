@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenStatsResponse",
+  "title": "TokenStatsResponse",
+  "type": "object",
+  "description": "Market statistics for a token",
+  "properties": {
+    "market_cap_usd": {
+      "type": "number",
+      "format": "double",
+      "description": "Market capitalization in USD"
+    },
+    "fdv_usd": {
+      "type": "number",
+      "format": "double",
+      "description": "Fully diluted valuation in USD"
+    },
+    "circulating_supply": {
+      "type": "number",
+      "format": "double",
+      "description": "Circulating supply of the token"
+    },
+    "max_supply": {
+      "type": "number",
+      "format": "double",
+      "description": "Maximum supply of the token"
+    },
+    "total_supply": {
+      "type": "number",
+      "format": "double",
+      "description": "Total supply of the token"
+    },
+    "volume_24h": {
+      "type": "number",
+      "format": "double",
+      "description": "24-hour trading volume in USD"
+    },
+    "price_change_1h": {
+      "type": "number",
+      "format": "double",
+      "description": "Price change percentage over the last hour"
+    },
+    "price_change_24h": {
+      "type": "number",
+      "format": "double",
+      "description": "Price change percentage over the last 24 hours"
+    },
+    "price_change_7d": {
+      "type": "number",
+      "format": "double",
+      "description": "Price change percentage over the last 7 days"
+    },
+    "price_change_30d": {
+      "type": "number",
+      "format": "double",
+      "description": "Price change percentage over the last 30 days"
+    }
+  }
+}

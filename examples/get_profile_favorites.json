@@ -1,0 +1,28 @@
+{
+  "operationId": "get_profile_favorites",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/favorites",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "after": "string",
+      "limit": 0,
+      "sort_by": "CREATED_DATE",
+      "sort_direction": "asc"
+    }
+  },
+  "response": {
+    "200": {
+      "nfts": [
+        {
+          "identifier": "string",
+          "collection": "string",
+          "contract": "string",
+          "token_standard": "string",
+          "name": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

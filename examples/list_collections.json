@@ -1,0 +1,28 @@
+{
+  "operationId": "list_collections",
+  "method": "GET",
+  "path": "/api/v2/collections",
+  "request": {
+    "parameters": {
+      "limit": 20,
+      "next.value": "string",
+      "chain": "string",
+      "creator_username": "string",
+      "include_hidden": true
+    }
+  },
+  "response": {
+    "200": {
+      "collections": [
+        {
+          "collection": "string",
+          "name": "string",
+          "description": "string",
+          "image_url": "string",
+          "banner_image_url": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

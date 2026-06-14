@@ -1,0 +1,27 @@
+{
+  "operationId": "get_token_ohlcv",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/token/{address}/ohlcv",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "start_time": "2024-01-01T00:00:00Z",
+      "end_time": "2024-01-01T00:00:00Z",
+      "bucket_size": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "candles": [
+        {
+          "time": "2024-01-01T00:00:00Z",
+          "open": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "close": 0.0
+        }
+      ]
+    }
+  }
+}

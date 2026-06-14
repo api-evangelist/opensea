@@ -1,0 +1,27 @@
+{
+  "operationId": "list_tools",
+  "method": "GET",
+  "path": "/api/v2/tools",
+  "request": {
+    "parameters": {
+      "sort_by": "string",
+      "type": "string",
+      "limit": 20,
+      "cursor.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "tools": [
+        {
+          "tool_id": "string",
+          "registry_chain": "string",
+          "registry_addr": "string",
+          "creator": "string",
+          "metadata_uri": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

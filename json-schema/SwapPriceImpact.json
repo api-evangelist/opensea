@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SwapPriceImpact",
+  "title": "SwapPriceImpact",
+  "type": "object",
+  "description": "Price impact of the swap",
+  "properties": {
+    "usd": {
+      "type": "string",
+      "description": "Price impact in USD (negative means user loses value)",
+      "example": -1.5
+    },
+    "percent": {
+      "type": "string",
+      "description": "Price impact as a percentage (negative means user loses value)",
+      "example": -0.08
+    }
+  },
+  "required": [
+    "percent",
+    "usd"
+  ]
+}

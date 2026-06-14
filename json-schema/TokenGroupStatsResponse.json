@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenGroupStatsResponse",
+  "title": "TokenGroupStatsResponse",
+  "type": "object",
+  "description": "Market statistics for a token group",
+  "properties": {
+    "market_cap_usd": {
+      "type": "string",
+      "description": "Total market capitalization in USD"
+    },
+    "volume_usd_24h": {
+      "type": "string",
+      "description": "24-hour trading volume in USD"
+    },
+    "price_usd": {
+      "type": "string",
+      "description": "Current price in USD (from primary currency)"
+    },
+    "price_change_percent_24h": {
+      "type": "number",
+      "format": "double",
+      "description": "Price change percentage over the last 24 hours"
+    },
+    "total_supply": {
+      "type": "string",
+      "description": "Total supply across all currencies in the group"
+    },
+    "holders": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of holders"
+    },
+    "rolling_stats": {
+      "$ref": "#/components/schemas/TokenGroupRollingStatsResponse",
+      "description": "Rolling statistics over multiple time periods"
+    }
+  },
+  "required": [
+    "market_cap_usd",
+    "volume_usd_24h"
+  ]
+}

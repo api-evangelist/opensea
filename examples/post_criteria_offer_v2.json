@@ -1,0 +1,70 @@
+{
+  "operationId": "post_criteria_offer_v2",
+  "method": "POST",
+  "path": "/api/v2/offers",
+  "request": {
+    "requestBody": {
+      "protocol_data": {
+        "parameters": {
+          "offerer": "string",
+          "zone": "string",
+          "offer": [
+            null
+          ],
+          "consideration": [
+            null
+          ],
+          "orderType": 0
+        },
+        "signature": "string"
+      },
+      "criteria": {
+        "collection": {
+          "slug": "string"
+        },
+        "contract": {
+          "address": "string"
+        },
+        "trait": {
+          "type": "string",
+          "value": "string"
+        },
+        "traits": [
+          {
+            "type": null,
+            "value": null
+          }
+        ],
+        "numericTraits": [
+          {
+            "type": null,
+            "min": null,
+            "max": null
+          }
+        ]
+      },
+      "protocol_address": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "order_hash": "string",
+      "chain": "string",
+      "protocol_data": {
+        "parameters": {
+          "offerer": null,
+          "offer": null,
+          "consideration": null,
+          "startTime": null,
+          "endTime": null
+        },
+        "signature": "string"
+      },
+      "protocol_address": "string",
+      "asset": {
+        "identifier": "string",
+        "contract": "string"
+      }
+    }
+  }
+}

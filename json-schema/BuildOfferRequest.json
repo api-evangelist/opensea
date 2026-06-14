@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BuildOfferRequest",
+  "title": "BuildOfferRequest",
+  "type": "object",
+  "properties": {
+    "offerer": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "criteria": {
+      "$ref": "#/components/schemas/CriteriaObject"
+    },
+    "protocol_address": {
+      "type": "string"
+    },
+    "offer_protection_enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "criteria",
+    "offer_protection_enabled",
+    "offerer",
+    "protocol_address",
+    "quantity"
+  ]
+}

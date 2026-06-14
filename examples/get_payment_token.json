@@ -1,0 +1,20 @@
+{
+  "operationId": "get_payment_token",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/payment_token/{address}",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "chain": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "symbol": "string",
+      "address": "string",
+      "chain": "string",
+      "image": "string",
+      "name": "string"
+    }
+  }
+}

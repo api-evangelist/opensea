@@ -1,0 +1,26 @@
+{
+  "operationId": "get_nft_owners",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/owners",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "identifier": "string",
+      "limit": 0,
+      "next": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "owners": [
+        {
+          "address": "string",
+          "quantity": 0,
+          "quantity_string": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OffersResponse",
+  "title": "OffersResponse",
+  "type": "object",
+  "properties": {
+    "offers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Offer"
+      }
+    },
+    "next": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "offers"
+  ]
+}

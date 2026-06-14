@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillmentData",
+  "title": "FulfillmentData",
+  "type": "object",
+  "properties": {
+    "transaction": {
+      "$ref": "#/components/schemas/TransactionData"
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OrderData"
+      }
+    }
+  },
+  "required": [
+    "orders",
+    "transaction"
+  ]
+}

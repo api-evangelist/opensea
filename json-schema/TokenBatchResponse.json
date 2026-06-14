@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenBatchResponse",
+  "title": "TokenBatchResponse",
+  "type": "object",
+  "properties": {
+    "tokens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TokenDetailedResponse"
+      }
+    }
+  },
+  "required": [
+    "tokens"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ChainResponse",
+  "title": "ChainResponse",
+  "type": "object",
+  "description": "Information about a supported blockchain",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The chain identifier slug used in API paths",
+      "example": "ethereum"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable chain name",
+      "example": "Ethereum"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Native currency symbol",
+      "example": "ETH"
+    },
+    "supports_swaps": {
+      "type": "boolean",
+      "description": "Whether token swaps are supported on this chain"
+    },
+    "block_explorer": {
+      "type": "string",
+      "description": "Block explorer name",
+      "example": "Etherscan"
+    },
+    "block_explorer_url": {
+      "type": "string",
+      "description": "Block explorer base URL",
+      "example": "https://etherscan.io"
+    }
+  },
+  "required": [
+    "block_explorer",
+    "block_explorer_url",
+    "chain",
+    "name",
+    "supports_swaps",
+    "symbol"
+  ]
+}

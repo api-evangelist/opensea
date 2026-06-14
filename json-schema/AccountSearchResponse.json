@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AccountSearchResponse",
+  "title": "AccountSearchResponse",
+  "type": "object",
+  "description": "Account search result",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Primary wallet address of the account"
+    },
+    "username": {
+      "type": "string",
+      "description": "Username of the account"
+    },
+    "profile_image_url": {
+      "type": "string",
+      "description": "URL of the account's profile image"
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "URL to the account on OpenSea"
+    }
+  },
+  "required": [
+    "address",
+    "opensea_url"
+  ]
+}

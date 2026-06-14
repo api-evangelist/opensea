@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenHolderResponse",
+  "title": "TokenHolderResponse",
+  "type": "object",
+  "description": "A holder of a token",
+  "properties": {
+    "quantity": {
+      "type": "number",
+      "description": "Token quantity in display units"
+    },
+    "percentage_held": {
+      "type": "number",
+      "format": "float",
+      "description": "Percentage of total supply held by this address"
+    },
+    "usd_value": {
+      "type": "number",
+      "description": "USD value of the holding"
+    },
+    "owner_address": {
+      "type": "string",
+      "description": "Wallet address of the holder"
+    },
+    "owner_display_name": {
+      "type": "string",
+      "description": "Display name of the holder"
+    }
+  },
+  "required": [
+    "owner_address",
+    "quantity"
+  ]
+}

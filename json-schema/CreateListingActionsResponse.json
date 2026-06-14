@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CreateListingActionsResponse",
+  "title": "CreateListingActionsResponse",
+  "type": "object",
+  "description": "Response containing blockchain actions to execute for listing creation",
+  "properties": {
+    "steps": {
+      "type": "array",
+      "description": "Ordered list of blockchain actions to execute. May include approval actions (e.g. setApprovalForAll) and a createListingsAction containing the Seaport order to sign. Serialized using proto3 JSON format \u2014 fields with default values (empty string, 0, false) may be omitted.",
+      "items": {
+        "$ref": "#/components/schemas/JsonNode"
+      }
+    }
+  },
+  "required": [
+    "steps"
+  ]
+}

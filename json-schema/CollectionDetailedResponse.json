@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionDetailedResponse",
+  "title": "CollectionDetailedResponse",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "banner_image_url": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "safelist_status": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "is_disabled": {
+      "type": "boolean"
+    },
+    "is_nsfw": {
+      "type": "boolean"
+    },
+    "trait_offers_enabled": {
+      "type": "boolean"
+    },
+    "collection_offers_enabled": {
+      "type": "boolean"
+    },
+    "opensea_url": {
+      "type": "string"
+    },
+    "project_url": {
+      "type": "string"
+    },
+    "wiki_url": {
+      "type": "string"
+    },
+    "discord_url": {
+      "type": "string"
+    },
+    "telegram_url": {
+      "type": "string"
+    },
+    "twitter_username": {
+      "type": "string"
+    },
+    "instagram_username": {
+      "type": "string"
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Contract"
+      }
+    },
+    "editors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Fee"
+      }
+    },
+    "required_zone": {
+      "type": "string"
+    },
+    "rarity": {
+      "$ref": "#/components/schemas/CollectionRarity"
+    },
+    "total_supply": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "unique_item_count": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pricing_currencies": {
+      "$ref": "#/components/schemas/PricingCurrencies"
+    }
+  },
+  "required": [
+    "collection",
+    "collection_offers_enabled",
+    "contracts",
+    "created_date",
+    "editors",
+    "fees",
+    "is_disabled",
+    "is_nsfw",
+    "name",
+    "opensea_url",
+    "pricing_currencies",
+    "safelist_status",
+    "total_supply",
+    "trait_offers_enabled",
+    "unique_item_count"
+  ]
+}

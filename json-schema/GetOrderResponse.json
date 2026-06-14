@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/GetOrderResponse",
+  "title": "GetOrderResponse",
+  "type": "object",
+  "properties": {
+    "order": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/Listing"
+        },
+        {
+          "$ref": "#/components/schemas/Offer"
+        }
+      ]
+    }
+  },
+  "required": [
+    "order"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "operationId": "get_token_activity",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/token/{address}/activity",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "limit": 0,
+      "cursor": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "swap_events": [
+        {
+          "id": "string",
+          "timestamp": "2024-01-01T00:00:00Z",
+          "sender_address": "string",
+          "from_token": {
+            "address": null,
+            "chain": null,
+            "amount_token": null,
+            "amount_usd": null,
+            "amount_native": null
+          },
+          "to_token": {
+            "address": null,
+            "chain": null,
+            "amount_token": null,
+            "amount_usd": null,
+            "amount_native": null
+          }
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

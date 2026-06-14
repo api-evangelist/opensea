@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NftSalePointResponse",
+  "title": "NftSalePointResponse",
+  "type": "object",
+  "description": "A sale data point for an NFT",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the sale"
+    },
+    "usd_price": {
+      "type": "string",
+      "description": "Sale price in USD"
+    },
+    "token_unit": {
+      "type": "number",
+      "format": "double",
+      "description": "Sale price in token units"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Payment token symbol"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain chain"
+    }
+  },
+  "required": [
+    "chain",
+    "time",
+    "token_unit",
+    "usd_price"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "operationId": "search",
+  "method": "GET",
+  "path": "/api/v2/search",
+  "request": {
+    "parameters": {
+      "query": "string",
+      "chains": [
+        "blast"
+      ],
+      "asset_types": [
+        "string"
+      ],
+      "limit": 0
+    }
+  },
+  "response": {
+    "200": {
+      "results": [
+        {
+          "type": "collection",
+          "collection": {
+            "collection": null,
+            "name": null,
+            "image_url": null,
+            "is_disabled": null,
+            "is_nsfw": null
+          },
+          "token": {
+            "address": null,
+            "chain": null,
+            "name": null,
+            "symbol": null,
+            "image_url": null
+          },
+          "nft": {
+            "identifier": null,
+            "collection": null,
+            "contract": null,
+            "name": null,
+            "image_url": null
+          },
+          "account": {
+            "address": null,
+            "username": null,
+            "profile_image_url": null,
+            "opensea_url": null
+          }
+        }
+      ]
+    }
+  }
+}

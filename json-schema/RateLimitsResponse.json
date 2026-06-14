@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/RateLimitsResponse",
+  "title": "RateLimitsResponse",
+  "type": "object",
+  "description": "Rate limits for the API key",
+  "properties": {
+    "read": {
+      "type": "string",
+      "description": "Read rate limit",
+      "example": "60/m"
+    },
+    "write": {
+      "type": "string",
+      "description": "Write rate limit",
+      "example": "5/m"
+    },
+    "fulfillment": {
+      "type": "string",
+      "description": "Fulfillment rate limit",
+      "example": "5/m"
+    }
+  },
+  "required": [
+    "fulfillment",
+    "read",
+    "write"
+  ]
+}

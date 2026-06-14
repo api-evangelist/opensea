@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Rarity",
+  "title": "Rarity",
+  "type": "object",
+  "properties": {
+    "strategy_id": {
+      "type": "string"
+    },
+    "strategy_version": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "strategy_id",
+    "strategy_version"
+  ]
+}

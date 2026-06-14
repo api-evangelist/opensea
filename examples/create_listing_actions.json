@@ -1,0 +1,30 @@
+{
+  "operationId": "create_listing_actions",
+  "method": "POST",
+  "path": "/api/v2/listings/actions",
+  "request": {
+    "requestBody": {
+      "items": [
+        {
+          "chain": "ethereum",
+          "contract": "0x...",
+          "token_id": 1234,
+          "quantity": 1,
+          "price": {
+            "current": null
+          }
+        }
+      ],
+      "address": "0x...",
+      "use_creator_fee": true,
+      "taker": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "steps": [
+        null
+      ]
+    }
+  }
+}

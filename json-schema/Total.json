@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Total",
+  "title": "Total",
+  "type": "object",
+  "properties": {
+    "volume": {
+      "type": "number",
+      "format": "double"
+    },
+    "sales": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "num_owners": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "floor_price": {
+      "type": "number",
+      "format": "double"
+    },
+    "floor_price_symbol": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "floor_price",
+    "floor_price_symbol",
+    "num_owners",
+    "sales",
+    "volume"
+  ]
+}

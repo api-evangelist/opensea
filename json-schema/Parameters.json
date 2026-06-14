@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Parameters",
+  "title": "Parameters",
+  "type": "object",
+  "properties": {
+    "offerer": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Item"
+      }
+    },
+    "consideration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConsiderationItem"
+      }
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "orderType": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "zoneHash": {
+      "type": "string"
+    },
+    "salt": {
+      "type": "string"
+    },
+    "conduitKey": {
+      "type": "string"
+    },
+    "totalOriginalConsiderationItems": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "counter": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "conduitKey",
+    "consideration",
+    "counter",
+    "endTime",
+    "offer",
+    "offerer",
+    "orderType",
+    "salt",
+    "startTime",
+    "totalOriginalConsiderationItems",
+    "zone",
+    "zoneHash"
+  ]
+}

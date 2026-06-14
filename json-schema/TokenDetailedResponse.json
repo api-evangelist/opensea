@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenDetailedResponse",
+  "title": "TokenDetailedResponse",
+  "type": "object",
+  "description": "Detailed token information including stats and social links",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The contract address of the token",
+      "example": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    "chain": {
+      "type": "string",
+      "description": "The blockchain the token is on",
+      "example": "ethereum"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the token",
+      "example": "USD Coin"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "The ticker symbol of the token",
+      "example": "USDC"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the token's image"
+    },
+    "usd_price": {
+      "type": "string",
+      "description": "Current price in USD",
+      "example": 1
+    },
+    "decimals": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of decimal places",
+      "example": 6
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "URL to the token page on OpenSea"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the token"
+    },
+    "stats": {
+      "$ref": "#/components/schemas/TokenStatsResponse",
+      "description": "Market statistics for the token"
+    },
+    "socials": {
+      "$ref": "#/components/schemas/TokenSocialsResponse",
+      "description": "Social media links for the token"
+    },
+    "status": {
+      "type": "string",
+      "default": "OK",
+      "description": "Token safety status based on OpenSea's spam-classification rules. `OK` for tokens that pass all safety checks (the normal case). Categories are intentionally broad and may evolve. Possible values, in decreasing severity: `WARNING` (flagged as risky/suspicious \u2014 caution advised), `SPAM` (flagged as spam), `LOW_LIQUIDITY` (insufficient liquidity pool reserves), `OK` (passes all checks).",
+      "enum": [
+        "OK",
+        "WARNING",
+        "SPAM",
+        "LOW_LIQUIDITY"
+      ]
+    }
+  },
+  "required": [
+    "address",
+    "chain",
+    "decimals",
+    "name",
+    "opensea_url",
+    "symbol",
+    "usd_price"
+  ]
+}

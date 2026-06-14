@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FloorPricePointResponse",
+  "title": "FloorPricePointResponse",
+  "type": "object",
+  "description": "A floor price data point",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the data point"
+    },
+    "usd_price": {
+      "type": "string",
+      "description": "Floor price in USD"
+    },
+    "token_unit": {
+      "type": "number",
+      "format": "double",
+      "description": "Floor price in token units"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Payment token symbol"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Blockchain chain"
+    }
+  },
+  "required": [
+    "time"
+  ]
+}

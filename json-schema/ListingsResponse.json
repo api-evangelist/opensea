@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ListingsResponse",
+  "title": "ListingsResponse",
+  "type": "object",
+  "properties": {
+    "listings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Listing"
+      }
+    },
+    "next": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "listings"
+  ]
+}

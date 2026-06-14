@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenGroupCurrencyResponse",
+  "title": "TokenGroupCurrencyResponse",
+  "type": "object",
+  "description": "A currency within a token group",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The contract address of the currency",
+      "example": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    "chain": {
+      "type": "string",
+      "description": "The blockchain the currency is on",
+      "example": "ethereum"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the currency",
+      "example": "Wrapped Ether"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "The ticker symbol of the currency",
+      "example": "WETH"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the currency's image"
+    },
+    "decimals": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of decimal places",
+      "example": 18
+    },
+    "usd_price": {
+      "type": "string",
+      "description": "Current price in USD",
+      "example": 2345.67
+    }
+  },
+  "required": [
+    "address",
+    "chain",
+    "decimals",
+    "name",
+    "symbol",
+    "usd_price"
+  ]
+}

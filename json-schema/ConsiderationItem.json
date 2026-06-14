@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ConsiderationItem",
+  "title": "ConsiderationItem",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "token": {
+      "type": "string"
+    },
+    "identifierOrCriteria": {
+      "type": "string"
+    },
+    "startAmount": {
+      "type": "string"
+    },
+    "endAmount": {
+      "type": "string"
+    },
+    "recipient": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "endAmount",
+    "identifierOrCriteria",
+    "itemType",
+    "recipient",
+    "startAmount",
+    "token"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TransferAsset",
+  "title": "TransferAsset",
+  "type": "object",
+  "description": "An asset to transfer",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "The chain the asset is on (e.g. ethereum, base, solana)",
+      "example": "ethereum"
+    },
+    "contract": {
+      "type": "string",
+      "description": "The contract address of the asset",
+      "example": "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8"
+    },
+    "token_id": {
+      "type": "string",
+      "description": "The token ID of the asset",
+      "example": 1234
+    },
+    "quantity": {
+      "type": "string",
+      "description": "The quantity to transfer in raw units (1 for ERC721, raw amount for ERC1155/fungible)",
+      "example": 1
+    }
+  },
+  "required": [
+    "chain",
+    "contract",
+    "quantity",
+    "token_id"
+  ]
+}

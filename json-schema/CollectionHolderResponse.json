@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CollectionHolderResponse",
+  "title": "CollectionHolderResponse",
+  "type": "object",
+  "description": "A collection holder",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Wallet address of the holder"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of items held"
+    },
+    "percentage": {
+      "type": "number",
+      "format": "float",
+      "description": "Ownership percentage of the collection"
+    }
+  },
+  "required": [
+    "address",
+    "percentage",
+    "quantity"
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "opensea": "https://opensea.io/vocabulary#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://opensea.io/api",
+  "name": "OpenSea API",
+  "description": "The API for OpenSea",
+  "version": "2.0.0",
+  "url": "https://api.opensea.io/api/v2",
+  "documentation": "https://docs.opensea.io/reference/api-overview",
+  "provider": {
+    "@type": "Organization",
+    "name": "OpenSea",
+    "url": "https://opensea.io",
+    "sameAs": [
+      "https://github.com/ProjectOpenSea",
+      "https://twitter.com/opensea"
+    ]
+  },
+  "license": "",
+  "termsOfService": "https://opensea.io/tos",
+  "category": [
+    "NFT Marketplace",
+    "Web3",
+    "Blockchain",
+    "Digital Assets"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://docs.opensea.io/reference/api-keys"
+  },
+  "hasAPI": [
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/transactions/receipt",
+      "name": "get_transaction_receipt",
+      "description": "Get the receipt/status for a submitted transaction. Works for all transaction types including listing fulfillments, cross-chain buys, sweeps, offer fulfillments, and token swaps. Poll this endpoint af"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/tools/usage",
+      "name": "report_tool_usage",
+      "description": "[Beta] Report verified tool usage for metrics and analytics purposes only. Supports verification_type: eip3009_authorization (free tools, identity proof) or x402_settlement (paid tools, onchain USDC p"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/tokens/batch",
+      "name": "get_tokens_batch",
+      "description": "Retrieve multiple tokens in a single request by providing a list of contract identifiers (chain and address). Not-found tokens are silently omitted from the response."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/swap/execute",
+      "name": "post_swap_execute",
+      "description": "Get executable transactions for token-to-token swaps. Supports same-chain and cross-chain swaps with multiple from/to assets."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/orders/{chain}/{protocol}/offers",
+      "name": "post_offer",
+      "description": "Create an offer to purchase a single NFT (ERC721 or ERC1155)."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/orders/{chain}/{protocol}/listings",
+      "name": "post_listing",
+      "description": "List a single NFT (ERC721 or ERC1155) for sale on the OpenSea marketplace."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/orders/chain/{chain}/protocol/{protocol_address}/{order_hash}/cancel",
+      "name": "cancel_order",
+      "description": "Offchain cancel a single order, offer or listing, by its order hash when protected by the SignedZone. Protocol and Chain are required to prevent hash collisions. Please note cancellation is only assur"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/offers",
+      "name": "post_criteria_offer_v2",
+      "description": "Create a criteria offer to purchase any NFT in a collection or which matches the specified trait. For trait offers where the Build Offer endpoint returns identifierOrCriteria '0', use that value direc"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/offers/fulfillment_data",
+      "name": "generate_offer_fulfillment_data_v2",
+      "description": "Retrieve all the information, including signatures, needed to fulfill an offer directly onchain. For trait offers with identifierOrCriteria '0', the server validates that the specified token matches t"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/offers/build",
+      "name": "build_offer_v2",
+      "description": "Build a portion of a criteria offer including the consideration item, zone, and zone hash needed to post an offer. For trait offers on supported collections, the identifierOrCriteria in the returned c"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/nfts/batch",
+      "name": "get_nfts_batch",
+      "description": "Retrieve multiple NFTs in a single request by providing a list of identifiers (chain, contract address, and token ID). Not-found NFTs are silently omitted from the response."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/listings/sweep",
+      "name": "sweep_collection",
+      "description": "Buy up to N items from a collection using any payment token, including cross-chain. If a requested item becomes unavailable, the system can automatically substitute it with the next cheapest listing f"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/listings/fulfillment_data",
+      "name": "generate_listing_fulfillment_data_v2",
+      "description": "Retrieve all the information, including signatures, needed to fulfill a listing directly onchain."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/listings/cross_chain_fulfillment_data",
+      "name": "generate_cross_chain_listing_fulfillment_data",
+      "description": "Get fulfillment data to buy one or more listings using a token on a different chain or a different token on the same chain. Supports cross-chain purchases and same-chain token swaps via the Relay prot"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/listings/actions",
+      "name": "create_listing_actions",
+      "description": "Returns the blockchain actions (approvals + Seaport order signing payload) needed to list one or more NFTs. This eliminates the need to construct Seaport orders manually."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/drops/{slug}/mint",
+      "name": "build_drop_mint_transaction",
+      "description": "Returns ready-to-sign transaction data for minting tokens from a drop. The caller is responsible for signing and submitting the transaction. No wallet authentication is required \u2014 only an API key. The"
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/drops/deploy",
+      "name": "deploy_drop_contract",
+      "description": "Returns ready-to-sign transaction data for deploying a new NFT drop contract. The caller is responsible for signing and submitting the transaction."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/collections/batch",
+      "name": "get_collections_batch",
+      "description": "Retrieve multiple collections in a single request by providing a list of slugs. Results are returned in the same order as the input slugs. Not-found collections are silently omitted."
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/validate-metadata",
+      "name": "validate_nft_metadata",
+      "description": "Fetch and validate NFT metadata directly from the blockchain without using cached data. Returns both original and processed (SeaDN) URLs to show how the metadata would be ingested. This endpoint does "
+    },
+    {
+      "@type": "EntryPoint",
+      "httpMethod": "POST",
+      "urlTemplate": "https://api.opensea.io/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/refresh",
+      "name": "refresh_nft_metadata",
+      "description": "Queue a metadata refresh for a specific NFT to update its information from the blockchain."
+    }
+  ]
+}

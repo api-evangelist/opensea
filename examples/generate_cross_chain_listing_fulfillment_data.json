@@ -1,0 +1,36 @@
+{
+  "operationId": "generate_cross_chain_listing_fulfillment_data",
+  "method": "POST",
+  "path": "/api/v2/listings/cross_chain_fulfillment_data",
+  "request": {
+    "requestBody": {
+      "listings": [
+        {
+          "hash": "string",
+          "chain": "string",
+          "protocol_address": "string"
+        }
+      ],
+      "fulfiller": {
+        "address": "string"
+      },
+      "payment": {
+        "chain": "base",
+        "token_address": "0x0000000000000000000000000000000000000000"
+      },
+      "recipient": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "transactions": [
+        {
+          "chain": "ethereum",
+          "to": "string",
+          "data": "string",
+          "value": "string"
+        }
+      ]
+    }
+  }
+}

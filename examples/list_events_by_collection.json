@@ -1,0 +1,24 @@
+{
+  "operationId": "list_events_by_collection",
+  "method": "GET",
+  "path": "/api/v2/events/collection/{slug}",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "after": 0,
+      "before": 0,
+      "event_type": [
+        "sale"
+      ],
+      "traits": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "asset_events": [
+        {}
+      ],
+      "next": "string"
+    }
+  }
+}

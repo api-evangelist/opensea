@@ -1,0 +1,454 @@
+{
+  "$schema": "https://opensea.io/vocabulary",
+  "title": "OpenSea API Vocabulary",
+  "description": "Domain terms, tags, and schema types used in the OpenSea API",
+  "version": "2.0.0",
+  "terms": [
+    {
+      "term": "Transaction Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Transaction Endpoints",
+      "operations": [
+        "get_transaction_receipt"
+      ]
+    },
+    {
+      "term": "Tool Endpoints [Beta]",
+      "type": "tag",
+      "description": "API tag grouping operations related to Tool Endpoints [Beta]",
+      "operations": [
+        "report_tool_usage",
+        "list_tools",
+        "get_tool",
+        "search_tools"
+      ]
+    },
+    {
+      "term": "Token Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Token Endpoints",
+      "operations": [
+        "get_tokens_batch",
+        "get_trending_tokens",
+        "get_top_tokens",
+        "get_token_groups",
+        "get_token_group",
+        "get_token",
+        "get_token_price_history",
+        "get_token_ohlcv",
+        "get_token_liquidity_pools",
+        "get_token_holders",
+        "get_token_activity",
+        "get_token_balances_by_account"
+      ]
+    },
+    {
+      "term": "Swap Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Swap Endpoints",
+      "operations": [
+        "post_swap_execute",
+        "get_swap_quote"
+      ]
+    },
+    {
+      "term": "Offer Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Offer Endpoints",
+      "operations": [
+        "post_offer",
+        "post_criteria_offer_v2",
+        "generate_offer_fulfillment_data_v2",
+        "build_offer_v2",
+        "get_offers_collection",
+        "get_offers_collection_trait",
+        "get_offers_nft",
+        "get_best_offer_nft",
+        "list_offers_collection_all"
+      ]
+    },
+    {
+      "term": "Listing Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Listing Endpoints",
+      "operations": [
+        "post_listing",
+        "sweep_collection",
+        "generate_listing_fulfillment_data_v2",
+        "generate_cross_chain_listing_fulfillment_data",
+        "create_listing_actions",
+        "get_best_listing_nft",
+        "get_best_listings_collection",
+        "list_listings_collection_all"
+      ]
+    },
+    {
+      "term": "Order Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Order Endpoints",
+      "operations": [
+        "cancel_order",
+        "get_order"
+      ]
+    },
+    {
+      "term": "NFT Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to NFT Endpoints",
+      "operations": [
+        "get_nfts_batch",
+        "validate_nft_metadata",
+        "refresh_nft_metadata",
+        "transfer_assets",
+        "get_nft_metadata",
+        "get_nfts_by_collection",
+        "get_nfts_by_contract",
+        "get_nft",
+        "get_nft_owners",
+        "get_nft_analytics",
+        "get_nfts_by_account"
+      ]
+    },
+    {
+      "term": "Drops Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Drops Endpoints",
+      "operations": [
+        "build_drop_mint_transaction",
+        "deploy_drop_contract",
+        "get_drops",
+        "get_drop_by_slug",
+        "get_deploy_contract_receipt"
+      ]
+    },
+    {
+      "term": "Collection Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Collection Endpoints",
+      "operations": [
+        "get_collections_batch",
+        "get_collection_traits",
+        "list_collections",
+        "get_collection",
+        "get_collection_stats",
+        "get_collection_offer_aggregates",
+        "get_collection_holders",
+        "get_collection_floor_prices",
+        "get_trending_collections",
+        "get_top_collections",
+        "get_nft_collection"
+      ]
+    },
+    {
+      "term": "Auth Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Auth Endpoints",
+      "operations": [
+        "create_instant_api_key"
+      ]
+    },
+    {
+      "term": "Search Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Search Endpoints",
+      "operations": [
+        "search"
+      ]
+    },
+    {
+      "term": "Analytics Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Analytics Endpoints",
+      "operations": [
+        "list_events",
+        "list_events_by_collection",
+        "list_events_by_nft",
+        "list_events_by_account",
+        "get_collection_stats"
+      ]
+    },
+    {
+      "term": "Chain Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Chain Endpoints",
+      "operations": [
+        "get_chains"
+      ]
+    },
+    {
+      "term": "Contract Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Contract Endpoints",
+      "operations": [
+        "get_payment_token",
+        "get_contract"
+      ]
+    },
+    {
+      "term": "Account Endpoints",
+      "type": "tag",
+      "description": "API tag grouping operations related to Account Endpoints",
+      "operations": [
+        "get_account",
+        "resolve_account",
+        "get_portfolio_stats",
+        "get_portfolio_history",
+        "get_profile_offers_received",
+        "get_profile_offers",
+        "get_profile_listings",
+        "get_profile_favorites",
+        "get_profile_collections"
+      ]
+    },
+    {
+      "term": "ChainIdentifier",
+      "type": "schema",
+      "description": "Blockchain chain identifier. Use the chain slug (e.g., 'ethereum', 'polygon', 'arbitrum', 'optimism', 'base')"
+    },
+    {
+      "term": "AssetQuantityInput",
+      "type": "schema",
+      "description": "An asset with quantity in base units"
+    },
+    {
+      "term": "SwapQuoteInput",
+      "type": "schema",
+      "description": "The original swap quote assets"
+    },
+    {
+      "term": "TransactionIdentifierInput",
+      "type": "schema",
+      "description": "A transaction identifier with optional swap provider"
+    },
+    {
+      "term": "TransactionReceiptRequest",
+      "type": "schema",
+      "description": "Request to get a transaction receipt/status"
+    },
+    {
+      "term": "AssetIdentifierResponse",
+      "type": "schema",
+      "description": "Asset identifier with chain, contract address, and optional token ID"
+    },
+    {
+      "term": "AssetReceiptResponse",
+      "type": "schema",
+      "description": "Receipt for a single asset in a transaction"
+    },
+    {
+      "term": "PriceResponse",
+      "type": "schema",
+      "description": "Price information for an asset"
+    },
+    {
+      "term": "TotalSpentResponse",
+      "type": "schema",
+      "description": "Total spent across all assets in a transaction"
+    },
+    {
+      "term": "TransactionReceiptResponse",
+      "type": "schema",
+      "description": "Transaction receipt with status and asset details"
+    },
+    {
+      "term": "Eip3009Fields",
+      "type": "schema",
+      "description": "Schema object representing Eip3009Fields"
+    },
+    {
+      "term": "ToolUsageRequest",
+      "type": "schema",
+      "description": "Schema object representing ToolUsageRequest"
+    },
+    {
+      "term": "X402SettlementFields",
+      "type": "schema",
+      "description": "Schema object representing X402SettlementFields"
+    },
+    {
+      "term": "ToolUsageResponse",
+      "type": "schema",
+      "description": "Schema object representing ToolUsageResponse"
+    },
+    {
+      "term": "BatchTokensRequest",
+      "type": "schema",
+      "description": "Request body for batch token retrieval by contract identifiers"
+    },
+    {
+      "term": "TokenContractInput",
+      "type": "schema",
+      "description": "A token contract identifier consisting of chain and address"
+    },
+    {
+      "term": "TokenBaseResponse",
+      "type": "schema",
+      "description": "Common token identity fields shared across token responses"
+    },
+    {
+      "term": "TokenBatchResponse",
+      "type": "schema",
+      "description": "Schema object representing TokenBatchResponse"
+    },
+    {
+      "term": "TokenDetailedResponse",
+      "type": "schema",
+      "description": "Detailed token information including stats and social links"
+    },
+    {
+      "term": "TokenSocialsResponse",
+      "type": "schema",
+      "description": "Social media links for a token"
+    },
+    {
+      "term": "TokenStatsResponse",
+      "type": "schema",
+      "description": "Market statistics for a token"
+    },
+    {
+      "term": "SwapAssetInput",
+      "type": "schema",
+      "description": "An asset to swap with chain, contract address, and amount"
+    },
+    {
+      "term": "SwapExecuteRequest",
+      "type": "schema",
+      "description": "Request body for executing a token swap"
+    },
+    {
+      "term": "SwapCostResponse",
+      "type": "schema",
+      "description": "A cost component of the swap"
+    },
+    {
+      "term": "SwapExecuteResponse",
+      "type": "schema",
+      "description": "Response containing quote details and executable swap transactions"
+    },
+    {
+      "term": "SwapPriceImpact",
+      "type": "schema",
+      "description": "Price impact of the swap"
+    },
+    {
+      "term": "SwapQuoteDetails",
+      "type": "schema",
+      "description": "Price and fee details for a swap quote"
+    },
+    {
+      "term": "SwapRouteErrorResponse",
+      "type": "schema",
+      "description": "An error encountered for a specific swap route"
+    },
+    {
+      "term": "SwapTransactionResponse",
+      "type": "schema",
+      "description": "A transaction to be submitted onchain to execute a swap"
+    },
+    {
+      "term": "ConsiderationItem",
+      "type": "schema",
+      "description": "Schema object representing ConsiderationItem"
+    },
+    {
+      "term": "OfferItem",
+      "type": "schema",
+      "description": "Schema object representing OfferItem"
+    },
+    {
+      "term": "SeaportParameters",
+      "type": "schema",
+      "description": "Schema object representing SeaportParameters"
+    },
+    {
+      "term": "SeaportRequest",
+      "type": "schema",
+      "description": "Schema object representing SeaportRequest"
+    },
+    {
+      "term": "CollectionInner",
+      "type": "schema",
+      "description": "Schema object representing CollectionInner"
+    },
+    {
+      "term": "ContractInner",
+      "type": "schema",
+      "description": "Schema object representing ContractInner"
+    },
+    {
+      "term": "Criteria",
+      "type": "schema",
+      "description": "Schema object representing Criteria"
+    },
+    {
+      "term": "Item",
+      "type": "schema",
+      "description": "Schema object representing Item"
+    },
+    {
+      "term": "NumericTraitData",
+      "type": "schema",
+      "description": "Schema object representing NumericTraitData"
+    },
+    {
+      "term": "Offer",
+      "type": "schema",
+      "description": "Schema object representing Offer"
+    },
+    {
+      "term": "Order",
+      "type": "schema",
+      "description": "Schema object representing Order"
+    },
+    {
+      "term": "OrderAsset",
+      "type": "schema",
+      "description": "Schema object representing OrderAsset"
+    },
+    {
+      "term": "Parameters",
+      "type": "schema",
+      "description": "Schema object representing Parameters"
+    },
+    {
+      "term": "Price",
+      "type": "schema",
+      "description": "Schema object representing Price"
+    },
+    {
+      "term": "ProtocolData",
+      "type": "schema",
+      "description": "Schema object representing ProtocolData"
+    },
+    {
+      "term": "TraitData",
+      "type": "schema",
+      "description": "Schema object representing TraitData"
+    },
+    {
+      "term": "Listing",
+      "type": "schema",
+      "description": "Schema object representing Listing"
+    },
+    {
+      "term": "ListingPrice",
+      "type": "schema",
+      "description": "Schema object representing ListingPrice"
+    },
+    {
+      "term": "CancelRequest",
+      "type": "schema",
+      "description": "Schema object representing CancelRequest"
+    },
+    {
+      "term": "CancelResponse",
+      "type": "schema",
+      "description": "Schema object representing CancelResponse"
+    },
+    {
+      "term": "CollectionCriteria",
+      "type": "schema",
+      "description": "Schema object representing CollectionCriteria"
+    }
+  ]
+}

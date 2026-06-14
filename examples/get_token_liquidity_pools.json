@@ -1,0 +1,26 @@
+{
+  "operationId": "get_token_liquidity_pools",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/token/{address}/liquidity-pools",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "address": "string",
+      "limit": 0
+    }
+  },
+  "response": {
+    "200": {
+      "pools": [
+        {
+          "pool_type": "string",
+          "pool_identifier": "string",
+          "pool_address": "string",
+          "base_token": "string",
+          "quote_token": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

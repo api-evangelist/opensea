@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CriteriaRequest",
+  "title": "CriteriaRequest",
+  "type": "object",
+  "description": "Criteria for collection or trait offers. When traits are specified, the offer targets NFTs matching those traits. For supported collections, the identifierOrCriteria (merkle root) will be '0' and trait matching is validated server-side at fulfillment time.",
+  "properties": {
+    "collection": {
+      "$ref": "#/components/schemas/CollectionCriteria"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractCriteria"
+    },
+    "trait": {
+      "$ref": "#/components/schemas/TraitCriteria",
+      "deprecated": true,
+      "description": "Deprecated: Use 'traits' array instead which supports both single and multiple traits."
+    },
+    "traits": {
+      "type": "array",
+      "description": "Trait criteria for the offer. Each trait specifies a type and value that target NFTs must match. These traits are validated server-side at fulfillment time.",
+      "items": {
+        "$ref": "#/components/schemas/TraitCriteria"
+      }
+    },
+    "numericTraits": {
+      "type": "array",
+      "description": "Numeric trait criteria for the offer. Each entry specifies a trait type with optional min/max range bounds. Can be combined with categorical traits.",
+      "items": {
+        "$ref": "#/components/schemas/NumericTraitCriteria"
+      }
+    }
+  },
+  "required": [
+    "collection"
+  ]
+}

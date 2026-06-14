@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SweepCollectionResponse",
+  "title": "SweepCollectionResponse",
+  "type": "object",
+  "description": "Response containing ordered blockchain actions to execute for a collection sweep",
+  "properties": {
+    "steps": {
+      "type": "array",
+      "description": "Ordered list of blockchain actions to execute. Each action is a JSON object with a single field indicating the type (e.g. buyItemAction, permit2SignatureAction, paymentApprovalAction) and its associated data. Serialized using proto3 JSON format \u2014 fields with default values (empty string, 0, false) may be omitted.",
+      "items": {
+        "$ref": "#/components/schemas/JsonNode"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "Errors encountered during sweep. Present alongside steps for partial success cases (e.g. some listings became unavailable).",
+      "items": {
+        "$ref": "#/components/schemas/SweepError"
+      }
+    }
+  },
+  "required": [
+    "steps"
+  ]
+}

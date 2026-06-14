@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AgentNftResponse",
+  "title": "AgentNftResponse",
+  "type": "object",
+  "properties": {
+    "chain": {
+      "type": "string"
+    },
+    "token_id": {
+      "type": "string"
+    },
+    "contract_address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "chain",
+    "contract_address",
+    "token_id"
+  ]
+}

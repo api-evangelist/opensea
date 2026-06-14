@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ChainListResponse",
+  "title": "ChainListResponse",
+  "type": "object",
+  "description": "List of supported blockchains",
+  "properties": {
+    "chains": {
+      "type": "array",
+      "description": "List of supported chains",
+      "items": {
+        "$ref": "#/components/schemas/ChainResponse"
+      }
+    }
+  },
+  "required": [
+    "chains"
+  ]
+}

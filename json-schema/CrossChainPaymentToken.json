@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/CrossChainPaymentToken",
+  "title": "CrossChainPaymentToken",
+  "type": "object",
+  "description": "Payment token to use for cross-chain fulfillment",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "Chain of the payment token (e.g. 'base', 'ethereum')",
+      "example": "base"
+    },
+    "token_address": {
+      "type": "string",
+      "description": "Contract address of the payment token (use 0x0000000000000000000000000000000000000000 for native token)",
+      "example": "0x0000000000000000000000000000000000000000"
+    }
+  },
+  "required": [
+    "chain",
+    "token_address"
+  ]
+}

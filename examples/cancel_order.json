@@ -1,0 +1,21 @@
+{
+  "operationId": "cancel_order",
+  "method": "POST",
+  "path": "/api/v2/orders/chain/{chain}/protocol/{protocol_address}/{order_hash}/cancel",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "protocol_address": "string",
+      "order_hash": "string",
+      "X-Api-Key": "string"
+    },
+    "requestBody": {
+      "offererSignature": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "last_signature_issued_valid_until": "string"
+    }
+  }
+}

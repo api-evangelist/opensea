@@ -1,0 +1,59 @@
+{
+  "operationId": "post_listing",
+  "method": "POST",
+  "path": "/api/v2/orders/{chain}/{protocol}/listings",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "protocol": "string"
+    },
+    "requestBody": {
+      "parameters": {
+        "offerer": "string",
+        "zone": "string",
+        "offer": [
+          {
+            "itemType": null,
+            "token": null,
+            "identifierOrCriteria": null,
+            "startAmount": null,
+            "endAmount": null
+          }
+        ],
+        "consideration": [
+          {
+            "itemType": null,
+            "token": null,
+            "identifierOrCriteria": null,
+            "startAmount": null,
+            "endAmount": null
+          }
+        ],
+        "orderType": 0
+      },
+      "protocol_address": "string",
+      "signature": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "order_hash": "string",
+      "chain": "string",
+      "protocol_data": {
+        "parameters": {
+          "offerer": null,
+          "offer": null,
+          "consideration": null,
+          "startTime": null,
+          "endTime": null
+        },
+        "signature": "string"
+      },
+      "protocol_address": "string",
+      "asset": {
+        "identifier": "string",
+        "contract": "string"
+      }
+    }
+  }
+}

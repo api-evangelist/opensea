@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillAvailableAdvancedOrders",
+  "title": "FulfillAvailableAdvancedOrders",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AdvancedOrder"
+          }
+        },
+        "criteriaResolvers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CriteriaResolver"
+          }
+        },
+        "offerFulfillments": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FulfillmentComponent"
+            }
+          }
+        },
+        "considerationFulfillments": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FulfillmentComponent"
+            }
+          }
+        },
+        "fulfillerConduitKey": {
+          "type": "string"
+        },
+        "recipient": {
+          "$ref": "#/components/schemas/Address"
+        },
+        "maximumFulfilled": {
+          "$ref": "#/components/schemas/Uint256"
+        }
+      }
+    }
+  ],
+  "required": [
+    "considerationFulfillments",
+    "criteriaResolvers",
+    "fulfillerConduitKey",
+    "maximumFulfilled",
+    "offerFulfillments",
+    "orders",
+    "recipient"
+  ]
+}

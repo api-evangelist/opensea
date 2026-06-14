@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Fulfillment",
+  "title": "Fulfillment",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Type"
+      }
+    },
+    "offerComponents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FulfillmentComponent"
+      }
+    },
+    "considerationComponents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FulfillmentComponent"
+      }
+    },
+    "typeAsString": {
+      "type": "string"
+    },
+    "nativeValueCopy": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "operationId": "get_swap_quote",
+  "method": "GET",
+  "path": "/api/v2/swap/quote",
+  "request": {
+    "parameters": {
+      "from_chain": "string",
+      "from_address": "string",
+      "to_chain": "string",
+      "to_address": "string",
+      "quantity": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "quote": {
+        "total_price_usd": 1850.5,
+        "total_cost_usd": 1869,
+        "slippage_tolerance": 0.01,
+        "estimated_duration_ms": 30000,
+        "marketplace_fee_bps": 50
+      },
+      "transactions": [
+        {
+          "chain": "ethereum",
+          "to": "string",
+          "data": "string",
+          "value": "string"
+        }
+      ]
+    }
+  }
+}

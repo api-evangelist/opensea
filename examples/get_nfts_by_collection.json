@@ -1,0 +1,28 @@
+{
+  "operationId": "get_nfts_by_collection",
+  "method": "GET",
+  "path": "/api/v2/collection/{slug}/nfts",
+  "request": {
+    "parameters": {
+      "slug": "string",
+      "traits": "string",
+      "has_agent_binding": true,
+      "limit": 20,
+      "next.value": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "nfts": [
+        {
+          "identifier": "string",
+          "collection": "string",
+          "contract": "string",
+          "token_standard": "string",
+          "name": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Payment",
+  "title": "Payment",
+  "type": "object",
+  "properties": {
+    "quantity": {
+      "type": "string"
+    },
+    "token_address": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "symbol": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "decimals",
+    "quantity",
+    "symbol",
+    "token_address"
+  ]
+}

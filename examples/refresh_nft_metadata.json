@@ -1,0 +1,16 @@
+{
+  "operationId": "refresh_nft_metadata",
+  "method": "POST",
+  "path": "/api/v2/chain/{chain}/contract/{address}/nfts/{identifier}/refresh",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "chain": "string",
+      "identifier": "string",
+      "ignoreCachedItemUrls": true
+    }
+  },
+  "response": {
+    "200": "string"
+  }
+}

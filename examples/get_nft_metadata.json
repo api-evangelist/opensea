@@ -1,0 +1,21 @@
+{
+  "operationId": "get_nft_metadata",
+  "method": "GET",
+  "path": "/api/v2/metadata/{chain}/{contractAddress}/{tokenId}",
+  "request": {
+    "parameters": {
+      "chain": "string",
+      "contractAddress": "string",
+      "tokenId": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "name": "string",
+      "description": "string",
+      "image": "string",
+      "external_link": "string",
+      "animation_url": "string"
+    }
+  }
+}

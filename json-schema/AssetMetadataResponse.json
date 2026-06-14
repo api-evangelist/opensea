@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AssetMetadataResponse",
+  "title": "AssetMetadataResponse",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "external_link": {
+      "type": "string"
+    },
+    "animation_url": {
+      "type": "string"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Trait"
+      }
+    }
+  },
+  "required": [
+    "traits"
+  ]
+}

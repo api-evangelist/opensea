@@ -1,0 +1,28 @@
+{
+  "operationId": "get_top_tokens",
+  "method": "GET",
+  "path": "/api/v2/tokens/top",
+  "request": {
+    "parameters": {
+      "limit": 0,
+      "chains": [
+        "blast"
+      ],
+      "cursor": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "tokens": [
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "chain": "ethereum",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "image_url": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

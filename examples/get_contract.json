@@ -1,0 +1,20 @@
+{
+  "operationId": "get_contract",
+  "method": "GET",
+  "path": "/api/v2/chain/{chain}/contract/{address}",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "chain": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "address": "string",
+      "chain": "string",
+      "collection": "string",
+      "contract_standard": "string",
+      "name": "string"
+    }
+  }
+}

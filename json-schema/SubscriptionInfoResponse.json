@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SubscriptionInfoResponse",
+  "title": "SubscriptionInfoResponse",
+  "type": "object",
+  "properties": {
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_renewable": {
+      "type": "boolean"
+    },
+    "is_expired": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "is_expired",
+    "is_renewable"
+  ]
+}

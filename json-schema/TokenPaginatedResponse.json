@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/TokenPaginatedResponse",
+  "title": "TokenPaginatedResponse",
+  "type": "object",
+  "description": "Paginated list of tokens",
+  "properties": {
+    "tokens": {
+      "type": "array",
+      "description": "List of tokens",
+      "items": {
+        "$ref": "#/components/schemas/TokenResponse"
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for the next page of results"
+    }
+  },
+  "required": [
+    "tokens"
+  ]
+}

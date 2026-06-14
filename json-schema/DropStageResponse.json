@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropStageResponse",
+  "title": "DropStageResponse",
+  "type": "object",
+  "description": "A mint stage within a drop",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Stage UUID"
+    },
+    "stage_type": {
+      "type": "string",
+      "description": "Stage type",
+      "example": "public_sale"
+    },
+    "label": {
+      "type": "string",
+      "description": "Stage label/name"
+    },
+    "price": {
+      "type": "string",
+      "description": "Mint price per token in wei (decimal string)"
+    },
+    "price_currency_address": {
+      "type": "string",
+      "description": "Currency contract address (e.g. 0x0000...0000 for native token)"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Stage start time (ISO 8601)"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "Stage end time (ISO 8601)"
+    },
+    "max_per_wallet": {
+      "type": "string",
+      "description": "Max tokens mintable per wallet in this stage"
+    }
+  },
+  "required": [
+    "end_time",
+    "max_per_wallet",
+    "price_currency_address",
+    "stage_type",
+    "start_time",
+    "uuid"
+  ]
+}

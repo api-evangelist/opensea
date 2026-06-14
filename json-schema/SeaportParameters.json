@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SeaportParameters",
+  "title": "SeaportParameters",
+  "type": "object",
+  "properties": {
+    "offerer": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OfferItem"
+      }
+    },
+    "consideration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConsiderationItem"
+      }
+    },
+    "orderType": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "zoneHash": {
+      "type": "string"
+    },
+    "salt": {
+      "type": "string"
+    },
+    "conduitKey": {
+      "type": "string"
+    },
+    "totalOriginalConsiderationItems": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "counter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "conduitKey",
+    "consideration",
+    "counter",
+    "endTime",
+    "offer",
+    "offerer",
+    "orderType",
+    "salt",
+    "startTime",
+    "totalOriginalConsiderationItems",
+    "zoneHash"
+  ]
+}

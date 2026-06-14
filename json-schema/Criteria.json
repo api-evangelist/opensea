@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/Criteria",
+  "title": "Criteria",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "$ref": "#/components/schemas/CollectionInner"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractInner"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TraitData"
+      }
+    },
+    "numeric_traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NumericTraitData"
+      }
+    },
+    "encoded_token_ids": {
+      "type": "string"
+    }
+  }
+}

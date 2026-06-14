@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FullfillmentDataRequest",
+  "title": "FullfillmentDataRequest",
+  "type": "object",
+  "properties": {
+    "offer": {
+      "$ref": "#/components/schemas/OfferObject"
+    },
+    "fulfiller": {
+      "$ref": "#/components/schemas/FulfillerObject"
+    },
+    "consideration": {
+      "$ref": "#/components/schemas/ConsiderationObject"
+    },
+    "units_to_fill": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Optional quantity of units to fulfill; defaults to 1 for offers"
+    },
+    "include_optional_creator_fees": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include optional creator fees in the fulfillment. If creator fees are already required, this is a no-op. Defaults to false."
+    }
+  },
+  "required": [
+    "fulfiller",
+    "offer"
+  ]
+}

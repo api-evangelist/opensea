@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PortfolioStatsResponse",
+  "title": "PortfolioStatsResponse",
+  "type": "object",
+  "description": "Portfolio stats including total value, P&L, and asset breakdown",
+  "properties": {
+    "total_value_usd": {
+      "type": "string",
+      "description": "Total portfolio value in USD",
+      "example": 125430.5
+    },
+    "nft_value_usd": {
+      "type": "string",
+      "description": "NFT portfolio value in USD",
+      "example": 98200
+    },
+    "token_value_usd": {
+      "type": "string",
+      "description": "Token portfolio value in USD",
+      "example": 27230.5
+    },
+    "pnl_absolute": {
+      "type": "string",
+      "description": "Absolute P&L in USD over the timeframe",
+      "example": "+1250.00"
+    },
+    "pnl_percentage": {
+      "type": "string",
+      "description": "Percentage P&L over the timeframe",
+      "example": "+1.01"
+    },
+    "timeframe": {
+      "type": "string",
+      "description": "The queried timeframe",
+      "example": "WEEK"
+    }
+  },
+  "required": [
+    "nft_value_usd",
+    "timeframe",
+    "token_value_usd",
+    "total_value_usd"
+  ]
+}

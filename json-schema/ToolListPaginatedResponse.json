@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ToolListPaginatedResponse",
+  "title": "ToolListPaginatedResponse",
+  "type": "object",
+  "properties": {
+    "tools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ToolListItemResponse"
+      }
+    },
+    "next": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "tools"
+  ]
+}

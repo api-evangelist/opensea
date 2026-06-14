@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/OhlcvCandleResponse",
+  "title": "OhlcvCandleResponse",
+  "type": "object",
+  "description": "An OHLCV candle data point",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Candle timestamp"
+    },
+    "open": {
+      "type": "number",
+      "description": "Opening price in USD"
+    },
+    "high": {
+      "type": "number",
+      "description": "Highest price in USD"
+    },
+    "low": {
+      "type": "number",
+      "description": "Lowest price in USD"
+    },
+    "close": {
+      "type": "number",
+      "description": "Closing price in USD"
+    },
+    "volume": {
+      "type": "number",
+      "description": "Trading volume in USD"
+    }
+  },
+  "required": [
+    "close",
+    "high",
+    "low",
+    "open",
+    "time",
+    "volume"
+  ]
+}

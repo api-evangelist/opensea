@@ -1,0 +1,29 @@
+{
+  "operationId": "get_profile_collections",
+  "method": "GET",
+  "path": "/api/v2/account/{address}/collections",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "after": "string",
+      "limit": 0,
+      "chains": [
+        "blast"
+      ]
+    }
+  },
+  "response": {
+    "200": {
+      "collections": [
+        {
+          "collection": "string",
+          "name": "string",
+          "description": "string",
+          "image_url": "string",
+          "banner_image_url": "string"
+        }
+      ],
+      "next": "string"
+    }
+  }
+}

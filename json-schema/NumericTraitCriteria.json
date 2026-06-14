@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NumericTraitCriteria",
+  "title": "NumericTraitCriteria",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "min": {
+      "type": "number",
+      "format": "double"
+    },
+    "max": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

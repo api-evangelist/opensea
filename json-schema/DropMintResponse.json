@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropMintResponse",
+  "title": "DropMintResponse",
+  "type": "object",
+  "description": "Ready-to-sign mint transaction data",
+  "properties": {
+    "to": {
+      "type": "string",
+      "description": "Transaction target contract address"
+    },
+    "data": {
+      "type": "string",
+      "description": "Encoded transaction data (hex)"
+    },
+    "value": {
+      "type": "string",
+      "description": "Transaction value in wei (hex)"
+    },
+    "chain": {
+      "type": "string",
+      "description": "Chain identifier"
+    }
+  },
+  "required": [
+    "chain",
+    "data",
+    "to",
+    "value"
+  ]
+}

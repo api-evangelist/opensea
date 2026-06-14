@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/SaleEvent",
+  "title": "SaleEvent",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Event"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "type": "string"
+        },
+        "event_timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "transaction": {
+          "type": "string"
+        },
+        "order_hash": {
+          "type": "string"
+        },
+        "protocol_address": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "payment": {
+          "$ref": "#/components/schemas/Payment"
+        },
+        "closing_date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "seller": {
+          "type": "string"
+        },
+        "buyer": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nft": {
+          "$ref": "#/components/schemas/Nft"
+        }
+      }
+    }
+  ],
+  "required": [
+    "buyer",
+    "chain",
+    "closing_date",
+    "event_timestamp",
+    "event_type",
+    "quantity",
+    "seller"
+  ]
+}

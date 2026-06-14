@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/PriceResponse",
+  "title": "PriceResponse",
+  "type": "object",
+  "description": "Price information for an asset",
+  "properties": {
+    "amount": {
+      "type": "string",
+      "description": "Amount in the token's native units",
+      "example": 5.5
+    },
+    "currency": {
+      "type": "string",
+      "description": "Token symbol",
+      "example": "ETH"
+    },
+    "usd": {
+      "type": "string",
+      "description": "USD equivalent",
+      "example": 19250
+    }
+  },
+  "required": [
+    "amount",
+    "usd"
+  ]
+}

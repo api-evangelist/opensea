@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/FulfillOrder",
+  "title": "FulfillOrder",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/SeaportCall"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/components/schemas/Order"
+        },
+        "fulfillerConduitKey": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "required": [
+    "fulfillerConduitKey",
+    "order"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "operationId": "report_tool_usage",
+  "method": "POST",
+  "path": "/api/v2/tools/usage",
+  "request": {
+    "requestBody": {
+      "verification_type": "string",
+      "tool_chain_id": 0,
+      "tool_registry_address": "string",
+      "tool_onchain_id": 0,
+      "latency_ms": 0
+    }
+  },
+  "response": {
+    "200": {
+      "id": "string",
+      "verified": true,
+      "verification_type": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ContractCriteria",
+  "title": "ContractCriteria",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address"
+  ]
+}

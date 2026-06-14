@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ToolCollectionResponse",
+  "title": "ToolCollectionResponse",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "opensea_url": {
+      "type": "string"
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Contract"
+      }
+    }
+  },
+  "required": [
+    "contracts",
+    "name",
+    "opensea_url",
+    "slug"
+  ]
+}

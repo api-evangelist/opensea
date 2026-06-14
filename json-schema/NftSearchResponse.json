@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NftSearchResponse",
+  "title": "NftSearchResponse",
+  "type": "object",
+  "description": "NFT search result",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Token ID of the NFT",
+      "example": 1234
+    },
+    "collection": {
+      "type": "string",
+      "description": "Collection slug the NFT belongs to",
+      "example": "bored-ape-yacht-club"
+    },
+    "contract": {
+      "type": "string",
+      "description": "Contract address of the NFT"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the NFT"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the NFT image"
+    },
+    "opensea_url": {
+      "type": "string",
+      "description": "URL to the NFT on OpenSea"
+    }
+  },
+  "required": [
+    "collection",
+    "contract",
+    "identifier",
+    "opensea_url"
+  ]
+}

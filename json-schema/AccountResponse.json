@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/AccountResponse",
+  "title": "AccountResponse",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "profile_image_url": {
+      "type": "string"
+    },
+    "banner_image_url": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "social_media_accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SocialMediaAccount"
+      }
+    },
+    "bio": {
+      "type": "string"
+    },
+    "joined_date": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "address",
+    "bio",
+    "joined_date",
+    "social_media_accounts"
+  ]
+}

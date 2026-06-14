@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ValidateMetadataAssetIdentifier",
+  "title": "ValidateMetadataAssetIdentifier",
+  "type": "object",
+  "properties": {
+    "chain": {
+      "type": "string"
+    },
+    "contractAddress": {
+      "type": "string"
+    },
+    "tokenId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "chain",
+    "contractAddress",
+    "tokenId"
+  ]
+}

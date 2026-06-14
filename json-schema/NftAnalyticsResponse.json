@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/NftAnalyticsResponse",
+  "title": "NftAnalyticsResponse",
+  "type": "object",
+  "description": "Analytics data for an NFT including sales and floor price history",
+  "properties": {
+    "sales": {
+      "type": "array",
+      "description": "List of sale data points",
+      "items": {
+        "$ref": "#/components/schemas/NftSalePointResponse"
+      }
+    },
+    "floor_prices": {
+      "type": "array",
+      "description": "List of floor price data points",
+      "items": {
+        "$ref": "#/components/schemas/FloorPricePointResponse"
+      }
+    }
+  },
+  "required": [
+    "floor_prices",
+    "sales"
+  ]
+}

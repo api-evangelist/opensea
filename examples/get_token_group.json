@@ -1,0 +1,19 @@
+{
+  "operationId": "get_token_group",
+  "method": "GET",
+  "path": "/api/v2/token-groups/{slug}",
+  "request": {
+    "parameters": {
+      "slug": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "slug": "eth",
+      "display_name": "Ethereum",
+      "symbol": "ETH",
+      "description": "string",
+      "image_url": "string"
+    }
+  }
+}

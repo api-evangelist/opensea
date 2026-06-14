@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/ContractResponse",
+  "title": "ContractResponse",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "string"
+    },
+    "collection": {
+      "type": "string"
+    },
+    "contract_standard": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address",
+    "chain",
+    "collection",
+    "contract_standard",
+    "name"
+  ]
+}

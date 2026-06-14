@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/BasicOrderParameters",
+  "title": "BasicOrderParameters",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Type"
+      }
+    },
+    "considerationToken": {
+      "type": "string"
+    },
+    "considerationIdentifier": {
+      "type": "integer"
+    },
+    "considerationAmount": {
+      "type": "integer"
+    },
+    "offerer": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "offerToken": {
+      "type": "string"
+    },
+    "offerIdentifier": {
+      "type": "integer"
+    },
+    "offerAmount": {
+      "type": "integer"
+    },
+    "basicOrderType": {
+      "type": "integer"
+    },
+    "startTime": {
+      "type": "integer"
+    },
+    "endTime": {
+      "type": "integer"
+    },
+    "zoneHash": {
+      "type": "string",
+      "format": "byte"
+    },
+    "salt": {
+      "type": "integer"
+    },
+    "offererConduitKey": {
+      "type": "string",
+      "format": "byte"
+    },
+    "fulfillerConduitKey": {
+      "type": "string",
+      "format": "byte"
+    },
+    "totalOriginalAdditionalRecipients": {
+      "type": "integer"
+    },
+    "additionalRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AdditionalRecipient"
+      }
+    },
+    "signature": {
+      "type": "string",
+      "format": "byte"
+    },
+    "typeAsString": {
+      "type": "string"
+    },
+    "nativeValueCopy": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

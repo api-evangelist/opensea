@@ -1,0 +1,24 @@
+{
+  "operationId": "list_events_by_account",
+  "method": "GET",
+  "path": "/api/v2/events/accounts/{address}",
+  "request": {
+    "parameters": {
+      "address": "string",
+      "after": 0,
+      "before": 0,
+      "event_type": [
+        "sale"
+      ],
+      "chain": "string"
+    }
+  },
+  "response": {
+    "200": {
+      "asset_events": [
+        {}
+      ],
+      "next": "string"
+    }
+  }
+}

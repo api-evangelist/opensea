@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensea.io/schemas/DropDeployRequest",
+  "title": "DropDeployRequest",
+  "type": "object",
+  "description": "Deploy contract request parameters",
+  "properties": {
+    "chain": {
+      "type": "string",
+      "description": "Chain slug (e.g. \"ethereum\", \"base\")",
+      "example": "ethereum",
+      "minLength": 1
+    },
+    "contract_name": {
+      "type": "string",
+      "description": "Name for the new contract",
+      "example": "My NFT Collection",
+      "minLength": 1
+    },
+    "contract_symbol": {
+      "type": "string",
+      "description": "Symbol for the new contract",
+      "example": "MNFT",
+      "minLength": 1
+    },
+    "drop_type": {
+      "type": "string",
+      "description": "Drop type (see validation error for supported values)",
+      "example": "seadrop_v1_erc721",
+      "minLength": 1
+    },
+    "token_type": {
+      "type": "string",
+      "description": "Token type (see validation error for supported values)",
+      "example": "erc721_standard",
+      "minLength": 1
+    },
+    "sender": {
+      "type": "string",
+      "description": "Deployer wallet address",
+      "example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "chain",
+    "contract_name",
+    "contract_symbol",
+    "drop_type",
+    "sender",
+    "token_type"
+  ]
+}
