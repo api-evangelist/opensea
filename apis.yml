@@ -1,0 +1,235 @@
+aid: opensea
+url: https://raw.githubusercontent.com/api-evangelist/opensea/refs/heads/main/apis.yml
+name: OpenSea
+kind: company
+description: OpenSea is the world's largest NFT marketplace, offering a REST API for
+  querying NFT collections, listings, offers, orders, and events, and for managing
+  programmatic NFT trading across 27+ blockchain chains including Ethereum, Polygon,
+  Base, Solana, Arbitrum, and more.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - NFT
+  - Marketplace
+  - Web3
+  - Blockchain
+  - Trading
+  - Digital Assets
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+apis:
+  - aid: opensea:nft-api
+    name: OpenSea NFT API
+    description: Retrieve individual NFT metadata, ownership, rarity, analytics, and
+      owners across supported blockchain chains. Supports batch NFT retrieval, metadata
+      refresh, validation, and collection-based listing.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - NFT
+      - Metadata
+      - Ownership
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:collection-api
+    name: OpenSea Collection API
+    description: Query NFT collection details, traits, floor prices, holders, offer
+      aggregates, trending and top collections. Supports batch retrieval by slugs and
+      discovery of new and popular collections.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Collections
+      - Discovery
+      - Floor Price
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:listing-api
+    name: OpenSea Listing API
+    description: Create, fulfill, and query NFT listings on OpenSea. Supports best
+      listing retrieval per collection or NFT, cross-chain fulfillment, and collection
+      sweep purchases with automatic substitution for unavailable items.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Listings
+      - Marketplace
+      - Trading
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:offer-api
+    name: OpenSea Offer API
+    description: Build, create, fulfill, and query NFT offers and bids on OpenSea.
+      Supports collection-wide offers, trait-based offers, item-specific bids, and
+      best-offer retrieval per NFT.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Offers
+      - Bids
+      - Marketplace
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:order-api
+    name: OpenSea Order API
+    description: Look up and cancel individual orders by chain, protocol address, and
+      order hash. Supports both Seaport listing and offer orders.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Orders
+      - Seaport
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:events-api
+    name: OpenSea Events API
+    description: Retrieve historical NFT marketplace events including sales, transfers,
+      mints, and cancellations by account, collection, or individual NFT. Also supports
+      real-time event streaming via the Stream API WebSocket.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Events
+      - Analytics
+      - History
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:token-api
+    name: OpenSea Token API
+    description: Retrieve fungible token details, balances, holders, liquidity pools,
+      price history, OHLCV candlestick data, trending tokens, and swap quotes for
+      token trading across supported chains.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Tokens
+      - DeFi
+      - Price
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:account-api
+    name: OpenSea Account API
+    description: Retrieve OpenSea account profiles, resolve ENS/usernames, and access
+      portfolio analytics including net worth history, P&L tracking, owned collections,
+      favorites, listings, and offers.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Accounts
+      - Portfolio
+      - Identity
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:drops-api
+    name: OpenSea Drops API
+    description: Discover NFT drops, check mint eligibility, build mint transactions,
+      deploy NFT contracts, and track transaction receipts for minting operations.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Drops
+      - Minting
+      - Contracts
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:search-api
+    name: OpenSea Search API
+    description: Search across OpenSea collections, NFTs, tokens, and accounts by
+      keyword. Powers discovery of assets and creators across the OpenSea marketplace.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Search
+      - Discovery
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - aid: opensea:stream-api
+    name: OpenSea Stream API
+    description: Real-time WebSocket event streaming for NFT marketplace activity
+      per collection, including item listed, item sold, item transferred, item metadata
+      updates, item cancelled, item received offer, and item received bid events.
+    humanURL: https://docs.opensea.io/reference/stream-js
+    baseURL: wss://stream-api.opensea.io/socket
+    tags:
+      - WebSocket
+      - Streaming
+      - Real-time
+      - Events
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/stream-js
+      - type: SDKs
+        url: https://github.com/ProjectOpenSea/stream-js
+  - aid: opensea:swap-api
+    name: OpenSea Swap API
+    description: Get swap quotes and execute token trading with executable transaction
+      data across supported blockchain chains.
+    humanURL: https://docs.opensea.io/reference/api-overview
+    baseURL: https://api.opensea.io/api/v2
+    tags:
+      - Swap
+      - DeFi
+      - Trading
+    properties:
+      - type: Documentation
+        url: https://docs.opensea.io/reference/api-overview
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+common:
+  - type: Authentication
+    url: https://docs.opensea.io/reference/api-keys
+  - type: Plans
+    url: plans/opensea-plans.yml
+  - type: RateLimits
+    url: rate-limits/opensea-rate-limits.yml
+  - type: FinOps
+    url: finops/opensea-finops.yml
+  - type: SDKs
+    url: https://github.com/ProjectOpenSea/opensea-sdk
+  - type: CLI
+    url: https://github.com/ProjectOpenSea/opensea-cli
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
+  - type: TermsOfService
+    url: https://opensea.io/tos
+  - type: PrivacyPolicy
+    url: https://opensea.io/privacy
+  - type: StatusPage
+    url: https://status.opensea.io
+  - type: Support
+    url: https://support.opensea.io
+  - type: Blog
+    url: https://opensea.io/blog
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

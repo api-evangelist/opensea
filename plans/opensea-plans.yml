@@ -1,0 +1,117 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: OpenSea
+providerId: opensea
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - NFT
+  - Marketplace
+  - Web3
+  - Blockchain
+description: OpenSea API plans. A free instant key is available for immediate use with
+  no signup; a permanent key with higher rate limits is available via opensea.io/settings/developer.
+  Fulfillment, read, and write operations have separate rate limit buckets.
+sources:
+  - https://docs.opensea.io/reference/api-keys
+  - https://github.com/ProjectOpenSea/opensea-cli#authentication
+  - https://github.com/ProjectOpenSea/stream-js#authentication
+plans:
+  - id: opensea-instant-free
+    name: Instant Free Tier
+    type: freemium
+    description: Instant free-tier API key generated without signup via POST to /api/v2/auth/keys.
+      Key expires after 30 days. Rate limited to 2 key creations per hour per IP.
+      Read rate limit 60/min, write rate limit 5/min, fulfillment rate limit 5/min.
+    entries:
+      - label: Read requests
+        name: read_requests
+        type: rate
+        metric: requests
+        limit: 60
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Write requests
+        name: write_requests
+        type: rate
+        metric: requests
+        limit: 5
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Fulfillment requests
+        name: fulfillment_requests
+        type: rate
+        metric: requests
+        limit: 5
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Key validity
+        name: key_expiry
+        type: quota
+        metric: days
+        limit: 30
+        timeFrame: lifetime
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All REST API endpoints
+      - name: Stream API (WebSocket)
+      - name: No signup required
+      - name: Instant key via API
+      - name: Key expires after 30 days
+  - id: opensea-developer
+    name: Developer (Permanent Key)
+    type: freemium
+    description: Permanent API key obtained via opensea.io/settings/developer. No
+      expiration. Higher rate limits than the instant free tier. Suitable for production
+      integrations.
+    entries:
+      - label: Read requests
+        name: read_requests
+        type: rate
+        metric: requests
+        limit: 60
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Write requests
+        name: write_requests
+        type: rate
+        metric: requests
+        limit: 5
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Fulfillment requests
+        name: fulfillment_requests
+        type: rate
+        metric: requests
+        limit: 5
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All REST API endpoints
+      - name: Stream API (WebSocket)
+      - name: Permanent non-expiring key
+      - name: Key rotation via settings dashboard
+      - name: Production use

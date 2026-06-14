@@ -1,0 +1,93 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: OpenSea
+providerId: opensea
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - NFT
+  - Web3
+description: FOCUS-aligned FinOps for OpenSea API, covering API key tiers, marketplace
+  transaction fees, and NFT minting costs. The API itself is free to use; costs arise
+  from on-chain transaction gas fees and OpenSea marketplace fees on trades.
+sources:
+  - https://docs.opensea.io/reference/api-keys
+  - https://opensea.io/tos
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: OpenSea, Inc.
+serviceCategory: NFT Marketplace
+billingModel:
+  pricingCategory: Usage-Based + Transaction Fee
+  billingFrequency: Per-transaction
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Transaction
+    - Gas
+focusColumns:
+  ServiceName: OpenSea
+  ServiceCategory: NFT Marketplace
+  ProviderName: OpenSea
+  PublisherName: OpenSea, Inc.
+  InvoiceIssuerName: OpenSea, Inc.
+  BillingCurrency: USD
+meters:
+  - name: api_read_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_key
+      - endpoint_tag
+      - chain
+  - name: api_write_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_key
+      - endpoint_tag
+      - chain
+  - name: api_fulfillment_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_key
+      - chain
+  - name: marketplace_transaction_fee
+    unit: percentage
+    aggregation: sum
+    dimensions:
+      - chain
+      - collection_slug
+      - order_type
+  - name: onchain_gas
+    unit: gwei
+    aggregation: sum
+    dimensions:
+      - chain
+      - transaction_type
+principles:
+  - name: Visibility
+    description: Track API call volume per key across read, write, and fulfillment
+      buckets. Monitor on-chain transaction gas spend separately per chain.
+  - name: Allocation
+    description: Use separate API keys per application or team to attribute usage.
+      Tag collections and chains in cost reporting to allocate marketplace fees.
+  - name: Optimization
+    description: Use batch NFT and token endpoints to reduce request count. Cache
+      collection stats and floor prices where real-time freshness is not required.
+      Use the Stream API WebSocket for event monitoring instead of polling events
+      endpoints.
+  - name: Accountability
+    description: Monitor instant key expiry to avoid service interruption. Rotate
+      to permanent developer keys for production workloads. Track fulfillment request
+      usage as it directly correlates to trading activity and on-chain gas costs.

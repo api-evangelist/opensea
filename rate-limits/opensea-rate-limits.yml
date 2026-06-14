@@ -1,0 +1,68 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: OpenSea
+providerId: opensea
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Rate Limiting
+  - API Management
+  - NFT
+description: OpenSea REST and Stream API rate limits. Three separate buckets apply
+  to read, write, and fulfillment operations. Instant free-tier keys are limited to
+  2 creations per hour per IP and expire after 30 days.
+sources:
+  - https://docs.opensea.io/reference/api-keys
+  - https://github.com/ProjectOpenSea/api-types/blob/main/opensea-api.json
+  - https://github.com/ProjectOpenSea/opensea-cli#authentication
+authentication:
+  type: apiKey
+  header: x-api-key
+  keyGeneration:
+    instant: POST https://api.opensea.io/api/v2/auth/keys
+    dashboard: https://opensea.io/settings/developer
+responseCodes:
+  throttled: 429
+limits:
+  - name: Read (Free / Instant Tier)
+    scope: api_key
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+    description: Read requests to collection, NFT, account, token, search, and events
+      endpoints
+  - name: Write (Free / Instant Tier)
+    scope: api_key
+    metric: requests_per_minute
+    limit: 5
+    timeFrame: minute
+    description: Write requests including listing actions, offer builds, and asset
+      transfers
+  - name: Fulfillment (Free / Instant Tier)
+    scope: api_key
+    metric: requests_per_minute
+    limit: 5
+    timeFrame: minute
+    description: Fulfillment data requests for completing listing and offer transactions
+  - name: Instant Key Creation
+    scope: ip
+    metric: keys_per_hour
+    limit: 2
+    timeFrame: hour
+    description: Rate limit on POST /api/v2/auth/keys for instant key generation without
+      signup
+policies:
+  - name: Three separate rate limit buckets
+    description: Read, write, and fulfillment requests are tracked independently with
+      their own per-minute limits.
+  - name: Instant keys expire after 30 days
+    description: Keys generated via POST /api/v2/auth/keys are valid for 30 days.
+      Permanent keys are available via opensea.io/settings/developer.
+  - name: Backend-only usage recommended
+    description: API keys should never be exposed in client-side/frontend code. Use
+      a backend wrapper to securely store and proxy requests.
+  - name: Cross-chain support
+    description: The same API key works across all supported chains including ethereum,
+      polygon, base, arbitrum, optimism, solana, and 20+ others.
