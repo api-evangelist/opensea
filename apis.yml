@@ -6,7 +6,7 @@ description: OpenSea is the world's largest NFT marketplace, offering a REST API
   querying NFT collections, listings, offers, orders, and events, and for managing
   programmatic NFT trading across 27+ blockchain chains including Ethereum, Polygon,
   Base, Solana, Arbitrum, and more.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - NFT
   - Marketplace
