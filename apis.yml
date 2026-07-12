@@ -206,6 +206,12 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/opensea-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/opensea-domain-security.yml
+  - type: Authentication
+    url: authentication/opensea-authentication.yml
   - type: Authentication
     url: https://docs.opensea.io/reference/api-keys
   - type: Plans

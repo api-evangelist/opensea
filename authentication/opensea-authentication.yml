@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/opensea-api.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: API key required for authentication
+  sources:
+  - openapi/opensea-api.json
