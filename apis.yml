@@ -206,6 +206,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/opensea-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/opensea-vulnerability-disclosure.yml
   - type: DomainSecurity
