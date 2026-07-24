@@ -1,0 +1,271 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Transaction Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Transaction Endpoints
+  description: Transaction endpoints for checking transaction receipts and status
+paths:
+  /api/v2/transactions/receipt:
+    post:
+      tags:
+      - Transaction Endpoints
+      summary: Get transaction receipt
+      description: Get the receipt/status for a submitted transaction. Works for all transaction types including listing fulfillments, cross-chain buys, sweeps, offer fulfillments, and token swaps. Poll this endpoint after submitting transactions to check completion status.
+      operationId: get_transaction_receipt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionReceiptRequest'
+        required: true
+      responses:
+        '200':
+          description: Transaction receipt retrieved
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TransactionReceiptResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
+  schemas:
+    TransactionReceiptRequest:
+      type: object
+      description: Request to get a transaction receipt/status
+      properties:
+        transaction_identifiers:
+          type: array
+          description: Transaction identifiers to look up
+          items:
+            $ref: '#/components/schemas/TransactionIdentifierInput'
+          maxItems: 100
+          minItems: 0
+        swap_quote:
+          $ref: '#/components/schemas/SwapQuoteInput'
+          description: The swap quote that was originally submitted
+        relay_request_id:
+          type: string
+          description: Relay request ID for cross-chain tracking
+        request_id:
+          type: string
+          description: Request ID for workflow tracking
+      required:
+      - swap_quote
+    TransactionIdentifierInput:
+      type: object
+      description: A transaction identifier with optional swap provider
+      properties:
+        transaction_hash:
+          type: string
+          description: The transaction hash
+          example: 0xabc123...
+        chain:
+          type: string
+          description: The blockchain chain
+          example: ethereum
+        swap_provider:
+          type: string
+          description: The swap provider used (e.g. RELAY, JUPITER, ZERO_EX, LOCAL_BUY_NFT). Required when relay_request_id is not provided. Can be omitted for cross-chain flows that use relay_request_id.
+          example: RELAY
+      required:
+      - chain
+      - transaction_hash
+    PriceResponse:
+      type: object
+      description: Price information for an asset
+      properties:
+        amount:
+          type: string
+          description: Amount in the token's native units
+          example: 5.5
+        currency:
+          type: string
+          description: Token symbol
+          example: ETH
+        usd:
+          type: string
+          description: USD equivalent
+          example: 19250
+      required:
+      - amount
+      - usd
+    SwapQuoteInput:
+      type: object
+      description: The original swap quote assets
+      properties:
+        from_assets:
+          type: array
+          description: Assets being sent/spent
+          items:
+            $ref: '#/components/schemas/AssetQuantityInput'
+          maxItems: 100
+          minItems: 0
+        to_assets:
+          type: array
+          description: Assets being received
+          items:
+            $ref: '#/components/schemas/AssetQuantityInput'
+          maxItems: 100
+          minItems: 0
+      required:
+      - from_assets
+    AssetIdentifierResponse:
+      type: object
+      description: Asset identifier with chain, contract address, and optional token ID
+      properties:
+        chain:
+          type: string
+          description: The blockchain chain
+          example: ethereum
+        contract:
+          type: string
+          description: The contract address
+          example: '0xBd3531dA5CF5857e7CfAA92426877b022e612cf8'
+        token_id:
+          type: string
+          description: Token ID for NFTs
+          example: 1234
+      required:
+      - chain
+      - contract
+    TotalSpentResponse:
+      type: object
+      description: Total spent across all assets in a transaction
+      properties:
+        price_per_token:
+          type: array
+          description: Price breakdown per token type
+          items:
+            $ref: '#/components/schemas/PriceResponse'
+      required:
+      - price_per_token
+    AssetQuantityInput:
+      type: object
+      description: An asset with quantity in base units
+      properties:
+        chain:
+          type: string
+          description: The blockchain chain
+          example: ethereum
+        contract:
+          type: string
+          description: The contract address
+          example: '0x0000000000000000000000000000000000000000'
+        token_id:
+          type: string
+          description: Token ID for NFTs
+          example: 1234
+        amount:
+          type: string
+          description: Amount in base units (wei/lamports)
+          example: 1000000000000000000
+      required:
+      - amount
+      - chain
+      - contract
+    TransactionReceiptResponse:
+      type: object
+      description: Transaction receipt with status and asset details
+      properties:
+        status:
+          type: string
+          description: 'Transaction status: PENDING, SUCCESS, PARTIAL_SUCCESS, or FAILED'
+          example: SUCCESS
+        fail_reason:
+          type: string
+          description: Reason for failure, if applicable
+        asset_receipts:
+          type: array
+          description: Successfully received assets
+          items:
+            $ref: '#/components/schemas/AssetReceiptResponse'
+        failed_asset_receipts:
+          type: array
+          description: Assets that failed to be received
+          items:
+            $ref: '#/components/schemas/AssetReceiptResponse'
+        total_spent:
+          $ref: '#/components/schemas/TotalSpentResponse'
+          description: Total amount spent across all assets
+        missing_assets:
+          type: array
+          description: Assets that are missing from the receipt
+          items:
+            $ref: '#/components/schemas/AssetIdentifierResponse'
+        cross_chain_refunded:
+          type: boolean
+          description: Whether a cross-chain refund was issued
+      required:
+      - asset_receipts
+      - failed_asset_receipts
+      - missing_assets
+      - status
+      - total_spent
+    AssetReceiptResponse:
+      type: object
+      description: Receipt for a single asset in a transaction
+      properties:
+        asset:
+          $ref: '#/components/schemas/AssetIdentifierResponse'
+          description: The asset received
+        quantity:
+          type: string
+          description: Quantity received in base units
+          example: 1
+        price:
+          $ref: '#/components/schemas/PriceResponse'
+          description: Price paid per item
+      required:
+      - asset
+      - price
+      - quantity
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

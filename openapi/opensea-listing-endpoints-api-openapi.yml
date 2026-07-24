@@ -1,0 +1,1327 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Listing Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Listing Endpoints
+  description: Listing endpoints for creating, fulfilling, and querying listings
+paths:
+  /api/v2/orders/{chain}/{protocol}/listings:
+    post:
+      tags:
+      - Listing Endpoints
+      summary: Create a listing
+      description: List a single NFT (ERC721 or ERC1155) for sale on the OpenSea marketplace.
+      operationId: post_listing
+      parameters:
+      - name: chain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: protocol
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeaportRequest'
+        required: true
+      responses:
+        '200':
+          description: Listing created successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Listing'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/sweep:
+    post:
+      tags:
+      - Listing Endpoints
+      summary: Sweep buy items from a collection
+      description: Buy up to N items from a collection using any payment token, including cross-chain. If a requested item becomes unavailable, the system can automatically substitute it with the next cheapest listing from the same collection (enabled by default). Returns an ordered list of transactions to execute.
+      operationId: sweep_collection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SweepCollectionRequest'
+        required: true
+      responses:
+        '200':
+          description: Sweep fulfillment data retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SweepCollectionResponse'
+        '400':
+          description: 'The request is invalid. Possible reasons: collection not found, invalid chain, max_items exceeds limit, or no listings available.'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SweepCollectionResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/fulfillment_data:
+    post:
+      tags:
+      - Listing Endpoints
+      summary: Fulfill a listing
+      description: Retrieve all the information, including signatures, needed to fulfill a listing directly onchain.
+      operationId: generate_listing_fulfillment_data_v2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FullfillListingRequest'
+        required: true
+      responses:
+        '200':
+          description: Listing fulfillment data retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FulfillListingResponse'
+        '400':
+          description: 'The request is invalid
+
+            The order_hash does not exist
+
+            The chain is not an EVM Chain
+
+            The protocol_address is not a supported Seaport contract
+
+            For other error reasons, see the response data.'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FulfillListingResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/cross_chain_fulfillment_data:
+    post:
+      tags:
+      - Listing Endpoints
+      summary: Fulfill a listing using a different token
+      description: Get fulfillment data to buy one or more listings using a token on a different chain or a different token on the same chain. Supports cross-chain purchases and same-chain token swaps via the Relay protocol. Returns an ordered list of transactions to execute.
+      operationId: generate_cross_chain_listing_fulfillment_data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrossChainFulfillmentRequest'
+        required: true
+      responses:
+        '200':
+          description: Cross-chain fulfillment data retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CrossChainFulfillmentResponse'
+        '400':
+          description: 'The request is invalid. Possible reasons: listing not found, listing not valid, listing is not a listing order, or no fulfillment actions could be generated.'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CrossChainFulfillmentResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/actions:
+    post:
+      tags:
+      - Listing Endpoints
+      summary: Get listing creation actions
+      description: Returns the blockchain actions (approvals + Seaport order signing payload) needed to list one or more NFTs. This eliminates the need to construct Seaport orders manually.
+      operationId: create_listing_actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateListingActionsRequest'
+        required: true
+      responses:
+        '200':
+          description: Listing creation actions retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateListingActionsResponse'
+        '400':
+          description: 'The request is invalid. Possible reasons: items on different chains, invalid addresses, items not found, invalid currency, or prices/quantities not positive.'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateListingActionsResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/collection/{slug}/nfts/{identifier}/best:
+    get:
+      tags:
+      - Listing Endpoints
+      summary: Get best listing by NFT
+      description: Get the best listing for an NFT.
+      operationId: get_best_listing_nft
+      parameters:
+      - name: slug
+        in: path
+        description: Unique string to identify a collection on OpenSea
+        required: true
+        schema:
+          type: string
+      - name: identifier
+        in: path
+        description: NFT token id
+        required: true
+        schema:
+          type: string
+      - name: include_private_listings
+        in: query
+        description: Whether to include private listings; defaults to false
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Listing'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/collection/{slug}/best:
+    get:
+      tags:
+      - Listing Endpoints
+      summary: Get best listings by collection
+      description: 'Get the best listings for a collection sorted by price ascending. Optionally filter by item traits using the ''traits'' query parameter with a JSON array of trait filters. Multiple traits are AND-combined (items must match all). Note: results are not deduplicated by token ID — if a token has multiple listings, each listing is returned individually. Filter client-side if you need unique tokens. Example: ?traits=[{"traitType":"Background","value":"Red"}]'
+      operationId: get_best_listings_collection
+      parameters:
+      - name: slug
+        in: path
+        description: Unique string to identify a collection on OpenSea
+        required: true
+        schema:
+          type: string
+      - name: include_private_listings
+        in: query
+        description: Whether to include private listings; defaults to false
+        required: false
+        schema:
+          type: boolean
+      - name: traits
+        in: query
+        description: 'JSON array of trait filters to narrow listings by item traits. Each object has ''traitType'' and ''value'' fields. Multiple traits are AND-combined (items must match all). Example: [{"traitType":"Background","value":"Red"}]'
+        required: false
+        schema:
+          type: string
+        example:
+        - traitType: Background
+          value: Red
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/listings/collection/{slug}/all:
+    get:
+      tags:
+      - Listing Endpoints
+      summary: Get all listings by collection
+      description: Get all listings for a collection.
+      operationId: list_listings_collection_all
+      parameters:
+      - name: slug
+        in: path
+        description: Unique string to identify a collection on OpenSea
+        required: true
+        schema:
+          type: string
+      - name: include_private_listings
+        in: query
+        description: Whether to include private listings; defaults to false
+        required: false
+        schema:
+          type: boolean
+      - name: maker
+        in: query
+        description: Filter by the wallet address of the order maker
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    FulfillerObject:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    CreateListingActionsRequest:
+      type: object
+      description: Request to get listing creation actions
+      properties:
+        items:
+          type: array
+          description: Items to list for sale
+          items:
+            $ref: '#/components/schemas/ListingItem'
+        address:
+          type: string
+          description: Maker (seller) wallet address
+          example: 0x...
+        use_creator_fee:
+          type: boolean
+          description: Whether to include creator fees. Defaults to true.
+        taker:
+          type: string
+          description: Optional taker address for private listings
+      required:
+      - address
+      - items
+    SweepCollectionRequest:
+      type: object
+      description: Request to sweep buy items from a collection
+      properties:
+        collection_slug:
+          type: string
+          description: The slug of the collection to sweep
+          example: pudgypenguins
+        payment:
+          $ref: '#/components/schemas/CrossChainPaymentToken'
+          description: The token to pay with
+        max_items:
+          type: integer
+          format: int32
+          description: Maximum number of items to buy (1-50)
+          example: 5
+        max_price_per_item:
+          type: string
+          description: Maximum price per item in the payment token's units
+          example: 10
+        buyer:
+          type: string
+          description: Address of the buyer
+          example: 0x...
+        recipient:
+          type: string
+          description: Optional recipient address for the purchased items
+      required:
+      - buyer
+      - collection_slug
+      - max_items
+      - max_price_per_item
+      - payment
+    SweepCollectionResponse:
+      type: object
+      description: Response containing ordered blockchain actions to execute for a collection sweep
+      properties:
+        steps:
+          type: array
+          description: Ordered list of blockchain actions to execute. Each action is a JSON object with a single field indicating the type (e.g. buyItemAction, permit2SignatureAction, paymentApprovalAction) and its associated data. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
+          items:
+            $ref: '#/components/schemas/JsonNode'
+        errors:
+          type: array
+          description: Errors encountered during sweep. Present alongside steps for partial success cases (e.g. some listings became unavailable).
+          items:
+            $ref: '#/components/schemas/SweepError'
+      required:
+      - steps
+    ListingPrice:
+      type: object
+      properties:
+        current:
+          $ref: '#/components/schemas/Price'
+      required:
+      - current
+    Address:
+      type: object
+      properties:
+        value:
+          type: string
+        typeAsString:
+          type: string
+    ListingObject:
+      type: object
+      properties:
+        hash:
+          type: string
+        chain:
+          type: string
+        protocol_address:
+          type: string
+      required:
+      - chain
+      - hash
+      - protocol_address
+    MatchAdvancedOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+          recipient:
+            $ref: '#/components/schemas/Address'
+      required:
+      - criteriaResolvers
+      - fulfillments
+      - orders
+      - recipient
+    FullfillListingRequest:
+      type: object
+      properties:
+        listing:
+          $ref: '#/components/schemas/ListingObject'
+        fulfiller:
+          $ref: '#/components/schemas/FulfillerObject'
+        consideration:
+          $ref: '#/components/schemas/ConsiderationObject'
+        recipient:
+          type: string
+        units_to_fill:
+          type: integer
+          format: int64
+          description: Optional quantity of units to fulfill; defaults to remaining units for listings
+        include_optional_creator_fees:
+          type: boolean
+          default: false
+          description: Whether to include optional creator fees in the fulfillment. If creator fees are already required, this is a no-op. Defaults to false.
+      required:
+      - fulfiller
+      - listing
+    AdvancedOrder:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        parameters:
+          $ref: '#/components/schemas/OrderParameters'
+        numerator:
+          type: integer
+        denominator:
+          type: integer
+        signature:
+          type: string
+          format: byte
+        extraData:
+          type: string
+          format: byte
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    MatchOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+      required:
+      - fulfillments
+      - orders
+    SeaportCall: {}
+    Fulfillment:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        offerComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        considerationComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    Parameters:
+      type: object
+      properties:
+        offerer:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        startTime:
+          type: string
+        endTime:
+          type: string
+        orderType:
+          type: integer
+          format: int32
+        zone:
+          type: string
+        zoneHash:
+          type: string
+        salt:
+          type: string
+        conduitKey:
+          type: string
+        totalOriginalConsiderationItems:
+          type: integer
+          format: int32
+        counter:
+          type: integer
+      required:
+      - conduitKey
+      - consideration
+      - counter
+      - endTime
+      - offer
+      - offerer
+      - orderType
+      - salt
+      - startTime
+      - totalOriginalConsiderationItems
+      - zone
+      - zoneHash
+    Uint256:
+      type: object
+      properties:
+        value:
+          type: integer
+        bitSize:
+          type: integer
+          format: int32
+        typeAsString:
+          type: string
+    AdditionalRecipient:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        amount:
+          type: integer
+        recipient:
+          type: string
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    FulfillmentComponent:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        orderIndex:
+          type: integer
+        itemIndex:
+          type: integer
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    BasicOrderParameters:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        considerationToken:
+          type: string
+        considerationIdentifier:
+          type: integer
+        considerationAmount:
+          type: integer
+        offerer:
+          type: string
+        zone:
+          type: string
+        offerToken:
+          type: string
+        offerIdentifier:
+          type: integer
+        offerAmount:
+          type: integer
+        basicOrderType:
+          type: integer
+        startTime:
+          type: integer
+        endTime:
+          type: integer
+        zoneHash:
+          type: string
+          format: byte
+        salt:
+          type: integer
+        offererConduitKey:
+          type: string
+          format: byte
+        fulfillerConduitKey:
+          type: string
+          format: byte
+        totalOriginalAdditionalRecipients:
+          type: integer
+        additionalRecipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalRecipient'
+        signature:
+          type: string
+          format: byte
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    ListingOrOffer: {}
+    OrderAsset:
+      type: object
+      properties:
+        identifier:
+          type: string
+        contract:
+          type: string
+      required:
+      - contract
+    CriteriaResolver:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        orderIndex:
+          type: integer
+        side:
+          type: integer
+        index:
+          type: integer
+        identifier:
+          type: integer
+        criteriaProof:
+          type: array
+          items:
+            type: string
+            format: byte
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    CreateListingActionsResponse:
+      type: object
+      description: Response containing blockchain actions to execute for listing creation
+      properties:
+        steps:
+          type: array
+          description: Ordered list of blockchain actions to execute. May include approval actions (e.g. setApprovalForAll) and a createListingsAction containing the Seaport order to sign. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
+          items:
+            $ref: '#/components/schemas/JsonNode'
+      required:
+      - steps
+    FulfillListingResponse:
+      type: object
+      properties:
+        protocol:
+          type: string
+        fulfillment_data:
+          $ref: '#/components/schemas/FulfillmentData'
+      required:
+      - fulfillment_data
+      - protocol
+    FulfillmentData:
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionData'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderData'
+      required:
+      - orders
+      - transaction
+    Price:
+      type: object
+      properties:
+        currency:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        value:
+          type: string
+      required:
+      - currency
+      - decimals
+      - value
+    OfferItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    CrossChainFulfillmentRequest:
+      type: object
+      description: Request to fulfill one or more listings using a payment token on a different chain or a different token on the same chain
+      properties:
+        listings:
+          type: array
+          description: One or more listings to fulfill
+          items:
+            $ref: '#/components/schemas/ListingObject'
+        fulfiller:
+          $ref: '#/components/schemas/FulfillerObject'
+        payment:
+          $ref: '#/components/schemas/CrossChainPaymentToken'
+          description: The token to pay with
+        recipient:
+          type: string
+          description: Optional recipient address for the purchased items
+      required:
+      - fulfiller
+      - listings
+      - payment
+    TransactionData:
+      type: object
+      properties:
+        function:
+          type: string
+        chain:
+          type: integer
+          format: int32
+        to:
+          type: string
+        value:
+          type: string
+        input_data:
+          oneOf:
+          - $ref: '#/components/schemas/FulfillAdvancedOrder'
+          - $ref: '#/components/schemas/FulfillAvailableAdvancedOrders'
+          - $ref: '#/components/schemas/FulfillAvailableOrders'
+          - $ref: '#/components/schemas/FulfillBasicOrder'
+          - $ref: '#/components/schemas/FulfillOrder'
+          - $ref: '#/components/schemas/MatchAdvancedOrders'
+          - $ref: '#/components/schemas/MatchOrders'
+      required:
+      - chain
+      - function
+      - input_data
+      - to
+      - value
+    FulfillAvailableAdvancedOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          offerFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          considerationFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          fulfillerConduitKey:
+            type: string
+          recipient:
+            $ref: '#/components/schemas/Address'
+          maximumFulfilled:
+            $ref: '#/components/schemas/Uint256'
+      required:
+      - considerationFulfillments
+      - criteriaResolvers
+      - fulfillerConduitKey
+      - maximumFulfilled
+      - offerFulfillments
+      - orders
+      - recipient
+    CrossChainFulfillmentResponse:
+      type: object
+      description: Response containing ordered transactions to execute for cross-chain fulfillment
+      properties:
+        transactions:
+          type: array
+          description: Ordered list of transactions to execute. May include approval and buy/swap transactions.
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
+      required:
+      - transactions
+    SwapTransactionResponse:
+      type: object
+      description: A transaction to be submitted onchain to execute a swap
+      properties:
+        chain:
+          type: string
+          description: The blockchain for this transaction
+          example: ethereum
+        to:
+          type: string
+          description: The destination address for the transaction
+        data:
+          type: string
+          description: 'The transaction data. For EVM chains: hex-encoded calldata. For SVM chains: comma-separated instructions in programId:data format.'
+        value:
+          type: string
+          description: The native token value to send with the transaction
+      required:
+      - chain
+      - data
+    ListingsResponse:
+      type: object
+      properties:
+        listings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+        next:
+          type: string
+      required:
+      - listings
+    FulfillBasicOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          parameters:
+            $ref: '#/components/schemas/BasicOrderParameters'
+      required:
+      - parameters
+    SeaportRequest:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SeaportParameters'
+        protocol_address:
+          type: string
+        signature:
+          type: string
+      required:
+      - parameters
+      - protocol_address
+      - signature
+    FulfillAdvancedOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          advancedOrder:
+            $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillerConduitKey:
+            type: string
+          recipient:
+            $ref: '#/components/schemas/Address'
+      required:
+      - advancedOrder
+      - criteriaResolvers
+      - fulfillerConduitKey
+      - recipient
+    JsonNode: {}
+    Order:
+      type: object
+      properties:
+        order_hash:
+          type: string
+        chain:
+          type: string
+        protocol_data:
+          $ref: '#/components/schemas/ProtocolData'
+        protocol_address:
+          type: string
+        asset:
+          $ref: '#/components/schemas/OrderAsset'
+        remaining_quantity:
+          type: integer
+          format: int64
+        order_created_at:
+          type: integer
+          format: int64
+      required:
+      - chain
+      - order_hash
+      - remaining_quantity
+    ConsiderationItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+        recipient:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - recipient
+      - startAmount
+      - token
+    ProtocolData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+    Type:
+      type: object
+      properties:
+        value: {}
+        typeAsString:
+          type: string
+    OrderParameters:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        offerer:
+          type: string
+        zone:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItem'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        orderType:
+          type: integer
+        startTime:
+          type: integer
+        endTime:
+          type: integer
+        zoneHash:
+          type: string
+          format: byte
+        salt:
+          type: integer
+        conduitKey:
+          type: string
+          format: byte
+        totalOriginalConsiderationItems:
+          type: integer
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    SweepError:
+      type: object
+      description: An error encountered during a sweep operation
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+      required:
+      - message
+    ListingItem:
+      type: object
+      description: An item to list for sale
+      properties:
+        chain:
+          type: string
+          description: Chain of the item (e.g. 'ethereum', 'base')
+          example: ethereum
+        contract:
+          type: string
+          description: Contract address of the NFT
+          example: 0x...
+        token_id:
+          type: string
+          description: Token ID of the NFT
+          example: 1234
+        quantity:
+          type: integer
+          format: int64
+          description: Quantity to list (use 1 for ERC-721)
+          example: 1
+        price:
+          $ref: '#/components/schemas/ListingPrice'
+          description: Price per item
+        start_time:
+          type: string
+          description: Listing start time in ISO 8601 format. Defaults to now.
+          example: '2026-05-01T00:00:00Z'
+        end_time:
+          type: string
+          description: Listing end time in ISO 8601 format. Defaults to 30 days from start.
+          example: '2026-06-01T00:00:00Z'
+      required:
+      - chain
+      - contract
+      - price
+      - quantity
+      - token_id
+    CrossChainPaymentToken:
+      type: object
+      description: Payment token to use for cross-chain fulfillment
+      properties:
+        chain:
+          type: string
+          description: Chain of the payment token (e.g. 'base', 'ethereum')
+          example: base
+        token_address:
+          type: string
+          description: Contract address of the payment token (use 0x0000000000000000000000000000000000000000 for native token)
+          example: '0x0000000000000000000000000000000000000000'
+      required:
+      - chain
+      - token_address
+    SeaportParameters:
+      type: object
+      properties:
+        offerer:
+          type: string
+        zone:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItem'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        orderType:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        zoneHash:
+          type: string
+        salt:
+          type: string
+        conduitKey:
+          type: string
+        totalOriginalConsiderationItems:
+          type: integer
+          format: int32
+        counter:
+          type: string
+      required:
+      - conduitKey
+      - consideration
+      - counter
+      - endTime
+      - offer
+      - offerer
+      - orderType
+      - salt
+      - startTime
+      - totalOriginalConsiderationItems
+      - zoneHash
+    OrderData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+      - signature
+    FulfillAvailableOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+          offerFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          considerationFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          fulfillerConduitKey:
+            type: string
+          maximumFulfilled:
+            $ref: '#/components/schemas/Uint256'
+      required:
+      - considerationFulfillments
+      - fulfillerConduitKey
+      - maximumFulfilled
+      - offerFulfillments
+      - orders
+    FulfillOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          order:
+            $ref: '#/components/schemas/Order'
+          fulfillerConduitKey:
+            type: string
+      required:
+      - fulfillerConduitKey
+      - order
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          price:
+            $ref: '#/components/schemas/ListingPrice'
+          type:
+            type: string
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+      - type
+    ConsiderationObject:
+      type: object
+      properties:
+        asset_contract_address:
+          type: string
+        token_id:
+          type: string
+      required:
+      - asset_contract_address
+      - token_id
+  responses:
+    NotFound:
+      description: Resource not found
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

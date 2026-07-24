@@ -1,0 +1,731 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Analytics Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Analytics Endpoints
+  description: Analytics endpoints to retrieve events, stats, and trading data
+paths:
+  /api/v2/events:
+    get:
+      tags:
+      - Analytics Endpoints
+      summary: Get events
+      description: Get a list of events, with optional filtering by event type and time range.
+      operationId: list_events
+      parameters:
+      - name: after
+        in: query
+        description: Only show events after this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: before
+        in: query
+        description: Only show events before this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: event_type
+        in: query
+        description: Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - sale
+            - transfer
+            - mint
+            - listing
+            - offer
+            - trait_offer
+            - collection_offer
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AssetEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/events/collection/{slug}:
+    get:
+      tags:
+      - Analytics Endpoints
+      summary: Get events (by collection)
+      description: Get a list of events for a collection. Optionally filter by traits to only return events for items matching the specified trait criteria.
+      operationId: list_events_by_collection
+      parameters:
+      - name: slug
+        in: path
+        description: Unique identifier for the collection
+        required: true
+        schema:
+          type: string
+        example: doodles-official
+      - name: after
+        in: query
+        description: Only show events after this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: before
+        in: query
+        description: Only show events before this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: event_type
+        in: query
+        description: Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - sale
+            - transfer
+            - mint
+            - listing
+            - offer
+            - trait_offer
+            - collection_offer
+      - name: traits
+        in: query
+        description: 'JSON array of trait filters. Each object has ''traitType'' and ''value'' fields. Multiple traits are AND-combined (items must match all). Example: [{"traitType":"Background","value":"Red"}]'
+        required: false
+        schema:
+          type: string
+        example:
+        - traitType: Background
+          value: Red
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AssetEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/events/chain/{chain}/contract/{address}/nfts/{identifier}:
+    get:
+      tags:
+      - Analytics Endpoints
+      summary: Get events (by NFT)
+      description: Get a list of events for a specific NFT.
+      operationId: list_events_by_nft
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which to filter the results
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The unique public blockchain identifier for the contract
+        required: true
+        schema:
+          type: string
+        example: 0x8ba1f109551bD432803012645Hac136c94C19D6e
+      - name: identifier
+        in: path
+        description: The NFT token id
+        required: true
+        schema:
+          type: string
+        example: 1
+      - name: after
+        in: query
+        description: Only show events after this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: before
+        in: query
+        description: Only show events before this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: event_type
+        in: query
+        description: Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - sale
+            - transfer
+            - mint
+            - listing
+            - offer
+            - trait_offer
+            - collection_offer
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AssetEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/events/accounts/{address}:
+    get:
+      tags:
+      - Analytics Endpoints
+      summary: Get events (by account)
+      description: Get a list of events for an account.
+      operationId: list_events_by_account
+      parameters:
+      - name: address
+        in: path
+        description: The blockchain address of the account
+        required: true
+        schema:
+          type: string
+        example: 0x8ba1f109551bD432803012645Hac136c94C19D6e
+      - name: after
+        in: query
+        description: Only show events after this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: before
+        in: query
+        description: Only show events before this timestamp (Unix timestamp in seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: event_type
+        in: query
+        description: Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - sale
+            - transfer
+            - mint
+            - listing
+            - offer
+            - trait_offer
+            - collection_offer
+      - name: chain
+        in: query
+        description: Filter by blockchain
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: Number of items to return per page
+          example: 20
+          maximum: 200
+          minimum: 1
+        example: 20
+      - name: next.value
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AssetEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/collections/{slug}/stats:
+    get:
+      tags:
+      - Analytics Endpoints
+      summary: Get collection stats
+      description: Get comprehensive statistics for a collection including volume, floor price, and trading metrics.
+      operationId: get_collection_stats
+      parameters:
+      - name: slug
+        in: path
+        description: Unique identifier for the specific collection
+        required: true
+        schema:
+          type: string
+        example: doodles-official
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CollectionStatsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    CollectionStatsResponse:
+      type: object
+      properties:
+        total:
+          $ref: '#/components/schemas/Total'
+        intervals:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalStat'
+      required:
+      - intervals
+      - total
+    Trait:
+      type: object
+      properties:
+        trait_type:
+          type: string
+        display_type:
+          type: string
+        max_value:
+          type: string
+        value: {}
+      required:
+      - trait_type
+      - value
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    AssetEventsResponse:
+      type: object
+      properties:
+        asset_events:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrderEvent'
+            - $ref: '#/components/schemas/SaleEvent'
+            - $ref: '#/components/schemas/TransferEvent'
+        next:
+          type: string
+      required:
+      - asset_events
+    Event: {}
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+    TransferEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          transfer_type:
+            type: string
+          from_address:
+            type: string
+          to_address:
+            type: string
+          nft:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - from_address
+      - quantity
+      - to_address
+      - transfer_type
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
+    OrderEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          order_type:
+            type: string
+          start_date:
+            type: integer
+            format: int64
+          expiration_date:
+            type: integer
+            format: int64
+          asset:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+          maker:
+            type: string
+          taker:
+            type: string
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          is_private_listing:
+            type: boolean
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - is_private_listing
+      - maker
+      - order_type
+      - quantity
+    Nft:
+      type: object
+      properties:
+        identifier:
+          type: string
+        collection:
+          type: string
+        contract:
+          type: string
+        token_standard:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        display_image_url:
+          type: string
+        display_animation_url:
+          type: string
+        metadata_url:
+          type: string
+        opensea_url:
+          type: string
+        updated_at:
+          type: string
+        is_disabled:
+          type: boolean
+        is_nsfw:
+          type: boolean
+        original_image_url:
+          type: string
+        original_animation_url:
+          type: string
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trait'
+      required:
+      - collection
+      - contract
+      - identifier
+      - is_disabled
+      - is_nsfw
+      - opensea_url
+      - token_standard
+      - traits
+      - updated_at
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    IntervalStat:
+      type: object
+      properties:
+        interval:
+          type: string
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+      required:
+      - interval
+      - sales
+      - volume
+    Total:
+      type: object
+      properties:
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+        num_owners:
+          type: integer
+          format: int64
+        floor_price:
+          type: number
+          format: double
+        floor_price_symbol:
+          type: string
+      required:
+      - floor_price
+      - floor_price_symbol
+      - num_owners
+      - sales
+      - volume
+    Payment:
+      type: object
+      properties:
+        quantity:
+          type: string
+        token_address:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        symbol:
+          type: string
+      required:
+      - decimals
+      - quantity
+      - symbol
+      - token_address
+    SaleEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          closing_date:
+            type: integer
+            format: int64
+          seller:
+            type: string
+          buyer:
+            type: string
+          quantity:
+            type: integer
+            format: int64
+          nft:
+            $ref: '#/components/schemas/Nft'
+      required:
+      - buyer
+      - chain
+      - closing_date
+      - event_timestamp
+      - event_type
+      - quantity
+      - seller
+  responses:
+    NotFound:
+      description: Resource not found
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

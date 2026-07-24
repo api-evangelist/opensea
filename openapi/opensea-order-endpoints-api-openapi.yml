@@ -1,0 +1,421 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Order Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Order Endpoints
+  description: Order endpoints for looking up and canceling individual orders
+paths:
+  /api/v2/orders/chain/{chain}/protocol/{protocol_address}/{order_hash}/cancel:
+    post:
+      tags:
+      - Order Endpoints
+      summary: Cancel an order
+      description: Offchain cancel a single order, offer or listing, by its order hash when protected by the SignedZone. Protocol and Chain are required to prevent hash collisions. Please note cancellation is only assured if a fulfillment signature was not vended prior to cancellation.
+      operationId: cancel_order
+      parameters:
+      - name: chain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: protocol_address
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_hash
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelRequest'
+      responses:
+        '200':
+          description: Order cancelled successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CancelResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/orders/chain/{chain}/protocol/{protocol_address}/{order_hash}:
+    get:
+      tags:
+      - Order Endpoints
+      summary: Get an order
+      description: Get a single order by its order hash.
+      operationId: get_order
+      parameters:
+      - name: chain
+        in: path
+        description: Blockchain chain identifier
+        required: true
+        schema:
+          type: string
+      - name: protocol_address
+        in: path
+        description: Protocol contract address
+        required: true
+        schema:
+          type: string
+      - name: order_hash
+        in: path
+        description: Order hash
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order details retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetOrderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    ListingPrice:
+      type: object
+      properties:
+        current:
+          $ref: '#/components/schemas/Price'
+      required:
+      - current
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    Parameters:
+      type: object
+      properties:
+        offerer:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        startTime:
+          type: string
+        endTime:
+          type: string
+        orderType:
+          type: integer
+          format: int32
+        zone:
+          type: string
+        zoneHash:
+          type: string
+        salt:
+          type: string
+        conduitKey:
+          type: string
+        totalOriginalConsiderationItems:
+          type: integer
+          format: int32
+        counter:
+          type: integer
+      required:
+      - conduitKey
+      - consideration
+      - counter
+      - endTime
+      - offer
+      - offerer
+      - orderType
+      - salt
+      - startTime
+      - totalOriginalConsiderationItems
+      - zone
+      - zoneHash
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    ListingOrOffer: {}
+    OrderAsset:
+      type: object
+      properties:
+        identifier:
+          type: string
+        contract:
+          type: string
+      required:
+      - contract
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    Price:
+      type: object
+      properties:
+        currency:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        value:
+          type: string
+      required:
+      - currency
+      - decimals
+      - value
+    Offer:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          price:
+            $ref: '#/components/schemas/Price'
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+    CancelResponse:
+      type: object
+      properties:
+        last_signature_issued_valid_until:
+          type: string
+      required:
+      - last_signature_issued_valid_until
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
+    GetOrderResponse:
+      type: object
+      properties:
+        order:
+          oneOf:
+          - $ref: '#/components/schemas/Listing'
+          - $ref: '#/components/schemas/Offer'
+      required:
+      - order
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    ConsiderationItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+        recipient:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - recipient
+      - startAmount
+      - token
+    ProtocolData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+    CancelRequest:
+      type: object
+      properties:
+        offererSignature:
+          type: string
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          price:
+            $ref: '#/components/schemas/ListingPrice'
+          type:
+            type: string
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+      - type
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Contract Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Contract Endpoints
+  description: Contract endpoints to retrieve contract metadata and payment token details
+paths:
+  /api/v2/chain/{chain}/payment_token/{address}:
+    get:
+      tags:
+      - Contract Endpoints
+      summary: Get payment token
+      description: Get a payment token by chain and contract address.
+      operationId: get_payment_token
+      parameters:
+      - name: address
+        in: path
+        description: The unique public blockchain identifier for the contract
+        required: true
+        schema:
+          type: string
+      - name: chain
+        in: path
+        description: The blockchain on which to filter the results
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaymentToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/contract/{address}:
+    get:
+      tags:
+      - Contract Endpoints
+      summary: Get contract
+      description: Get contract metadata including collection information, contract standards, and ownership details.
+      operationId: get_contract
+      parameters:
+      - name: address
+        in: path
+        description: The unique public blockchain identifier for the contract
+        required: true
+        schema:
+          type: string
+      - name: chain
+        in: path
+        description: The blockchain on which to filter the results
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContractResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    NotFound:
+      description: Resource not found
+    BadRequest:
+      description: For error reasons, review the response data.
+  schemas:
+    PaymentToken:
+      type: object
+      properties:
+        symbol:
+          type: string
+        address:
+          type: string
+        chain:
+          type: string
+        image:
+          type: string
+        name:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        eth_price:
+          type: string
+        usd_price:
+          type: string
+      required:
+      - address
+      - chain
+      - decimals
+      - eth_price
+      - image
+      - name
+      - symbol
+      - usd_price
+    ContractResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        chain:
+          type: string
+        collection:
+          type: string
+        contract_standard:
+          type: string
+        name:
+          type: string
+      required:
+      - address
+      - chain
+      - collection
+      - contract_standard
+      - name
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

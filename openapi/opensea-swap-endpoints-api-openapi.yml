@@ -1,0 +1,365 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Swap Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Swap Endpoints
+  description: Swap endpoints for getting token swap quotes with executable transaction data
+paths:
+  /api/v2/swap/execute:
+    post:
+      tags:
+      - Swap Endpoints
+      summary: Execute a token swap
+      description: Get executable transactions for token-to-token swaps. Supports same-chain and cross-chain swaps with multiple from/to assets.
+      operationId: post_swap_execute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwapExecuteRequest'
+        required: true
+      responses:
+        '200':
+          description: Swap execution data retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SwapExecuteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/swap/quote:
+    get:
+      tags:
+      - Swap Endpoints
+      summary: Get swap quote
+      description: Get a quote for swapping tokens, including price details and executable transaction data.
+      operationId: get_swap_quote
+      parameters:
+      - name: from_chain
+        in: query
+        description: Chain of the token to swap from
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: from_address
+        in: query
+        description: Contract address of the token to swap from
+        required: true
+        schema:
+          type: string
+        example: '0x0000000000000000000000000000000000000000'
+      - name: to_chain
+        in: query
+        description: Chain of the token to swap to
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: to_address
+        in: query
+        description: Contract address of the token to swap to
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: quantity
+        in: query
+        description: Amount to swap in the smallest unit of the token (e.g. wei for ETH)
+        required: true
+        schema:
+          type: string
+        example: 1000000000000000000
+      - name: address
+        in: query
+        description: Wallet address executing the swap
+        required: true
+        schema:
+          type: string
+        example: '0x1234567890abcdef1234567890abcdef12345678'
+      - name: slippage
+        in: query
+        description: 'Slippage tolerance (0.0 to 0.5, default: 0.01)'
+        required: false
+        schema:
+          type: number
+          format: double
+          default: 0.01
+        example: 0.01
+      - name: recipient
+        in: query
+        description: Recipient address (defaults to sender address)
+        required: false
+        schema:
+          type: string
+        example: '0x1234567890abcdef1234567890abcdef12345678'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SwapQuoteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    SwapExecuteResponse:
+      type: object
+      description: Response containing quote details and executable swap transactions
+      properties:
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Ordered list of transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
+      required:
+      - quote
+      - transactions
+    SwapAssetInput:
+      type: object
+      description: An asset to swap with chain, contract address, and amount
+      properties:
+        chain:
+          type: string
+          description: Chain slug (e.g. ethereum, base, solana)
+          example: ethereum
+        contract:
+          type: string
+          description: Contract address of the token
+          example: '0x0000000000000000000000000000000000000000'
+        amount:
+          type: string
+          description: Amount in the smallest unit of the token (e.g. wei for ETH). Use "0" for to_assets to receive the market rate.
+          example: 1000000000000000000
+      required:
+      - amount
+      - chain
+      - contract
+    SwapRouteErrorResponse:
+      type: object
+      description: An error encountered for a specific swap route
+      properties:
+        type:
+          type: string
+          description: The error type
+          example: INSUFFICIENT_FUNDS
+      required:
+      - type
+    SwapQuoteResponse:
+      type: object
+      description: Swap quote with price details and executable transactions
+      properties:
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
+      required:
+      - quote
+      - transactions
+    SwapCostResponse:
+      type: object
+      description: A cost component of the swap
+      properties:
+        type:
+          type: string
+          description: The type of cost
+          enum:
+          - GAS
+          - PROVIDER
+          - PROTOCOL
+          - SWAP
+          - MARKETPLACE
+          - CREATOR
+          - MEV_PROTECTION
+          example: GAS
+        usd:
+          type: string
+          description: Cost amount in USD
+          example: 0.5
+      required:
+      - type
+      - usd
+    SwapExecuteRequest:
+      type: object
+      description: Request body for executing a token swap
+      properties:
+        from_assets:
+          type: array
+          description: Tokens to swap from (at least one required)
+          items:
+            $ref: '#/components/schemas/SwapAssetInput'
+        to_assets:
+          type: array
+          description: Tokens to swap to (at least one required)
+          items:
+            $ref: '#/components/schemas/SwapAssetInput'
+        address:
+          type: string
+          description: Wallet address executing the swap
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        recipient:
+          type: string
+          description: Recipient address (defaults to sender address)
+        slippage_tolerance:
+          type: number
+          format: double
+          description: 'Slippage tolerance as a decimal (0.0 to 0.5, default: 0.01)'
+          example: 0.01
+      required:
+      - address
+      - from_assets
+      - to_assets
+    SwapQuoteDetails:
+      type: object
+      description: Price and fee details for a swap quote
+      properties:
+        total_price_usd:
+          type: number
+          format: double
+          description: Total value of tokens received in USD
+          example: 1850.5
+        total_cost_usd:
+          type: number
+          format: double
+          description: Total cost of tokens sent in USD
+          example: 1869
+        slippage_tolerance:
+          type: number
+          format: double
+          description: Slippage tolerance as a decimal (e.g. 0.01 = 1%)
+          example: 0.01
+        estimated_duration_ms:
+          type: integer
+          format: int64
+          description: Estimated swap duration in milliseconds
+          example: 30000
+        marketplace_fee_bps:
+          type: integer
+          format: int32
+          description: Marketplace fee in basis points
+          example: 50
+        price_impact:
+          $ref: '#/components/schemas/SwapPriceImpact'
+          description: Price impact of the swap (null if unavailable)
+        swap_provider:
+          type: string
+          description: The swap provider that fulfilled this quote (null if unavailable)
+          example: RELAY
+        recommended_slippage:
+          type: number
+          format: double
+          description: Recommended slippage tolerance based on volatility analysis (null if unavailable)
+          example: 2
+        costs:
+          type: array
+          description: Breakdown of costs for the swap
+          items:
+            $ref: '#/components/schemas/SwapCostResponse'
+        route_errors:
+          type: array
+          description: Errors encountered for individual swap routes
+          items:
+            $ref: '#/components/schemas/SwapRouteErrorResponse'
+      required:
+      - costs
+      - estimated_duration_ms
+      - marketplace_fee_bps
+      - route_errors
+      - slippage_tolerance
+      - total_cost_usd
+      - total_price_usd
+    SwapPriceImpact:
+      type: object
+      description: Price impact of the swap
+      properties:
+        usd:
+          type: string
+          description: Price impact in USD (negative means user loses value)
+          example: -1.5
+        percent:
+          type: string
+          description: Price impact as a percentage (negative means user loses value)
+          example: -0.08
+      required:
+      - percent
+      - usd
+    SwapTransactionResponse:
+      type: object
+      description: A transaction to be submitted onchain to execute a swap
+      properties:
+        chain:
+          type: string
+          description: The blockchain for this transaction
+          example: ethereum
+        to:
+          type: string
+          description: The destination address for the transaction
+        data:
+          type: string
+          description: 'The transaction data. For EVM chains: hex-encoded calldata. For SVM chains: comma-separated instructions in programId:data format.'
+        value:
+          type: string
+          description: The native token value to send with the transaction
+      required:
+      - chain
+      - data
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

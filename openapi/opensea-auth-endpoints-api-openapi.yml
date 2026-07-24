@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Auth Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Auth Endpoints
+paths:
+  /api/v2/auth/keys:
+    post:
+      tags:
+      - Auth Endpoints
+      summary: Create an instant API key
+      description: Creates a free-tier API key instantly without authentication. The key can be used immediately for all API endpoints. Rate limited to 2 keys per hour per IP. Keys expire after 30 days.
+      operationId: create_instant_api_key
+      responses:
+        '201':
+          description: API key created successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/InstantApiKeyResponse'
+        '429':
+          description: Key creation rate limit exceeded
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/V1ErrorWrapper'
+        '500':
+          description: Internal server error (e.g. database failure)
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/V1ErrorWrapper'
+        '503':
+          description: Feature is currently disabled or temporarily unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/V1ErrorWrapper'
+components:
+  schemas:
+    V1ErrorWrapper:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+    RateLimitsResponse:
+      type: object
+      description: Rate limits for the API key
+      properties:
+        read:
+          type: string
+          description: Read rate limit
+          example: 60/m
+        write:
+          type: string
+          description: Write rate limit
+          example: 5/m
+        fulfillment:
+          type: string
+          description: Fulfillment rate limit
+          example: 5/m
+      required:
+      - fulfillment
+      - read
+      - write
+    InstantApiKeyResponse:
+      type: object
+      description: Instant API key response
+      properties:
+        api_key:
+          type: string
+          description: The API key to use in X-API-KEY header
+        name:
+          type: string
+          description: Key name for identification and revocation
+        expires_at:
+          type: string
+          format: date-time
+          description: ISO-8601 timestamp when the key expires
+        rate_limits:
+          $ref: '#/components/schemas/RateLimitsResponse'
+          description: Rate limits for this key
+        upgrade_url:
+          type: string
+          description: URL to upgrade to higher rate limits
+      required:
+      - api_key
+      - expires_at
+      - name
+      - rate_limits
+      - upgrade_url
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

@@ -1,0 +1,1408 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Token Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Token Endpoints
+  description: Token endpoints for getting token details, balances, and trending data
+paths:
+  /api/v2/tokens/batch:
+    post:
+      tags:
+      - Token Endpoints
+      summary: Get tokens by contract identifiers
+      description: Retrieve multiple tokens in a single request by providing a list of contract identifiers (chain and address). Not-found tokens are silently omitted from the response.
+      operationId: get_tokens_batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchTokensRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenBatchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/tokens/trending:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get trending tokens
+      description: Get trending tokens based on OpenSea's trending score algorithm. Returns tokens with high momentum including memecoins and newly popular assets.
+      operationId: get_trending_tokens
+      parameters:
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      - name: chains
+        in: query
+        description: Filter by blockchain(s)
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainIdentifier'
+        example: ethereum
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/tokens/top:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get top tokens
+      description: Get top tokens ranked by 24-hour trading volume. Returns established tokens with high market activity.
+      operationId: get_top_tokens
+      parameters:
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      - name: chains
+        in: query
+        description: Filter by blockchain(s)
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainIdentifier'
+        example: ethereum
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/token-groups:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token groups
+      description: Get a paginated list of token groups sorted by market cap descending. Token groups represent equivalent currencies across different blockchains (e.g., ETH on Ethereum, Base, and Arbitrum are all in the "eth" token group).
+      operationId: get_token_groups
+      parameters:
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 50, max: 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+        example: 50
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenGroupPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/token-groups/{slug}:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get a token group by slug
+      description: Get detailed information about a specific token group by its slug identifier.
+      operationId: get_token_group
+      parameters:
+      - name: slug
+        in: path
+        description: The slug identifier of the token group
+        required: true
+        schema:
+          type: string
+        example: eth
+      responses:
+        '200':
+          description: Successful response
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenGroupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token details
+      description: Get detailed information about a specific token by chain and contract address.
+      operationId: get_token
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenDetailedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}/price_history:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token price history
+      description: Get historical price data for a specific token.
+      operationId: get_token_price_history
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: start_time
+        in: query
+        description: Start time for the price history window (ISO 8601)
+        required: true
+        schema:
+          type: string
+          format: date-time
+        example: '2024-01-01T00:00:00Z'
+      - name: end_time
+        in: query
+        description: End time for the price history window (ISO 8601, defaults to now)
+        required: false
+        schema:
+          type: string
+          format: date-time
+        example: '2024-01-02T00:00:00Z'
+      - name: bucket_size
+        in: query
+        description: Candle bucket size for aggregation (1s, 1m, 5m, 15m, 1h, 4h, 1d)
+        required: false
+        schema:
+          type: string
+        example: 1h
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PriceHistoryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}/ohlcv:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token OHLCV candles
+      description: Get OHLCV (Open, High, Low, Close, Volume) candlestick data for a specific token.
+      operationId: get_token_ohlcv
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: start_time
+        in: query
+        description: Start time for the OHLCV window (ISO 8601)
+        required: true
+        schema:
+          type: string
+          format: date-time
+        example: '2024-01-01T00:00:00Z'
+      - name: end_time
+        in: query
+        description: End time for the OHLCV window (ISO 8601, defaults to now)
+        required: false
+        schema:
+          type: string
+          format: date-time
+        example: '2024-01-02T00:00:00Z'
+      - name: bucket_size
+        in: query
+        description: Candle bucket size (1s, 1m, 5m, 15m, 1h, 4h, 1d)
+        required: true
+        schema:
+          type: string
+        example: 1h
+      - name: fill_time_window
+        in: query
+        description: Whether to fill empty time windows with zero-volume candles
+        required: false
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OhlcvResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}/liquidity-pools:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token liquidity pools
+      description: Get liquidity pools for a specific token.
+      operationId: get_token_liquidity_pools
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 50)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenLiquidityPoolsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}/holders:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token holders
+      description: Get paginated list of holders for a specific token, including quantity held and USD value.
+      operationId: get_token_holders
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenHoldersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/chain/{chain}/token/{address}/activity:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token swap activity
+      description: Get paginated swap activity for a specific token on a given chain.
+      operationId: get_token_activity
+      parameters:
+      - name: chain
+        in: path
+        description: The blockchain on which the token exists
+        required: true
+        schema:
+          type: string
+        example: ethereum
+      - name: address
+        in: path
+        description: The contract address of the token
+        required: true
+        schema:
+          type: string
+        example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 50)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenSwapActivityPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /api/v2/account/{address}/tokens:
+    get:
+      tags:
+      - Token Endpoints
+      summary: Get token balances by account
+      description: Get fungible token balances for a specific wallet address. Returns quantity (in display units, not raw/wei), USD value, and token metadata for each token held.
+      operationId: get_token_balances_by_account
+      parameters:
+      - name: address
+        in: path
+        description: Wallet address
+        required: true
+        schema:
+          type: string
+        example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+        example: 20
+      - name: chains
+        in: query
+        description: Filter by blockchain(s)
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainIdentifier'
+        example: ethereum
+      - name: sort_by
+        in: query
+        description: 'Sort field (default: usd_value)'
+        required: false
+        schema:
+          type: string
+          enum:
+          - USD_VALUE
+          - MARKET_CAP
+          - ONE_DAY_VOLUME
+          - PRICE
+          - ONE_DAY_PRICE_CHANGE
+          - SEVEN_DAY_PRICE_CHANGE
+        example: usd_value
+      - name: sort_direction
+        in: query
+        description: 'Sort direction (default: desc)'
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        example: desc
+      - name: disable_spam_filtering
+        in: query
+        description: When true, disables OpenSea's heuristic spam filtering and returns tokens that would normally be hidden (low liquidity, dust, flagged-as-spam, etc.). Tokens flagged for trust & safety enforcement or as malicious are still filtered out regardless. Surfaced tokens carry a `status` field on the response indicating why they would have been filtered.
+        required: false
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - name: cursor
+        in: query
+        description: Pagination cursor for next page
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TokenBalancePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    BatchTokensRequest:
+      type: object
+      description: Request body for batch token retrieval by contract identifiers
+      properties:
+        contracts:
+          type: array
+          description: List of token contract identifiers to retrieve
+          items:
+            $ref: '#/components/schemas/TokenContractInput'
+      required:
+      - contracts
+    TokenSwapActivityPaginatedResponse:
+      type: object
+      description: Paginated list of token swap activity events
+      properties:
+        swap_events:
+          type: array
+          description: List of swap activity events
+          items:
+            $ref: '#/components/schemas/TokenSwapActivityResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - swap_events
+    TokenBalancePaginatedResponse:
+      type: object
+      description: Paginated list of token balances
+      properties:
+        token_balances:
+          type: array
+          description: List of token balances
+          items:
+            $ref: '#/components/schemas/TokenBalanceResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - token_balances
+    TokenLiquidityPoolResponse:
+      type: object
+      description: A liquidity pool for a token
+      properties:
+        pool_type:
+          type: string
+          description: Pool protocol type (e.g. UNISWAP_V2, UNISWAP_V3)
+        pool_identifier:
+          type: string
+          description: Unique identifier for the pool
+        pool_address:
+          type: string
+          description: On-chain address of the pool contract
+        base_token:
+          type: string
+          description: Base token contract identifier (chain/address)
+        quote_token:
+          type: string
+          description: Quote token contract identifier (chain/address)
+        base_reserve_usd:
+          type: number
+          description: USD value of base token reserves
+        quote_reserve_usd:
+          type: number
+          description: USD value of quote token reserves
+        total_reserve_usd:
+          type: number
+          description: Total USD value of reserves in the pool
+        bonding_curve_progress:
+          type: number
+          format: float
+          description: Bonding curve progress percentage (0-100)
+        is_graduated:
+          type: boolean
+          description: Whether the token has graduated from its bonding curve
+      required:
+      - base_token
+      - pool_identifier
+      - pool_type
+      - quote_token
+    TokenHoldersResponse:
+      type: object
+      description: Paginated list of token holders
+      properties:
+        holders:
+          type: array
+          description: List of token holders
+          items:
+            $ref: '#/components/schemas/TokenHolderResponse'
+        total_count:
+          type: integer
+          format: int32
+          description: Total number of holders
+        distribution:
+          $ref: '#/components/schemas/TokenHolderDistributionResponse'
+          description: Holder distribution health metrics
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - holders
+    TokenSocialsResponse:
+      type: object
+      description: Social media links for a token
+      properties:
+        website:
+          type: string
+          description: The token's website URL
+        twitter_handle:
+          type: string
+          description: The token's Twitter/X handle
+        telegram_identifier:
+          type: string
+          description: The token's Telegram identifier
+        twitter_follower_count:
+          type: integer
+          format: int64
+          description: Twitter/X follower count
+    TokenAmountResponse:
+      type: object
+      description: Token amount with contract and value information
+      properties:
+        address:
+          type: string
+          description: Contract address of the token
+        chain:
+          type: string
+          description: Blockchain the token is on
+        amount_token:
+          type: number
+          format: double
+          description: Amount in token units
+        amount_usd:
+          type: string
+          description: Amount in USD
+        amount_native:
+          type: number
+          format: double
+          description: Amount in chain-native units
+      required:
+      - address
+      - amount_native
+      - amount_token
+      - amount_usd
+      - chain
+    TokenGroupCurrencyResponse:
+      type: object
+      description: A currency within a token group
+      properties:
+        address:
+          type: string
+          description: The contract address of the currency
+          example: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+        chain:
+          type: string
+          description: The blockchain the currency is on
+          example: ethereum
+        name:
+          type: string
+          description: The display name of the currency
+          example: Wrapped Ether
+        symbol:
+          type: string
+          description: The ticker symbol of the currency
+          example: WETH
+        image_url:
+          type: string
+          description: URL of the currency's image
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimal places
+          example: 18
+        usd_price:
+          type: string
+          description: Current price in USD
+          example: 2345.67
+      required:
+      - address
+      - chain
+      - decimals
+      - name
+      - symbol
+      - usd_price
+    PriceHistoryResponse:
+      type: object
+      description: List of price history data points
+      properties:
+        prices:
+          type: array
+          description: List of price history points
+          items:
+            $ref: '#/components/schemas/PriceHistoryPointResponse'
+      required:
+      - prices
+    TokenLiquidityPoolsResponse:
+      type: object
+      description: Paginated list of liquidity pools for a token
+      properties:
+        pools:
+          type: array
+          description: List of liquidity pools
+          items:
+            $ref: '#/components/schemas/TokenLiquidityPoolResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - pools
+    TokenPaginatedResponse:
+      type: object
+      description: Paginated list of tokens
+      properties:
+        tokens:
+          type: array
+          description: List of tokens
+          items:
+            $ref: '#/components/schemas/TokenResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - tokens
+    TokenResponse:
+      type: object
+      description: A token with summary market data
+      properties:
+        address:
+          type: string
+          description: The contract address of the token
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        chain:
+          type: string
+          description: The blockchain the token is on
+          example: ethereum
+        name:
+          type: string
+          description: The display name of the token
+          example: USD Coin
+        symbol:
+          type: string
+          description: The ticker symbol of the token
+          example: USDC
+        image_url:
+          type: string
+          description: URL of the token's image
+        usd_price:
+          type: string
+          description: Current price in USD
+          example: 1
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimal places
+          example: 6
+        opensea_url:
+          type: string
+          description: URL to the token page on OpenSea
+        market_cap_usd:
+          type: number
+          format: double
+          description: Market capitalization in USD
+        volume_24h:
+          type: number
+          format: double
+          description: 24-hour trading volume in USD
+        price_change_24h:
+          type: number
+          format: double
+          description: Price change percentage over the last 24 hours
+      required:
+      - address
+      - chain
+      - decimals
+      - name
+      - opensea_url
+      - symbol
+      - usd_price
+    TokenGroupSocialsResponse:
+      type: object
+      description: Social media links for a token group
+      properties:
+        website:
+          type: string
+          description: The token group's website URL
+        twitter:
+          type: string
+          description: The token group's Twitter/X handle
+        discord:
+          type: string
+          description: The token group's Discord invite URL
+        telegram:
+          type: string
+          description: The token group's Telegram identifier
+        coinmarketcap:
+          type: string
+          description: CoinMarketCap listing URL
+        coingecko:
+          type: string
+          description: CoinGecko listing URL
+    TokenContractInput:
+      type: object
+      description: A token contract identifier consisting of chain and address
+      properties:
+        chain:
+          type: string
+          description: The blockchain the token is on
+          example: ethereum
+        address:
+          type: string
+          description: The contract address of the token
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+      required:
+      - address
+      - chain
+    ChainIdentifier:
+      type: string
+      default: ethereum
+      description: Blockchain chain identifier. Use the chain slug (e.g., 'ethereum', 'polygon', 'arbitrum', 'optimism', 'base')
+      enum:
+      - blast
+      - base
+      - ethereum
+      - zora
+      - arbitrum
+      - sei
+      - avalanche
+      - polygon
+      - optimism
+      - ape_chain
+      - flow
+      - b3
+      - soneium
+      - ronin
+      - bera_chain
+      - solana
+      - shape
+      - unichain
+      - gunzilla
+      - abstract
+      - animechain
+      - hyperevm
+      - somnia
+      - monad
+      - hyperliquid
+      - megaeth
+      - ink
+      example: ethereum
+    OhlcvCandleResponse:
+      type: object
+      description: An OHLCV candle data point
+      properties:
+        time:
+          type: string
+          format: date-time
+          description: Candle timestamp
+        open:
+          type: number
+          description: Opening price in USD
+        high:
+          type: number
+          description: Highest price in USD
+        low:
+          type: number
+          description: Lowest price in USD
+        close:
+          type: number
+          description: Closing price in USD
+        volume:
+          type: number
+          description: Trading volume in USD
+      required:
+      - close
+      - high
+      - low
+      - open
+      - time
+      - volume
+    TokenBalanceResponse:
+      type: object
+      description: Token balance for a wallet address
+      properties:
+        address:
+          type: string
+          description: The contract address of the token
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        chain:
+          type: string
+          description: The blockchain the token is on
+          example: ethereum
+        name:
+          type: string
+          description: The display name of the token
+          example: USD Coin
+        symbol:
+          type: string
+          description: The ticker symbol of the token
+          example: USDC
+        image_url:
+          type: string
+          description: URL of the token's image
+        usd_price:
+          type: string
+          description: Current price in USD
+          example: 1
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimal places
+          example: 6
+        opensea_url:
+          type: string
+          description: URL to the token page on OpenSea
+        quantity:
+          type: string
+          description: Token balance in display units (divided by 10^decimals), not raw/wei
+          example: 1.5
+        usd_value:
+          type: string
+          description: Total USD value of the balance (quantity * usd_price)
+          example: 3518.51835185
+        status:
+          type: string
+          default: OK
+          description: 'Token status relative to OpenSea''s spam-classification rules. `OK` for tokens that pass all spam filters (the normal case); populated with a more specific value for tokens surfaced via `disable_spam_filtering=true` that would normally be hidden. Categories are intentionally broad and may evolve. Possible values, in decreasing severity: `WARNING` (flagged as risky/suspicious — caution advised), `SPAM` (flagged as spam), `LOW_LIQUIDITY` (insufficient pool liquidity), `LOW_VALUE` (dust holding < $0.01), `OK` (passes all filters).'
+          enum:
+          - OK
+          - WARNING
+          - SPAM
+          - LOW_LIQUIDITY
+          - LOW_VALUE
+        base_token_liquidity_usd:
+          type: string
+          description: USD value of base token reserves in the top liquidity pool paired with a curated quote token
+          example: 125000.5
+        quote_token_liquidity_usd:
+          type: string
+          description: USD value of quote token reserves in the top liquidity pool paired with a curated quote token
+          example: 125000.5
+      required:
+      - address
+      - chain
+      - decimals
+      - name
+      - opensea_url
+      - quantity
+      - symbol
+      - usd_price
+      - usd_value
+    PriceHistoryPointResponse:
+      type: object
+      description: A price history data point
+      properties:
+        time:
+          type: string
+          format: date-time
+          description: Timestamp of the price point
+        usd_price:
+          type: string
+          description: Price in USD
+          example: 1
+      required:
+      - time
+      - usd_price
+    TokenSwapActivityResponse:
+      type: object
+      description: A token swap activity event
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the swap event
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the swap
+        sender_address:
+          type: string
+          description: Address of the sender
+        from_token:
+          $ref: '#/components/schemas/TokenAmountResponse'
+          description: Token sold in the swap
+        to_token:
+          $ref: '#/components/schemas/TokenAmountResponse'
+          description: Token bought in the swap
+        transaction_hash:
+          type: string
+          description: Transaction hash
+        user_op_hash:
+          type: string
+          description: User operation hash (for account abstraction)
+        swap_protocol:
+          type: string
+          description: Swap protocol used
+        chain:
+          type: string
+          description: Blockchain the swap occurred on
+      required:
+      - chain
+      - from_token
+      - id
+      - sender_address
+      - timestamp
+      - to_token
+      - transaction_hash
+    TokenStatsResponse:
+      type: object
+      description: Market statistics for a token
+      properties:
+        market_cap_usd:
+          type: number
+          format: double
+          description: Market capitalization in USD
+        fdv_usd:
+          type: number
+          format: double
+          description: Fully diluted valuation in USD
+        circulating_supply:
+          type: number
+          format: double
+          description: Circulating supply of the token
+        max_supply:
+          type: number
+          format: double
+          description: Maximum supply of the token
+        total_supply:
+          type: number
+          format: double
+          description: Total supply of the token
+        volume_24h:
+          type: number
+          format: double
+          description: 24-hour trading volume in USD
+        price_change_1h:
+          type: number
+          format: double
+          description: Price change percentage over the last hour
+        price_change_24h:
+          type: number
+          format: double
+          description: Price change percentage over the last 24 hours
+        price_change_7d:
+          type: number
+          format: double
+          description: Price change percentage over the last 7 days
+        price_change_30d:
+          type: number
+          format: double
+          description: Price change percentage over the last 30 days
+    TokenGroupStatsResponse:
+      type: object
+      description: Market statistics for a token group
+      properties:
+        market_cap_usd:
+          type: string
+          description: Total market capitalization in USD
+        volume_usd_24h:
+          type: string
+          description: 24-hour trading volume in USD
+        price_usd:
+          type: string
+          description: Current price in USD (from primary currency)
+        price_change_percent_24h:
+          type: number
+          format: double
+          description: Price change percentage over the last 24 hours
+        total_supply:
+          type: string
+          description: Total supply across all currencies in the group
+        holders:
+          type: integer
+          format: int32
+          description: Number of holders
+        rolling_stats:
+          $ref: '#/components/schemas/TokenGroupRollingStatsResponse'
+          description: Rolling statistics over multiple time periods
+      required:
+      - market_cap_usd
+      - volume_usd_24h
+    TokenGroupResponse:
+      type: object
+      description: A token group representing equivalent currencies across different blockchains
+      properties:
+        slug:
+          type: string
+          description: Unique slug identifier for the token group
+          example: eth
+        display_name:
+          type: string
+          description: Display name of the token group
+          example: Ethereum
+        symbol:
+          type: string
+          description: Ticker symbol of the token group
+          example: ETH
+        description:
+          type: string
+          description: Description of the token group
+        image_url:
+          type: string
+          description: URL of the token group's image
+        opensea_url:
+          type: string
+          description: URL to the token group page on OpenSea
+        currencies:
+          type: array
+          description: Currencies in this token group
+          items:
+            $ref: '#/components/schemas/TokenGroupCurrencyResponse'
+        primary_currency:
+          $ref: '#/components/schemas/TokenGroupCurrencyResponse'
+          description: The primary currency for this token group
+        stats:
+          $ref: '#/components/schemas/TokenGroupStatsResponse'
+          description: Market statistics for the token group
+        socials:
+          $ref: '#/components/schemas/TokenGroupSocialsResponse'
+          description: Social media links for the token group
+        created_at:
+          type: string
+          description: ISO 8601 timestamp when the token group was created
+        updated_at:
+          type: string
+          description: ISO 8601 timestamp when the token group was last updated
+      required:
+      - created_at
+      - currencies
+      - display_name
+      - opensea_url
+      - primary_currency
+      - slug
+      - updated_at
+    TokenGroupPaginatedResponse:
+      type: object
+      description: Paginated list of token groups
+      properties:
+        token_groups:
+          type: array
+          description: List of token groups
+          items:
+            $ref: '#/components/schemas/TokenGroupResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - token_groups
+    TokenDetailedResponse:
+      type: object
+      description: Detailed token information including stats and social links
+      properties:
+        address:
+          type: string
+          description: The contract address of the token
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        chain:
+          type: string
+          description: The blockchain the token is on
+          example: ethereum
+        name:
+          type: string
+          description: The display name of the token
+          example: USD Coin
+        symbol:
+          type: string
+          description: The ticker symbol of the token
+          example: USDC
+        image_url:
+          type: string
+          description: URL of the token's image
+        usd_price:
+          type: string
+          description: Current price in USD
+          example: 1
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimal places
+          example: 6
+        opensea_url:
+          type: string
+          description: URL to the token page on OpenSea
+        description:
+          type: string
+          description: A description of the token
+        stats:
+          $ref: '#/components/schemas/TokenStatsResponse'
+          description: Market statistics for the token
+        socials:
+          $ref: '#/components/schemas/TokenSocialsResponse'
+          description: Social media links for the token
+        status:
+          type: string
+          default: OK
+          description: 'Token safety status based on OpenSea''s spam-classification rules. `OK` for tokens that pass all safety checks (the normal case). Categories are intentionally broad and may evolve. Possible values, in decreasing severity: `WARNING` (flagged as risky/suspicious — caution advised), `SPAM` (flagged as spam), `LOW_LIQUIDITY` (insufficient liquidity pool reserves), `OK` (passes all checks).'
+          enum:
+          - OK
+          - WARNING
+          - SPAM
+          - LOW_LIQUIDITY
+      required:
+      - address
+      - chain
+      - decimals
+      - name
+      - opensea_url
+      - symbol
+      - usd_price
+    TokenHolderResponse:
+      type: object
+      description: A holder of a token
+      properties:
+        quantity:
+          type: number
+          description: Token quantity in display units
+        percentage_held:
+          type: number
+          format: float
+          description: Percentage of total supply held by this address
+        usd_value:
+          type: number
+          description: USD value of the holding
+        owner_address:
+          type: string
+          description: Wallet address of the holder
+        owner_display_name:
+          type: string
+          description: Display name of the holder
+      required:
+      - owner_address
+      - quantity
+    TokenBatchResponse:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenDetailedResponse'
+      required:
+      - tokens
+    OhlcvResponse:
+      type: object
+      description: List of OHLCV candle data points
+      properties:
+        candles:
+          type: array
+          description: List of OHLCV candles
+          items:
+            $ref: '#/components/schemas/OhlcvCandleResponse'
+      required:
+      - candles
+    TokenGroupRollingStatsResponse:
+      type: object
+      description: Rolling statistics for a token group over multiple time periods
+      properties:
+        volume_1d:
+          type: string
+          description: 1-day trading volume in USD
+        volume_7d:
+          type: string
+          description: 7-day trading volume in USD
+        volume_30d:
+          type: string
+          description: 30-day trading volume in USD
+        price_change_1d:
+          type: number
+          format: double
+          description: 1-day price change percentage
+        price_change_7d:
+          type: number
+          format: double
+          description: 7-day price change percentage
+        price_change_30d:
+          type: number
+          format: double
+          description: 30-day price change percentage
+    TokenHolderDistributionResponse:
+      type: object
+      description: Holder distribution health metrics for a token
+      properties:
+        total_holders:
+          type: integer
+          format: int32
+          description: Total number of holders with a non-zero balance
+        top_one_percent_concentration:
+          type: number
+          format: float
+          description: Percentage of total supply held by the top 1% of holders (0-100)
+        health_score:
+          type: integer
+          format: int32
+          description: Health score from 0-100 (higher = more distributed)
+        health_label:
+          type: string
+          description: Human-readable label for the health score
+          enum:
+          - STRONG
+          - HEALTHY
+          - CONCERNING
+          - BAD
+      required:
+      - health_label
+      - health_score
+      - top_one_percent_concentration
+      - total_holders
+  responses:
+    NotFound:
+      description: Resource not found
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints

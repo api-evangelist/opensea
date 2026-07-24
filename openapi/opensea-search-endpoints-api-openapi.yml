@@ -1,0 +1,294 @@
+openapi: 3.1.0
+info:
+  title: OpenSea Account Endpoints Search Endpoints API
+  description: The API for OpenSea
+  contact:
+    name: OpenSea
+    url: https://www.opensea.io
+    email: contact@opensea.io
+  version: 2.0.0
+servers:
+- url: https://api.opensea.io
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Search Endpoints
+  description: Search endpoints for discovering collections, tokens, NFTs, and accounts
+paths:
+  /api/v2/search:
+    get:
+      tags:
+      - Search Endpoints
+      summary: Search across OpenSea
+      description: Search across collections, tokens, NFTs, and accounts. Results are ranked by relevance.
+      operationId: search
+      parameters:
+      - name: query
+        in: query
+        description: Search query text
+        required: true
+        schema:
+          type: string
+        example: bored ape
+      - name: chains
+        in: query
+        description: Filter by blockchain(s)
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainIdentifier'
+      - name: asset_types
+        in: query
+        description: 'Filter by asset type(s). Valid values: collection, nft, token, account. Defaults to [collection, token] if not specified.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: limit
+        in: query
+        description: 'Number of results to return (default: 20, max: 50)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
+  schemas:
+    CollectionSearchResponse:
+      type: object
+      description: Collection search result
+      properties:
+        collection:
+          type: string
+          description: The collection slug
+          example: bored-ape-yacht-club
+        name:
+          type: string
+          description: The collection name
+          example: Bored Ape Yacht Club
+        image_url:
+          type: string
+          description: URL of the collection image
+        is_disabled:
+          type: boolean
+          description: Whether trading is disabled for this collection
+        is_nsfw:
+          type: boolean
+          description: Whether this collection is marked as NSFW
+        opensea_url:
+          type: string
+          description: URL to the collection on OpenSea
+      required:
+      - collection
+      - is_disabled
+      - is_nsfw
+      - name
+      - opensea_url
+    SearchResponse:
+      type: object
+      description: Search results response
+      properties:
+        results:
+          type: array
+          description: List of search results ranked by relevance
+          items:
+            $ref: '#/components/schemas/SearchResultResponse'
+      required:
+      - results
+    SearchResultResponse:
+      type: object
+      description: A single search result with a type discriminator and the corresponding typed object
+      properties:
+        type:
+          type: string
+          description: The type of search result
+          example: collection
+        collection:
+          $ref: '#/components/schemas/CollectionSearchResponse'
+          description: Collection details, present when type is 'collection'
+        token:
+          $ref: '#/components/schemas/TokenSearchResponse'
+          description: Token details, present when type is 'token'
+        nft:
+          $ref: '#/components/schemas/NftSearchResponse'
+          description: NFT details, present when type is 'nft'
+        account:
+          $ref: '#/components/schemas/AccountSearchResponse'
+          description: Account details, present when type is 'account'
+      required:
+      - type
+    NftSearchResponse:
+      type: object
+      description: NFT search result
+      properties:
+        identifier:
+          type: string
+          description: Token ID of the NFT
+          example: 1234
+        collection:
+          type: string
+          description: Collection slug the NFT belongs to
+          example: bored-ape-yacht-club
+        contract:
+          type: string
+          description: Contract address of the NFT
+        name:
+          type: string
+          description: Name of the NFT
+        image_url:
+          type: string
+          description: URL of the NFT image
+        opensea_url:
+          type: string
+          description: URL to the NFT on OpenSea
+      required:
+      - collection
+      - contract
+      - identifier
+      - opensea_url
+    TokenSearchResponse:
+      type: object
+      description: Token (currency) search result
+      properties:
+        address:
+          type: string
+          description: The contract address of the token
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        chain:
+          type: string
+          description: The blockchain the token is on
+          example: ethereum
+        name:
+          type: string
+          description: The display name of the token
+          example: USD Coin
+        symbol:
+          type: string
+          description: The ticker symbol of the token
+          example: USDC
+        image_url:
+          type: string
+          description: URL of the token's image
+        usd_price:
+          type: string
+          description: Current price in USD
+          example: 1
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimal places
+          example: 6
+        opensea_url:
+          type: string
+          description: URL to the token page on OpenSea
+      required:
+      - address
+      - chain
+      - decimals
+      - name
+      - opensea_url
+      - symbol
+      - usd_price
+    ChainIdentifier:
+      type: string
+      default: ethereum
+      description: Blockchain chain identifier. Use the chain slug (e.g., 'ethereum', 'polygon', 'arbitrum', 'optimism', 'base')
+      enum:
+      - blast
+      - base
+      - ethereum
+      - zora
+      - arbitrum
+      - sei
+      - avalanche
+      - polygon
+      - optimism
+      - ape_chain
+      - flow
+      - b3
+      - soneium
+      - ronin
+      - bera_chain
+      - solana
+      - shape
+      - unichain
+      - gunzilla
+      - abstract
+      - animechain
+      - hyperevm
+      - somnia
+      - monad
+      - hyperliquid
+      - megaeth
+      - ink
+      example: ethereum
+    AccountSearchResponse:
+      type: object
+      description: Account search result
+      properties:
+        address:
+          type: string
+          description: Primary wallet address of the account
+        username:
+          type: string
+          description: Username of the account
+        profile_image_url:
+          type: string
+          description: URL of the account's profile image
+        opensea_url:
+          type: string
+          description: URL to the account on OpenSea
+      required:
+      - address
+      - opensea_url
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: API key required for authentication
+      name: x-api-key
+      in: header
+x-tagGroups:
+- name: Data & Discovery
+  tags:
+  - Chain Endpoints
+  - Account Endpoints
+  - Collection Endpoints
+  - NFT Endpoints
+  - Contract Endpoints
+  - Token Endpoints
+  - Search Endpoints
+- name: Marketplace & Trading
+  tags:
+  - Listing Endpoints
+  - Offer Endpoints
+  - Order Endpoints
+  - Swap Endpoints
+  - Drops Endpoints
+- name: Analytics & Events
+  tags:
+  - Analytics Endpoints
+- name: Tools [Beta]
+  tags:
+  - Tool Endpoints [Beta]
+- name: Transactions
+  tags:
+  - Transaction Endpoints
