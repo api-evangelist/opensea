@@ -206,6 +206,10 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/ProjectOpenSea/api-types/main/opensea-api.json
 common:
+  - type: AgentCard
+    url: a2a/opensea-a2a.yml
+    name: A2A Agent Card
+    description: Agent Card served at /.well-known/agent-card.json (near-conformant against A2A 1.0.0).
   - type: AgenticAccess
     url: agentic-access/opensea-agentic-access.yml
   - type: VulnerabilityDisclosure

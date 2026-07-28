@@ -1,0 +1,35 @@
+generated: '2026-07-28'
+method: probed
+source: https://opensea.io/.well-known/agent-card.json
+description: 'A2A Agent Card observed at /.well-known/agent-card.json on opensea.io. Grade is measured
+  against the A2A 1.0.0 AgentCard object: ''conformant'' passes every structural check, ''near-conformant''
+  is correctly shaped but omits optional fields, ''flavored'' fails a hard check and is an agent card
+  in spirit rather than in schema. Provider-published by construction — served from the provider''s own
+  host; nothing here is derived or generated.'
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: opensea.io
+conformance:
+  spec: A2A 1.0.0
+  grade: near-conformant
+  protocol_version: 0.2.5
+  preferred_transport: streamable-http
+  deviations:
+  - nonstandard-supportedInterfaces
+card:
+  name: OpenSea
+  description: Discover, buy, sell, and mint NFTs and swap tokens across dozens of blockchains. The OpenSea
+    agent exposes real-time NFT, token, collection, wallet, and marketplace data and actions via the OpenSea
+    MCP server.
+  url: https://mcp.opensea.io/mcp
+  version: 1.0.0
+  documentation_url: https://docs.opensea.io/reference/mcp
+  skills: 7
+  file: opensea-agent-card.json
+x-evidence:
+  fetched: '2026-07-28'
+  url: https://opensea.io/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.
