@@ -3,13 +3,13 @@
   "feeds": [
     {
       "source": "https://support.opensea.io",
-      "feed_url": "https://support.opensea.io",
+      "feed_url": "https://support.opensea.io/feed.xml",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 7,
+      "method": "discovered"
     }
   ],
-  "post_count": 4,
-  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 11,
+  "fetched": "2026-08-01T15:49:00Z",
   "agent_pulled": "2026-07-04"
 }
