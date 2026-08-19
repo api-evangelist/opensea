@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Search Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search across OpenSea",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "bored ape",
+                "type": "query",
+                "description": "Search query text"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by blockchain(s)"
+              },
+              {
+                "name": "asset_types",
+                "value": "",
+                "type": "query",
+                "description": "Filter by asset type(s). Valid values: collection, nft, token, account. Defaults to [collection, token] if not specified."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 50)"
+              }
+            ]
+          },
+          "docs": "Search across collections, tokens, NFTs, and accounts. Results are ranked by relevance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

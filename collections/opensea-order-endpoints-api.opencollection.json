@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Order Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash/cancel",
+            "headers": [
+              {
+                "name": "X-Api-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "protocol_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_hash",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Offchain cancel a single order, offer or listing, by its order hash when protected by the SignedZone. Protocol and Chain are required to prevent hash collisions. Please note cancellation is only assured if a fulfillment signature was not vended prior to cancellation."
+        },
+        {
+          "info": {
+            "name": "Get an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash",
+            "params": [
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "Blockchain chain identifier"
+              },
+              {
+                "name": "protocol_address",
+                "value": "",
+                "type": "path",
+                "description": "Protocol contract address"
+              },
+              {
+                "name": "order_hash",
+                "value": "",
+                "type": "path",
+                "description": "Order hash"
+              }
+            ]
+          },
+          "docs": "Get a single order by its order hash."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

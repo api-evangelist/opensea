@@ -1,0 +1,365 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an OpenSea account profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/accounts/:address_or_username",
+            "params": [
+              {
+                "name": "address_or_username",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The blockchain address or username of the account to retrieve"
+              }
+            ]
+          },
+          "docs": "Get an OpenSea Account Profile including details such as bio, social media usernames, and profile image."
+        },
+        {
+          "info": {
+            "name": "Resolve an account identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/accounts/resolve/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "vitalik.eth",
+                "type": "path",
+                "description": "An ENS name (e.g. vitalik.eth), OpenSea username, or wallet address to resolve"
+              }
+            ]
+          },
+          "docs": "Resolve an ENS name (e.g. vitalik.eth), OpenSea username, or wallet address to canonical account info including address, username, and ENS name. The ENS path performs both forward resolution (name → address) and reverse lookup (address → canonical primary name). The address and ENS paths perform enrichment calls (username + ENS reverse lookup) in parallel. The username path only needs an ENS reverse lookup after the initial resolution and runs it sequentially. The ENS and username paths require "
+        },
+        {
+          "info": {
+            "name": "Get portfolio stats for an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/portfolio",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "timeframe",
+                "value": "",
+                "type": "query",
+                "description": "Timeframe for P&L calculation: HOUR, DAY, WEEK, MONTH"
+              }
+            ]
+          },
+          "docs": "Get portfolio analytics including total value, NFT/token breakdown, and P&L for a wallet address over a given timeframe."
+        },
+        {
+          "info": {
+            "name": "Get portfolio net worth history for an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/portfolio/history",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "timeframe",
+                "value": "",
+                "type": "query",
+                "description": "Timeframe for history: HOUR, DAY, WEEK, MONTH"
+              }
+            ]
+          },
+          "docs": "Get net worth time series data for a wallet address over a given timeframe."
+        },
+        {
+          "info": {
+            "name": "Get offers received by an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/offers_received",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "collection_slugs",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection slugs"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chains"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of offers received on items owned by a wallet address."
+        },
+        {
+          "info": {
+            "name": "Get active offers made by an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/offers",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "collection_slugs",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection slugs"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chains"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of active offers made by a wallet address."
+        },
+        {
+          "info": {
+            "name": "Get active listings for an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/listings",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "collection_slugs",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection slugs"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chains"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of active listings created by a wallet address."
+        },
+        {
+          "info": {
+            "name": "Get items favorited by an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/favorites",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chains"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of items favorited by a wallet address."
+        },
+        {
+          "info": {
+            "name": "Get collections owned by an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/collections",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "The wallet address"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chains"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of collections owned by a wallet address, with ownership data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

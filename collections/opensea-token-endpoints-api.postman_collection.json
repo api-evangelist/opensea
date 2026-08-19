@@ -1,0 +1,3261 @@
+{
+  "item": [
+    {
+      "id": "9669c3b5-b91f-4580-a237-9b74de4a62b5",
+      "name": "Token Endpoints",
+      "description": {
+        "content": "Token endpoints for getting token details, balances, and trending data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "445c1c92-e08b-429f-bf95-23118db207be",
+          "name": "Get tokens by contract identifiers",
+          "request": {
+            "name": "Get tokens by contract identifiers",
+            "description": {
+              "content": "Retrieve multiple tokens in a single request by providing a list of contract identifiers (chain and address). Not-found tokens are silently omitted from the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tokens",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contracts\": [\n    {\n      \"address\": \"<string>\",\n      \"chain\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"chain\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a78a3d48-2e30-455e-aff8-629fea1d85b2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contracts\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"description\": \"string\",\n      \"stats\": {\n        \"market_cap_usd\": 4734.308238718059,\n        \"fdv_usd\": 2396.2985550592243,\n        \"circulating_supply\": 6423.509470696036,\n        \"max_supply\": 6360.049353318139,\n        \"total_supply\": 1323.6228633039304,\n        \"volume_24h\": 9536.359023236384,\n        \"price_change_1h\": 8559.391813137885,\n        \"price_change_24h\": 2586.0668148807517,\n        \"price_change_7d\": 8631.724091207932,\n        \"price_change_30d\": 5553.565490743597\n      },\n      \"socials\": {\n        \"website\": \"string\",\n        \"twitter_handle\": \"string\",\n        \"telegram_identifier\": \"string\",\n        \"twitter_follower_count\": 5046\n      },\n      \"status\": \"OK\"\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"description\": \"string\",\n      \"stats\": {\n        \"market_cap_usd\": 3384.342836634374,\n        \"fdv_usd\": 7245.541670763406,\n        \"circulating_supply\": 844.6013805682362,\n        \"max_supply\": 8831.819206069036,\n        \"total_supply\": 6596.218434724724,\n        \"volume_24h\": 482.1553885047247,\n        \"price_change_1h\": 9892.82108703277,\n        \"price_change_24h\": 9837.742778562435,\n        \"price_change_7d\": 293.00285424655124,\n        \"price_change_30d\": 6031.435575255732\n      },\n      \"socials\": {\n        \"website\": \"string\",\n        \"twitter_handle\": \"string\",\n        \"telegram_identifier\": \"string\",\n        \"twitter_follower_count\": 7984\n      },\n      \"status\": \"OK\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29f1e93a-92ff-4c7a-8910-7bf9f93bcfad",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contracts\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87cdbddd-4081-4de1-8dab-1b69a2925811",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contracts\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71a212bb-d18e-48be-a075-a82da27add22",
+          "name": "Get trending tokens",
+          "request": {
+            "name": "Get trending tokens",
+            "description": {
+              "content": "Get trending tokens based on OpenSea's trending score algorithm. Returns tokens with high momentum including memecoins and newly popular assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tokens",
+                "trending"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1039b090-7af1-4096-bed9-ca198a03fb55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "trending"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"market_cap_usd\": 9675.784833152777,\n      \"volume_24h\": 8095.512432579158,\n      \"price_change_24h\": 9236.313430032187\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"market_cap_usd\": 9906.833067602704,\n      \"volume_24h\": 6019.260778458558,\n      \"price_change_24h\": 2444.5216177249863\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11994417-9705-45aa-b31d-0a86025aff0b",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "trending"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be744f87-9f3f-449c-8e77-9435175c7fd2",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "trending"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "689c8e19-9947-466e-bbdd-4934b19ecf74",
+          "name": "Get top tokens",
+          "request": {
+            "name": "Get top tokens",
+            "description": {
+              "content": "Get top tokens ranked by 24-hour trading volume. Returns established tokens with high market activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tokens",
+                "top"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d726457-5348-45d1-934e-8b922312704c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"market_cap_usd\": 9675.784833152777,\n      \"volume_24h\": 8095.512432579158,\n      \"price_change_24h\": 9236.313430032187\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\",\n      \"market_cap_usd\": 9906.833067602704,\n      \"volume_24h\": 6019.260778458558,\n      \"price_change_24h\": 2444.5216177249863\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6b8afd6-3eb5-4053-b72d-636fd73d7356",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4601c1de-8005-49fd-90c1-9d5d3b2d2df3",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tokens",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cd13983-83d0-4294-bf8f-7fe4ad1544c4",
+          "name": "Get token groups",
+          "request": {
+            "name": "Get token groups",
+            "description": {
+              "content": "Get a paginated list of token groups sorted by market cap descending. Token groups represent equivalent currencies across different blockchains (e.g., ETH on Ethereum, Base, and Arbitrum are all in the \"eth\" token group).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "token-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results to return (default: 50, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f0e56c5-8b54-4705-a777-3a7256d36aa2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"token_groups\": [\n    {\n      \"created_at\": \"string\",\n      \"currencies\": [\n        {\n          \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n          \"chain\": \"ethereum\",\n          \"decimals\": 18,\n          \"name\": \"Wrapped Ether\",\n          \"symbol\": \"WETH\",\n          \"usd_price\": \"string\",\n          \"image_url\": \"string\"\n        },\n        {\n          \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n          \"chain\": \"ethereum\",\n          \"decimals\": 18,\n          \"name\": \"Wrapped Ether\",\n          \"symbol\": \"WETH\",\n          \"usd_price\": \"string\",\n          \"image_url\": \"string\"\n        }\n      ],\n      \"display_name\": \"Ethereum\",\n      \"opensea_url\": \"string\",\n      \"primary_currency\": {\n        \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n        \"chain\": \"ethereum\",\n        \"decimals\": 18,\n        \"name\": \"Wrapped Ether\",\n        \"symbol\": \"WETH\",\n        \"usd_price\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"slug\": \"eth\",\n      \"updated_at\": \"string\",\n      \"symbol\": \"ETH\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"stats\": {\n        \"market_cap_usd\": \"string\",\n        \"volume_usd_24h\": \"string\",\n        \"price_usd\": \"string\",\n        \"price_change_percent_24h\": 2012.7977451102352,\n        \"total_supply\": \"string\",\n        \"holders\": 9253,\n        \"rolling_stats\": {\n          \"volume_1d\": \"string\",\n          \"volume_7d\": \"string\",\n          \"volume_30d\": \"string\",\n          \"price_change_1d\": 23.21608386446128,\n          \"price_change_7d\": 3892.2882777507584,\n          \"price_change_30d\": 78.10339457579252\n        }\n      },\n      \"socials\": {\n        \"website\": \"string\",\n        \"twitter\": \"string\",\n        \"discord\": \"string\",\n        \"telegram\": \"string\",\n        \"coinmarketcap\": \"string\",\n        \"coingecko\": \"string\"\n      }\n    },\n    {\n      \"created_at\": \"string\",\n      \"currencies\": [\n        {\n          \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n          \"chain\": \"ethereum\",\n          \"decimals\": 18,\n          \"name\": \"Wrapped Ether\",\n          \"symbol\": \"WETH\",\n          \"usd_price\": \"string\",\n          \"image_url\": \"string\"\n        },\n        {\n          \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n          \"chain\": \"ethereum\",\n          \"decimals\": 18,\n          \"name\": \"Wrapped Ether\",\n          \"symbol\": \"WETH\",\n          \"usd_price\": \"string\",\n          \"image_url\": \"string\"\n        }\n      ],\n      \"display_name\": \"Ethereum\",\n      \"opensea_url\": \"string\",\n      \"primary_currency\": {\n        \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n        \"chain\": \"ethereum\",\n        \"decimals\": 18,\n        \"name\": \"Wrapped Ether\",\n        \"symbol\": \"WETH\",\n        \"usd_price\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"slug\": \"eth\",\n      \"updated_at\": \"string\",\n      \"symbol\": \"ETH\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"stats\": {\n        \"market_cap_usd\": \"string\",\n        \"volume_usd_24h\": \"string\",\n        \"price_usd\": \"string\",\n        \"price_change_percent_24h\": 5617.333814775586,\n        \"total_supply\": \"string\",\n        \"holders\": 5643,\n        \"rolling_stats\": {\n          \"volume_1d\": \"string\",\n          \"volume_7d\": \"string\",\n          \"volume_30d\": \"string\",\n          \"price_change_1d\": 929.4800941420812,\n          \"price_change_7d\": 9740.68953607731,\n          \"price_change_30d\": 5746.8574771229105\n        }\n      },\n      \"socials\": {\n        \"website\": \"string\",\n        \"twitter\": \"string\",\n        \"discord\": \"string\",\n        \"telegram\": \"string\",\n        \"coinmarketcap\": \"string\",\n        \"coingecko\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ab31dbd-1b90-4493-8b67-996e0fa93442",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "528455da-0aae-4187-83a7-dd6b05bb237d",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3ab1fbe-65a7-4d6b-8c92-f6e38e8cbe57",
+          "name": "Get a token group by slug",
+          "request": {
+            "name": "Get a token group by slug",
+            "description": {
+              "content": "Get detailed information about a specific token group by its slug identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "token-groups",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) The slug identifier of the token group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5f45844-7d0e-4e59-963e-1524ad48b466",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the token group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"string\",\n  \"currencies\": [\n    {\n      \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 18,\n      \"name\": \"Wrapped Ether\",\n      \"symbol\": \"WETH\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\"\n    },\n    {\n      \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 18,\n      \"name\": \"Wrapped Ether\",\n      \"symbol\": \"WETH\",\n      \"usd_price\": \"string\",\n      \"image_url\": \"string\"\n    }\n  ],\n  \"display_name\": \"Ethereum\",\n  \"opensea_url\": \"string\",\n  \"primary_currency\": {\n    \"address\": \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n    \"chain\": \"ethereum\",\n    \"decimals\": 18,\n    \"name\": \"Wrapped Ether\",\n    \"symbol\": \"WETH\",\n    \"usd_price\": \"string\",\n    \"image_url\": \"string\"\n  },\n  \"slug\": \"eth\",\n  \"updated_at\": \"string\",\n  \"symbol\": \"ETH\",\n  \"description\": \"string\",\n  \"image_url\": \"string\",\n  \"stats\": {\n    \"market_cap_usd\": \"string\",\n    \"volume_usd_24h\": \"string\",\n    \"price_usd\": \"string\",\n    \"price_change_percent_24h\": 4595.644557281055,\n    \"total_supply\": \"string\",\n    \"holders\": 7275,\n    \"rolling_stats\": {\n      \"volume_1d\": \"string\",\n      \"volume_7d\": \"string\",\n      \"volume_30d\": \"string\",\n      \"price_change_1d\": 2586.5211880707384,\n      \"price_change_7d\": 443.44859168686577,\n      \"price_change_30d\": 2174.7116306491753\n    }\n  },\n  \"socials\": {\n    \"website\": \"string\",\n    \"twitter\": \"string\",\n    \"discord\": \"string\",\n    \"telegram\": \"string\",\n    \"coinmarketcap\": \"string\",\n    \"coingecko\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6d9000b-4fd7-4776-9f25-f2de8dcafac8",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the token group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70784169-f73a-427d-a889-d732a79dba35",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the token group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2221b7aa-cbe3-4bb4-ba59-84d91cc6f44c",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "token-groups",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the token group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15b2f1b9-ccf4-4b77-ac25-90fe63586d47",
+          "name": "Get token details",
+          "request": {
+            "name": "Get token details",
+            "description": {
+              "content": "Get detailed information about a specific token by chain and contract address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0910e50-1d98-4dd0-a537-4e57da800bfe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n  \"chain\": \"ethereum\",\n  \"decimals\": 6,\n  \"name\": \"USD Coin\",\n  \"opensea_url\": \"string\",\n  \"symbol\": \"USDC\",\n  \"usd_price\": \"string\",\n  \"image_url\": \"string\",\n  \"description\": \"string\",\n  \"stats\": {\n    \"market_cap_usd\": 5634.152232612878,\n    \"fdv_usd\": 5033.6369514244525,\n    \"circulating_supply\": 1089.2333551100264,\n    \"max_supply\": 9345.4235380654,\n    \"total_supply\": 9190.098920369255,\n    \"volume_24h\": 1033.3785179830402,\n    \"price_change_1h\": 2537.005683061001,\n    \"price_change_24h\": 4420.434165004154,\n    \"price_change_7d\": 3964.378335280848,\n    \"price_change_30d\": 7187.014695616112\n  },\n  \"socials\": {\n    \"website\": \"string\",\n    \"twitter_handle\": \"string\",\n    \"telegram_identifier\": \"string\",\n    \"twitter_follower_count\": 7511\n  },\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab23fad5-da28-4064-99b1-f47b32abf638",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e505818e-389a-40eb-8da5-83521b73ac15",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "383c60a4-0b51-44ca-8326-236c869aa40b",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d22ad3a7-8209-4e54-a245-4e8582a44516",
+          "name": "Get token price history",
+          "request": {
+            "name": "Get token price history",
+            "description": {
+              "content": "Get historical price data for a specific token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address",
+                "price_history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start time for the price history window (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "End time for the price history window (ISO 8601, defaults to now)"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket_size",
+                  "value": "<string>",
+                  "description": "Candle bucket size for aggregation (1s, 1m, 5m, 15m, 1h, 4h, 1d)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56578beb-4c5f-4f72-aeee-9ba361ef3607",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "price_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"prices\": [\n    {\n      \"time\": \"1949-04-16T05:47:39.023Z\",\n      \"usd_price\": \"string\"\n    },\n    {\n      \"time\": \"1995-12-14T08:01:03.311Z\",\n      \"usd_price\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "357a2776-cfd8-42a8-a635-88c3875f4cba",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "price_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "610ea31d-3767-4688-97da-474957f0088e",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "price_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee128586-d063-459b-aaf5-66b330a6ebb2",
+          "name": "Get token OHLCV candles",
+          "request": {
+            "name": "Get token OHLCV candles",
+            "description": {
+              "content": "Get OHLCV (Open, High, Low, Close, Volume) candlestick data for a specific token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address",
+                "ohlcv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start time for the OHLCV window (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "End time for the OHLCV window (ISO 8601, defaults to now)"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket_size",
+                  "value": "<string>",
+                  "description": "(Required) Candle bucket size (1s, 1m, 5m, 15m, 1h, 4h, 1d)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fill_time_window",
+                  "value": "false",
+                  "description": "Whether to fill empty time windows with zero-volume candles"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aedb5a3a-3913-4b43-b053-e22869f9ba19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "ohlcv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    },
+                    {
+                      "key": "fill_time_window",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"candles\": [\n    {\n      \"close\": 9799.30918129286,\n      \"high\": 9653.105631294953,\n      \"low\": 5044.253830290975,\n      \"open\": 1755.1739943177124,\n      \"time\": \"1982-06-18T05:16:25.204Z\",\n      \"volume\": 4581.3557739863245\n    },\n    {\n      \"close\": 4843.7635886183825,\n      \"high\": 2162.7168187547272,\n      \"low\": 6550.485093340305,\n      \"open\": 2768.130345845088,\n      \"time\": \"1992-03-27T01:19:10.131Z\",\n      \"volume\": 9651.909812109136\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "953659c2-da9c-4cbb-bab1-8df2cfedd476",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "ohlcv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    },
+                    {
+                      "key": "fill_time_window",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6e65347-c8e3-4e20-a073-082cd616318a",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "ohlcv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-02T00:00:00Z"
+                    },
+                    {
+                      "key": "bucket_size",
+                      "value": "1h"
+                    },
+                    {
+                      "key": "fill_time_window",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90dbe48f-d329-45df-8c3c-997544b5e72f",
+          "name": "Get token liquidity pools",
+          "request": {
+            "name": "Get token liquidity pools",
+            "description": {
+              "content": "Get liquidity pools for a specific token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address",
+                "liquidity-pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 50)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b35b67f-6cd4-4a64-9079-6df22e5537b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "liquidity-pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"pools\": [\n    {\n      \"base_token\": \"string\",\n      \"pool_identifier\": \"string\",\n      \"pool_type\": \"string\",\n      \"quote_token\": \"string\",\n      \"pool_address\": \"string\",\n      \"base_reserve_usd\": 3323.235283053694,\n      \"quote_reserve_usd\": 534.3579420802757,\n      \"total_reserve_usd\": 3269.493516235741,\n      \"bonding_curve_progress\": 8451.569595301884,\n      \"is_graduated\": false\n    },\n    {\n      \"base_token\": \"string\",\n      \"pool_identifier\": \"string\",\n      \"pool_type\": \"string\",\n      \"quote_token\": \"string\",\n      \"pool_address\": \"string\",\n      \"base_reserve_usd\": 8491.699168933566,\n      \"quote_reserve_usd\": 597.7277338078568,\n      \"total_reserve_usd\": 1390.7023300418552,\n      \"bonding_curve_progress\": 3919.975918875108,\n      \"is_graduated\": true\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1baec3de-31ec-4d2f-b09a-d3e27341d7d4",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "liquidity-pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efd2d432-63a5-49aa-876a-5e9bc0ab8496",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "liquidity-pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "100d6979-6aa6-485f-a504-38b4a390f113",
+          "name": "Get token holders",
+          "request": {
+            "name": "Get token holders",
+            "description": {
+              "content": "Get paginated list of holders for a specific token, including quantity held and USD value.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address",
+                "holders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "126d3243-0a97-4f2b-845a-7db02650b302",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "holders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"holders\": [\n    {\n      \"owner_address\": \"string\",\n      \"quantity\": 5272.818350284294,\n      \"percentage_held\": 9520.55900061163,\n      \"usd_value\": 5166.58598481926,\n      \"owner_display_name\": \"string\"\n    },\n    {\n      \"owner_address\": \"string\",\n      \"quantity\": 7691.698407072554,\n      \"percentage_held\": 3424.3998664890864,\n      \"usd_value\": 4640.167502070456,\n      \"owner_display_name\": \"string\"\n    }\n  ],\n  \"total_count\": 8516,\n  \"distribution\": {\n    \"health_label\": \"BAD\",\n    \"health_score\": 3076,\n    \"top_one_percent_concentration\": 403.804876117424,\n    \"total_holders\": 4277\n  },\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b853b91d-a747-4103-8d20-87a34ff7decf",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "holders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4636e58-c202-43e8-ad21-525265f645be",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "holders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f02ec24c-e390-4a68-a6d9-1261342bf429",
+          "name": "Get token swap activity",
+          "request": {
+            "name": "Get token swap activity",
+            "description": {
+              "content": "Get paginated swap activity for a specific token on a given chain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chain",
+                ":chain",
+                "token",
+                ":address",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain on which the token exists"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The contract address of the token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "890d7ef3-c1d1-4504-a768-817db1c59763",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"swap_events\": [\n    {\n      \"chain\": \"string\",\n      \"from_token\": {\n        \"address\": \"string\",\n        \"amount_native\": 5186.566263961666,\n        \"amount_token\": 2056.853562814822,\n        \"amount_usd\": \"string\",\n        \"chain\": \"string\"\n      },\n      \"id\": \"string\",\n      \"sender_address\": \"string\",\n      \"timestamp\": \"2013-08-08T08:12:37.093Z\",\n      \"to_token\": {\n        \"address\": \"string\",\n        \"amount_native\": 7573.509116490735,\n        \"amount_token\": 827.149055955576,\n        \"amount_usd\": \"string\",\n        \"chain\": \"string\"\n      },\n      \"transaction_hash\": \"string\",\n      \"user_op_hash\": \"string\",\n      \"swap_protocol\": \"string\"\n    },\n    {\n      \"chain\": \"string\",\n      \"from_token\": {\n        \"address\": \"string\",\n        \"amount_native\": 5501.9389581020205,\n        \"amount_token\": 9230.762713372169,\n        \"amount_usd\": \"string\",\n        \"chain\": \"string\"\n      },\n      \"id\": \"string\",\n      \"sender_address\": \"string\",\n      \"timestamp\": \"2018-05-28T07:03:26.777Z\",\n      \"to_token\": {\n        \"address\": \"string\",\n        \"amount_native\": 2733.8383014322685,\n        \"amount_token\": 2223.712030396028,\n        \"amount_usd\": \"string\",\n        \"chain\": \"string\"\n      },\n      \"transaction_hash\": \"string\",\n      \"user_op_hash\": \"string\",\n      \"swap_protocol\": \"string\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee92f0a8-8d9f-4ea5-9d1e-16440e40221e",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73ead514-d07e-4536-a575-04c913bdf7f7",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chain",
+                    ":chain",
+                    "token",
+                    ":address",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain on which the token exists"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The contract address of the token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0466db48-ea35-4a3a-93a5-9f54f6596159",
+          "name": "Get token balances by account",
+          "request": {
+            "name": "Get token balances by account",
+            "description": {
+              "content": "Get fungible token balances for a specific wallet address. Returns quantity (in display units, not raw/wei), USD value, and token metadata for each token held.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "account",
+                ":address",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Sort field (default: usd_value)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "Sort direction (default: desc)"
+                },
+                {
+                  "disabled": false,
+                  "key": "disable_spam_filtering",
+                  "value": "false",
+                  "description": "When true, disables OpenSea's heuristic spam filtering and returns tokens that would normally be hidden (low liquidity, dust, flagged-as-spam, etc.). Tokens flagged for trust & safety enforcement or as malicious are still filtered out regardless. Surfaced tokens carry a `status` field on the response indicating why they would have been filtered."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) Wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b53db4ed-4d5c-4cf8-a2b0-30366b78a362",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "account",
+                    ":address",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "disable_spam_filtering",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) Wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"token_balances\": [\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"quantity\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"usd_value\": \"string\",\n      \"image_url\": \"string\",\n      \"status\": \"OK\",\n      \"base_token_liquidity_usd\": \"string\",\n      \"quote_token_liquidity_usd\": \"string\"\n    },\n    {\n      \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n      \"chain\": \"ethereum\",\n      \"decimals\": 6,\n      \"name\": \"USD Coin\",\n      \"opensea_url\": \"string\",\n      \"quantity\": \"string\",\n      \"symbol\": \"USDC\",\n      \"usd_price\": \"string\",\n      \"usd_value\": \"string\",\n      \"image_url\": \"string\",\n      \"status\": \"OK\",\n      \"base_token_liquidity_usd\": \"string\",\n      \"quote_token_liquidity_usd\": \"string\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f114a96d-5f96-4997-b5f0-173466e2408d",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "account",
+                    ":address",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "disable_spam_filtering",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) Wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24f8ee0e-ef10-4412-830f-03ecf2961f37",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "account",
+                    ":address",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "disable_spam_filtering",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) Wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5959425c-013e-4862-94f9-e73a7985868a",
+    "name": "OpenSea Account Endpoints Token Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

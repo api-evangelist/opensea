@@ -1,0 +1,2707 @@
+{
+  "item": [
+    {
+      "id": "d8c63bea-9bf5-4a2e-abb6-72c902a14d46",
+      "name": "Offer Endpoints",
+      "description": {
+        "content": "Offer endpoints for building, creating, fulfilling, and querying offers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18982cdd-e6aa-4942-94b8-529ce913f81a",
+          "name": "Create an item offer",
+          "request": {
+            "name": "Create an item offer",
+            "description": {
+              "content": "Create an offer to purchase a single NFT (ERC721 or ERC1155).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ":chain",
+                ":protocol",
+                "offers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "protocol",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"<string>\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"recipient\": \"<string>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      },\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"recipient\": \"<string>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      }\n    ],\n    \"counter\": \"<string>\",\n    \"endTime\": \"<string>\",\n    \"offer\": [\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      },\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      }\n    ],\n    \"offerer\": \"<string>\",\n    \"orderType\": \"<integer>\",\n    \"salt\": \"<string>\",\n    \"startTime\": \"<string>\",\n    \"totalOriginalConsiderationItems\": \"<integer>\",\n    \"zoneHash\": \"<string>\",\n    \"zone\": \"<string>\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2ff9b90-fccd-4337-ab55-df28ceaf2333",
+              "name": "Item offer created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 9852,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2959,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 5480,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 3002,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 8791,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 2720,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"chain\": \"string\",\n  \"order_hash\": \"string\",\n  \"price\": {\n    \"currency\": \"string\",\n    \"decimals\": 7807,\n    \"value\": \"string\"\n  },\n  \"remaining_quantity\": 5589,\n  \"status\": \"ACTIVE\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 5778,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 122,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": 1164,\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6263,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4271,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 2971,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 2596,\n      \"zone\": \"string\",\n      \"zoneHash\": \"string\"\n    },\n    \"signature\": \"string\"\n  },\n  \"protocol_address\": \"string\",\n  \"asset\": {\n    \"contract\": \"string\",\n    \"identifier\": \"string\"\n  },\n  \"order_created_at\": 7148,\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numeric_traits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 5792.553486550582,\n        \"max\": 2679.720070628444\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 3306.7152656261433,\n        \"max\": 4408.514009867094\n      }\n    ],\n    \"encoded_token_ids\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06ad52e5-eef5-455a-b10a-e1ad8eb771bb",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 9852,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2959,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 5480,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 3002,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 8791,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 2720,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b7b1874-48e4-4c70-b5ac-43d4292d0af6",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 9852,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2959,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 5480,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 3002,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 8791,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 2720,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9795d87-9d23-46df-98dd-ea1779aa0c48",
+          "name": "Create a criteria offer",
+          "request": {
+            "name": "Create a criteria offer",
+            "description": {
+              "content": "Create a criteria offer to purchase any NFT in a collection or which matches the specified trait. For trait offers where the Build Offer endpoint returns identifierOrCriteria '0', use that value directly — trait matching is validated server-side at fulfillment time rather than via onchain merkle proof.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"<string>\"\n    },\n    \"contract\": {\n      \"address\": \"<string>\"\n    },\n    \"trait\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"<string>\",\n        \"min\": \"<double>\",\n        \"max\": \"<double>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"min\": \"<double>\",\n        \"max\": \"<double>\"\n      }\n    ]\n  },\n  \"protocol_address\": \"<string>\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"<string>\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"<string>\",\n          \"identifierOrCriteria\": \"<string>\",\n          \"itemType\": \"<integer>\",\n          \"recipient\": \"<string>\",\n          \"startAmount\": \"<string>\",\n          \"token\": \"<string>\"\n        },\n        {\n          \"endAmount\": \"<string>\",\n          \"identifierOrCriteria\": \"<string>\",\n          \"itemType\": \"<integer>\",\n          \"recipient\": \"<string>\",\n          \"startAmount\": \"<string>\",\n          \"token\": \"<string>\"\n        }\n      ],\n      \"counter\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"offer\": [\n        {\n          \"endAmount\": \"<string>\",\n          \"identifierOrCriteria\": \"<string>\",\n          \"itemType\": \"<integer>\",\n          \"startAmount\": \"<string>\",\n          \"token\": \"<string>\"\n        },\n        {\n          \"endAmount\": \"<string>\",\n          \"identifierOrCriteria\": \"<string>\",\n          \"itemType\": \"<integer>\",\n          \"startAmount\": \"<string>\",\n          \"token\": \"<string>\"\n        }\n      ],\n      \"offerer\": \"<string>\",\n      \"orderType\": \"<integer>\",\n      \"salt\": \"<string>\",\n      \"startTime\": \"<string>\",\n      \"totalOriginalConsiderationItems\": \"<integer>\",\n      \"zoneHash\": \"<string>\",\n      \"zone\": \"<string>\"\n    },\n    \"signature\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b4beb49-8392-45be-ae2a-c1ec5073e5f2",
+              "name": "Criteria offer created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 4648.92922328226,\n        \"max\": 5723.344012163909\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 5163.906829182365,\n        \"max\": 2167.0919227545705\n      }\n    ]\n  },\n  \"protocol_address\": \"<string>\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 509,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 1644,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": \"string\",\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 2978,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6415,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 1076,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 3667,\n      \"zoneHash\": \"string\",\n      \"zone\": \"string\"\n    },\n    \"signature\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"chain\": \"string\",\n  \"order_hash\": \"string\",\n  \"price\": {\n    \"currency\": \"string\",\n    \"decimals\": 7807,\n    \"value\": \"string\"\n  },\n  \"remaining_quantity\": 5589,\n  \"status\": \"ACTIVE\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 5778,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 122,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": 1164,\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6263,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4271,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 2971,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 2596,\n      \"zone\": \"string\",\n      \"zoneHash\": \"string\"\n    },\n    \"signature\": \"string\"\n  },\n  \"protocol_address\": \"string\",\n  \"asset\": {\n    \"contract\": \"string\",\n    \"identifier\": \"string\"\n  },\n  \"order_created_at\": 7148,\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numeric_traits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 5792.553486550582,\n        \"max\": 2679.720070628444\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 3306.7152656261433,\n        \"max\": 4408.514009867094\n      }\n    ],\n    \"encoded_token_ids\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71285c70-96f4-4636-ba4b-3100a92ee1fd",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 4648.92922328226,\n        \"max\": 5723.344012163909\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 5163.906829182365,\n        \"max\": 2167.0919227545705\n      }\n    ]\n  },\n  \"protocol_address\": \"<string>\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 509,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 1644,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": \"string\",\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 2978,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6415,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 1076,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 3667,\n      \"zoneHash\": \"string\",\n      \"zone\": \"string\"\n    },\n    \"signature\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b38300fa-339a-4844-b643-ff01dd8a038f",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 4648.92922328226,\n        \"max\": 5723.344012163909\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 5163.906829182365,\n        \"max\": 2167.0919227545705\n      }\n    ]\n  },\n  \"protocol_address\": \"<string>\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 509,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 1644,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": \"string\",\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 2978,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6415,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 1076,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 3667,\n      \"zoneHash\": \"string\",\n      \"zone\": \"string\"\n    },\n    \"signature\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95835b03-7fde-4acd-8e97-53740284a164",
+          "name": "Fulfill an offer",
+          "request": {
+            "name": "Fulfill an offer",
+            "description": {
+              "content": "Retrieve all the information, including signatures, needed to fulfill an offer directly onchain. For trait offers with identifierOrCriteria '0', the server validates that the specified token matches the offer's trait criteria before generating fulfillment data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "fulfillment_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fulfiller\": {\n    \"address\": \"<string>\"\n  },\n  \"offer\": {\n    \"chain\": \"<string>\",\n    \"hash\": \"<string>\",\n    \"protocol_address\": \"<string>\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"<string>\",\n    \"token_id\": \"<string>\"\n  },\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8f234bf-0640-4fe0-9394-3d52305aaad2",
+              "name": "Offer fulfillment data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"offer\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"fulfillment_data\": {\n    \"orders\": [\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 3121,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 8616,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 8974,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 2221,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5379,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 1183,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"chain\": 1314,\n      \"function\": \"string\",\n      \"input_data\": {\n        \"advancedOrder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"criteriaResolvers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fulfillerConduitKey\": \"string\",\n        \"recipient\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  },\n  \"protocol\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b29b524-dba2-45ab-884a-0ac8bc4e9c4f",
+              "name": "The request is invalid\nThe order_hash does not exist\nThe chain is not an EVM Chain\nThe protocol_address is not a supported Seaport contract\nFor other error reasons, see the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"offer\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"fulfillment_data\": {\n    \"orders\": [\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 3121,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 8616,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 8974,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 2221,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5379,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 1183,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"chain\": 1314,\n      \"function\": \"string\",\n      \"input_data\": {\n        \"advancedOrder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"criteriaResolvers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fulfillerConduitKey\": \"string\",\n        \"recipient\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  },\n  \"protocol\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9da0839a-eeec-4c02-aee3-49f9b82474f1",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"offer\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7302491-5781-4611-8439-f4b9c38b494c",
+          "name": "Build a criteria offer",
+          "request": {
+            "name": "Build a criteria offer",
+            "description": {
+              "content": "Build a portion of a criteria offer including the consideration item, zone, and zone hash needed to post an offer. For trait offers on supported collections, the identifierOrCriteria in the returned consideration will be '0' (no merkle root computation needed). For other collections, a computed merkle root is returned. When identifierOrCriteria is '0', the encodedTokenIds field is informational only and not required for constructing the onchain order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "build"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"<string>\"\n    },\n    \"trait\": {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"<string>\",\n        \"min\": \"<double>\",\n        \"max\": \"<double>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"min\": \"<double>\",\n        \"max\": \"<double>\"\n      }\n    ]\n  },\n  \"offer_protection_enabled\": \"<boolean>\",\n  \"offerer\": \"<string>\",\n  \"protocol_address\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cab6117-c7ea-4299-ae45-3fec7a16eab9",
+              "name": "Criteria offer built successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 3737.22185408043,\n        \"max\": 5225.555992392315\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 4007.9048529618453,\n        \"max\": 5475.628665080206\n      }\n    ]\n  },\n  \"offer_protection_enabled\": \"<boolean>\",\n  \"offerer\": \"<string>\",\n  \"protocol_address\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 8062.055284526023,\n        \"max\": 7784.11292609899\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 8611.50527333154,\n        \"max\": 3443.3769980467223\n      }\n    ]\n  },\n  \"partialParameters\": {\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 9177,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 5342,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"zone\": \"string\",\n    \"zoneHash\": \"string\"\n  },\n  \"encodedTokenIds\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9fbecd3-4fe4-4c83-bfce-5193730230fd",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 3737.22185408043,\n        \"max\": 5225.555992392315\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 4007.9048529618453,\n        \"max\": 5475.628665080206\n      }\n    ]\n  },\n  \"offer_protection_enabled\": \"<boolean>\",\n  \"offerer\": \"<string>\",\n  \"protocol_address\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cd0d984-5edc-47fd-b8e3-485fd97c456a",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"trait\": {\n      \"type\": \"string\",\n      \"value\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numericTraits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 3737.22185408043,\n        \"max\": 5225.555992392315\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 4007.9048529618453,\n        \"max\": 5475.628665080206\n      }\n    ]\n  },\n  \"offer_protection_enabled\": \"<boolean>\",\n  \"offerer\": \"<string>\",\n  \"protocol_address\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cbf8bbf-efd7-4793-84e9-21ebf588daac",
+          "name": "Get offers by collection",
+          "request": {
+            "name": "Get offers by collection",
+            "description": {
+              "content": "Get collection offers on a collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "collection",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5470ab3-632a-498d-b6dc-88e225a28baf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"offers\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 5428,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 746,\n      \"status\": \"FULFILLED\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5406,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 6129,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 6008,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 1814,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 8930,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 2382,\n      \"status\": \"INACTIVE\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 9609,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5644,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4746,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9444,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaa384ed-4ddc-4db6-b830-a099c849df36",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1ffa4ca-11c6-4d8f-acaa-4a542b613f32",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "535acc98-03cd-4999-a936-1a90c80e07b1",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e0b72f6-dbc6-48cd-bb91-e07bb341cef8",
+          "name": "Get trait offers for a collection",
+          "request": {
+            "name": "Get trait offers for a collection",
+            "description": {
+              "content": "Get trait offers for a collection. Use the `mode` parameter to select the bid category.\n\n**Single string trait:** `?mode=STRING&type=Background&value=Red`\n**Multiple string traits:** `?mode=MULTI&traits=[{\"traitType\":\"Background\",\"value\":\"Red\"},{\"traitType\":\"Eyes\",\"value\":\"Blue\"}]`\n**Numeric trait range:** `?mode=NUMERIC&type=Level&min_value=1&max_value=10`\n\nOmit filter params to discover all bids of that mode (e.g. `?mode=NUMERIC` returns all numeric bids).\n\nIf `mode` is omitted, the mode is inferred from the params for backward compatibility.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "collection",
+                ":slug",
+                "traits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Bid category: STRING (single string trait), MULTI (multiple string traits), or NUMERIC (numeric trait range). If omitted, inferred from params."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Trait type name"
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "Trait value as string"
+                },
+                {
+                  "disabled": false,
+                  "key": "float_value",
+                  "value": "<double>",
+                  "description": "Trait value as float"
+                },
+                {
+                  "disabled": false,
+                  "key": "int_value",
+                  "value": "<integer>",
+                  "description": "Trait value as integer"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_value",
+                  "value": "<float>",
+                  "description": "Minimum value for numeric trait range queries"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_value",
+                  "value": "<float>",
+                  "description": "Maximum value for numeric trait range queries"
+                },
+                {
+                  "disabled": false,
+                  "key": "traits",
+                  "value": "<string>",
+                  "description": "JSON array of trait filters for multi-trait queries. Each element has 'traitType' and 'value' fields. Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd60938e-5c84-491a-a561-bc9cd90ae5d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "float_value",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "int_value",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "max_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"offers\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 5428,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 746,\n      \"status\": \"FULFILLED\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5406,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 6129,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 6008,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 1814,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 8930,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 2382,\n      \"status\": \"INACTIVE\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 9609,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5644,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4746,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9444,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81d390de-59ba-4f0d-9715-6035d5dee331",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "float_value",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "int_value",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "max_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90cfc0f4-e3e8-403f-8225-ea943822125c",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "float_value",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "int_value",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "max_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b09e6eee-5326-42b3-93b1-6743d3ad9b53",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "float_value",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "int_value",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "max_value",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ca16ec2-0db1-4985-b66e-234eb611d616",
+          "name": "Get offers by NFT",
+          "request": {
+            "name": "Get offers by NFT",
+            "description": {
+              "content": "Get offers for an NFT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "collection",
+                ":slug",
+                "nfts",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) NFT token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bc0cdc7-2b30-4974-8ecc-cb4d0e45a60a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"offers\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 5428,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 746,\n      \"status\": \"FULFILLED\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5406,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 6129,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 6008,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 1814,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 8930,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 2382,\n      \"status\": \"INACTIVE\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 9609,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5644,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4746,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9444,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "228975f9-345f-444f-9ca5-dc4289c0b414",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18b7746e-d2f3-4c7e-a10b-1811977ecd68",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02e702e9-1485-4c24-85d7-6728b359cc97",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8faa8dd-64e2-46d3-a809-9fc4728279be",
+          "name": "Get best offer by NFT",
+          "request": {
+            "name": "Get best offer by NFT",
+            "description": {
+              "content": "Get the best offer for an NFT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "collection",
+                ":slug",
+                "nfts",
+                ":identifier",
+                "best"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) NFT token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34e4d2f0-a318-41a9-9beb-13a53ca47ab3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"chain\": \"string\",\n  \"order_hash\": \"string\",\n  \"price\": {\n    \"currency\": \"string\",\n    \"decimals\": 7807,\n    \"value\": \"string\"\n  },\n  \"remaining_quantity\": 5589,\n  \"status\": \"ACTIVE\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 5778,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 122,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": 1164,\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 6263,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4271,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 2971,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 2596,\n      \"zone\": \"string\",\n      \"zoneHash\": \"string\"\n    },\n    \"signature\": \"string\"\n  },\n  \"protocol_address\": \"string\",\n  \"asset\": {\n    \"contract\": \"string\",\n    \"identifier\": \"string\"\n  },\n  \"order_created_at\": 7148,\n  \"criteria\": {\n    \"collection\": {\n      \"slug\": \"string\"\n    },\n    \"contract\": {\n      \"address\": \"string\"\n    },\n    \"traits\": [\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"numeric_traits\": [\n      {\n        \"type\": \"string\",\n        \"min\": 5792.553486550582,\n        \"max\": 2679.720070628444\n      },\n      {\n        \"type\": \"string\",\n        \"min\": 3306.7152656261433,\n        \"max\": 4408.514009867094\n      }\n    ],\n    \"encoded_token_ids\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94f074ae-e24b-42ab-935a-c015a732cd66",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24ebbed0-5079-417d-8a0e-71adbb67a80a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13e810ce-1121-4818-bce0-ca9f261aca17",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6db5e2d9-fc7a-4e01-95ba-80498dc82622",
+          "name": "Get all offers by collection",
+          "request": {
+            "name": "Get all offers by collection",
+            "description": {
+              "content": "Get all offers for a collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "offers",
+                "collection",
+                ":slug",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "Filter by the wallet address of the order maker"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2370c3ff-0998-4edd-97a5-351fff5983b0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"offers\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 5428,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 746,\n      \"status\": \"FULFILLED\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5406,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 6129,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 6008,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 1814,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"currency\": \"string\",\n        \"decimals\": 8930,\n        \"value\": \"string\"\n      },\n      \"remaining_quantity\": 2382,\n      \"status\": \"INACTIVE\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 9609,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5644,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4746,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9444,\n      \"criteria\": {\n        \"collection\": {\n          \"slug\": \"string\"\n        },\n        \"contract\": {\n          \"address\": \"string\"\n        },\n        \"traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"numeric_traits\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"min\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"encoded_token_ids\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e1eed2-98b6-48df-a4ad-4bb8f8f9f647",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93f1000f-dcfd-48ce-a4d6-045560e284cb",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c59755fb-8532-4cde-815b-59b20dcb6a2f",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "offers",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b30b919-12ff-4eaa-8f06-98463fea0c78",
+    "name": "OpenSea Account Endpoints Offer Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

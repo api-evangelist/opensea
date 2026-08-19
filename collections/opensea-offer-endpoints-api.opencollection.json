@@ -1,0 +1,303 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Offer Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offer Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an item offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/orders/:chain/:protocol/offers",
+            "params": [
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an offer to purchase a single NFT (ERC721 or ERC1155)."
+        },
+        {
+          "info": {
+            "name": "Create a criteria offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/offers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a criteria offer to purchase any NFT in a collection or which matches the specified trait. For trait offers where the Build Offer endpoint returns identifierOrCriteria '0', use that value directly — trait matching is validated server-side at fulfillment time rather than via onchain merkle proof."
+        },
+        {
+          "info": {
+            "name": "Fulfill an offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/offers/fulfillment_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all the information, including signatures, needed to fulfill an offer directly onchain. For trait offers with identifierOrCriteria '0', the server validates that the specified token matches the offer's trait criteria before generating fulfillment data."
+        },
+        {
+          "info": {
+            "name": "Build a criteria offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/offers/build",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Build a portion of a criteria offer including the consideration item, zone, and zone hash needed to post an offer. For trait offers on supported collections, the identifierOrCriteria in the returned consideration will be '0' (no merkle root computation needed). For other collections, a computed merkle root is returned. When identifierOrCriteria is '0', the encodedTokenIds field is informational only and not required for constructing the onchain order."
+        },
+        {
+          "info": {
+            "name": "Get offers by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/offers/collection/:slug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get collection offers on a collection."
+        },
+        {
+          "info": {
+            "name": "Get trait offers for a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/offers/collection/:slug/traits",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Bid category: STRING (single string trait), MULTI (multiple string traits), or NUMERIC (numeric trait range). If omitted, inferred from params."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Trait type name"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "Trait value as string"
+              },
+              {
+                "name": "float_value",
+                "value": "",
+                "type": "query",
+                "description": "Trait value as float"
+              },
+              {
+                "name": "int_value",
+                "value": "",
+                "type": "query",
+                "description": "Trait value as integer"
+              },
+              {
+                "name": "min_value",
+                "value": "",
+                "type": "query",
+                "description": "Minimum value for numeric trait range queries"
+              },
+              {
+                "name": "max_value",
+                "value": "",
+                "type": "query",
+                "description": "Maximum value for numeric trait range queries"
+              },
+              {
+                "name": "traits",
+                "value": "[object Object]",
+                "type": "query",
+                "description": "JSON array of trait filters for multi-trait queries. Each element has 'traitType' and 'value' fields. Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get trait offers for a collection. Use the `mode` parameter to select the bid category.\n\n**Single string trait:** `?mode=STRING&type=Background&value=Red`\n**Multiple string traits:** `?mode=MULTI&traits=[{\"traitType\":\"Background\",\"value\":\"Red\"},{\"traitType\":\"Eyes\",\"value\":\"Blue\"}]`\n**Numeric trait range:** `?mode=NUMERIC&type=Level&min_value=1&max_value=10`\n\nOmit filter params to discover all bids of that mode (e.g. `?mode=NUMERIC` returns all numeric bids).\n\nIf `mode` is omitted, the mode is in"
+        },
+        {
+          "info": {
+            "name": "Get offers by NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/offers/collection/:slug/nfts/:identifier",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "NFT token id"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get offers for an NFT."
+        },
+        {
+          "info": {
+            "name": "Get best offer by NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/offers/collection/:slug/nfts/:identifier/best",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "NFT token id"
+              }
+            ]
+          },
+          "docs": "Get the best offer for an NFT."
+        },
+        {
+          "info": {
+            "name": "Get all offers by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/offers/collection/:slug/all",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the wallet address of the order maker"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all offers for a collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

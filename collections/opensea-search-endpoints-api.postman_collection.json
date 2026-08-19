@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "2fc1a4f5-0787-4001-aef1-6cf0d6a727ab",
+      "name": "Search Endpoints",
+      "description": {
+        "content": "Search endpoints for discovering collections, tokens, NFTs, and accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "569e09f2-dc54-4fbd-821e-626e9d96f5ff",
+          "name": "Search across OpenSea",
+          "request": {
+            "name": "Search across OpenSea",
+            "description": {
+              "content": "Search across collections, tokens, NFTs, and accounts. Results are ranked by relevance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search query text"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "ethereum",
+                  "description": "Filter by blockchain(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_types",
+                  "value": "<string>",
+                  "description": "Filter by asset type(s). Valid values: collection, nft, token, account. Defaults to [collection, token] if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_types",
+                  "value": "<string>",
+                  "description": "Filter by asset type(s). Valid values: collection, nft, token, account. Defaults to [collection, token] if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results to return (default: 20, max: 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b247ed3b-f981-4836-bb3c-b47a72ad1b46",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "bored ape"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"type\": \"collection\",\n      \"collection\": {\n        \"collection\": \"bored-ape-yacht-club\",\n        \"is_disabled\": true,\n        \"is_nsfw\": false,\n        \"name\": \"Bored Ape Yacht Club\",\n        \"opensea_url\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n        \"chain\": \"ethereum\",\n        \"decimals\": 6,\n        \"name\": \"USD Coin\",\n        \"opensea_url\": \"string\",\n        \"symbol\": \"USDC\",\n        \"usd_price\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"nft\": {\n        \"collection\": \"bored-ape-yacht-club\",\n        \"contract\": \"string\",\n        \"identifier\": \"string\",\n        \"opensea_url\": \"string\",\n        \"name\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"account\": {\n        \"address\": \"string\",\n        \"opensea_url\": \"string\",\n        \"username\": \"string\",\n        \"profile_image_url\": \"string\"\n      }\n    },\n    {\n      \"type\": \"collection\",\n      \"collection\": {\n        \"collection\": \"bored-ape-yacht-club\",\n        \"is_disabled\": false,\n        \"is_nsfw\": true,\n        \"name\": \"Bored Ape Yacht Club\",\n        \"opensea_url\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n        \"chain\": \"ethereum\",\n        \"decimals\": 6,\n        \"name\": \"USD Coin\",\n        \"opensea_url\": \"string\",\n        \"symbol\": \"USDC\",\n        \"usd_price\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"nft\": {\n        \"collection\": \"bored-ape-yacht-club\",\n        \"contract\": \"string\",\n        \"identifier\": \"string\",\n        \"opensea_url\": \"string\",\n        \"name\": \"string\",\n        \"image_url\": \"string\"\n      },\n      \"account\": {\n        \"address\": \"string\",\n        \"opensea_url\": \"string\",\n        \"username\": \"string\",\n        \"profile_image_url\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dba0463-f250-48b2-accf-55181f4905a3",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "bored ape"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acaeeee6-a14a-455d-b1f1-48144b787bfe",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "bored ape"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asset_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "54b7868c-c83c-4ba3-bb29-5917ccac5954",
+    "name": "OpenSea Account Endpoints Search Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

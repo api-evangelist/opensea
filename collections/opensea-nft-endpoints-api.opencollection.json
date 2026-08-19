@@ -1,0 +1,384 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints NFT Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NFTs by identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/nfts/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve multiple NFTs in a single request by providing a list of identifiers (chain, contract address, and token ID). Not-found NFTs are silently omitted from the response."
+        },
+        {
+          "info": {
+            "name": "Validate NFT metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts/:identifier/validate-metadata",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the NFT exists"
+              },
+              {
+                "name": "address",
+                "value": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+                "type": "path",
+                "description": "The contract address"
+              },
+              {
+                "name": "identifier",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              },
+              {
+                "name": "ignoreCachedItemUrls",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to bypass cached SeaDN URLs"
+              }
+            ]
+          },
+          "docs": "Fetch and validate NFT metadata directly from the blockchain without using cached data. Returns both original and processed (SeaDN) URLs to show how the metadata would be ingested. This endpoint does not persist any data."
+        },
+        {
+          "info": {
+            "name": "Refresh NFT metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts/:identifier/refresh",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "Contract address"
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "Blockchain chain identifier"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Token identifier"
+              },
+              {
+                "name": "ignoreCachedItemUrls",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Queue a metadata refresh for a specific NFT to update its information from the blockchain."
+        },
+        {
+          "info": {
+            "name": "Transfer NFTs or tokens between wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/assets/transfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns ordered blockchain actions to execute for transferring one or more NFTs or tokens from one wallet to another. Supports bulk transfers of multiple assets in a single request."
+        },
+        {
+          "info": {
+            "name": "Get NFT metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/metadata/:chain/:contractAddress/:tokenId",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              },
+              {
+                "name": "contractAddress",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "tokenId",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              }
+            ]
+          },
+          "docs": "Get detailed metadata for an NFT including name, description, image, traits, and external links."
+        },
+        {
+          "info": {
+            "name": "Get NFTs by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/collection/:slug/nfts",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Collection slug"
+              },
+              {
+                "name": "traits",
+                "value": "[object Object]",
+                "type": "query",
+                "description": "JSON array of trait filters. Each object has 'traitType' and 'value' fields. Multiple traits are AND-combined (items must match all). Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+              },
+              {
+                "name": "has_agent_binding",
+                "value": "",
+                "type": "query",
+                "description": "Filter by NFTs that have an ERC-8217 agent binding"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get NFTs in a specific collection. Optionally filter by traits using the 'traits' query parameter with a JSON array of trait filters. Multiple traits are AND-combined (items must match all specified traits). Example: ?traits=[{\"traitType\":\"Background\",\"value\":\"Red\"},{\"traitType\":\"Eyes\",\"value\":\"Blue\"}]"
+        },
+        {
+          "info": {
+            "name": "Get NFTs by contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "Contract address"
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "Blockchain chain identifier"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all NFTs for a specific contract address on a blockchain."
+        },
+        {
+          "info": {
+            "name": "Get NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts/:identifier",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              },
+              {
+                "name": "address",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "identifier",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              }
+            ]
+          },
+          "docs": "Get metadata, traits, ownership information, and rarity for a single NFT."
+        },
+        {
+          "info": {
+            "name": "Get NFT owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts/:identifier/owners",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              },
+              {
+                "name": "address",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "identifier",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 100)"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of owners for a specific NFT. Particularly useful for ERC-1155 tokens which can have multiple owners."
+        },
+        {
+          "info": {
+            "name": "Get NFT analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address/nfts/:identifier/analytics",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              },
+              {
+                "name": "address",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "identifier",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              }
+            ]
+          },
+          "docs": "Get analytics data for a specific NFT including sales history and floor price history."
+        },
+        {
+          "info": {
+            "name": "Get NFTs by account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/account/:address/nfts",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "Account address"
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "Blockchain chain identifier"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all NFTs owned by a specific account on a blockchain, with optional collection filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

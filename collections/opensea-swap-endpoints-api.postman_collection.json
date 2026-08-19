@@ -1,0 +1,570 @@
+{
+  "item": [
+    {
+      "id": "a3d509da-9caa-4a60-ba84-5b644c55e0d1",
+      "name": "Swap Endpoints",
+      "description": {
+        "content": "Swap endpoints for getting token swap quotes with executable transaction data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7d59985-7212-4bc9-b0b9-2e1919b35027",
+          "name": "Execute a token swap",
+          "request": {
+            "name": "Execute a token swap",
+            "description": {
+              "content": "Get executable transactions for token-to-token swaps. Supports same-chain and cross-chain swaps with multiple from/to assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "swap",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"from_assets\": [\n    {\n      \"amount\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\"\n    },\n    {\n      \"amount\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\"\n    }\n  ],\n  \"to_assets\": [\n    {\n      \"amount\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\"\n    },\n    {\n      \"amount\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\"\n    }\n  ],\n  \"recipient\": \"<string>\",\n  \"slippage_tolerance\": \"<double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cb32f7d-8bb1-4017-80c9-2bd70ecf6727",
+              "name": "Swap execution data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n  \"from_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"to_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"recipient\": \"<string>\",\n  \"slippage_tolerance\": 0.01\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quote\": {\n    \"costs\": [\n      {\n        \"type\": \"GAS\",\n        \"usd\": \"string\"\n      },\n      {\n        \"type\": \"GAS\",\n        \"usd\": \"string\"\n      }\n    ],\n    \"estimated_duration_ms\": 30000,\n    \"marketplace_fee_bps\": 50,\n    \"route_errors\": [\n      {\n        \"type\": \"INSUFFICIENT_FUNDS\"\n      },\n      {\n        \"type\": \"INSUFFICIENT_FUNDS\"\n      }\n    ],\n    \"slippage_tolerance\": 0.01,\n    \"total_cost_usd\": 1869,\n    \"total_price_usd\": 1850.5,\n    \"price_impact\": {\n      \"percent\": \"string\",\n      \"usd\": \"string\"\n    },\n    \"swap_provider\": \"RELAY\",\n    \"recommended_slippage\": 2\n  },\n  \"transactions\": [\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b97158b-b74f-4cae-a947-4a4ba76e7185",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n  \"from_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"to_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"recipient\": \"<string>\",\n  \"slippage_tolerance\": 0.01\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "335e395b-6d74-4f38-99fa-9740929a4210",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n  \"from_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"to_assets\": [\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    },\n    {\n      \"amount\": \"string\",\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ],\n  \"recipient\": \"<string>\",\n  \"slippage_tolerance\": 0.01\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "283de834-b9cd-4f0f-adc0-f01c6fc5fb09",
+          "name": "Get swap quote",
+          "request": {
+            "name": "Get swap quote",
+            "description": {
+              "content": "Get a quote for swapping tokens, including price details and executable transaction data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "swap",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from_chain",
+                  "value": "<string>",
+                  "description": "(Required) Chain of the token to swap from"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_address",
+                  "value": "<string>",
+                  "description": "(Required) Contract address of the token to swap from"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_chain",
+                  "value": "<string>",
+                  "description": "(Required) Chain of the token to swap to"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_address",
+                  "value": "<string>",
+                  "description": "(Required) Contract address of the token to swap to"
+                },
+                {
+                  "disabled": false,
+                  "key": "quantity",
+                  "value": "<string>",
+                  "description": "(Required) Amount to swap in the smallest unit of the token (e.g. wei for ETH)"
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) Wallet address executing the swap"
+                },
+                {
+                  "disabled": false,
+                  "key": "slippage",
+                  "value": "0.01",
+                  "description": "Slippage tolerance (0.0 to 0.5, default: 0.01)"
+                },
+                {
+                  "disabled": false,
+                  "key": "recipient",
+                  "value": "<string>",
+                  "description": "Recipient address (defaults to sender address)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00155997-88fe-4bb4-88c9-ff99ea68dbb4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "from_address",
+                      "value": "0x0000000000000000000000000000000000000000"
+                    },
+                    {
+                      "key": "to_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "to_address",
+                      "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "0.01"
+                    },
+                    {
+                      "key": "recipient",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quote\": {\n    \"costs\": [\n      {\n        \"type\": \"GAS\",\n        \"usd\": \"string\"\n      },\n      {\n        \"type\": \"GAS\",\n        \"usd\": \"string\"\n      }\n    ],\n    \"estimated_duration_ms\": 30000,\n    \"marketplace_fee_bps\": 50,\n    \"route_errors\": [\n      {\n        \"type\": \"INSUFFICIENT_FUNDS\"\n      },\n      {\n        \"type\": \"INSUFFICIENT_FUNDS\"\n      }\n    ],\n    \"slippage_tolerance\": 0.01,\n    \"total_cost_usd\": 1869,\n    \"total_price_usd\": 1850.5,\n    \"price_impact\": {\n      \"percent\": \"string\",\n      \"usd\": \"string\"\n    },\n    \"swap_provider\": \"RELAY\",\n    \"recommended_slippage\": 2\n  },\n  \"transactions\": [\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95003a77-14e9-48ca-b95a-4d09cc9a462e",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "from_address",
+                      "value": "0x0000000000000000000000000000000000000000"
+                    },
+                    {
+                      "key": "to_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "to_address",
+                      "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "0.01"
+                    },
+                    {
+                      "key": "recipient",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60fdf0b8-9cbf-41a5-914d-fb9614f73b77",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "swap",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "from_address",
+                      "value": "0x0000000000000000000000000000000000000000"
+                    },
+                    {
+                      "key": "to_chain",
+                      "value": "ethereum"
+                    },
+                    {
+                      "key": "to_address",
+                      "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "0.01"
+                    },
+                    {
+                      "key": "recipient",
+                      "value": "0x1234567890abcdef1234567890abcdef12345678"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "32fa98a2-2470-4c49-8a01-2e2e70108ec3",
+    "name": "OpenSea Account Endpoints Swap Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

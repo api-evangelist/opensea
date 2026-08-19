@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Drops Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drops Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Build mint transaction data for a drop",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/drops/:slug/mint",
+            "params": [
+              {
+                "name": "slug",
+                "value": "boredapeyachtclub",
+                "type": "path",
+                "description": "The collection slug identifying the drop"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns ready-to-sign transaction data for minting tokens from a drop. The caller is responsible for signing and submitting the transaction. No wallet authentication is required — only an API key. The minter address in the request body determines who will receive the tokens. Stage selection is handled automatically by the backend — if multiple stages are active, the first eligible stage is used."
+        },
+        {
+          "info": {
+            "name": "Build deploy contract transaction data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/drops/deploy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns ready-to-sign transaction data for deploying a new NFT drop contract. The caller is responsible for signing and submitting the transaction."
+        },
+        {
+          "info": {
+            "name": "Get drops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/drops",
+            "params": [
+              {
+                "name": "type",
+                "value": "featured",
+                "type": "query",
+                "description": "Drop calendar type: featured, upcoming, or recently_minted"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (1-100, default: 20)"
+              },
+              {
+                "name": "chains",
+                "value": "ethereum,base",
+                "type": "query",
+                "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get a list of NFT drops (mints) by type: featured, upcoming, or recently_minted. Results may be fewer than the requested limit due to post-fetch filtering."
+        },
+        {
+          "info": {
+            "name": "Get drop by collection slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/drops/:slug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "cool-cats",
+                "type": "path",
+                "description": "Collection slug"
+              }
+            ]
+          },
+          "docs": "Get detailed drop information for a collection, including stages and supply."
+        },
+        {
+          "info": {
+            "name": "Get deploy contract receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/drops/deploy/:chain/:tx_hash/receipt",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "Chain slug (e.g. ethereum, base)"
+              },
+              {
+                "name": "tx_hash",
+                "value": "0xabc123...",
+                "type": "path",
+                "description": "Transaction hash of the deployment transaction"
+              }
+            ]
+          },
+          "docs": "Check the status of a contract deployment transaction. Returns the deployment status and, on success, the deployed contract address and linked collection slug."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

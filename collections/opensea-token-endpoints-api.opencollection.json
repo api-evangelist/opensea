@@ -1,0 +1,424 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Token Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tokens by contract identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/tokens/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve multiple tokens in a single request by providing a list of contract identifiers (chain and address). Not-found tokens are silently omitted from the response."
+        },
+        {
+          "info": {
+            "name": "Get trending tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/tokens/trending",
+            "params": [
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 100)"
+              },
+              {
+                "name": "chains",
+                "value": "ethereum",
+                "type": "query",
+                "description": "Filter by blockchain(s)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get trending tokens based on OpenSea's trending score algorithm. Returns tokens with high momentum including memecoins and newly popular assets."
+        },
+        {
+          "info": {
+            "name": "Get top tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/tokens/top",
+            "params": [
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 100)"
+              },
+              {
+                "name": "chains",
+                "value": "ethereum",
+                "type": "query",
+                "description": "Filter by blockchain(s)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get top tokens ranked by 24-hour trading volume. Returns established tokens with high market activity."
+        },
+        {
+          "info": {
+            "name": "Get token groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/token-groups",
+            "params": [
+              {
+                "name": "limit",
+                "value": "50",
+                "type": "query",
+                "description": "Number of results to return (default: 50, max: 100)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of token groups sorted by market cap descending. Token groups represent equivalent currencies across different blockchains (e.g., ETH on Ethereum, Base, and Arbitrum are all in the \"eth\" token group)."
+        },
+        {
+          "info": {
+            "name": "Get a token group by slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/token-groups/:slug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "eth",
+                "type": "path",
+                "description": "The slug identifier of the token group"
+              }
+            ]
+          },
+          "docs": "Get detailed information about a specific token group by its slug identifier."
+        },
+        {
+          "info": {
+            "name": "Get token details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              }
+            ]
+          },
+          "docs": "Get detailed information about a specific token by chain and contract address."
+        },
+        {
+          "info": {
+            "name": "Get token price history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address/price_history",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              },
+              {
+                "name": "start_time",
+                "value": "2024-01-01T00:00:00Z",
+                "type": "query",
+                "description": "Start time for the price history window (ISO 8601)"
+              },
+              {
+                "name": "end_time",
+                "value": "2024-01-02T00:00:00Z",
+                "type": "query",
+                "description": "End time for the price history window (ISO 8601, defaults to now)"
+              },
+              {
+                "name": "bucket_size",
+                "value": "1h",
+                "type": "query",
+                "description": "Candle bucket size for aggregation (1s, 1m, 5m, 15m, 1h, 4h, 1d)"
+              }
+            ]
+          },
+          "docs": "Get historical price data for a specific token."
+        },
+        {
+          "info": {
+            "name": "Get token OHLCV candles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address/ohlcv",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              },
+              {
+                "name": "start_time",
+                "value": "2024-01-01T00:00:00Z",
+                "type": "query",
+                "description": "Start time for the OHLCV window (ISO 8601)"
+              },
+              {
+                "name": "end_time",
+                "value": "2024-01-02T00:00:00Z",
+                "type": "query",
+                "description": "End time for the OHLCV window (ISO 8601, defaults to now)"
+              },
+              {
+                "name": "bucket_size",
+                "value": "1h",
+                "type": "query",
+                "description": "Candle bucket size (1s, 1m, 5m, 15m, 1h, 4h, 1d)"
+              },
+              {
+                "name": "fill_time_window",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to fill empty time windows with zero-volume candles"
+              }
+            ]
+          },
+          "docs": "Get OHLCV (Open, High, Low, Close, Volume) candlestick data for a specific token."
+        },
+        {
+          "info": {
+            "name": "Get token liquidity pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address/liquidity-pools",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 50)"
+              }
+            ]
+          },
+          "docs": "Get liquidity pools for a specific token."
+        },
+        {
+          "info": {
+            "name": "Get token holders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address/holders",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 100)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get paginated list of holders for a specific token, including quantity held and USD value."
+        },
+        {
+          "info": {
+            "name": "Get token swap activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/token/:address/activity",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which the token exists"
+              },
+              {
+                "name": "address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "path",
+                "description": "The contract address of the token"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 50)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get paginated swap activity for a specific token on a given chain."
+        },
+        {
+          "info": {
+            "name": "Get token balances by account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/account/:address/tokens",
+            "params": [
+              {
+                "name": "address",
+                "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+                "type": "path",
+                "description": "Wallet address"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of results to return (default: 20, max: 100)"
+              },
+              {
+                "name": "chains",
+                "value": "ethereum",
+                "type": "query",
+                "description": "Filter by blockchain(s)"
+              },
+              {
+                "name": "sort_by",
+                "value": "usd_value",
+                "type": "query",
+                "description": "Sort field (default: usd_value)"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "Sort direction (default: desc)"
+              },
+              {
+                "name": "disable_spam_filtering",
+                "value": "false",
+                "type": "query",
+                "description": "When true, disables OpenSea's heuristic spam filtering and returns tokens that would normally be hidden (low liquidity, dust, flagged-as-spam, etc.). Tokens flagged for trust & safety enforcement or as malicious are still filtered out regardless. Surfaced tokens carry a `status` field on the response indicating why they would have been filtered."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Get fungible token balances for a specific wallet address. Returns quantity (in display units, not raw/wei), USD value, and token metadata for each token held."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

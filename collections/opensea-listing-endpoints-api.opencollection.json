@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Listing Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listing Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/orders/:chain/:protocol/listings",
+            "params": [
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List a single NFT (ERC721 or ERC1155) for sale on the OpenSea marketplace."
+        },
+        {
+          "info": {
+            "name": "Sweep buy items from a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/listings/sweep",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Buy up to N items from a collection using any payment token, including cross-chain. If a requested item becomes unavailable, the system can automatically substitute it with the next cheapest listing from the same collection (enabled by default). Returns an ordered list of transactions to execute."
+        },
+        {
+          "info": {
+            "name": "Fulfill a listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/listings/fulfillment_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all the information, including signatures, needed to fulfill a listing directly onchain."
+        },
+        {
+          "info": {
+            "name": "Fulfill a listing using a different token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/listings/cross_chain_fulfillment_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get fulfillment data to buy one or more listings using a token on a different chain or a different token on the same chain. Supports cross-chain purchases and same-chain token swaps via the Relay protocol. Returns an ordered list of transactions to execute."
+        },
+        {
+          "info": {
+            "name": "Get listing creation actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/listings/actions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the blockchain actions (approvals + Seaport order signing payload) needed to list one or more NFTs. This eliminates the need to construct Seaport orders manually."
+        },
+        {
+          "info": {
+            "name": "Get best listing by NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/listings/collection/:slug/nfts/:identifier/best",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "NFT token id"
+              },
+              {
+                "name": "include_private_listings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include private listings; defaults to false"
+              }
+            ]
+          },
+          "docs": "Get the best listing for an NFT."
+        },
+        {
+          "info": {
+            "name": "Get best listings by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/listings/collection/:slug/best",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "include_private_listings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include private listings; defaults to false"
+              },
+              {
+                "name": "traits",
+                "value": "[object Object]",
+                "type": "query",
+                "description": "JSON array of trait filters to narrow listings by item traits. Each object has 'traitType' and 'value' fields. Multiple traits are AND-combined (items must match all). Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the best listings for a collection sorted by price ascending. Optionally filter by item traits using the 'traits' query parameter with a JSON array of trait filters. Multiple traits are AND-combined (items must match all). Note: results are not deduplicated by token ID — if a token has multiple listings, each listing is returned individually. Filter client-side if you need unique tokens. Example: ?traits=[{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+        },
+        {
+          "info": {
+            "name": "Get all listings by collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/listings/collection/:slug/all",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Unique string to identify a collection on OpenSea"
+              },
+              {
+                "name": "include_private_listings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include private listings; defaults to false"
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the wallet address of the order maker"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all listings for a collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

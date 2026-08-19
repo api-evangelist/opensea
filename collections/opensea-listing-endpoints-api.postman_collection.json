@@ -1,0 +1,2194 @@
+{
+  "item": [
+    {
+      "id": "51fafa76-1618-46aa-8784-edb56c59e2db",
+      "name": "Listing Endpoints",
+      "description": {
+        "content": "Listing endpoints for creating, fulfilling, and querying listings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a43c6aaa-1b9e-461c-91cb-b13c29535a55",
+          "name": "Create a listing",
+          "request": {
+            "name": "Create a listing",
+            "description": {
+              "content": "List a single NFT (ERC721 or ERC1155) for sale on the OpenSea marketplace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ":chain",
+                ":protocol",
+                "listings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "protocol",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"<string>\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"recipient\": \"<string>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      },\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"recipient\": \"<string>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      }\n    ],\n    \"counter\": \"<string>\",\n    \"endTime\": \"<string>\",\n    \"offer\": [\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      },\n      {\n        \"endAmount\": \"<string>\",\n        \"identifierOrCriteria\": \"<string>\",\n        \"itemType\": \"<integer>\",\n        \"startAmount\": \"<string>\",\n        \"token\": \"<string>\"\n      }\n    ],\n    \"offerer\": \"<string>\",\n    \"orderType\": \"<integer>\",\n    \"salt\": \"<string>\",\n    \"startTime\": \"<string>\",\n    \"totalOriginalConsiderationItems\": \"<integer>\",\n    \"zoneHash\": \"<string>\",\n    \"zone\": \"<string>\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9a9af3c-6871-4d51-b599-4af19cf8e0c7",
+              "name": "Listing created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "listings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 8778,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2325,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 7367,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2269,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 4597,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 8781,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"chain\": \"string\",\n  \"order_hash\": \"string\",\n  \"price\": {\n    \"current\": {\n      \"currency\": \"string\",\n      \"decimals\": 6111,\n      \"value\": \"string\"\n    }\n  },\n  \"remaining_quantity\": 6741,\n  \"status\": \"EXPIRED\",\n  \"type\": \"string\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 9677,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4406,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": 6043,\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 5123,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4990,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 7235,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 7493,\n      \"zone\": \"string\",\n      \"zoneHash\": \"string\"\n    },\n    \"signature\": \"string\"\n  },\n  \"protocol_address\": \"string\",\n  \"asset\": {\n    \"contract\": \"string\",\n    \"identifier\": \"string\"\n  },\n  \"order_created_at\": 43\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72957387-f9c2-4a9e-b442-0a6c4b656cd7",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "listings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 8778,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2325,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 7367,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2269,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 4597,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 8781,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e83f94f2-3505-4f52-bbe7-2e18dd7de495",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":chain",
+                    ":protocol",
+                    "listings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "protocol",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parameters\": {\n    \"conduitKey\": \"string\",\n    \"consideration\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 8778,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2325,\n        \"recipient\": \"string\",\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"counter\": \"string\",\n    \"endTime\": \"string\",\n    \"offer\": [\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 7367,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      },\n      {\n        \"endAmount\": \"string\",\n        \"identifierOrCriteria\": \"string\",\n        \"itemType\": 2269,\n        \"startAmount\": \"string\",\n        \"token\": \"string\"\n      }\n    ],\n    \"offerer\": \"string\",\n    \"orderType\": 4597,\n    \"salt\": \"string\",\n    \"startTime\": \"string\",\n    \"totalOriginalConsiderationItems\": 8781,\n    \"zoneHash\": \"string\",\n    \"zone\": \"string\"\n  },\n  \"protocol_address\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00058b8d-65ae-40f4-81d7-592f5f5bf06b",
+          "name": "Sweep buy items from a collection",
+          "request": {
+            "name": "Sweep buy items from a collection",
+            "description": {
+              "content": "Buy up to N items from a collection using any payment token, including cross-chain. If a requested item becomes unavailable, the system can automatically substitute it with the next cheapest listing from the same collection (enabled by default). Returns an ordered list of transactions to execute.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "sweep"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyer\": \"<string>\",\n  \"collection_slug\": \"<string>\",\n  \"max_items\": \"<integer>\",\n  \"max_price_per_item\": \"<string>\",\n  \"payment\": {\n    \"chain\": \"<string>\",\n    \"token_address\": \"<string>\"\n  },\n  \"recipient\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9900d9ef-1866-45e7-ac6d-12d7cd34003a",
+              "name": "Sweep fulfillment data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "sweep"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": \"0x...\",\n  \"collection_slug\": \"pudgypenguins\",\n  \"max_items\": 5,\n  \"max_price_per_item\": \"<string>\",\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"steps\": [],\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b2c668c-7d22-437f-9cd3-ff47c4ace822",
+              "name": "The request is invalid. Possible reasons: collection not found, invalid chain, max_items exceeds limit, or no listings available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "sweep"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": \"0x...\",\n  \"collection_slug\": \"pudgypenguins\",\n  \"max_items\": 5,\n  \"max_price_per_item\": \"<string>\",\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"steps\": [],\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c46753c6-a816-43cb-bf1a-9031fe71fff8",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "sweep"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": \"0x...\",\n  \"collection_slug\": \"pudgypenguins\",\n  \"max_items\": 5,\n  \"max_price_per_item\": \"<string>\",\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc442f9a-a2cc-43b2-bd5c-c89883ee3ce4",
+          "name": "Fulfill a listing",
+          "request": {
+            "name": "Fulfill a listing",
+            "description": {
+              "content": "Retrieve all the information, including signatures, needed to fulfill a listing directly onchain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "fulfillment_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fulfiller\": {\n    \"address\": \"<string>\"\n  },\n  \"listing\": {\n    \"chain\": \"<string>\",\n    \"hash\": \"<string>\",\n    \"protocol_address\": \"<string>\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"<string>\",\n    \"token_id\": \"<string>\"\n  },\n  \"recipient\": \"<string>\",\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d91e310f-2fff-4ce3-a20a-4d9da159e775",
+              "name": "Listing fulfillment data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listing\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"recipient\": \"<string>\",\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"fulfillment_data\": {\n    \"orders\": [\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 7274,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 9686,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 3410,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5563,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 1069,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4821,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"chain\": 4317,\n      \"function\": \"string\",\n      \"input_data\": {\n        \"advancedOrder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"criteriaResolvers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fulfillerConduitKey\": \"string\",\n        \"recipient\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  },\n  \"protocol\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94d6f14d-3ee4-43f4-a191-9e0946fede56",
+              "name": "The request is invalid\nThe order_hash does not exist\nThe chain is not an EVM Chain\nThe protocol_address is not a supported Seaport contract\nFor other error reasons, see the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listing\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"recipient\": \"<string>\",\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"fulfillment_data\": {\n    \"orders\": [\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 7274,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 9686,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 3410,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 5563,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 1069,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 4821,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      }\n    ],\n    \"transaction\": {\n      \"chain\": 4317,\n      \"function\": \"string\",\n      \"input_data\": {\n        \"advancedOrder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"criteriaResolvers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fulfillerConduitKey\": \"string\",\n        \"recipient\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  },\n  \"protocol\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95310a69-20ee-412b-b333-8b8489a55ccb",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listing\": {\n    \"chain\": \"string\",\n    \"hash\": \"string\",\n    \"protocol_address\": \"string\"\n  },\n  \"consideration\": {\n    \"asset_contract_address\": \"string\",\n    \"token_id\": \"string\"\n  },\n  \"recipient\": \"<string>\",\n  \"units_to_fill\": \"<long>\",\n  \"include_optional_creator_fees\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4826fdae-f114-4847-98ef-27f1a9a0dd00",
+          "name": "Fulfill a listing using a different token",
+          "request": {
+            "name": "Fulfill a listing using a different token",
+            "description": {
+              "content": "Get fulfillment data to buy one or more listings using a token on a different chain or a different token on the same chain. Supports cross-chain purchases and same-chain token swaps via the Relay protocol. Returns an ordered list of transactions to execute.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "cross_chain_fulfillment_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fulfiller\": {\n    \"address\": \"<string>\"\n  },\n  \"listings\": [\n    {\n      \"chain\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"protocol_address\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"protocol_address\": \"<string>\"\n    }\n  ],\n  \"payment\": {\n    \"chain\": \"<string>\",\n    \"token_address\": \"<string>\"\n  },\n  \"recipient\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be2fef02-e56c-49db-aabe-b9e9c0a6e084",
+              "name": "Cross-chain fulfillment data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "cross_chain_fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listings\": [\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    },\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    }\n  ],\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b82e39ae-ef25-473b-a1c4-bdcfe3667cc6",
+              "name": "The request is invalid. Possible reasons: listing not found, listing not valid, listing is not a listing order, or no fulfillment actions could be generated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "cross_chain_fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listings\": [\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    },\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    }\n  ],\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"data\": \"string\",\n      \"to\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57a540c0-5941-4384-b3f2-1a9d9809fca7",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "cross_chain_fulfillment_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fulfiller\": {\n    \"address\": \"string\"\n  },\n  \"listings\": [\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    },\n    {\n      \"chain\": \"string\",\n      \"hash\": \"string\",\n      \"protocol_address\": \"string\"\n    }\n  ],\n  \"payment\": {\n    \"chain\": \"base\",\n    \"token_address\": \"0x0000000000000000000000000000000000000000\"\n  },\n  \"recipient\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "835732cb-9ca6-4cfc-8d48-c15aabcce367",
+          "name": "Get listing creation actions",
+          "request": {
+            "name": "Get listing creation actions",
+            "description": {
+              "content": "Returns the blockchain actions (approvals + Seaport order signing payload) needed to list one or more NFTs. This eliminates the need to construct Seaport orders manually.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"items\": [\n    {\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"<string>\",\n          \"decimals\": \"<integer>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"quantity\": \"<long>\",\n      \"token_id\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"end_time\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"<string>\",\n          \"decimals\": \"<integer>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"quantity\": \"<long>\",\n      \"token_id\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"end_time\": \"<string>\"\n    }\n  ],\n  \"use_creator_fee\": \"<boolean>\",\n  \"taker\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b392411-afe4-40e7-8923-13064dda6ad1",
+              "name": "Listing creation actions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x...\",\n  \"items\": [\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 6519,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 4774,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    }\n  ],\n  \"use_creator_fee\": \"<boolean>\",\n  \"taker\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"steps\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8c45009-ed72-4ce2-8d58-80fe271a6eae",
+              "name": "The request is invalid. Possible reasons: items on different chains, invalid addresses, items not found, invalid currency, or prices/quantities not positive.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x...\",\n  \"items\": [\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 6519,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 4774,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    }\n  ],\n  \"use_creator_fee\": \"<boolean>\",\n  \"taker\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"steps\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86ee36f2-664f-4e29-94b9-511df3ed64b1",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"0x...\",\n  \"items\": [\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 6519,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0x...\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 4774,\n          \"value\": \"string\"\n        }\n      },\n      \"quantity\": 1,\n      \"token_id\": \"string\",\n      \"start_time\": \"2026-05-01T00:00:00Z\",\n      \"end_time\": \"2026-06-01T00:00:00Z\"\n    }\n  ],\n  \"use_creator_fee\": \"<boolean>\",\n  \"taker\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5434952-f75d-46e0-91d4-bc1a6481dea0",
+          "name": "Get best listing by NFT",
+          "request": {
+            "name": "Get best listing by NFT",
+            "description": {
+              "content": "Get the best listing for an NFT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "collection",
+                ":slug",
+                "nfts",
+                ":identifier",
+                "best"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_private_listings",
+                  "value": "<boolean>",
+                  "description": "Whether to include private listings; defaults to false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) NFT token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "143984cb-2ce7-4da6-afdd-12c2e9ba28dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"chain\": \"string\",\n  \"order_hash\": \"string\",\n  \"price\": {\n    \"current\": {\n      \"currency\": \"string\",\n      \"decimals\": 6111,\n      \"value\": \"string\"\n    }\n  },\n  \"remaining_quantity\": 6741,\n  \"status\": \"EXPIRED\",\n  \"type\": \"string\",\n  \"protocol_data\": {\n    \"parameters\": {\n      \"conduitKey\": \"string\",\n      \"consideration\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 9677,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4406,\n          \"recipient\": \"string\",\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"counter\": 6043,\n      \"endTime\": \"string\",\n      \"offer\": [\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 5123,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        },\n        {\n          \"endAmount\": \"string\",\n          \"identifierOrCriteria\": \"string\",\n          \"itemType\": 4990,\n          \"startAmount\": \"string\",\n          \"token\": \"string\"\n        }\n      ],\n      \"offerer\": \"string\",\n      \"orderType\": 7235,\n      \"salt\": \"string\",\n      \"startTime\": \"string\",\n      \"totalOriginalConsiderationItems\": 7493,\n      \"zone\": \"string\",\n      \"zoneHash\": \"string\"\n    },\n    \"signature\": \"string\"\n  },\n  \"protocol_address\": \"string\",\n  \"asset\": {\n    \"contract\": \"string\",\n    \"identifier\": \"string\"\n  },\n  \"order_created_at\": 43\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d5dcaf2-d2af-463f-9b1c-03276beb3a9d",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83179c61-e811-4b38-b469-a1a225b1f6bd",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5eb72466-af3f-49a1-9f38-a321ce704ba4",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "nfts",
+                    ":identifier",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2fd9146-fe2a-4d50-9731-7ba675125aea",
+          "name": "Get best listings by collection",
+          "request": {
+            "name": "Get best listings by collection",
+            "description": {
+              "content": "Get the best listings for a collection sorted by price ascending. Optionally filter by item traits using the 'traits' query parameter with a JSON array of trait filters. Multiple traits are AND-combined (items must match all). Note: results are not deduplicated by token ID — if a token has multiple listings, each listing is returned individually. Filter client-side if you need unique tokens. Example: ?traits=[{\"traitType\":\"Background\",\"value\":\"Red\"}]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "collection",
+                ":slug",
+                "best"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_private_listings",
+                  "value": "<boolean>",
+                  "description": "Whether to include private listings; defaults to false"
+                },
+                {
+                  "disabled": false,
+                  "key": "traits",
+                  "value": "<string>",
+                  "description": "JSON array of trait filters to narrow listings by item traits. Each object has 'traitType' and 'value' fields. Multiple traits are AND-combined (items must match all). Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc54bad2-25b5-46f8-81a4-252e5e9eed02",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"listings\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 1851,\n          \"value\": \"string\"\n        }\n      },\n      \"remaining_quantity\": 4072,\n      \"status\": \"EXPIRED\",\n      \"type\": \"string\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 6543,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 3377,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 2148,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9524\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 906,\n          \"value\": \"string\"\n        }\n      },\n      \"remaining_quantity\": 6955,\n      \"status\": \"FULFILLED\",\n      \"type\": \"string\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 4442,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5279,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 8027,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 5196\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30b6f308-32e4-48fb-9d61-e530adb29ee9",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3cdc5bee-86ab-4a46-bdf0-cf7e7bb11f0b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcf2ff5d-2f77-49c2-bd50-84b01a171b22",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "best"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "traits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68d55a82-b61c-4979-8805-7aa907729101",
+          "name": "Get all listings by collection",
+          "request": {
+            "name": "Get all listings by collection",
+            "description": {
+              "content": "Get all listings for a collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "listings",
+                "collection",
+                ":slug",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_private_listings",
+                  "value": "<boolean>",
+                  "description": "Whether to include private listings; defaults to false"
+                },
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "Filter by the wallet address of the order maker"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "next.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Unique string to identify a collection on OpenSea"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8f59426-0563-4320-b967-b1f35b0b7154",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"listings\": [\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 1851,\n          \"value\": \"string\"\n        }\n      },\n      \"remaining_quantity\": 4072,\n      \"status\": \"EXPIRED\",\n      \"type\": \"string\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 6543,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 3377,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 2148,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 9524\n    },\n    {\n      \"chain\": \"string\",\n      \"order_hash\": \"string\",\n      \"price\": {\n        \"current\": {\n          \"currency\": \"string\",\n          \"decimals\": 906,\n          \"value\": \"string\"\n        }\n      },\n      \"remaining_quantity\": 6955,\n      \"status\": \"FULFILLED\",\n      \"type\": \"string\",\n      \"protocol_data\": {\n        \"parameters\": {\n          \"conduitKey\": \"string\",\n          \"consideration\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"counter\": 4442,\n          \"endTime\": \"string\",\n          \"offer\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"offerer\": \"string\",\n          \"orderType\": 5279,\n          \"salt\": \"string\",\n          \"startTime\": \"string\",\n          \"totalOriginalConsiderationItems\": 8027,\n          \"zone\": \"string\",\n          \"zoneHash\": \"string\"\n        },\n        \"signature\": \"string\"\n      },\n      \"protocol_address\": \"string\",\n      \"asset\": {\n        \"contract\": \"string\",\n        \"identifier\": \"string\"\n      },\n      \"order_created_at\": 5196\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fbe6bab-f110-4fd6-bf2e-73fc4c58f834",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7655d652-62d2-4620-a572-6f0c37abb88f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "285a462d-25e0-4771-a4ce-4df7e78f521c",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "listings",
+                    "collection",
+                    ":slug",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_private_listings",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "next.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Unique string to identify a collection on OpenSea"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a53392d-f066-43cb-b5c9-c44f5b7c09cc",
+    "name": "OpenSea Account Endpoints Listing Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

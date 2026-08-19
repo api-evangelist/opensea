@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Tool Endpoints [Beta] API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tool Endpoints [Beta]",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[Beta] Report tool usage (metrics only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/tools/usage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "[Beta] Report verified tool usage for metrics and analytics purposes only. Supports verification_type: eip3009_authorization (free tools, identity proof) or x402_settlement (paid tools, onchain USDC payment verification). This endpoint does NOT trigger any onchain transactions. This endpoint is under active development and may change without notice."
+        },
+        {
+          "info": {
+            "name": "[Beta] List registered tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/tools",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by: newest, oldest"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by access type: open, nft_gated, token_gated, subscription, gated"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "cursor.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "[Beta] List verified registered tools with optional sorting and filtering. This endpoint is under active development and may change without notice."
+        },
+        {
+          "info": {
+            "name": "[Beta] Get a registered tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/tools/:registry_chain/:registry_addr/:tool_id",
+            "params": [
+              {
+                "name": "registry_chain",
+                "value": "",
+                "type": "path",
+                "description": "Registry chain ID (e.g. 1, 8453)"
+              },
+              {
+                "name": "registry_addr",
+                "value": "",
+                "type": "path",
+                "description": "Registry contract address"
+              },
+              {
+                "name": "tool_id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric tool ID"
+              }
+            ]
+          },
+          "docs": "[Beta] Get a registered tool by its composite key: registry chain, registry address, and tool ID. Includes pricing recipients and NFT collection info for gated tools. This endpoint is under active development and may change without notice."
+        },
+        {
+          "info": {
+            "name": "[Beta] Search registered tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/tools/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query text"
+              },
+              {
+                "name": "registry_chain",
+                "value": "",
+                "type": "query",
+                "description": "Filter by registry chain ID"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tags"
+              },
+              {
+                "name": "access_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by access type: open, nft_gated, subscription"
+              },
+              {
+                "name": "creator",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creator address"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by: relevance, newest, most_used"
+              },
+              {
+                "name": "include_details",
+                "value": "",
+                "type": "query",
+                "description": "Include pricing recipients and access requirements per result. Defaults to true; set false for a lighter list response."
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "cursor.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "[Beta] Search for verified registered tools by name, tags, creator, or other criteria. This endpoint is under active development and may change without notice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

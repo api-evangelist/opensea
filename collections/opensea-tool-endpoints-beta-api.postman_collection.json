@@ -1,0 +1,1174 @@
+{
+  "item": [
+    {
+      "id": "6ecc367c-3545-437b-b48d-a28d36989763",
+      "name": "Tool Endpoints [Beta]",
+      "description": {
+        "content": "[Beta] Tool endpoints for discovering and inspecting registered onchain tools. This API is under active development and may change without notice.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bae2b0aa-5ecc-4927-a6dc-eaebeb8fcdc5",
+          "name": "[Beta] Report tool usage (metrics only)",
+          "request": {
+            "name": "[Beta] Report tool usage (metrics only)",
+            "description": {
+              "content": "[Beta] Report verified tool usage for metrics and analytics purposes only. Supports verification_type: eip3009_authorization (free tools, identity proof) or x402_settlement (paid tools, onchain USDC payment verification). This endpoint does NOT trigger any onchain transactions. This endpoint is under active development and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tools",
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_type\": \"<string>\",\n  \"tool_chain_id\": \"<long>\",\n  \"tool_registry_address\": \"<string>\",\n  \"tool_onchain_id\": \"<long>\",\n  \"latency_ms\": \"<long>\",\n  \"eip3009\": {\n    \"caller_address\": \"<string>\",\n    \"signature\": \"<string>\",\n    \"chain_id\": \"<long>\",\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"value\": \"<integer>\",\n    \"valid_after\": \"<integer>\",\n    \"valid_before\": \"<integer>\",\n    \"nonce\": \"<string>\"\n  },\n  \"x402\": {\n    \"caller_address\": \"<string>\",\n    \"tx_hash\": \"<string>\",\n    \"chain_id\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15277f7d-b6d1-4610-9df9-3013e3bcac7d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verification_type\": \"<string>\",\n  \"tool_chain_id\": \"<long>\",\n  \"tool_registry_address\": \"<string>\",\n  \"tool_onchain_id\": \"<long>\",\n  \"latency_ms\": \"<long>\",\n  \"eip3009\": {\n    \"caller_address\": \"string\",\n    \"signature\": \"string\",\n    \"chain_id\": 7042,\n    \"from\": \"string\",\n    \"to\": \"string\",\n    \"value\": 2231,\n    \"valid_after\": 7801,\n    \"valid_before\": 8315,\n    \"nonce\": \"string\"\n  },\n  \"x402\": {\n    \"caller_address\": \"string\",\n    \"tx_hash\": \"string\",\n    \"chain_id\": 7841\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"verification_type\": \"string\",\n  \"verified\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf46d3fe-4765-4fd5-977b-f663a27dfcfb",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verification_type\": \"<string>\",\n  \"tool_chain_id\": \"<long>\",\n  \"tool_registry_address\": \"<string>\",\n  \"tool_onchain_id\": \"<long>\",\n  \"latency_ms\": \"<long>\",\n  \"eip3009\": {\n    \"caller_address\": \"string\",\n    \"signature\": \"string\",\n    \"chain_id\": 7042,\n    \"from\": \"string\",\n    \"to\": \"string\",\n    \"value\": 2231,\n    \"valid_after\": 7801,\n    \"valid_before\": 8315,\n    \"nonce\": \"string\"\n  },\n  \"x402\": {\n    \"caller_address\": \"string\",\n    \"tx_hash\": \"string\",\n    \"chain_id\": 7841\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e96030ae-cf40-4a49-89e8-2ff45abb2782",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verification_type\": \"<string>\",\n  \"tool_chain_id\": \"<long>\",\n  \"tool_registry_address\": \"<string>\",\n  \"tool_onchain_id\": \"<long>\",\n  \"latency_ms\": \"<long>\",\n  \"eip3009\": {\n    \"caller_address\": \"string\",\n    \"signature\": \"string\",\n    \"chain_id\": 7042,\n    \"from\": \"string\",\n    \"to\": \"string\",\n    \"value\": 2231,\n    \"valid_after\": 7801,\n    \"valid_before\": 8315,\n    \"nonce\": \"string\"\n  },\n  \"x402\": {\n    \"caller_address\": \"string\",\n    \"tx_hash\": \"string\",\n    \"chain_id\": 7841\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eed7f4d1-4a87-4a03-8cf6-4ee2aa884679",
+          "name": "[Beta] List registered tools",
+          "request": {
+            "name": "[Beta] List registered tools",
+            "description": {
+              "content": "[Beta] List verified registered tools with optional sorting and filtering. This endpoint is under active development and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "newest",
+                  "description": "Sort by: newest, oldest"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by access type: open, nft_gated, token_gated, subscription, gated"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3bb02dd-c449-430f-a451-f1e8b146f730",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "newest"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tools\": [\n    {\n      \"created_at\": \"string\",\n      \"creator\": \"string\",\n      \"is_active\": false,\n      \"manifest_hash\": \"string\",\n      \"manifest_hash_verified\": true,\n      \"metadata_uri\": \"string\",\n      \"registry_addr\": \"string\",\n      \"registry_chain\": \"string\",\n      \"tool_id\": \"string\",\n      \"updated_at\": \"string\",\n      \"endpoint_url\": \"string\",\n      \"endpoint_domain\": \"string\"\n    },\n    {\n      \"created_at\": \"string\",\n      \"creator\": \"string\",\n      \"is_active\": true,\n      \"manifest_hash\": \"string\",\n      \"manifest_hash_verified\": false,\n      \"metadata_uri\": \"string\",\n      \"registry_addr\": \"string\",\n      \"registry_chain\": \"string\",\n      \"tool_id\": \"string\",\n      \"updated_at\": \"string\",\n      \"endpoint_url\": \"string\",\n      \"endpoint_domain\": \"string\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7796052d-71b5-4632-aef3-84ad3e98aeb7",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "newest"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a148570-ab65-4772-98d6-742877f2b936",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "newest"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd9533d8-502f-4e93-9335-3dc0abdc9b4f",
+          "name": "[Beta] Get a registered tool",
+          "request": {
+            "name": "[Beta] Get a registered tool",
+            "description": {
+              "content": "[Beta] Get a registered tool by its composite key: registry chain, registry address, and tool ID. Includes pricing recipients and NFT collection info for gated tools. This endpoint is under active development and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tools",
+                ":registry_chain",
+                ":registry_addr",
+                ":tool_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "registry_chain",
+                  "description": "(Required) Registry chain ID (e.g. 1, 8453)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "registry_addr",
+                  "description": "(Required) Registry contract address"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tool_id",
+                  "description": "(Required) Numeric tool ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e2172e4-3c56-416e-86ff-563eb412db19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    ":registry_chain",
+                    ":registry_addr",
+                    ":tool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_chain",
+                      "description": "(Required) Registry chain ID (e.g. 1, 8453)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_addr",
+                      "description": "(Required) Registry contract address"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tool_id",
+                      "description": "(Required) Numeric tool ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"string\",\n  \"creator\": \"string\",\n  \"is_active\": false,\n  \"manifest_hash\": \"string\",\n  \"manifest_hash_verified\": true,\n  \"metadata_uri\": \"string\",\n  \"pricing_recipients\": [\n    {\n      \"amount_per_call\": \"string\",\n      \"asset\": \"string\",\n      \"created_at\": \"string\",\n      \"payment_chain\": \"string\",\n      \"protocol\": \"string\",\n      \"recipient\": \"string\"\n    },\n    {\n      \"amount_per_call\": \"string\",\n      \"asset\": \"string\",\n      \"created_at\": \"string\",\n      \"payment_chain\": \"string\",\n      \"protocol\": \"string\",\n      \"recipient\": \"string\"\n    }\n  ],\n  \"registry_addr\": \"string\",\n  \"registry_chain\": \"string\",\n  \"tool_id\": \"string\",\n  \"updated_at\": \"string\",\n  \"endpoint_url\": \"string\",\n  \"endpoint_domain\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputs\": \"\",\n  \"outputs\": \"\",\n  \"creator_address\": \"string\",\n  \"endpoint\": \"string\",\n  \"access\": {\n    \"logic\": \"string\",\n    \"open_access\": true,\n    \"requirements\": [\n      {\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"collection_address\": \"string\",\n        \"token_id\": \"string\",\n        \"min_tier\": 9178,\n        \"token_address\": \"string\",\n        \"min_balance\": \"string\",\n        \"data\": \"string\",\n        \"label\": \"string\",\n        \"links\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"collection\": {\n          \"contracts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"name\": \"string\",\n          \"opensea_url\": \"string\",\n          \"slug\": \"string\",\n          \"image_url\": \"string\"\n        }\n      },\n      {\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"collection_address\": \"string\",\n        \"token_id\": \"string\",\n        \"min_tier\": 2260,\n        \"token_address\": \"string\",\n        \"min_balance\": \"string\",\n        \"data\": \"string\",\n        \"label\": \"string\",\n        \"links\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"collection\": {\n          \"contracts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"name\": \"string\",\n          \"opensea_url\": \"string\",\n          \"slug\": \"string\",\n          \"image_url\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc05ff63-7fa6-48e7-87c0-edbbe9369afb",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    ":registry_chain",
+                    ":registry_addr",
+                    ":tool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_chain",
+                      "description": "(Required) Registry chain ID (e.g. 1, 8453)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_addr",
+                      "description": "(Required) Registry contract address"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tool_id",
+                      "description": "(Required) Numeric tool ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ec354e7-50d7-4cbf-a23c-8fc4cf646bc7",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    ":registry_chain",
+                    ":registry_addr",
+                    ":tool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_chain",
+                      "description": "(Required) Registry chain ID (e.g. 1, 8453)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_addr",
+                      "description": "(Required) Registry contract address"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tool_id",
+                      "description": "(Required) Numeric tool ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b282f9a-1259-4c05-973a-304d0feddfdb",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    ":registry_chain",
+                    ":registry_addr",
+                    ":tool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_chain",
+                      "description": "(Required) Registry chain ID (e.g. 1, 8453)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registry_addr",
+                      "description": "(Required) Registry contract address"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tool_id",
+                      "description": "(Required) Numeric tool ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50cc6676-dab4-4b67-9e2a-a049b8d20f48",
+          "name": "[Beta] Search registered tools",
+          "request": {
+            "name": "[Beta] Search registered tools",
+            "description": {
+              "content": "[Beta] Search for verified registered tools by name, tags, creator, or other criteria. This endpoint is under active development and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tools",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Search query text"
+                },
+                {
+                  "disabled": false,
+                  "key": "registry_chain",
+                  "value": "<string>",
+                  "description": "Filter by registry chain ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter by tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter by tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_type",
+                  "value": "<string>",
+                  "description": "Filter by access type: open, nft_gated, subscription"
+                },
+                {
+                  "disabled": false,
+                  "key": "creator",
+                  "value": "<string>",
+                  "description": "Filter by creator address"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "relevance",
+                  "description": "Sort by: relevance, newest, most_used"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_details",
+                  "value": "true",
+                  "description": "Include pricing recipients and access requirements per result. Defaults to true; set false for a lighter list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor.value",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a762b5f-1eaa-4c4b-b490-3a13de79c39b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registry_chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "include_details",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"access_type\": \"string\",\n      \"created_at\": \"string\",\n      \"creator\": \"string\",\n      \"creator_display_name\": \"string\",\n      \"description\": \"string\",\n      \"endpoint_domain\": \"string\",\n      \"name\": \"string\",\n      \"registry_addr\": \"string\",\n      \"registry_chain\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tool_id\": \"string\",\n      \"payment_stats\": {\n        \"payments_last_24h\": 5203,\n        \"payments_last_7d\": 3240,\n        \"total_payments\": 9097,\n        \"total_volume_usd\": 6236.1656549286145,\n        \"unique_buyers\": 1968\n      },\n      \"pricing_recipients\": [\n        {\n          \"amount_per_call\": \"string\",\n          \"asset\": \"string\",\n          \"created_at\": \"string\",\n          \"payment_chain\": \"string\",\n          \"protocol\": \"string\",\n          \"recipient\": \"string\"\n        },\n        {\n          \"amount_per_call\": \"string\",\n          \"asset\": \"string\",\n          \"created_at\": \"string\",\n          \"payment_chain\": \"string\",\n          \"protocol\": \"string\",\n          \"recipient\": \"string\"\n        }\n      ],\n      \"access\": {\n        \"logic\": \"string\",\n        \"open_access\": true,\n        \"requirements\": [\n          {\n            \"kind\": \"string\",\n            \"type\": \"string\",\n            \"collection_address\": \"string\",\n            \"token_id\": \"string\",\n            \"min_tier\": 9474,\n            \"token_address\": \"string\",\n            \"min_balance\": \"string\",\n            \"data\": \"string\",\n            \"label\": \"string\",\n            \"links\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"collection\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"kind\": \"string\",\n            \"type\": \"string\",\n            \"collection_address\": \"string\",\n            \"token_id\": \"string\",\n            \"min_tier\": 2820,\n            \"token_address\": \"string\",\n            \"min_balance\": \"string\",\n            \"data\": \"string\",\n            \"label\": \"string\",\n            \"links\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"collection\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"access_type\": \"string\",\n      \"created_at\": \"string\",\n      \"creator\": \"string\",\n      \"creator_display_name\": \"string\",\n      \"description\": \"string\",\n      \"endpoint_domain\": \"string\",\n      \"name\": \"string\",\n      \"registry_addr\": \"string\",\n      \"registry_chain\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tool_id\": \"string\",\n      \"payment_stats\": {\n        \"payments_last_24h\": 2411,\n        \"payments_last_7d\": 1783,\n        \"total_payments\": 6942,\n        \"total_volume_usd\": 1917.8787492939798,\n        \"unique_buyers\": 5233\n      },\n      \"pricing_recipients\": [\n        {\n          \"amount_per_call\": \"string\",\n          \"asset\": \"string\",\n          \"created_at\": \"string\",\n          \"payment_chain\": \"string\",\n          \"protocol\": \"string\",\n          \"recipient\": \"string\"\n        },\n        {\n          \"amount_per_call\": \"string\",\n          \"asset\": \"string\",\n          \"created_at\": \"string\",\n          \"payment_chain\": \"string\",\n          \"protocol\": \"string\",\n          \"recipient\": \"string\"\n        }\n      ],\n      \"access\": {\n        \"logic\": \"string\",\n        \"open_access\": false,\n        \"requirements\": [\n          {\n            \"kind\": \"string\",\n            \"type\": \"string\",\n            \"collection_address\": \"string\",\n            \"token_id\": \"string\",\n            \"min_tier\": 1290,\n            \"token_address\": \"string\",\n            \"min_balance\": \"string\",\n            \"data\": \"string\",\n            \"label\": \"string\",\n            \"links\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"collection\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"kind\": \"string\",\n            \"type\": \"string\",\n            \"collection_address\": \"string\",\n            \"token_id\": \"string\",\n            \"min_tier\": 1532,\n            \"token_address\": \"string\",\n            \"min_balance\": \"string\",\n            \"data\": \"string\",\n            \"label\": \"string\",\n            \"links\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"collection\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e46a34ed-9132-4e11-80a4-76abeab0b1a6",
+              "name": "For error reasons, review the response data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registry_chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "include_details",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb951c58-b87a-4b50-88cf-bb3bc24b361a",
+              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tools",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registry_chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "include_details",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor.value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opensea.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "03074b99-a316-4ce7-84a3-015361bf2a27",
+    "name": "OpenSea Account Endpoints Tool Endpoints [Beta] API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+      "type": "text/plain"
+    }
+  }
+}

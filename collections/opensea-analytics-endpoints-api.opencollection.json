@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Analytics Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/events",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Only show events after this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Only show events before this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "event_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of events, with optional filtering by event type and time range."
+        },
+        {
+          "info": {
+            "name": "Get events (by collection)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/events/collection/:slug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "doodles-official",
+                "type": "path",
+                "description": "Unique identifier for the collection"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Only show events after this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Only show events before this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "event_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint."
+              },
+              {
+                "name": "traits",
+                "value": "[object Object]",
+                "type": "query",
+                "description": "JSON array of trait filters. Each object has 'traitType' and 'value' fields. Multiple traits are AND-combined (items must match all). Example: [{\"traitType\":\"Background\",\"value\":\"Red\"}]"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of events for a collection. Optionally filter by traits to only return events for items matching the specified trait criteria."
+        },
+        {
+          "info": {
+            "name": "Get events (by NFT)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/events/chain/:chain/contract/:address/nfts/:identifier",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              },
+              {
+                "name": "address",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "identifier",
+                "value": "1",
+                "type": "path",
+                "description": "The NFT token id"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Only show events after this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Only show events before this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "event_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of events for a specific NFT."
+        },
+        {
+          "info": {
+            "name": "Get events (by account)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/events/accounts/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "0x8ba1f109551bD432803012645Hac136c94C19D6e",
+                "type": "path",
+                "description": "The blockchain address of the account"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Only show events after this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Only show events before this timestamp (Unix timestamp in seconds)"
+              },
+              {
+                "name": "event_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event types. To get order invalidation and revalidation events, please use the Stream API. The order status can also be checked on the Get Order endpoint."
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "query",
+                "description": "Filter by blockchain"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items to return per page"
+              },
+              {
+                "name": "next.value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of events for an account."
+        },
+        {
+          "info": {
+            "name": "Get collection stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/collections/:slug/stats",
+            "params": [
+              {
+                "name": "slug",
+                "value": "doodles-official",
+                "type": "path",
+                "description": "Unique identifier for the specific collection"
+              }
+            ]
+          },
+          "docs": "Get comprehensive statistics for a collection including volume, floor price, and trading metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

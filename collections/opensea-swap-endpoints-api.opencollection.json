@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Swap Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Swap Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a token swap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opensea.io/api/v2/swap/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get executable transactions for token-to-token swaps. Supports same-chain and cross-chain swaps with multiple from/to assets."
+        },
+        {
+          "info": {
+            "name": "Get swap quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/swap/quote",
+            "params": [
+              {
+                "name": "from_chain",
+                "value": "ethereum",
+                "type": "query",
+                "description": "Chain of the token to swap from"
+              },
+              {
+                "name": "from_address",
+                "value": "0x0000000000000000000000000000000000000000",
+                "type": "query",
+                "description": "Contract address of the token to swap from"
+              },
+              {
+                "name": "to_chain",
+                "value": "ethereum",
+                "type": "query",
+                "description": "Chain of the token to swap to"
+              },
+              {
+                "name": "to_address",
+                "value": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "type": "query",
+                "description": "Contract address of the token to swap to"
+              },
+              {
+                "name": "quantity",
+                "value": "1000000000000000000",
+                "type": "query",
+                "description": "Amount to swap in the smallest unit of the token (e.g. wei for ETH)"
+              },
+              {
+                "name": "address",
+                "value": "0x1234567890abcdef1234567890abcdef12345678",
+                "type": "query",
+                "description": "Wallet address executing the swap"
+              },
+              {
+                "name": "slippage",
+                "value": "0.01",
+                "type": "query",
+                "description": "Slippage tolerance (0.0 to 0.5, default: 0.01)"
+              },
+              {
+                "name": "recipient",
+                "value": "0x1234567890abcdef1234567890abcdef12345678",
+                "type": "query",
+                "description": "Recipient address (defaults to sender address)"
+              }
+            ]
+          },
+          "docs": "Get a quote for swapping tokens, including price details and executable transaction data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

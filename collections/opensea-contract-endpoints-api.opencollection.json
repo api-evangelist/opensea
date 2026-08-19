@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenSea Account Endpoints Contract Endpoints API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contract Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get payment token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/payment_token/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              }
+            ]
+          },
+          "docs": "Get a payment token by chain and contract address."
+        },
+        {
+          "info": {
+            "name": "Get contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opensea.io/api/v2/chain/:chain/contract/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The unique public blockchain identifier for the contract"
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "The blockchain on which to filter the results"
+              }
+            ]
+          },
+          "docs": "Get contract metadata including collection information, contract standards, and ownership details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
