@@ -29,6 +29,11 @@ apis:
   tags:
   - WebSocket
   - Streaming
+  - Real-Time
+  - Event
+  tags_raw:
+  - WebSocket
+  - Streaming
   - Real-time
   - Events
   properties:
