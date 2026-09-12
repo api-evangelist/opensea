@@ -263,6 +263,8 @@ apis:
   - type: Documentation
     url: https://docs.opensea.io/reference/api-overview
 common:
+  - type: Website
+    url: https://www.opensea.io/
   - type: AgentCard
     url: a2a/opensea-a2a.yml
     name: A2A Agent Card

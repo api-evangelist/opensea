@@ -2,26 +2,22 @@
   "repo": "opensea",
   "feeds": [
     {
-      "source": "https://support.opensea.io/feed.xml",
-      "feed_url": "https://support.opensea.io/feed.xml",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
       "source": "https://support.opensea.io",
       "feed_url": "https://support.opensea.io/feed.xml",
       "title": "",
       "saved": 0,
-      "method": "discovered",
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "discovered"
+    },
+    {
+      "source": "https://support.opensea.io/feed.xml",
+      "feed_url": "https://support.opensea.io/feed.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "post_count": 31,
-  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 47,
+  "fetched": "2026-09-06T19:17:18Z",
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
