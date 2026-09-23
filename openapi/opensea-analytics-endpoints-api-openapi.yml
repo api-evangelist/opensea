@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenSea Account Endpoints Analytics Endpoints API
+  title: OpenSea Analytics Endpoints API
   description: The API for OpenSea
   contact:
     name: OpenSea
@@ -364,18 +364,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    CollectionStatsResponse:
-      type: object
-      properties:
-        total:
-          $ref: '#/components/schemas/Total'
-        intervals:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntervalStat'
-      required:
-      - intervals
-      - total
     Trait:
       type: object
       properties:
@@ -389,6 +377,7 @@ components:
       required:
       - trait_type
       - value
+    Event: {}
     CollectionInner:
       type: object
       properties:
@@ -396,90 +385,25 @@ components:
           type: string
       required:
       - slug
-    AssetEventsResponse:
+    ContractInner:
       type: object
       properties:
-        asset_events:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/OrderEvent'
-            - $ref: '#/components/schemas/SaleEvent'
-            - $ref: '#/components/schemas/TransferEvent'
-        next:
+        address:
           type: string
       required:
-      - asset_events
-    Event: {}
-    NumericTraitData:
+      - address
+    CollectionStatsResponse:
       type: object
       properties:
-        type:
-          type: string
-        min:
-          type: number
-          format: float
-        max:
-          type: number
-          format: float
-      required:
-      - type
-    Criteria:
-      type: object
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionInner'
-        contract:
-          $ref: '#/components/schemas/ContractInner'
-        traits:
+        total:
+          $ref: '#/components/schemas/Total'
+        intervals:
           type: array
           items:
-            $ref: '#/components/schemas/TraitData'
-        numeric_traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/NumericTraitData'
-        encoded_token_ids:
-          type: string
-    TransferEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          transfer_type:
-            type: string
-          from_address:
-            type: string
-          to_address:
-            type: string
-          nft:
-            $ref: '#/components/schemas/Nft'
-          quantity:
-            type: integer
-            format: int64
+            $ref: '#/components/schemas/IntervalStat'
       required:
-      - chain
-      - event_timestamp
-      - event_type
-      - from_address
-      - quantity
-      - to_address
-      - transfer_type
+      - intervals
+      - total
     TraitData:
       type: object
       properties:
@@ -490,55 +414,6 @@ components:
       required:
       - type
       - value
-    OrderEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          order_type:
-            type: string
-          start_date:
-            type: integer
-            format: int64
-          expiration_date:
-            type: integer
-            format: int64
-          asset:
-            $ref: '#/components/schemas/Nft'
-          quantity:
-            type: integer
-            format: int64
-          maker:
-            type: string
-          taker:
-            type: string
-          criteria:
-            $ref: '#/components/schemas/Criteria'
-          is_private_listing:
-            type: boolean
-      required:
-      - chain
-      - event_timestamp
-      - event_type
-      - is_private_listing
-      - maker
-      - order_type
-      - quantity
     Nft:
       type: object
       properties:
@@ -588,51 +463,59 @@ components:
       - token_standard
       - traits
       - updated_at
-    ContractInner:
+    TransferEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          transfer_type:
+            type: string
+          from_address:
+            type: string
+          to_address:
+            type: string
+          nft:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - from_address
+      - quantity
+      - to_address
+      - transfer_type
+    AssetEventsResponse:
       type: object
       properties:
-        address:
+        asset_events:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrderEvent'
+            - $ref: '#/components/schemas/SaleEvent'
+            - $ref: '#/components/schemas/TransferEvent'
+        next:
           type: string
       required:
-      - address
-    IntervalStat:
-      type: object
-      properties:
-        interval:
-          type: string
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
-      required:
-      - interval
-      - sales
-      - volume
-    Total:
-      type: object
-      properties:
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
-        num_owners:
-          type: integer
-          format: int64
-        floor_price:
-          type: number
-          format: double
-        floor_price_symbol:
-          type: string
-      required:
-      - floor_price
-      - floor_price_symbol
-      - num_owners
-      - sales
-      - volume
+      - asset_events
     Payment:
       type: object
       properties:
@@ -690,13 +573,130 @@ components:
       - event_type
       - quantity
       - seller
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    Total:
+      type: object
+      properties:
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+        num_owners:
+          type: integer
+          format: int64
+        floor_price:
+          type: number
+          format: double
+        floor_price_symbol:
+          type: string
+      required:
+      - floor_price
+      - floor_price_symbol
+      - num_owners
+      - sales
+      - volume
+    OrderEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          order_type:
+            type: string
+          start_date:
+            type: integer
+            format: int64
+          expiration_date:
+            type: integer
+            format: int64
+          asset:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+          maker:
+            type: string
+          taker:
+            type: string
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          is_private_listing:
+            type: boolean
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - is_private_listing
+      - maker
+      - order_type
+      - quantity
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+    IntervalStat:
+      type: object
+      properties:
+        interval:
+          type: string
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+      required:
+      - interval
+      - sales
+      - volume
   responses:
     NotFound:
       description: Resource not found
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
     BadRequest:
       description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

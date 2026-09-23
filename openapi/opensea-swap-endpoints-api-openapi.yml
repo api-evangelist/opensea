@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenSea Account Endpoints Swap Endpoints API
+  title: OpenSea Swap Endpoints API
   description: The API for OpenSea
   contact:
     name: OpenSea
@@ -119,21 +119,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    SwapExecuteResponse:
-      type: object
-      description: Response containing quote details and executable swap transactions
-      properties:
-        quote:
-          $ref: '#/components/schemas/SwapQuoteDetails'
-          description: Price and fee details for the swap
-        transactions:
-          type: array
-          description: Ordered list of transactions to execute the swap
-          items:
-            $ref: '#/components/schemas/SwapTransactionResponse'
-      required:
-      - quote
-      - transactions
     SwapAssetInput:
       type: object
       description: An asset to swap with chain, contract address, and amount
@@ -154,16 +139,36 @@ components:
       - amount
       - chain
       - contract
-    SwapRouteErrorResponse:
+    SwapExecuteResponse:
       type: object
-      description: An error encountered for a specific swap route
+      description: Response containing quote details and executable swap transactions
       properties:
-        type:
-          type: string
-          description: The error type
-          example: INSUFFICIENT_FUNDS
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Ordered list of transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
       required:
-      - type
+      - quote
+      - transactions
+    SwapPriceImpact:
+      type: object
+      description: Price impact of the swap
+      properties:
+        usd:
+          type: string
+          description: Price impact in USD (negative means user loses value)
+          example: -1.5
+        percent:
+          type: string
+          description: Price impact as a percentage (negative means user loses value)
+          example: -0.08
+      required:
+      - percent
+      - usd
     SwapQuoteResponse:
       type: object
       description: Swap quote with price details and executable transactions
@@ -179,29 +184,16 @@ components:
       required:
       - quote
       - transactions
-    SwapCostResponse:
+    SwapRouteErrorResponse:
       type: object
-      description: A cost component of the swap
+      description: An error encountered for a specific swap route
       properties:
         type:
           type: string
-          description: The type of cost
-          enum:
-          - GAS
-          - PROVIDER
-          - PROTOCOL
-          - SWAP
-          - MARKETPLACE
-          - CREATOR
-          - MEV_PROTECTION
-          example: GAS
-        usd:
-          type: string
-          description: Cost amount in USD
-          example: 0.5
+          description: The error type
+          example: INSUFFICIENT_FUNDS
       required:
       - type
-      - usd
     SwapExecuteRequest:
       type: object
       description: Request body for executing a token swap
@@ -291,21 +283,6 @@ components:
       - slippage_tolerance
       - total_cost_usd
       - total_price_usd
-    SwapPriceImpact:
-      type: object
-      description: Price impact of the swap
-      properties:
-        usd:
-          type: string
-          description: Price impact in USD (negative means user loses value)
-          example: -1.5
-        percent:
-          type: string
-          description: Price impact as a percentage (negative means user loses value)
-          example: -0.08
-      required:
-      - percent
-      - usd
     SwapTransactionResponse:
       type: object
       description: A transaction to be submitted onchain to execute a swap
@@ -326,11 +303,34 @@ components:
       required:
       - chain
       - data
+    SwapCostResponse:
+      type: object
+      description: A cost component of the swap
+      properties:
+        type:
+          type: string
+          description: The type of cost
+          enum:
+          - GAS
+          - PROVIDER
+          - PROTOCOL
+          - SWAP
+          - MARKETPLACE
+          - CREATOR
+          - MEV_PROTECTION
+          example: GAS
+        usd:
+          type: string
+          description: Cost amount in USD
+          example: 0.5
+      required:
+      - type
+      - usd
   responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
     BadRequest:
       description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
