@@ -68,6 +68,35 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    NftSearchResponse:
+      type: object
+      description: NFT search result
+      properties:
+        identifier:
+          type: string
+          description: Token ID of the NFT
+          example: 1234
+        collection:
+          type: string
+          description: Collection slug the NFT belongs to
+          example: bored-ape-yacht-club
+        contract:
+          type: string
+          description: Contract address of the NFT
+        name:
+          type: string
+          description: Name of the NFT
+        image_url:
+          type: string
+          description: URL of the NFT image
+        opensea_url:
+          type: string
+          description: URL to the NFT on OpenSea
+      required:
+      - collection
+      - contract
+      - identifier
+      - opensea_url
     SearchResponse:
       type: object
       description: Search results response
@@ -79,6 +108,58 @@ components:
             $ref: '#/components/schemas/SearchResultResponse'
       required:
       - results
+    CollectionSearchResponse:
+      type: object
+      description: Collection search result
+      properties:
+        collection:
+          type: string
+          description: The collection slug
+          example: bored-ape-yacht-club
+        name:
+          type: string
+          description: The collection name
+          example: Bored Ape Yacht Club
+        image_url:
+          type: string
+          description: URL of the collection image
+        is_disabled:
+          type: boolean
+          description: Whether trading is disabled for this collection
+        is_nsfw:
+          type: boolean
+          description: Whether this collection is marked as NSFW
+        opensea_url:
+          type: string
+          description: URL to the collection on OpenSea
+      required:
+      - collection
+      - is_disabled
+      - is_nsfw
+      - name
+      - opensea_url
+    SearchResultResponse:
+      type: object
+      description: A single search result with a type discriminator and the corresponding typed object
+      properties:
+        type:
+          type: string
+          description: The type of search result
+          example: collection
+        collection:
+          $ref: '#/components/schemas/CollectionSearchResponse'
+          description: Collection details, present when type is 'collection'
+        token:
+          $ref: '#/components/schemas/TokenSearchResponse'
+          description: Token details, present when type is 'token'
+        nft:
+          $ref: '#/components/schemas/NftSearchResponse'
+          description: NFT details, present when type is 'nft'
+        account:
+          $ref: '#/components/schemas/AccountSearchResponse'
+          description: Account details, present when type is 'account'
+      required:
+      - type
     TokenSearchResponse:
       type: object
       description: Token (currency) search result
@@ -122,6 +203,25 @@ components:
       - opensea_url
       - symbol
       - usd_price
+    AccountSearchResponse:
+      type: object
+      description: Account search result
+      properties:
+        address:
+          type: string
+          description: Primary wallet address of the account
+        username:
+          type: string
+          description: Username of the account
+        profile_image_url:
+          type: string
+          description: URL of the account's profile image
+        opensea_url:
+          type: string
+          description: URL to the account on OpenSea
+      required:
+      - address
+      - opensea_url
     ChainIdentifier:
       type: string
       default: ethereum
@@ -155,111 +255,11 @@ components:
       - megaeth
       - ink
       example: ethereum
-    NftSearchResponse:
-      type: object
-      description: NFT search result
-      properties:
-        identifier:
-          type: string
-          description: Token ID of the NFT
-          example: 1234
-        collection:
-          type: string
-          description: Collection slug the NFT belongs to
-          example: bored-ape-yacht-club
-        contract:
-          type: string
-          description: Contract address of the NFT
-        name:
-          type: string
-          description: Name of the NFT
-        image_url:
-          type: string
-          description: URL of the NFT image
-        opensea_url:
-          type: string
-          description: URL to the NFT on OpenSea
-      required:
-      - collection
-      - contract
-      - identifier
-      - opensea_url
-    CollectionSearchResponse:
-      type: object
-      description: Collection search result
-      properties:
-        collection:
-          type: string
-          description: The collection slug
-          example: bored-ape-yacht-club
-        name:
-          type: string
-          description: The collection name
-          example: Bored Ape Yacht Club
-        image_url:
-          type: string
-          description: URL of the collection image
-        is_disabled:
-          type: boolean
-          description: Whether trading is disabled for this collection
-        is_nsfw:
-          type: boolean
-          description: Whether this collection is marked as NSFW
-        opensea_url:
-          type: string
-          description: URL to the collection on OpenSea
-      required:
-      - collection
-      - is_disabled
-      - is_nsfw
-      - name
-      - opensea_url
-    AccountSearchResponse:
-      type: object
-      description: Account search result
-      properties:
-        address:
-          type: string
-          description: Primary wallet address of the account
-        username:
-          type: string
-          description: Username of the account
-        profile_image_url:
-          type: string
-          description: URL of the account's profile image
-        opensea_url:
-          type: string
-          description: URL to the account on OpenSea
-      required:
-      - address
-      - opensea_url
-    SearchResultResponse:
-      type: object
-      description: A single search result with a type discriminator and the corresponding typed object
-      properties:
-        type:
-          type: string
-          description: The type of search result
-          example: collection
-        collection:
-          $ref: '#/components/schemas/CollectionSearchResponse'
-          description: Collection details, present when type is 'collection'
-        token:
-          $ref: '#/components/schemas/TokenSearchResponse'
-          description: Token details, present when type is 'token'
-        nft:
-          $ref: '#/components/schemas/NftSearchResponse'
-          description: NFT details, present when type is 'nft'
-        account:
-          $ref: '#/components/schemas/AccountSearchResponse'
-          description: Account details, present when type is 'account'
-      required:
-      - type
   responses:
-    BadRequest:
-      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

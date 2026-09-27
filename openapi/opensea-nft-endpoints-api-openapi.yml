@@ -508,6 +508,80 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    AgentBindingResponse:
+      type: object
+      properties:
+        agent_id:
+          type: string
+        binding_contract:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AgentNftResponse'
+        registered_by:
+          type: string
+      required:
+      - agent
+      - agent_id
+      - binding_contract
+    NftAnalyticsResponse:
+      type: object
+      description: Analytics data for an NFT including sales and floor price history
+      properties:
+        sales:
+          type: array
+          description: List of sale data points
+          items:
+            $ref: '#/components/schemas/NftSalePointResponse'
+        floor_prices:
+          type: array
+          description: List of floor price data points
+          items:
+            $ref: '#/components/schemas/FloorPricePointResponse'
+      required:
+      - floor_prices
+      - sales
+    NftResponse:
+      type: object
+      properties:
+        nft:
+          $ref: '#/components/schemas/NftDetailed'
+      required:
+      - nft
+    Owner:
+      type: object
+      properties:
+        address:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        quantity_string:
+          type: string
+      required:
+      - address
+      - quantity
+      - quantity_string
+    TransferRequest:
+      type: object
+      description: Request to transfer NFTs or tokens between wallets
+      properties:
+        assets:
+          type: array
+          description: List of assets to transfer
+          items:
+            $ref: '#/components/schemas/TransferAsset'
+        from_address:
+          type: string
+          description: Address of the sender wallet
+          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+        to_address:
+          type: string
+          description: Address of the recipient wallet
+          example: '0x28c6c06298d514db089934071355e5743bf21d60'
+      required:
+      - assets
+      - from_address
+      - to_address
     NftListResponse:
       type: object
       properties:
@@ -519,6 +593,19 @@ components:
           type: string
       required:
       - nfts
+    ValidateMetadataAssetIdentifier:
+      type: object
+      properties:
+        chain:
+          type: string
+        contractAddress:
+          type: string
+        tokenId:
+          type: string
+      required:
+      - chain
+      - contractAddress
+      - tokenId
     NftSalePointResponse:
       type: object
       description: A sale data point for an NFT
@@ -545,65 +632,50 @@ components:
       - time
       - token_unit
       - usd_price
-    Trait:
+    AssetMetadataResponse:
       type: object
       properties:
-        trait_type:
+        name:
           type: string
-        display_type:
+        description:
           type: string
-        max_value:
+        image:
           type: string
-        value: {}
+        external_link:
+          type: string
+        animation_url:
+          type: string
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trait'
       required:
-      - trait_type
-      - value
-    AgentNftResponse:
+      - traits
+    ValidateMetadataDetails:
       type: object
       properties:
-        chain:
+        name:
           type: string
-        token_id:
+        description:
           type: string
-        contract_address:
+        originalImageUrl:
           type: string
+        processedImageUrl:
+          type: string
+        originalAnimationUrl:
+          type: string
+        processedAnimationUrl:
+          type: string
+        externalUrl:
+          type: string
+        backgroundColor:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidateMetadataAttribute'
       required:
-      - chain
-      - contract_address
-      - token_id
-    NftIdentifierInput:
-      type: object
-      description: An NFT identifier consisting of chain, contract address, and token ID
-      properties:
-        chain:
-          type: string
-          description: The blockchain the NFT is on
-          example: ethereum
-        contract_address:
-          type: string
-          description: The contract address of the NFT
-          example: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
-        token_id:
-          type: string
-          description: The token ID of the NFT
-          example: 1
-      required:
-      - chain
-      - contract_address
-      - token_id
-    ValidateMetadataAssetIdentifier:
-      type: object
-      properties:
-        chain:
-          type: string
-        contractAddress:
-          type: string
-        tokenId:
-          type: string
-      required:
-      - chain
-      - contractAddress
-      - tokenId
+      - attributes
     Nft:
       type: object
       properties:
@@ -653,21 +725,6 @@ components:
       - token_standard
       - traits
       - updated_at
-    MetadataIngestionError:
-      type: object
-      properties:
-        errorType:
-          type: string
-        message:
-          type: string
-        url:
-          type: string
-        statusCode:
-          type: integer
-          format: int32
-      required:
-      - errorType
-      - message
     TransferAsset:
       type: object
       description: An asset to transfer
@@ -704,6 +761,43 @@ components:
             $ref: '#/components/schemas/JsonNode'
       required:
       - steps
+    OwnersPaginatedResponse:
+      type: object
+      properties:
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Owner'
+        next:
+          type: string
+      required:
+      - owners
+    AgentNftResponse:
+      type: object
+      properties:
+        chain:
+          type: string
+        token_id:
+          type: string
+        contract_address:
+          type: string
+      required:
+      - chain
+      - contract_address
+      - token_id
+    Trait:
+      type: object
+      properties:
+        trait_type:
+          type: string
+        display_type:
+          type: string
+        max_value:
+          type: string
+        value: {}
+      required:
+      - trait_type
+      - value
     SubscriptionInfoResponse:
       type: object
       properties:
@@ -717,33 +811,40 @@ components:
       required:
       - is_expired
       - is_renewable
-    JsonNode: {}
-    OwnersPaginatedResponse:
+    NftBatchResponse:
       type: object
       properties:
-        owners:
+        nfts:
           type: array
           items:
-            $ref: '#/components/schemas/Owner'
-        next:
-          type: string
+            $ref: '#/components/schemas/NftDetailed'
       required:
-      - owners
-    AgentBindingResponse:
+      - nfts
+    ValidateMetadataAttribute:
       type: object
       properties:
-        agent_id:
+        traitType:
           type: string
-        binding_contract:
+        value:
           type: string
-        agent:
-          $ref: '#/components/schemas/AgentNftResponse'
-        registered_by:
+        displayType:
           type: string
       required:
-      - agent
-      - agent_id
-      - binding_contract
+      - traitType
+      - value
+    ValidateMetadataResponse:
+      type: object
+      properties:
+        assetIdentifier:
+          $ref: '#/components/schemas/ValidateMetadataAssetIdentifier'
+        tokenUri:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/ValidateMetadataDetails'
+        error:
+          $ref: '#/components/schemas/MetadataIngestionError'
+      required:
+      - assetIdentifier
     FloorPricePointResponse:
       type: object
       description: A floor price data point
@@ -767,167 +868,22 @@ components:
           description: Blockchain chain
       required:
       - time
-    NftResponse:
+    MetadataIngestionError:
       type: object
       properties:
-        nft:
-          $ref: '#/components/schemas/NftDetailed'
-      required:
-      - nft
-    ValidateMetadataDetails:
-      type: object
-      properties:
-        name:
+        errorType:
           type: string
-        description:
+        message:
           type: string
-        originalImageUrl:
+        url:
           type: string
-        processedImageUrl:
-          type: string
-        originalAnimationUrl:
-          type: string
-        processedAnimationUrl:
-          type: string
-        externalUrl:
-          type: string
-        backgroundColor:
-          type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidateMetadataAttribute'
-      required:
-      - attributes
-    TransferRequest:
-      type: object
-      description: Request to transfer NFTs or tokens between wallets
-      properties:
-        assets:
-          type: array
-          description: List of assets to transfer
-          items:
-            $ref: '#/components/schemas/TransferAsset'
-        from_address:
-          type: string
-          description: Address of the sender wallet
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-        to_address:
-          type: string
-          description: Address of the recipient wallet
-          example: '0x28c6c06298d514db089934071355e5743bf21d60'
-      required:
-      - assets
-      - from_address
-      - to_address
-    NftBatchResponse:
-      type: object
-      properties:
-        nfts:
-          type: array
-          items:
-            $ref: '#/components/schemas/NftDetailed'
-      required:
-      - nfts
-    NftAnalyticsResponse:
-      type: object
-      description: Analytics data for an NFT including sales and floor price history
-      properties:
-        sales:
-          type: array
-          description: List of sale data points
-          items:
-            $ref: '#/components/schemas/NftSalePointResponse'
-        floor_prices:
-          type: array
-          description: List of floor price data points
-          items:
-            $ref: '#/components/schemas/FloorPricePointResponse'
-      required:
-      - floor_prices
-      - sales
-    AssetMetadataResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        image:
-          type: string
-        external_link:
-          type: string
-        animation_url:
-          type: string
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trait'
-      required:
-      - traits
-    Owner:
-      type: object
-      properties:
-        address:
-          type: string
-        quantity:
+        statusCode:
           type: integer
           format: int32
-        quantity_string:
-          type: string
       required:
-      - address
-      - quantity
-      - quantity_string
-    BatchNftsRequest:
-      type: object
-      description: Request body for batch NFT retrieval by identifiers
-      properties:
-        identifiers:
-          type: array
-          description: List of NFT identifiers to retrieve
-          items:
-            $ref: '#/components/schemas/NftIdentifierInput'
-      required:
-      - identifiers
-    Rarity:
-      type: object
-      properties:
-        strategy_id:
-          type: string
-        strategy_version:
-          type: string
-        rank:
-          type: integer
-          format: int64
-      required:
-      - strategy_id
-      - strategy_version
-    ValidateMetadataResponse:
-      type: object
-      properties:
-        assetIdentifier:
-          $ref: '#/components/schemas/ValidateMetadataAssetIdentifier'
-        tokenUri:
-          type: string
-        metadata:
-          $ref: '#/components/schemas/ValidateMetadataDetails'
-        error:
-          $ref: '#/components/schemas/MetadataIngestionError'
-      required:
-      - assetIdentifier
-    ValidateMetadataAttribute:
-      type: object
-      properties:
-        traitType:
-          type: string
-        value:
-          type: string
-        displayType:
-          type: string
-      required:
-      - traitType
-      - value
+      - errorType
+      - message
+    JsonNode: {}
     NftDetailed:
       type: object
       properties:
@@ -996,13 +952,57 @@ components:
       - token_standard
       - traits
       - updated_at
+    Rarity:
+      type: object
+      properties:
+        strategy_id:
+          type: string
+        strategy_version:
+          type: string
+        rank:
+          type: integer
+          format: int64
+      required:
+      - strategy_id
+      - strategy_version
+    NftIdentifierInput:
+      type: object
+      description: An NFT identifier consisting of chain, contract address, and token ID
+      properties:
+        chain:
+          type: string
+          description: The blockchain the NFT is on
+          example: ethereum
+        contract_address:
+          type: string
+          description: The contract address of the NFT
+          example: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+        token_id:
+          type: string
+          description: The token ID of the NFT
+          example: 1
+      required:
+      - chain
+      - contract_address
+      - token_id
+    BatchNftsRequest:
+      type: object
+      description: Request body for batch NFT retrieval by identifiers
+      properties:
+        identifiers:
+          type: array
+          description: List of NFT identifiers to retrieve
+          items:
+            $ref: '#/components/schemas/NftIdentifierInput'
+      required:
+      - identifiers
   responses:
     NotFound:
       description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

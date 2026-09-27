@@ -40,6 +40,8 @@ tags:
   - Blockchain
   - Trading
   - Digital Assets
+  - A2A
+  - Ethereum
 created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
@@ -304,3 +306,10 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://opensea.io/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.2.5"
+  control: 404

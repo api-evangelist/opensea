@@ -507,16 +507,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    Contract:
-      type: object
-      properties:
-        address:
-          type: string
-        chain:
-          type: string
-      required:
-      - address
-      - chain
     Fee:
       type: object
       properties:
@@ -531,6 +521,75 @@ components:
       - fee
       - recipient
       - required
+    IntervalStat:
+      type: object
+      properties:
+        interval:
+          type: string
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+      required:
+      - interval
+      - sales
+      - volume
+    BatchCollectionsRequest:
+      type: object
+      description: Request body for batch collection retrieval by slugs
+      properties:
+        slugs:
+          type: array
+          description: List of collection slugs to retrieve
+          example:
+          - boredapeyachtclub
+          - doodles-official
+          items:
+            type: string
+      required:
+      - slugs
+    CollectionHolderResponse:
+      type: object
+      description: A collection holder
+      properties:
+        address:
+          type: string
+          description: Wallet address of the holder
+        quantity:
+          type: integer
+          format: int32
+          description: Number of items held
+        percentage:
+          type: number
+          format: float
+          description: Ownership percentage of the collection
+      required:
+      - address
+      - percentage
+      - quantity
+    OfferAggregatePriceResponse:
+      type: object
+      description: Price information for an offer aggregate
+      properties:
+        usd_price:
+          type: string
+          description: Price in USD
+        token_unit:
+          type: number
+          format: double
+          description: Price in token units
+        symbol:
+          type: string
+          description: Payment token symbol
+        chain:
+          type: string
+          description: Blockchain chain
+      required:
+      - chain
+      - token_unit
+      - usd_price
     CollectionResponse:
       type: object
       properties:
@@ -586,72 +645,6 @@ components:
       - opensea_url
       - safelist_status
       - trait_offers_enabled
-    OfferAggregatePriceResponse:
-      type: object
-      description: Price information for an offer aggregate
-      properties:
-        usd_price:
-          type: string
-          description: Price in USD
-        token_unit:
-          type: number
-          format: double
-          description: Price in token units
-        symbol:
-          type: string
-          description: Payment token symbol
-        chain:
-          type: string
-          description: Blockchain chain
-      required:
-      - chain
-      - token_unit
-      - usd_price
-    CollectionOfferAggregatesPaginatedResponse:
-      type: object
-      description: Paginated list of collection offer aggregates
-      properties:
-        offer_aggregates:
-          type: array
-          description: List of offer aggregates
-          items:
-            $ref: '#/components/schemas/CollectionOfferAggregateResponse'
-        next:
-          type: string
-          description: Cursor for the next page of results
-      required:
-      - offer_aggregates
-    CollectionStatsResponse:
-      type: object
-      properties:
-        total:
-          $ref: '#/components/schemas/Total'
-        intervals:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntervalStat'
-      required:
-      - intervals
-      - total
-    CollectionHolderResponse:
-      type: object
-      description: A collection holder
-      properties:
-        address:
-          type: string
-          description: Wallet address of the holder
-        quantity:
-          type: integer
-          format: int32
-          description: Number of items held
-        percentage:
-          type: number
-          format: float
-          description: Ownership percentage of the collection
-      required:
-      - address
-      - percentage
-      - quantity
     BidderResponse:
       type: object
       description: A bidder in an offer aggregate
@@ -666,6 +659,147 @@ components:
       required:
       - address
       - quantity
+    FloorPriceHistoryResponse:
+      type: object
+      description: Floor price history for a collection
+      properties:
+        floor_prices:
+          type: array
+          description: List of floor price data points
+          items:
+            $ref: '#/components/schemas/FloorPricePointResponse'
+      required:
+      - floor_prices
+    Total:
+      type: object
+      properties:
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+        num_owners:
+          type: integer
+          format: int64
+        floor_price:
+          type: number
+          format: double
+        floor_price_symbol:
+          type: string
+      required:
+      - floor_price
+      - floor_price_symbol
+      - num_owners
+      - sales
+      - volume
+    CollectionOfferAggregateResponse:
+      type: object
+      description: An aggregated offer bucket
+      properties:
+        offer_price:
+          $ref: '#/components/schemas/OfferAggregatePriceResponse'
+          description: Offer price level
+        total_value:
+          $ref: '#/components/schemas/OfferAggregatePriceResponse'
+          description: Total value of offers at this level
+        total_offers:
+          type: integer
+          format: int32
+          description: Total number of offers at this level
+        bidders:
+          type: array
+          description: Bidders at this price level
+          items:
+            $ref: '#/components/schemas/BidderResponse'
+      required:
+      - bidders
+      - offer_price
+      - total_offers
+      - total_value
+    Contract:
+      type: object
+      properties:
+        address:
+          type: string
+        chain:
+          type: string
+      required:
+      - address
+      - chain
+    FloorPricePointResponse:
+      type: object
+      description: A floor price data point
+      properties:
+        time:
+          type: string
+          format: date-time
+          description: Timestamp of the data point
+        usd_price:
+          type: string
+          description: Floor price in USD
+        token_unit:
+          type: number
+          format: double
+          description: Floor price in token units
+        symbol:
+          type: string
+          description: Payment token symbol
+        chain:
+          type: string
+          description: Blockchain chain
+      required:
+      - time
+    PaymentToken:
+      type: object
+      properties:
+        symbol:
+          type: string
+        address:
+          type: string
+        chain:
+          type: string
+        image:
+          type: string
+        name:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        eth_price:
+          type: string
+        usd_price:
+          type: string
+      required:
+      - address
+      - chain
+      - decimals
+      - eth_price
+      - image
+      - name
+      - symbol
+      - usd_price
+    CollectionRarity:
+      type: object
+      properties:
+        calculated_at:
+          type: string
+        max_rank:
+          type: integer
+          format: int32
+        total_supply:
+          type: integer
+          format: int64
+        strategy_id:
+          type: string
+        strategy_version:
+          type: string
+      required:
+      - calculated_at
+      - max_rank
+      - strategy_id
+      - strategy_version
+      - total_supply
     CollectionDetailedResponse:
       type: object
       properties:
@@ -750,64 +884,6 @@ components:
       - total_supply
       - trait_offers_enabled
       - unique_item_count
-    BatchCollectionsRequest:
-      type: object
-      description: Request body for batch collection retrieval by slugs
-      properties:
-        slugs:
-          type: array
-          description: List of collection slugs to retrieve
-          example:
-          - boredapeyachtclub
-          - doodles-official
-          items:
-            type: string
-      required:
-      - slugs
-    FloorPricePointResponse:
-      type: object
-      description: A floor price data point
-      properties:
-        time:
-          type: string
-          format: date-time
-          description: Timestamp of the data point
-        usd_price:
-          type: string
-          description: Floor price in USD
-        token_unit:
-          type: number
-          format: double
-          description: Floor price in token units
-        symbol:
-          type: string
-          description: Payment token symbol
-        chain:
-          type: string
-          description: Blockchain chain
-      required:
-      - time
-    CollectionRarity:
-      type: object
-      properties:
-        calculated_at:
-          type: string
-        max_rank:
-          type: integer
-          format: int32
-        total_supply:
-          type: integer
-          format: int64
-        strategy_id:
-          type: string
-        strategy_version:
-          type: string
-      required:
-      - calculated_at
-      - max_rank
-      - strategy_id
-      - strategy_version
-      - total_supply
     CollectionBatchResponse:
       type: object
       properties:
@@ -817,6 +893,67 @@ components:
             $ref: '#/components/schemas/CollectionResponse'
       required:
       - collections
+    CollectionStatsResponse:
+      type: object
+      properties:
+        total:
+          $ref: '#/components/schemas/Total'
+        intervals:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalStat'
+      required:
+      - intervals
+      - total
+    CollectionHoldersPaginatedResponse:
+      type: object
+      description: Paginated list of collection holders
+      properties:
+        holders:
+          type: array
+          description: List of holders
+          items:
+            $ref: '#/components/schemas/CollectionHolderResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - holders
+    CollectionPaginatedResponse:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResponse'
+        next:
+          type: string
+      required:
+      - collections
+    PricingCurrencies:
+      type: object
+      properties:
+        listing_currency:
+          $ref: '#/components/schemas/PaymentToken'
+        offer_currency:
+          $ref: '#/components/schemas/PaymentToken'
+      required:
+      - listing_currency
+      - offer_currency
+    CollectionOfferAggregatesPaginatedResponse:
+      type: object
+      description: Paginated list of collection offer aggregates
+      properties:
+        offer_aggregates:
+          type: array
+          description: List of offer aggregates
+          items:
+            $ref: '#/components/schemas/CollectionOfferAggregateResponse'
+        next:
+          type: string
+          description: Cursor for the next page of results
+      required:
+      - offer_aggregates
     ChainIdentifier:
       type: string
       default: ethereum
@@ -850,150 +987,13 @@ components:
       - megaeth
       - ink
       example: ethereum
-    PaymentToken:
-      type: object
-      properties:
-        symbol:
-          type: string
-        address:
-          type: string
-        chain:
-          type: string
-        image:
-          type: string
-        name:
-          type: string
-        decimals:
-          type: integer
-          format: int32
-        eth_price:
-          type: string
-        usd_price:
-          type: string
-      required:
-      - address
-      - chain
-      - decimals
-      - eth_price
-      - image
-      - name
-      - symbol
-      - usd_price
-    CollectionHoldersPaginatedResponse:
-      type: object
-      description: Paginated list of collection holders
-      properties:
-        holders:
-          type: array
-          description: List of holders
-          items:
-            $ref: '#/components/schemas/CollectionHolderResponse'
-        next:
-          type: string
-          description: Cursor for the next page of results
-      required:
-      - holders
-    PricingCurrencies:
-      type: object
-      properties:
-        listing_currency:
-          $ref: '#/components/schemas/PaymentToken'
-        offer_currency:
-          $ref: '#/components/schemas/PaymentToken'
-      required:
-      - listing_currency
-      - offer_currency
-    FloorPriceHistoryResponse:
-      type: object
-      description: Floor price history for a collection
-      properties:
-        floor_prices:
-          type: array
-          description: List of floor price data points
-          items:
-            $ref: '#/components/schemas/FloorPricePointResponse'
-      required:
-      - floor_prices
-    Total:
-      type: object
-      properties:
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
-        num_owners:
-          type: integer
-          format: int64
-        floor_price:
-          type: number
-          format: double
-        floor_price_symbol:
-          type: string
-      required:
-      - floor_price
-      - floor_price_symbol
-      - num_owners
-      - sales
-      - volume
-    CollectionPaginatedResponse:
-      type: object
-      properties:
-        collections:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResponse'
-        next:
-          type: string
-      required:
-      - collections
-    CollectionOfferAggregateResponse:
-      type: object
-      description: An aggregated offer bucket
-      properties:
-        offer_price:
-          $ref: '#/components/schemas/OfferAggregatePriceResponse'
-          description: Offer price level
-        total_value:
-          $ref: '#/components/schemas/OfferAggregatePriceResponse'
-          description: Total value of offers at this level
-        total_offers:
-          type: integer
-          format: int32
-          description: Total number of offers at this level
-        bidders:
-          type: array
-          description: Bidders at this price level
-          items:
-            $ref: '#/components/schemas/BidderResponse'
-      required:
-      - bidders
-      - offer_price
-      - total_offers
-      - total_value
-    IntervalStat:
-      type: object
-      properties:
-        interval:
-          type: string
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
-      required:
-      - interval
-      - sales
-      - volume
   responses:
     NotFound:
       description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

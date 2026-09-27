@@ -35,6 +35,11 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   schemas:
     ChainResponse:
       type: object
@@ -81,11 +86,6 @@ components:
             $ref: '#/components/schemas/ChainResponse'
       required:
       - chains
-  responses:
-    BadRequest:
-      description: For error reasons, review the response data.
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

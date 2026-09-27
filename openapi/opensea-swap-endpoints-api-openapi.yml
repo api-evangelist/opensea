@@ -119,111 +119,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    SwapAssetInput:
-      type: object
-      description: An asset to swap with chain, contract address, and amount
-      properties:
-        chain:
-          type: string
-          description: Chain slug (e.g. ethereum, base, solana)
-          example: ethereum
-        contract:
-          type: string
-          description: Contract address of the token
-          example: '0x0000000000000000000000000000000000000000'
-        amount:
-          type: string
-          description: Amount in the smallest unit of the token (e.g. wei for ETH). Use "0" for to_assets to receive the market rate.
-          example: 1000000000000000000
-      required:
-      - amount
-      - chain
-      - contract
-    SwapExecuteResponse:
-      type: object
-      description: Response containing quote details and executable swap transactions
-      properties:
-        quote:
-          $ref: '#/components/schemas/SwapQuoteDetails'
-          description: Price and fee details for the swap
-        transactions:
-          type: array
-          description: Ordered list of transactions to execute the swap
-          items:
-            $ref: '#/components/schemas/SwapTransactionResponse'
-      required:
-      - quote
-      - transactions
-    SwapPriceImpact:
-      type: object
-      description: Price impact of the swap
-      properties:
-        usd:
-          type: string
-          description: Price impact in USD (negative means user loses value)
-          example: -1.5
-        percent:
-          type: string
-          description: Price impact as a percentage (negative means user loses value)
-          example: -0.08
-      required:
-      - percent
-      - usd
-    SwapQuoteResponse:
-      type: object
-      description: Swap quote with price details and executable transactions
-      properties:
-        quote:
-          $ref: '#/components/schemas/SwapQuoteDetails'
-          description: Price and fee details for the swap
-        transactions:
-          type: array
-          description: Transactions to execute the swap
-          items:
-            $ref: '#/components/schemas/SwapTransactionResponse'
-      required:
-      - quote
-      - transactions
-    SwapRouteErrorResponse:
-      type: object
-      description: An error encountered for a specific swap route
-      properties:
-        type:
-          type: string
-          description: The error type
-          example: INSUFFICIENT_FUNDS
-      required:
-      - type
-    SwapExecuteRequest:
-      type: object
-      description: Request body for executing a token swap
-      properties:
-        from_assets:
-          type: array
-          description: Tokens to swap from (at least one required)
-          items:
-            $ref: '#/components/schemas/SwapAssetInput'
-        to_assets:
-          type: array
-          description: Tokens to swap to (at least one required)
-          items:
-            $ref: '#/components/schemas/SwapAssetInput'
-        address:
-          type: string
-          description: Wallet address executing the swap
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        recipient:
-          type: string
-          description: Recipient address (defaults to sender address)
-        slippage_tolerance:
-          type: number
-          format: double
-          description: 'Slippage tolerance as a decimal (0.0 to 0.5, default: 0.01)'
-          example: 0.01
-      required:
-      - address
-      - from_assets
-      - to_assets
     SwapQuoteDetails:
       type: object
       description: Price and fee details for a swap quote
@@ -283,6 +178,56 @@ components:
       - slippage_tolerance
       - total_cost_usd
       - total_price_usd
+    SwapExecuteRequest:
+      type: object
+      description: Request body for executing a token swap
+      properties:
+        from_assets:
+          type: array
+          description: Tokens to swap from (at least one required)
+          items:
+            $ref: '#/components/schemas/SwapAssetInput'
+        to_assets:
+          type: array
+          description: Tokens to swap to (at least one required)
+          items:
+            $ref: '#/components/schemas/SwapAssetInput'
+        address:
+          type: string
+          description: Wallet address executing the swap
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        recipient:
+          type: string
+          description: Recipient address (defaults to sender address)
+        slippage_tolerance:
+          type: number
+          format: double
+          description: 'Slippage tolerance as a decimal (0.0 to 0.5, default: 0.01)'
+          example: 0.01
+      required:
+      - address
+      - from_assets
+      - to_assets
+    SwapAssetInput:
+      type: object
+      description: An asset to swap with chain, contract address, and amount
+      properties:
+        chain:
+          type: string
+          description: Chain slug (e.g. ethereum, base, solana)
+          example: ethereum
+        contract:
+          type: string
+          description: Contract address of the token
+          example: '0x0000000000000000000000000000000000000000'
+        amount:
+          type: string
+          description: Amount in the smallest unit of the token (e.g. wei for ETH). Use "0" for to_assets to receive the market rate.
+          example: 1000000000000000000
+      required:
+      - amount
+      - chain
+      - contract
     SwapTransactionResponse:
       type: object
       description: A transaction to be submitted onchain to execute a swap
@@ -303,6 +248,46 @@ components:
       required:
       - chain
       - data
+    SwapQuoteResponse:
+      type: object
+      description: Swap quote with price details and executable transactions
+      properties:
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
+      required:
+      - quote
+      - transactions
+    SwapRouteErrorResponse:
+      type: object
+      description: An error encountered for a specific swap route
+      properties:
+        type:
+          type: string
+          description: The error type
+          example: INSUFFICIENT_FUNDS
+      required:
+      - type
+    SwapPriceImpact:
+      type: object
+      description: Price impact of the swap
+      properties:
+        usd:
+          type: string
+          description: Price impact in USD (negative means user loses value)
+          example: -1.5
+        percent:
+          type: string
+          description: Price impact as a percentage (negative means user loses value)
+          example: -0.08
+      required:
+      - percent
+      - usd
     SwapCostResponse:
       type: object
       description: A cost component of the swap
@@ -326,11 +311,26 @@ components:
       required:
       - type
       - usd
+    SwapExecuteResponse:
+      type: object
+      description: Response containing quote details and executable swap transactions
+      properties:
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Ordered list of transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
+      required:
+      - quote
+      - transactions
   responses:
-    BadRequest:
-      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -211,7 +211,27 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   schemas:
+    ToolUsageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        verified:
+          type: boolean
+        verification_type:
+          type: string
+      required:
+      - id
+      - verification_type
+      - verified
     RegisteredToolResponse:
       type: object
       properties:
@@ -271,27 +291,6 @@ components:
       - registry_chain
       - tool_id
       - updated_at
-    ToolListPaginatedResponse:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolListItemResponse'
-        next:
-          type: string
-      required:
-      - tools
-    X402SettlementFields:
-      type: object
-      properties:
-        caller_address:
-          type: string
-        tx_hash:
-          type: string
-        chain_id:
-          type: integer
-          format: int64
     ToolRequirementResponse:
       type: object
       properties:
@@ -323,21 +322,26 @@ components:
       required:
       - kind
       - type
-    ToolAccessResponse:
+    ToolCollectionResponse:
       type: object
       properties:
-        open_access:
-          type: boolean
-        logic:
+        slug:
           type: string
-        requirements:
+        name:
+          type: string
+        image_url:
+          type: string
+        opensea_url:
+          type: string
+        contracts:
           type: array
           items:
-            $ref: '#/components/schemas/ToolRequirementResponse'
+            $ref: '#/components/schemas/Contract'
       required:
-      - logic
-      - open_access
-      - requirements
+      - contracts
+      - name
+      - opensea_url
+      - slug
     Contract:
       type: object
       properties:
@@ -348,6 +352,17 @@ components:
       required:
       - address
       - chain
+    ToolListPaginatedResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolListItemResponse'
+        next:
+          type: string
+      required:
+      - tools
     ToolListItemResponse:
       type: object
       properties:
@@ -386,28 +401,28 @@ components:
       - registry_chain
       - tool_id
       - updated_at
-    Eip3009Fields:
+    ToolPricingRecipientResponse:
       type: object
       properties:
-        caller_address:
+        recipient:
           type: string
-        signature:
+        payment_chain:
           type: string
-        chain_id:
-          type: integer
-          format: int64
-        from:
+        asset:
           type: string
-        to:
+        protocol:
           type: string
-        value:
-          type: integer
-        valid_after:
-          type: integer
-        valid_before:
-          type: integer
-        nonce:
+        amount_per_call:
           type: string
+        created_at:
+          type: string
+      required:
+      - amount_per_call
+      - asset
+      - created_at
+      - payment_chain
+      - protocol
+      - recipient
     ToolSearchResultResponse:
       type: object
       properties:
@@ -455,72 +470,21 @@ components:
       - registry_chain
       - tags
       - tool_id
-    ToolCollectionResponse:
+    ToolAccessResponse:
       type: object
       properties:
-        slug:
-          type: string
-        name:
-          type: string
-        image_url:
-          type: string
-        opensea_url:
-          type: string
-        contracts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contract'
-      required:
-      - contracts
-      - name
-      - opensea_url
-      - slug
-    ToolPricingRecipientResponse:
-      type: object
-      properties:
-        recipient:
-          type: string
-        payment_chain:
-          type: string
-        asset:
-          type: string
-        protocol:
-          type: string
-        amount_per_call:
-          type: string
-        created_at:
-          type: string
-      required:
-      - amount_per_call
-      - asset
-      - created_at
-      - payment_chain
-      - protocol
-      - recipient
-    ToolSearchPaginatedResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolSearchResultResponse'
-        next:
-          type: string
-      required:
-      - results
-    ToolUsageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        verified:
+        open_access:
           type: boolean
-        verification_type:
+        logic:
           type: string
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolRequirementResponse'
       required:
-      - id
-      - verification_type
-      - verified
+      - logic
+      - open_access
+      - requirements
     ToolUsageRequest:
       type: object
       properties:
@@ -541,6 +505,49 @@ components:
           $ref: '#/components/schemas/Eip3009Fields'
         x402:
           $ref: '#/components/schemas/X402SettlementFields'
+    Eip3009Fields:
+      type: object
+      properties:
+        caller_address:
+          type: string
+        signature:
+          type: string
+        chain_id:
+          type: integer
+          format: int64
+        from:
+          type: string
+        to:
+          type: string
+        value:
+          type: integer
+        valid_after:
+          type: integer
+        valid_before:
+          type: integer
+        nonce:
+          type: string
+    X402SettlementFields:
+      type: object
+      properties:
+        caller_address:
+          type: string
+        tx_hash:
+          type: string
+        chain_id:
+          type: integer
+          format: int64
+    ToolSearchPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolSearchResultResponse'
+        next:
+          type: string
+      required:
+      - results
     ToolPaymentStatsResponse:
       type: object
       properties:
@@ -565,13 +572,6 @@ components:
       - total_payments
       - total_volume_usd
       - unique_buyers
-  responses:
-    NotFound:
-      description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

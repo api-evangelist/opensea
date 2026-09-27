@@ -364,46 +364,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    Trait:
-      type: object
-      properties:
-        trait_type:
-          type: string
-        display_type:
-          type: string
-        max_value:
-          type: string
-        value: {}
-      required:
-      - trait_type
-      - value
-    Event: {}
-    CollectionInner:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    CollectionStatsResponse:
-      type: object
-      properties:
-        total:
-          $ref: '#/components/schemas/Total'
-        intervals:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntervalStat'
-      required:
-      - intervals
-      - total
     TraitData:
       type: object
       properties:
@@ -414,165 +374,28 @@ components:
       required:
       - type
       - value
-    Nft:
+    IntervalStat:
       type: object
       properties:
-        identifier:
+        interval:
           type: string
-        collection:
-          type: string
-        contract:
-          type: string
-        token_standard:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        image_url:
-          type: string
-        display_image_url:
-          type: string
-        display_animation_url:
-          type: string
-        metadata_url:
-          type: string
-        opensea_url:
-          type: string
-        updated_at:
-          type: string
-        is_disabled:
-          type: boolean
-        is_nsfw:
-          type: boolean
-        original_image_url:
-          type: string
-        original_animation_url:
-          type: string
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trait'
-      required:
-      - collection
-      - contract
-      - identifier
-      - is_disabled
-      - is_nsfw
-      - opensea_url
-      - token_standard
-      - traits
-      - updated_at
-    TransferEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          transfer_type:
-            type: string
-          from_address:
-            type: string
-          to_address:
-            type: string
-          nft:
-            $ref: '#/components/schemas/Nft'
-          quantity:
-            type: integer
-            format: int64
-      required:
-      - chain
-      - event_timestamp
-      - event_type
-      - from_address
-      - quantity
-      - to_address
-      - transfer_type
-    AssetEventsResponse:
-      type: object
-      properties:
-        asset_events:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/OrderEvent'
-            - $ref: '#/components/schemas/SaleEvent'
-            - $ref: '#/components/schemas/TransferEvent'
-        next:
-          type: string
-      required:
-      - asset_events
-    Payment:
-      type: object
-      properties:
-        quantity:
-          type: string
-        token_address:
-          type: string
-        decimals:
+        volume:
+          type: number
+          format: double
+        sales:
           type: integer
           format: int32
-        symbol:
+      required:
+      - interval
+      - sales
+      - volume
+    CollectionInner:
+      type: object
+      properties:
+        slug:
           type: string
       required:
-      - decimals
-      - quantity
-      - symbol
-      - token_address
-    SaleEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          closing_date:
-            type: integer
-            format: int64
-          seller:
-            type: string
-          buyer:
-            type: string
-          quantity:
-            type: integer
-            format: int64
-          nft:
-            $ref: '#/components/schemas/Nft'
-      required:
-      - buyer
-      - chain
-      - closing_date
-      - event_timestamp
-      - event_type
-      - quantity
-      - seller
+      - slug
     NumericTraitData:
       type: object
       properties:
@@ -586,29 +409,6 @@ components:
           format: float
       required:
       - type
-    Total:
-      type: object
-      properties:
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
-        num_owners:
-          type: integer
-          format: int64
-        floor_price:
-          type: number
-          format: double
-        floor_price_symbol:
-          type: string
-      required:
-      - floor_price
-      - floor_price_symbol
-      - num_owners
-      - sales
-      - volume
     OrderEvent:
       allOf:
       - $ref: '#/components/schemas/Event'
@@ -675,28 +475,228 @@ components:
             $ref: '#/components/schemas/NumericTraitData'
         encoded_token_ids:
           type: string
-    IntervalStat:
+    Nft:
       type: object
       properties:
-        interval:
+        identifier:
           type: string
+        collection:
+          type: string
+        contract:
+          type: string
+        token_standard:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        display_image_url:
+          type: string
+        display_animation_url:
+          type: string
+        metadata_url:
+          type: string
+        opensea_url:
+          type: string
+        updated_at:
+          type: string
+        is_disabled:
+          type: boolean
+        is_nsfw:
+          type: boolean
+        original_image_url:
+          type: string
+        original_animation_url:
+          type: string
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trait'
+      required:
+      - collection
+      - contract
+      - identifier
+      - is_disabled
+      - is_nsfw
+      - opensea_url
+      - token_standard
+      - traits
+      - updated_at
+    AssetEventsResponse:
+      type: object
+      properties:
+        asset_events:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrderEvent'
+            - $ref: '#/components/schemas/SaleEvent'
+            - $ref: '#/components/schemas/TransferEvent'
+        next:
+          type: string
+      required:
+      - asset_events
+    Event: {}
+    Trait:
+      type: object
+      properties:
+        trait_type:
+          type: string
+        display_type:
+          type: string
+        max_value:
+          type: string
+        value: {}
+      required:
+      - trait_type
+      - value
+    Payment:
+      type: object
+      properties:
+        quantity:
+          type: string
+        token_address:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        symbol:
+          type: string
+      required:
+      - decimals
+      - quantity
+      - symbol
+      - token_address
+    Total:
+      type: object
+      properties:
         volume:
           type: number
           format: double
         sales:
           type: integer
           format: int32
+        num_owners:
+          type: integer
+          format: int64
+        floor_price:
+          type: number
+          format: double
+        floor_price_symbol:
+          type: string
       required:
-      - interval
+      - floor_price
+      - floor_price_symbol
+      - num_owners
       - sales
       - volume
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    TransferEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          transfer_type:
+            type: string
+          from_address:
+            type: string
+          to_address:
+            type: string
+          nft:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - from_address
+      - quantity
+      - to_address
+      - transfer_type
+    CollectionStatsResponse:
+      type: object
+      properties:
+        total:
+          $ref: '#/components/schemas/Total'
+        intervals:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalStat'
+      required:
+      - intervals
+      - total
+    SaleEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          closing_date:
+            type: integer
+            format: int64
+          seller:
+            type: string
+          buyer:
+            type: string
+          quantity:
+            type: integer
+            format: int64
+          nft:
+            $ref: '#/components/schemas/Nft'
+      required:
+      - buyer
+      - chain
+      - closing_date
+      - event_timestamp
+      - event_type
+      - quantity
+      - seller
   responses:
     NotFound:
       description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

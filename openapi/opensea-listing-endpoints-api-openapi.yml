@@ -336,90 +336,6 @@ components:
           type: string
       required:
       - contract
-    Price:
-      type: object
-      properties:
-        currency:
-          type: string
-        decimals:
-          type: integer
-          format: int32
-        value:
-          type: string
-      required:
-      - currency
-      - decimals
-      - value
-    FulfillmentComponent:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        orderIndex:
-          type: integer
-        itemIndex:
-          type: integer
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    FulfillBasicOrder:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          parameters:
-            $ref: '#/components/schemas/BasicOrderParameters'
-      required:
-      - parameters
-    Type:
-      type: object
-      properties:
-        value: {}
-        typeAsString:
-          type: string
-    SweepCollectionResponse:
-      type: object
-      description: Response containing ordered blockchain actions to execute for a collection sweep
-      properties:
-        steps:
-          type: array
-          description: Ordered list of blockchain actions to execute. Each action is a JSON object with a single field indicating the type (e.g. buyItemAction, permit2SignatureAction, paymentApprovalAction) and its associated data. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
-          items:
-            $ref: '#/components/schemas/JsonNode'
-        errors:
-          type: array
-          description: Errors encountered during sweep. Present alongside steps for partial success cases (e.g. some listings became unavailable).
-          items:
-            $ref: '#/components/schemas/SweepError'
-      required:
-      - steps
-    FulfillOrder:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          order:
-            $ref: '#/components/schemas/Order'
-          fulfillerConduitKey:
-            type: string
-      required:
-      - fulfillerConduitKey
-      - order
-    CreateListingActionsResponse:
-      type: object
-      description: Response containing blockchain actions to execute for listing creation
-      properties:
-        steps:
-          type: array
-          description: Ordered list of blockchain actions to execute. May include approval actions (e.g. setApprovalForAll) and a createListingsAction containing the Seaport order to sign. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
-          items:
-            $ref: '#/components/schemas/JsonNode'
-      required:
-      - steps
     CrossChainFulfillmentResponse:
       type: object
       description: Response containing ordered transactions to execute for cross-chain fulfillment
@@ -431,64 +347,24 @@ components:
             $ref: '#/components/schemas/SwapTransactionResponse'
       required:
       - transactions
-    ListingObject:
+    Type:
       type: object
       properties:
-        hash:
+        value: {}
+        typeAsString:
           type: string
-        chain:
-          type: string
-        protocol_address:
-          type: string
-      required:
-      - chain
-      - hash
-      - protocol_address
-    SeaportParameters:
+    ListingsResponse:
       type: object
       properties:
-        offerer:
-          type: string
-        zone:
-          type: string
-        offer:
+        listings:
           type: array
           items:
-            $ref: '#/components/schemas/OfferItem'
-        consideration:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConsiderationItem'
-        orderType:
-          type: integer
-          format: int32
-        startTime:
-          type: string
-        endTime:
-          type: string
-        zoneHash:
-          type: string
-        salt:
-          type: string
-        conduitKey:
-          type: string
-        totalOriginalConsiderationItems:
-          type: integer
-          format: int32
-        counter:
+            $ref: '#/components/schemas/Listing'
+        next:
           type: string
       required:
-      - conduitKey
-      - consideration
-      - counter
-      - endTime
-      - offer
-      - offerer
-      - orderType
-      - salt
-      - startTime
-      - totalOriginalConsiderationItems
-      - zoneHash
+      - listings
+    ListingOrOffer: {}
     FulfillAvailableOrders:
       allOf:
       - $ref: '#/components/schemas/SeaportCall'
@@ -520,250 +396,6 @@ components:
       - maximumFulfilled
       - offerFulfillments
       - orders
-    CrossChainPaymentToken:
-      type: object
-      description: Payment token to use for cross-chain fulfillment
-      properties:
-        chain:
-          type: string
-          description: Chain of the payment token (e.g. 'base', 'ethereum')
-          example: base
-        token_address:
-          type: string
-          description: Contract address of the payment token (use 0x0000000000000000000000000000000000000000 for native token)
-          example: '0x0000000000000000000000000000000000000000'
-      required:
-      - chain
-      - token_address
-    CrossChainFulfillmentRequest:
-      type: object
-      description: Request to fulfill one or more listings using a payment token on a different chain or a different token on the same chain
-      properties:
-        listings:
-          type: array
-          description: One or more listings to fulfill
-          items:
-            $ref: '#/components/schemas/ListingObject'
-        fulfiller:
-          $ref: '#/components/schemas/FulfillerObject'
-        payment:
-          $ref: '#/components/schemas/CrossChainPaymentToken'
-          description: The token to pay with
-        recipient:
-          type: string
-          description: Optional recipient address for the purchased items
-      required:
-      - fulfiller
-      - listings
-      - payment
-    MatchOrders:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/Order'
-          fulfillments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Fulfillment'
-      required:
-      - fulfillments
-      - orders
-    SeaportRequest:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/SeaportParameters'
-        protocol_address:
-          type: string
-        signature:
-          type: string
-      required:
-      - parameters
-      - protocol_address
-      - signature
-    Address:
-      type: object
-      properties:
-        value:
-          type: string
-        typeAsString:
-          type: string
-    MatchAdvancedOrders:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/AdvancedOrder'
-          criteriaResolvers:
-            type: array
-            items:
-              $ref: '#/components/schemas/CriteriaResolver'
-          fulfillments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Fulfillment'
-          recipient:
-            $ref: '#/components/schemas/Address'
-      required:
-      - criteriaResolvers
-      - fulfillments
-      - orders
-      - recipient
-    SeaportCall: {}
-    JsonNode: {}
-    AdditionalRecipient:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        amount:
-          type: integer
-        recipient:
-          type: string
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    Fulfillment:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        offerComponents:
-          type: array
-          items:
-            $ref: '#/components/schemas/FulfillmentComponent'
-        considerationComponents:
-          type: array
-          items:
-            $ref: '#/components/schemas/FulfillmentComponent'
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    OfferItem:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - startAmount
-      - token
-    CriteriaResolver:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        orderIndex:
-          type: integer
-        side:
-          type: integer
-        index:
-          type: integer
-        identifier:
-          type: integer
-        criteriaProof:
-          type: array
-          items:
-            type: string
-            format: byte
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    SweepCollectionRequest:
-      type: object
-      description: Request to sweep buy items from a collection
-      properties:
-        collection_slug:
-          type: string
-          description: The slug of the collection to sweep
-          example: pudgypenguins
-        payment:
-          $ref: '#/components/schemas/CrossChainPaymentToken'
-          description: The token to pay with
-        max_items:
-          type: integer
-          format: int32
-          description: Maximum number of items to buy (1-50)
-          example: 5
-        max_price_per_item:
-          type: string
-          description: Maximum price per item in the payment token's units
-          example: 10
-        buyer:
-          type: string
-          description: Address of the buyer
-          example: 0x...
-        recipient:
-          type: string
-          description: Optional recipient address for the purchased items
-      required:
-      - buyer
-      - collection_slug
-      - max_items
-      - max_price_per_item
-      - payment
-    FullfillListingRequest:
-      type: object
-      properties:
-        listing:
-          $ref: '#/components/schemas/ListingObject'
-        fulfiller:
-          $ref: '#/components/schemas/FulfillerObject'
-        consideration:
-          $ref: '#/components/schemas/ConsiderationObject'
-        recipient:
-          type: string
-        units_to_fill:
-          type: integer
-          format: int64
-          description: Optional quantity of units to fulfill; defaults to remaining units for listings
-        include_optional_creator_fees:
-          type: boolean
-          default: false
-          description: Whether to include optional creator fees in the fulfillment. If creator fees are already required, this is a no-op. Defaults to false.
-      required:
-      - fulfiller
-      - listing
-    FulfillListingResponse:
-      type: object
-      properties:
-        protocol:
-          type: string
-        fulfillment_data:
-          $ref: '#/components/schemas/FulfillmentData'
-      required:
-      - fulfillment_data
-      - protocol
     CreateListingActionsRequest:
       type: object
       description: Request to get listing creation actions
@@ -786,58 +418,6 @@ components:
       required:
       - address
       - items
-    FulfillmentData:
-      type: object
-      properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionData'
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderData'
-      required:
-      - orders
-      - transaction
-    Listing:
-      allOf:
-      - $ref: '#/components/schemas/ListingOrOffer'
-      - type: object
-        properties:
-          order_hash:
-            type: string
-          chain:
-            type: string
-          protocol_data:
-            $ref: '#/components/schemas/ProtocolData'
-          protocol_address:
-            type: string
-          asset:
-            $ref: '#/components/schemas/OrderAsset'
-          remaining_quantity:
-            type: integer
-            format: int64
-          order_created_at:
-            type: integer
-            format: int64
-          price:
-            $ref: '#/components/schemas/ListingPrice'
-          type:
-            type: string
-          status:
-            type: string
-            enum:
-            - ACTIVE
-            - INACTIVE
-            - FULFILLED
-            - EXPIRED
-            - CANCELLED
-      required:
-      - chain
-      - order_hash
-      - price
-      - remaining_quantity
-      - status
-      - type
     Parameters:
       type: object
       properties:
@@ -884,36 +464,6 @@ components:
       - totalOriginalConsiderationItems
       - zone
       - zoneHash
-    Item:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - startAmount
-      - token
-    ConsiderationObject:
-      type: object
-      properties:
-        asset_contract_address:
-          type: string
-        token_id:
-          type: string
-      required:
-      - asset_contract_address
-      - token_id
     ListingPrice:
       type: object
       properties:
@@ -921,71 +471,50 @@ components:
           $ref: '#/components/schemas/Price'
       required:
       - current
-    BasicOrderParameters:
+    SweepCollectionRequest:
       type: object
+      description: Request to sweep buy items from a collection
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        considerationToken:
+        collection_slug:
           type: string
-        considerationIdentifier:
+          description: The slug of the collection to sweep
+          example: pudgypenguins
+        payment:
+          $ref: '#/components/schemas/CrossChainPaymentToken'
+          description: The token to pay with
+        max_items:
           type: integer
-        considerationAmount:
-          type: integer
-        offerer:
+          format: int32
+          description: Maximum number of items to buy (1-50)
+          example: 5
+        max_price_per_item:
           type: string
-        zone:
+          description: Maximum price per item in the payment token's units
+          example: 10
+        buyer:
           type: string
-        offerToken:
+          description: Address of the buyer
+          example: 0x...
+        recipient:
           type: string
-        offerIdentifier:
-          type: integer
-        offerAmount:
-          type: integer
-        basicOrderType:
-          type: integer
-        startTime:
-          type: integer
-        endTime:
-          type: integer
-        zoneHash:
-          type: string
-          format: byte
-        salt:
-          type: integer
-        offererConduitKey:
-          type: string
-          format: byte
-        fulfillerConduitKey:
-          type: string
-          format: byte
-        totalOriginalAdditionalRecipients:
-          type: integer
-        additionalRecipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdditionalRecipient'
-        signature:
-          type: string
-          format: byte
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    ListingsResponse:
-      type: object
-      properties:
-        listings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Listing'
-        next:
-          type: string
+          description: Optional recipient address for the purchased items
       required:
-      - listings
+      - buyer
+      - collection_slug
+      - max_items
+      - max_price_per_item
+      - payment
+    CreateListingActionsResponse:
+      type: object
+      description: Response containing blockchain actions to execute for listing creation
+      properties:
+        steps:
+          type: array
+          description: Ordered list of blockchain actions to execute. May include approval actions (e.g. setApprovalForAll) and a createListingsAction containing the Seaport order to sign. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
+          items:
+            $ref: '#/components/schemas/JsonNode'
+      required:
+      - steps
     FulfillAvailableAdvancedOrders:
       allOf:
       - $ref: '#/components/schemas/SeaportCall'
@@ -1025,15 +554,224 @@ components:
       - offerFulfillments
       - orders
       - recipient
-    SweepError:
+    CriteriaResolver:
       type: object
-      description: An error encountered during a sweep operation
       properties:
-        message:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        orderIndex:
+          type: integer
+        side:
+          type: integer
+        index:
+          type: integer
+        identifier:
+          type: integer
+        criteriaProof:
+          type: array
+          items:
+            type: string
+            format: byte
+        typeAsString:
           type: string
-          description: Human-readable error message
+        nativeValueCopy:
+          type: array
+          items: {}
+    FulfillAdvancedOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          advancedOrder:
+            $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillerConduitKey:
+            type: string
+          recipient:
+            $ref: '#/components/schemas/Address'
       required:
-      - message
+      - advancedOrder
+      - criteriaResolvers
+      - fulfillerConduitKey
+      - recipient
+    FulfillmentComponent:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        orderIndex:
+          type: integer
+        itemIndex:
+          type: integer
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    SeaportRequest:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SeaportParameters'
+        protocol_address:
+          type: string
+        signature:
+          type: string
+      required:
+      - parameters
+      - protocol_address
+      - signature
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          price:
+            $ref: '#/components/schemas/ListingPrice'
+          type:
+            type: string
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+      - type
+    FulfillerObject:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    Price:
+      type: object
+      properties:
+        currency:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        value:
+          type: string
+      required:
+      - currency
+      - decimals
+      - value
+    ProtocolData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+    SweepCollectionResponse:
+      type: object
+      description: Response containing ordered blockchain actions to execute for a collection sweep
+      properties:
+        steps:
+          type: array
+          description: Ordered list of blockchain actions to execute. Each action is a JSON object with a single field indicating the type (e.g. buyItemAction, permit2SignatureAction, paymentApprovalAction) and its associated data. Serialized using proto3 JSON format — fields with default values (empty string, 0, false) may be omitted.
+          items:
+            $ref: '#/components/schemas/JsonNode'
+        errors:
+          type: array
+          description: Errors encountered during sweep. Present alongside steps for partial success cases (e.g. some listings became unavailable).
+          items:
+            $ref: '#/components/schemas/SweepError'
+      required:
+      - steps
+    OfferItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    ListingItem:
+      type: object
+      description: An item to list for sale
+      properties:
+        chain:
+          type: string
+          description: Chain of the item (e.g. 'ethereum', 'base')
+          example: ethereum
+        contract:
+          type: string
+          description: Contract address of the NFT
+          example: 0x...
+        token_id:
+          type: string
+          description: Token ID of the NFT
+          example: 1234
+        quantity:
+          type: integer
+          format: int64
+          description: Quantity to list (use 1 for ERC-721)
+          example: 1
+        price:
+          $ref: '#/components/schemas/ListingPrice'
+          description: Price per item
+        start_time:
+          type: string
+          description: Listing start time in ISO 8601 format. Defaults to now.
+          example: '2026-05-01T00:00:00Z'
+        end_time:
+          type: string
+          description: Listing end time in ISO 8601 format. Defaults to 30 days from start.
+          example: '2026-06-01T00:00:00Z'
+      required:
+      - chain
+      - contract
+      - price
+      - quantity
+      - token_id
     TransactionData:
       type: object
       properties:
@@ -1084,64 +822,22 @@ components:
       - chain
       - order_hash
       - remaining_quantity
-    FulfillAdvancedOrder:
+    Address:
+      type: object
+      properties:
+        value:
+          type: string
+        typeAsString:
+          type: string
+    FulfillBasicOrder:
       allOf:
       - $ref: '#/components/schemas/SeaportCall'
       - type: object
         properties:
-          advancedOrder:
-            $ref: '#/components/schemas/AdvancedOrder'
-          criteriaResolvers:
-            type: array
-            items:
-              $ref: '#/components/schemas/CriteriaResolver'
-          fulfillerConduitKey:
-            type: string
-          recipient:
-            $ref: '#/components/schemas/Address'
+          parameters:
+            $ref: '#/components/schemas/BasicOrderParameters'
       required:
-      - advancedOrder
-      - criteriaResolvers
-      - fulfillerConduitKey
-      - recipient
-    ListingItem:
-      type: object
-      description: An item to list for sale
-      properties:
-        chain:
-          type: string
-          description: Chain of the item (e.g. 'ethereum', 'base')
-          example: ethereum
-        contract:
-          type: string
-          description: Contract address of the NFT
-          example: 0x...
-        token_id:
-          type: string
-          description: Token ID of the NFT
-          example: 1234
-        quantity:
-          type: integer
-          format: int64
-          description: Quantity to list (use 1 for ERC-721)
-          example: 1
-        price:
-          $ref: '#/components/schemas/ListingPrice'
-          description: Price per item
-        start_time:
-          type: string
-          description: Listing start time in ISO 8601 format. Defaults to now.
-          example: '2026-05-01T00:00:00Z'
-        end_time:
-          type: string
-          description: Listing end time in ISO 8601 format. Defaults to 30 days from start.
-          example: '2026-06-01T00:00:00Z'
-      required:
-      - chain
-      - contract
-      - price
-      - quantity
-      - token_id
+      - parameters
     ConsiderationItem:
       type: object
       properties:
@@ -1165,32 +861,243 @@ components:
       - recipient
       - startAmount
       - token
-    Uint256:
+    MatchAdvancedOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+          recipient:
+            $ref: '#/components/schemas/Address'
+      required:
+      - criteriaResolvers
+      - fulfillments
+      - orders
+      - recipient
+    SeaportParameters:
+      type: object
+      properties:
+        offerer:
+          type: string
+        zone:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItem'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        orderType:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        zoneHash:
+          type: string
+        salt:
+          type: string
+        conduitKey:
+          type: string
+        totalOriginalConsiderationItems:
+          type: integer
+          format: int32
+        counter:
+          type: string
+      required:
+      - conduitKey
+      - consideration
+      - counter
+      - endTime
+      - offer
+      - offerer
+      - orderType
+      - salt
+      - startTime
+      - totalOriginalConsiderationItems
+      - zoneHash
+    CrossChainPaymentToken:
+      type: object
+      description: Payment token to use for cross-chain fulfillment
+      properties:
+        chain:
+          type: string
+          description: Chain of the payment token (e.g. 'base', 'ethereum')
+          example: base
+        token_address:
+          type: string
+          description: Contract address of the payment token (use 0x0000000000000000000000000000000000000000 for native token)
+          example: '0x0000000000000000000000000000000000000000'
+      required:
+      - chain
+      - token_address
+    ConsiderationObject:
+      type: object
+      properties:
+        asset_contract_address:
+          type: string
+        token_id:
+          type: string
+      required:
+      - asset_contract_address
+      - token_id
+    AdvancedOrder:
       type: object
       properties:
         value:
-          type: integer
-        bitSize:
-          type: integer
-          format: int32
-        typeAsString:
-          type: string
-    FulfillerObject:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    ProtocolData:
-      type: object
-      properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
         parameters:
-          $ref: '#/components/schemas/Parameters'
+          $ref: '#/components/schemas/OrderParameters'
+        numerator:
+          type: integer
+        denominator:
+          type: integer
         signature:
           type: string
+          format: byte
+        extraData:
+          type: string
+          format: byte
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    AdditionalRecipient:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        amount:
+          type: integer
+        recipient:
+          type: string
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    CrossChainFulfillmentRequest:
+      type: object
+      description: Request to fulfill one or more listings using a payment token on a different chain or a different token on the same chain
+      properties:
+        listings:
+          type: array
+          description: One or more listings to fulfill
+          items:
+            $ref: '#/components/schemas/ListingObject'
+        fulfiller:
+          $ref: '#/components/schemas/FulfillerObject'
+        payment:
+          $ref: '#/components/schemas/CrossChainPaymentToken'
+          description: The token to pay with
+        recipient:
+          type: string
+          description: Optional recipient address for the purchased items
       required:
-      - parameters
+      - fulfiller
+      - listings
+      - payment
+    FulfillmentData:
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionData'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderData'
+      required:
+      - orders
+      - transaction
+    Fulfillment:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        offerComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        considerationComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    MatchOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+      required:
+      - fulfillments
+      - orders
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    JsonNode: {}
+    ListingObject:
+      type: object
+      properties:
+        hash:
+          type: string
+        chain:
+          type: string
+        protocol_address:
+          type: string
+      required:
+      - chain
+      - hash
+      - protocol_address
     OrderData:
       type: object
       properties:
@@ -1201,7 +1108,16 @@ components:
       required:
       - parameters
       - signature
-    ListingOrOffer: {}
+    SweepError:
+      type: object
+      description: An error encountered during a sweep operation
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+      required:
+      - message
+    SeaportCall: {}
     OrderParameters:
       type: object
       properties:
@@ -1262,23 +1178,65 @@ components:
       required:
       - chain
       - data
-    AdvancedOrder:
+    FulfillOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          order:
+            $ref: '#/components/schemas/Order'
+          fulfillerConduitKey:
+            type: string
+      required:
+      - fulfillerConduitKey
+      - order
+    BasicOrderParameters:
       type: object
       properties:
         value:
           type: array
           items:
             $ref: '#/components/schemas/Type'
-        parameters:
-          $ref: '#/components/schemas/OrderParameters'
-        numerator:
+        considerationToken:
+          type: string
+        considerationIdentifier:
           type: integer
-        denominator:
+        considerationAmount:
           type: integer
-        signature:
+        offerer:
+          type: string
+        zone:
+          type: string
+        offerToken:
+          type: string
+        offerIdentifier:
+          type: integer
+        offerAmount:
+          type: integer
+        basicOrderType:
+          type: integer
+        startTime:
+          type: integer
+        endTime:
+          type: integer
+        zoneHash:
           type: string
           format: byte
-        extraData:
+        salt:
+          type: integer
+        offererConduitKey:
+          type: string
+          format: byte
+        fulfillerConduitKey:
+          type: string
+          format: byte
+        totalOriginalAdditionalRecipients:
+          type: integer
+        additionalRecipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalRecipient'
+        signature:
           type: string
           format: byte
         typeAsString:
@@ -1286,6 +1244,48 @@ components:
         nativeValueCopy:
           type: array
           items: {}
+    FullfillListingRequest:
+      type: object
+      properties:
+        listing:
+          $ref: '#/components/schemas/ListingObject'
+        fulfiller:
+          $ref: '#/components/schemas/FulfillerObject'
+        consideration:
+          $ref: '#/components/schemas/ConsiderationObject'
+        recipient:
+          type: string
+        units_to_fill:
+          type: integer
+          format: int64
+          description: Optional quantity of units to fulfill; defaults to remaining units for listings
+        include_optional_creator_fees:
+          type: boolean
+          default: false
+          description: Whether to include optional creator fees in the fulfillment. If creator fees are already required, this is a no-op. Defaults to false.
+      required:
+      - fulfiller
+      - listing
+    Uint256:
+      type: object
+      properties:
+        value:
+          type: integer
+        bitSize:
+          type: integer
+          format: int32
+        typeAsString:
+          type: string
+    FulfillListingResponse:
+      type: object
+      properties:
+        protocol:
+          type: string
+        fulfillment_data:
+          $ref: '#/components/schemas/FulfillmentData'
+      required:
+      - fulfillment_data
+      - protocol
   responses:
     NotFound:
       description: Resource not found
