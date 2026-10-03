@@ -75,6 +75,15 @@ components:
       - name
       - rate_limits
       - upgrade_url
+    V1ErrorWrapper:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
     RateLimitsResponse:
       type: object
       description: Rate limits for the API key
@@ -95,15 +104,6 @@ components:
       - fulfillment
       - read
       - write
-    V1ErrorWrapper:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

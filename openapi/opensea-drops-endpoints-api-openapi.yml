@@ -211,33 +211,42 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    BadRequest:
-      description: For error reasons, review the response data.
   schemas:
-    DropMintRequest:
+    DropMintResponse:
       type: object
-      description: Mint request parameters
+      description: Ready-to-sign mint transaction data
       properties:
-        minter:
+        to:
           type: string
-          description: Wallet address that will receive the minted tokens
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-          minLength: 1
-        quantity:
-          type: integer
-          format: int32
-          description: Number of tokens to mint
-          example: 1
-          maximum: 100
-          minimum: 1
+          description: Transaction target contract address
+        data:
+          type: string
+          description: Encoded transaction data (hex)
+        value:
+          type: string
+          description: Transaction value in wei (hex)
+        chain:
+          type: string
+          description: Chain identifier
       required:
-      - minter
-      - quantity
+      - chain
+      - data
+      - to
+      - value
+    DropPaginatedResponse:
+      type: object
+      description: Paginated list of drops
+      properties:
+        drops:
+          type: array
+          description: List of drops
+          items:
+            $ref: '#/components/schemas/DropResponse'
+        next:
+          type: string
+          description: Cursor for the next page. May be present even when drops is empty if all items in the page were filtered by visibility rules; continue paginating until next is null.
+      required:
+      - drops
     DropDeployReceiptResponse:
       type: object
       description: Deploy contract receipt status
@@ -257,65 +266,6 @@ components:
           description: Linked collection slug (only present on success, may take time to materialize)
       required:
       - status
-    DropResponse:
-      type: object
-      description: Summary of an NFT drop
-      properties:
-        collection_slug:
-          type: string
-          description: Collection slug
-          example: cool-cats
-        collection_name:
-          type: string
-          description: Collection name
-          example: Cool Cats
-        chain:
-          type: string
-          description: Blockchain the drop is on
-          example: ethereum
-        contract_address:
-          type: string
-          description: Contract address
-        drop_type:
-          type: string
-          description: Drop type
-          example: seadrop_v1_erc721
-        is_minting:
-          type: boolean
-          description: Whether the drop is currently minting
-        image_url:
-          type: string
-          description: Collection image URL
-        opensea_url:
-          type: string
-          description: OpenSea URL for the drop
-        active_stage:
-          $ref: '#/components/schemas/DropStageResponse'
-          description: The currently-minting stage, if the drop is live. Null if not minting.
-        next_stage:
-          $ref: '#/components/schemas/DropStageResponse'
-          description: The earliest upcoming stage by start_time when the drop is not currently minting (e.g. before it starts or between stages). Null if the drop is live or has no future stages.
-      required:
-      - chain
-      - collection_slug
-      - contract_address
-      - drop_type
-      - is_minting
-      - opensea_url
-    DropPaginatedResponse:
-      type: object
-      description: Paginated list of drops
-      properties:
-        drops:
-          type: array
-          description: List of drops
-          items:
-            $ref: '#/components/schemas/DropResponse'
-        next:
-          type: string
-          description: Cursor for the next page. May be present even when drops is empty if all items in the page were filtered by visibility rules; continue paginating until next is null.
-      required:
-      - drops
     DropDetailedResponse:
       type: object
       description: Detailed drop information including stages and supply
@@ -373,45 +323,61 @@ components:
       - is_minting
       - opensea_url
       - stages
-    DropStageResponse:
+    ChainIdentifier:
+      type: string
+      default: ethereum
+      description: Blockchain chain identifier. Use the chain slug (e.g., 'ethereum', 'polygon', 'arbitrum', 'optimism', 'base')
+      enum:
+      - blast
+      - base
+      - ethereum
+      - zora
+      - arbitrum
+      - sei
+      - avalanche
+      - polygon
+      - optimism
+      - ape_chain
+      - flow
+      - b3
+      - soneium
+      - ronin
+      - bera_chain
+      - solana
+      - shape
+      - unichain
+      - gunzilla
+      - abstract
+      - animechain
+      - hyperevm
+      - somnia
+      - monad
+      - hyperliquid
+      - megaeth
+      - ink
+      example: ethereum
+    DropMintRequest:
       type: object
-      description: A mint stage within a drop
+      description: Mint request parameters
       properties:
-        uuid:
+        minter:
           type: string
-          description: Stage UUID
-        stage_type:
-          type: string
-          description: Stage type
-          example: public_sale
-        label:
-          type: string
-          description: Stage label/name
-        price:
-          type: string
-          description: Mint price per token in wei (decimal string)
-        price_currency_address:
-          type: string
-          description: Currency contract address (e.g. 0x0000...0000 for native token)
-        start_time:
-          type: string
-          description: Stage start time (ISO 8601)
-        end_time:
-          type: string
-          description: Stage end time (ISO 8601)
-        max_per_wallet:
-          type: string
-          description: Max tokens mintable per wallet in this stage
+          description: Wallet address that will receive the minted tokens
+          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+          minLength: 1
+        quantity:
+          type: integer
+          format: int32
+          description: Number of tokens to mint
+          example: 1
+          maximum: 100
+          minimum: 1
       required:
-      - end_time
-      - max_per_wallet
-      - price_currency_address
-      - stage_type
-      - start_time
-      - uuid
-    DropMintResponse:
+      - minter
+      - quantity
+    DropDeployResponse:
       type: object
-      description: Ready-to-sign mint transaction data
+      description: Ready-to-sign deploy contract transaction data
       properties:
         to:
           type: string
@@ -480,60 +446,94 @@ components:
             type: string
       required:
       - errors
-    DropDeployResponse:
+    DropStageResponse:
       type: object
-      description: Ready-to-sign deploy contract transaction data
+      description: A mint stage within a drop
       properties:
-        to:
+        uuid:
           type: string
-          description: Transaction target contract address
-        data:
+          description: Stage UUID
+        stage_type:
           type: string
-          description: Encoded transaction data (hex)
-        value:
+          description: Stage type
+          example: public_sale
+        label:
           type: string
-          description: Transaction value in wei (hex)
+          description: Stage label/name
+        price:
+          type: string
+          description: Mint price per token in wei (decimal string)
+        price_currency_address:
+          type: string
+          description: Currency contract address (e.g. 0x0000...0000 for native token)
+        start_time:
+          type: string
+          description: Stage start time (ISO 8601)
+        end_time:
+          type: string
+          description: Stage end time (ISO 8601)
+        max_per_wallet:
+          type: string
+          description: Max tokens mintable per wallet in this stage
+      required:
+      - end_time
+      - max_per_wallet
+      - price_currency_address
+      - stage_type
+      - start_time
+      - uuid
+    DropResponse:
+      type: object
+      description: Summary of an NFT drop
+      properties:
+        collection_slug:
+          type: string
+          description: Collection slug
+          example: cool-cats
+        collection_name:
+          type: string
+          description: Collection name
+          example: Cool Cats
         chain:
           type: string
-          description: Chain identifier
+          description: Blockchain the drop is on
+          example: ethereum
+        contract_address:
+          type: string
+          description: Contract address
+        drop_type:
+          type: string
+          description: Drop type
+          example: seadrop_v1_erc721
+        is_minting:
+          type: boolean
+          description: Whether the drop is currently minting
+        image_url:
+          type: string
+          description: Collection image URL
+        opensea_url:
+          type: string
+          description: OpenSea URL for the drop
+        active_stage:
+          $ref: '#/components/schemas/DropStageResponse'
+          description: The currently-minting stage, if the drop is live. Null if not minting.
+        next_stage:
+          $ref: '#/components/schemas/DropStageResponse'
+          description: The earliest upcoming stage by start_time when the drop is not currently minting (e.g. before it starts or between stages). Null if the drop is live or has no future stages.
       required:
       - chain
-      - data
-      - to
-      - value
-    ChainIdentifier:
-      type: string
-      default: ethereum
-      description: Blockchain chain identifier. Use the chain slug (e.g., 'ethereum', 'polygon', 'arbitrum', 'optimism', 'base')
-      enum:
-      - blast
-      - base
-      - ethereum
-      - zora
-      - arbitrum
-      - sei
-      - avalanche
-      - polygon
-      - optimism
-      - ape_chain
-      - flow
-      - b3
-      - soneium
-      - ronin
-      - bera_chain
-      - solana
-      - shape
-      - unichain
-      - gunzilla
-      - abstract
-      - animechain
-      - hyperevm
-      - somnia
-      - monad
-      - hyperliquid
-      - megaeth
-      - ink
-      example: ethereum
+      - collection_slug
+      - contract_address
+      - drop_type
+      - is_minting
+      - opensea_url
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    NotFound:
+      description: Resource not found
+    BadRequest:
+      description: For error reasons, review the response data.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

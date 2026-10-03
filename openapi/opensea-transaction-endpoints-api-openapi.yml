@@ -42,17 +42,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    TotalSpentResponse:
-      type: object
-      description: Total spent across all assets in a transaction
-      properties:
-        price_per_token:
-          type: array
-          description: Price breakdown per token type
-          items:
-            $ref: '#/components/schemas/PriceResponse'
-      required:
-      - price_per_token
     PriceResponse:
       type: object
       description: Price information for an asset
@@ -110,43 +99,6 @@ components:
       - missing_assets
       - status
       - total_spent
-    AssetReceiptResponse:
-      type: object
-      description: Receipt for a single asset in a transaction
-      properties:
-        asset:
-          $ref: '#/components/schemas/AssetIdentifierResponse'
-          description: The asset received
-        quantity:
-          type: string
-          description: Quantity received in base units
-          example: 1
-        price:
-          $ref: '#/components/schemas/PriceResponse'
-          description: Price paid per item
-      required:
-      - asset
-      - price
-      - quantity
-    AssetIdentifierResponse:
-      type: object
-      description: Asset identifier with chain, contract address, and optional token ID
-      properties:
-        chain:
-          type: string
-          description: The blockchain chain
-          example: ethereum
-        contract:
-          type: string
-          description: The contract address
-          example: '0xBd3531dA5CF5857e7CfAA92426877b022e612cf8'
-        token_id:
-          type: string
-          description: Token ID for NFTs
-          example: 1234
-      required:
-      - chain
-      - contract
     SwapQuoteInput:
       type: object
       description: The original swap quote assets
@@ -167,28 +119,25 @@ components:
           minItems: 0
       required:
       - from_assets
-    TransactionReceiptRequest:
+    AssetIdentifierResponse:
       type: object
-      description: Request to get a transaction receipt/status
+      description: Asset identifier with chain, contract address, and optional token ID
       properties:
-        transaction_identifiers:
-          type: array
-          description: Transaction identifiers to look up
-          items:
-            $ref: '#/components/schemas/TransactionIdentifierInput'
-          maxItems: 100
-          minItems: 0
-        swap_quote:
-          $ref: '#/components/schemas/SwapQuoteInput'
-          description: The swap quote that was originally submitted
-        relay_request_id:
+        chain:
           type: string
-          description: Relay request ID for cross-chain tracking
-        request_id:
+          description: The blockchain chain
+          example: ethereum
+        contract:
           type: string
-          description: Request ID for workflow tracking
+          description: The contract address
+          example: '0xBd3531dA5CF5857e7CfAA92426877b022e612cf8'
+        token_id:
+          type: string
+          description: Token ID for NFTs
+          example: 1234
       required:
-      - swap_quote
+      - chain
+      - contract
     TransactionIdentifierInput:
       type: object
       description: A transaction identifier with optional swap provider
@@ -232,6 +181,57 @@ components:
       - amount
       - chain
       - contract
+    AssetReceiptResponse:
+      type: object
+      description: Receipt for a single asset in a transaction
+      properties:
+        asset:
+          $ref: '#/components/schemas/AssetIdentifierResponse'
+          description: The asset received
+        quantity:
+          type: string
+          description: Quantity received in base units
+          example: 1
+        price:
+          $ref: '#/components/schemas/PriceResponse'
+          description: Price paid per item
+      required:
+      - asset
+      - price
+      - quantity
+    TotalSpentResponse:
+      type: object
+      description: Total spent across all assets in a transaction
+      properties:
+        price_per_token:
+          type: array
+          description: Price breakdown per token type
+          items:
+            $ref: '#/components/schemas/PriceResponse'
+      required:
+      - price_per_token
+    TransactionReceiptRequest:
+      type: object
+      description: Request to get a transaction receipt/status
+      properties:
+        transaction_identifiers:
+          type: array
+          description: Transaction identifiers to look up
+          items:
+            $ref: '#/components/schemas/TransactionIdentifierInput'
+          maxItems: 100
+          minItems: 0
+        swap_quote:
+          $ref: '#/components/schemas/SwapQuoteInput'
+          description: The swap quote that was originally submitted
+        relay_request_id:
+          type: string
+          description: Relay request ID for cross-chain tracking
+        request_id:
+          type: string
+          description: Request ID for workflow tracking
+      required:
+      - swap_quote
   responses:
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
