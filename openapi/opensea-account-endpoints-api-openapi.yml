@@ -502,67 +502,19 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    OffersResponse:
+    Trait:
       type: object
       properties:
-        offers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Offer'
-        next:
+        trait_type:
           type: string
-      required:
-      - offers
-    ProtocolData:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        signature:
+        display_type:
           type: string
+        max_value:
+          type: string
+        value: {}
       required:
-      - parameters
-    ListingOrOffer: {}
-    Listing:
-      allOf:
-      - $ref: '#/components/schemas/ListingOrOffer'
-      - type: object
-        properties:
-          order_hash:
-            type: string
-          chain:
-            type: string
-          protocol_data:
-            $ref: '#/components/schemas/ProtocolData'
-          protocol_address:
-            type: string
-          asset:
-            $ref: '#/components/schemas/OrderAsset'
-          remaining_quantity:
-            type: integer
-            format: int64
-          order_created_at:
-            type: integer
-            format: int64
-          price:
-            $ref: '#/components/schemas/ListingPrice'
-          type:
-            type: string
-          status:
-            type: string
-            enum:
-            - ACTIVE
-            - INACTIVE
-            - FULFILLED
-            - EXPIRED
-            - CANCELLED
-      required:
-      - chain
-      - order_hash
-      - price
-      - remaining_quantity
-      - status
-      - type
+      - trait_type
+      - value
     PortfolioHistoryDataPoint:
       type: object
       description: A single net worth data point
@@ -589,6 +541,98 @@ components:
       - timestamp
       - token_value_usd
       - value_usd
+    ProfileCollectionsResponse:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileCollectionResponse'
+        next:
+          type: string
+      required:
+      - collections
+    ListingPrice:
+      type: object
+      properties:
+        current:
+          $ref: '#/components/schemas/Price'
+      required:
+      - current
+    PortfolioHistoryResponse:
+      type: object
+      description: Net worth time series data
+      properties:
+        data_points:
+          type: array
+          description: Time series data points
+          items:
+            $ref: '#/components/schemas/PortfolioHistoryDataPoint'
+        timeframe:
+          type: string
+          description: The queried timeframe
+          example: WEEK
+      required:
+      - data_points
+      - timeframe
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    ListingOrOffer: {}
+    SocialMediaAccount:
+      type: object
+      properties:
+        platform:
+          type: string
+        username:
+          type: string
+      required:
+      - platform
+      - username
+    AccountResolveResponse:
+      type: object
+      description: Resolved account info
+      properties:
+        address:
+          type: string
+          description: The resolved wallet address
+          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+        username:
+          type: string
+          description: OpenSea username, if available
+        ens_name:
+          type: string
+          description: Primary ENS name, if available
+          example: vitalik.eth
+      required:
+      - address
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
     Parameters:
       type: object
       properties:
@@ -635,151 +679,26 @@ components:
       - totalOriginalConsiderationItems
       - zone
       - zoneHash
-    ListingsResponse:
+    NftListResponse:
       type: object
       properties:
-        listings:
+        nfts:
           type: array
           items:
-            $ref: '#/components/schemas/Listing'
+            $ref: '#/components/schemas/Nft'
         next:
           type: string
       required:
-      - listings
-    Contract:
+      - nfts
+    OrderAsset:
       type: object
       properties:
-        address:
+        identifier:
           type: string
-        chain:
-          type: string
-      required:
-      - address
-      - chain
-    Criteria:
-      type: object
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionInner'
         contract:
-          $ref: '#/components/schemas/ContractInner'
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/TraitData'
-        numeric_traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/NumericTraitData'
-        encoded_token_ids:
-          type: string
-    ListingPrice:
-      type: object
-      properties:
-        current:
-          $ref: '#/components/schemas/Price'
-      required:
-      - current
-    ProfileCollectionsResponse:
-      type: object
-      properties:
-        collections:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProfileCollectionResponse'
-        next:
           type: string
       required:
-      - collections
-    ConsiderationItem:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-        recipient:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - recipient
-      - startAmount
-      - token
-    TraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
-    Trait:
-      type: object
-      properties:
-        trait_type:
-          type: string
-        display_type:
-          type: string
-        max_value:
-          type: string
-        value: {}
-      required:
-      - trait_type
-      - value
-    AccountResponse:
-      type: object
-      properties:
-        address:
-          type: string
-        username:
-          type: string
-        profile_image_url:
-          type: string
-        banner_image_url:
-          type: string
-        website:
-          type: string
-        social_media_accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/SocialMediaAccount'
-        bio:
-          type: string
-        joined_date:
-          type: string
-          format: date-time
-      required:
-      - address
-      - bio
-      - joined_date
-      - social_media_accounts
-    PortfolioHistoryResponse:
-      type: object
-      description: Net worth time series data
-      properties:
-        data_points:
-          type: array
-          description: Time series data points
-          items:
-            $ref: '#/components/schemas/PortfolioHistoryDataPoint'
-        timeframe:
-          type: string
-          description: The queried timeframe
-          example: WEEK
-      required:
-      - data_points
-      - timeframe
+      - contract
     Nft:
       type: object
       properties:
@@ -829,16 +748,6 @@ components:
       - token_standard
       - traits
       - updated_at
-    SocialMediaAccount:
-      type: object
-      properties:
-        platform:
-          type: string
-        username:
-          type: string
-      required:
-      - platform
-      - username
     Offer:
       allOf:
       - $ref: '#/components/schemas/ListingOrOffer'
@@ -878,85 +787,16 @@ components:
       - price
       - remaining_quantity
       - status
-    PortfolioStatsResponse:
+    Contract:
       type: object
-      description: Portfolio stats including total value, P&L, and asset breakdown
-      properties:
-        total_value_usd:
-          type: string
-          description: Total portfolio value in USD
-          example: 125430.5
-        nft_value_usd:
-          type: string
-          description: NFT portfolio value in USD
-          example: 98200
-        token_value_usd:
-          type: string
-          description: Token portfolio value in USD
-          example: 27230.5
-        pnl_absolute:
-          type: string
-          description: Absolute P&L in USD over the timeframe
-          example: '+1250.00'
-        pnl_percentage:
-          type: string
-          description: Percentage P&L over the timeframe
-          example: '+1.01'
-        timeframe:
-          type: string
-          description: The queried timeframe
-          example: WEEK
-      required:
-      - nft_value_usd
-      - timeframe
-      - token_value_usd
-      - total_value_usd
-    OrderAsset:
-      type: object
-      properties:
-        identifier:
-          type: string
-        contract:
-          type: string
-      required:
-      - contract
-    AccountResolveResponse:
-      type: object
-      description: Resolved account info
       properties:
         address:
           type: string
-          description: The resolved wallet address
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-        username:
+        chain:
           type: string
-          description: OpenSea username, if available
-        ens_name:
-          type: string
-          description: Primary ENS name, if available
-          example: vitalik.eth
       required:
       - address
-    Item:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - startAmount
-      - token
+      - chain
     ChainIdentifier:
       type: string
       default: ethereum
@@ -990,58 +830,6 @@ components:
       - megaeth
       - ink
       example: ethereum
-    CollectionInner:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    NftListResponse:
-      type: object
-      properties:
-        nfts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Nft'
-        next:
-          type: string
-      required:
-      - nfts
-    NumericTraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        min:
-          type: number
-          format: float
-        max:
-          type: number
-          format: float
-      required:
-      - type
-    Price:
-      type: object
-      properties:
-        currency:
-          type: string
-        decimals:
-          type: integer
-          format: int32
-        value:
-          type: string
-      required:
-      - currency
-      - decimals
-      - value
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
     ProfileCollectionResponse:
       type: object
       properties:
@@ -1108,13 +896,225 @@ components:
       - safelist_status
       - total_quantity
       - trait_offers_enabled
+    AccountResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        username:
+          type: string
+        profile_image_url:
+          type: string
+        banner_image_url:
+          type: string
+        website:
+          type: string
+        social_media_accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SocialMediaAccount'
+        bio:
+          type: string
+        joined_date:
+          type: string
+          format: date-time
+      required:
+      - address
+      - bio
+      - joined_date
+      - social_media_accounts
+    ConsiderationItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+        recipient:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - recipient
+      - startAmount
+      - token
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    OffersResponse:
+      type: object
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Offer'
+        next:
+          type: string
+      required:
+      - offers
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    ListingsResponse:
+      type: object
+      properties:
+        listings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+        next:
+          type: string
+      required:
+      - listings
+    PortfolioStatsResponse:
+      type: object
+      description: Portfolio stats including total value, P&L, and asset breakdown
+      properties:
+        total_value_usd:
+          type: string
+          description: Total portfolio value in USD
+          example: 125430.5
+        nft_value_usd:
+          type: string
+          description: NFT portfolio value in USD
+          example: 98200
+        token_value_usd:
+          type: string
+          description: Token portfolio value in USD
+          example: 27230.5
+        pnl_absolute:
+          type: string
+          description: Absolute P&L in USD over the timeframe
+          example: '+1250.00'
+        pnl_percentage:
+          type: string
+          description: Percentage P&L over the timeframe
+          example: '+1.01'
+        timeframe:
+          type: string
+          description: The queried timeframe
+          example: WEEK
+      required:
+      - nft_value_usd
+      - timeframe
+      - token_value_usd
+      - total_value_usd
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+    ProtocolData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          price:
+            $ref: '#/components/schemas/ListingPrice'
+          type:
+            type: string
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+      - type
+    Price:
+      type: object
+      properties:
+        currency:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        value:
+          type: string
+      required:
+      - currency
+      - decimals
+      - value
   responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    NotFound:
-      description: Resource not found
     BadRequest:
       description: For error reasons, review the response data.
+    NotFound:
+      description: Resource not found
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

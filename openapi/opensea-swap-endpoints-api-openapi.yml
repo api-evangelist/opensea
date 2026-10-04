@@ -118,32 +118,32 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    BadRequest:
+      description: For error reasons, review the response data.
   schemas:
-    SwapPriceImpact:
+    SwapAssetInput:
       type: object
-      description: Price impact of the swap
+      description: An asset to swap with chain, contract address, and amount
       properties:
-        usd:
+        chain:
           type: string
-          description: Price impact in USD (negative means user loses value)
-          example: -1.5
-        percent:
+          description: Chain slug (e.g. ethereum, base, solana)
+          example: ethereum
+        contract:
           type: string
-          description: Price impact as a percentage (negative means user loses value)
-          example: -0.08
+          description: Contract address of the token
+          example: '0x0000000000000000000000000000000000000000'
+        amount:
+          type: string
+          description: Amount in the smallest unit of the token (e.g. wei for ETH). Use "0" for to_assets to receive the market rate.
+          example: 1000000000000000000
       required:
-      - percent
-      - usd
-    SwapRouteErrorResponse:
-      type: object
-      description: An error encountered for a specific swap route
-      properties:
-        type:
-          type: string
-          description: The error type
-          example: INSUFFICIENT_FUNDS
-      required:
-      - type
+      - amount
+      - chain
+      - contract
     SwapQuoteDetails:
       type: object
       description: Price and fee details for a swap quote
@@ -203,6 +203,16 @@ components:
       - slippage_tolerance
       - total_cost_usd
       - total_price_usd
+    SwapRouteErrorResponse:
+      type: object
+      description: An error encountered for a specific swap route
+      properties:
+        type:
+          type: string
+          description: The error type
+          example: INSUFFICIENT_FUNDS
+      required:
+      - type
     SwapCostResponse:
       type: object
       description: A cost component of the swap
@@ -226,41 +236,6 @@ components:
       required:
       - type
       - usd
-    SwapTransactionResponse:
-      type: object
-      description: A transaction to be submitted onchain to execute a swap
-      properties:
-        chain:
-          type: string
-          description: The blockchain for this transaction
-          example: ethereum
-        to:
-          type: string
-          description: The destination address for the transaction
-        data:
-          type: string
-          description: 'The transaction data. For EVM chains: hex-encoded calldata. For SVM chains: comma-separated instructions in programId:data format.'
-        value:
-          type: string
-          description: The native token value to send with the transaction
-      required:
-      - chain
-      - data
-    SwapExecuteResponse:
-      type: object
-      description: Response containing quote details and executable swap transactions
-      properties:
-        quote:
-          $ref: '#/components/schemas/SwapQuoteDetails'
-          description: Price and fee details for the swap
-        transactions:
-          type: array
-          description: Ordered list of transactions to execute the swap
-          items:
-            $ref: '#/components/schemas/SwapTransactionResponse'
-      required:
-      - quote
-      - transactions
     SwapQuoteResponse:
       type: object
       description: Swap quote with price details and executable transactions
@@ -276,26 +251,36 @@ components:
       required:
       - quote
       - transactions
-    SwapAssetInput:
+    SwapExecuteResponse:
       type: object
-      description: An asset to swap with chain, contract address, and amount
+      description: Response containing quote details and executable swap transactions
       properties:
-        chain:
-          type: string
-          description: Chain slug (e.g. ethereum, base, solana)
-          example: ethereum
-        contract:
-          type: string
-          description: Contract address of the token
-          example: '0x0000000000000000000000000000000000000000'
-        amount:
-          type: string
-          description: Amount in the smallest unit of the token (e.g. wei for ETH). Use "0" for to_assets to receive the market rate.
-          example: 1000000000000000000
+        quote:
+          $ref: '#/components/schemas/SwapQuoteDetails'
+          description: Price and fee details for the swap
+        transactions:
+          type: array
+          description: Ordered list of transactions to execute the swap
+          items:
+            $ref: '#/components/schemas/SwapTransactionResponse'
       required:
-      - amount
-      - chain
-      - contract
+      - quote
+      - transactions
+    SwapPriceImpact:
+      type: object
+      description: Price impact of the swap
+      properties:
+        usd:
+          type: string
+          description: Price impact in USD (negative means user loses value)
+          example: -1.5
+        percent:
+          type: string
+          description: Price impact as a percentage (negative means user loses value)
+          example: -0.08
+      required:
+      - percent
+      - usd
     SwapExecuteRequest:
       type: object
       description: Request body for executing a token swap
@@ -326,11 +311,26 @@ components:
       - address
       - from_assets
       - to_assets
-  responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    BadRequest:
-      description: For error reasons, review the response data.
+    SwapTransactionResponse:
+      type: object
+      description: A transaction to be submitted onchain to execute a swap
+      properties:
+        chain:
+          type: string
+          description: The blockchain for this transaction
+          example: ethereum
+        to:
+          type: string
+          description: The destination address for the transaction
+        data:
+          type: string
+          description: 'The transaction data. For EVM chains: hex-encoded calldata. For SVM chains: comma-separated instructions in programId:data format.'
+        value:
+          type: string
+          description: The native token value to send with the transaction
+      required:
+      - chain
+      - data
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -363,41 +363,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    NotFound:
-      description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
   schemas:
-    Criteria:
-      type: object
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionInner'
-        contract:
-          $ref: '#/components/schemas/ContractInner'
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/TraitData'
-        numeric_traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/NumericTraitData'
-        encoded_token_ids:
-          type: string
-    TraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
     Trait:
       type: object
       properties:
@@ -411,56 +377,7 @@ components:
       required:
       - trait_type
       - value
-    Nft:
-      type: object
-      properties:
-        identifier:
-          type: string
-        collection:
-          type: string
-        contract:
-          type: string
-        token_standard:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        image_url:
-          type: string
-        display_image_url:
-          type: string
-        display_animation_url:
-          type: string
-        metadata_url:
-          type: string
-        opensea_url:
-          type: string
-        updated_at:
-          type: string
-        is_disabled:
-          type: boolean
-        is_nsfw:
-          type: boolean
-        original_image_url:
-          type: string
-        original_animation_url:
-          type: string
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trait'
-      required:
-      - collection
-      - contract
-      - identifier
-      - is_disabled
-      - is_nsfw
-      - opensea_url
-      - token_standard
-      - traits
-      - updated_at
-    SaleEvent:
+    TransferEvent:
       allOf:
       - $ref: '#/components/schemas/Event'
       - type: object
@@ -480,52 +397,25 @@ components:
             type: string
           payment:
             $ref: '#/components/schemas/Payment'
-          closing_date:
-            type: integer
-            format: int64
-          seller:
+          transfer_type:
             type: string
-          buyer:
+          from_address:
             type: string
+          to_address:
+            type: string
+          nft:
+            $ref: '#/components/schemas/Nft'
           quantity:
             type: integer
             format: int64
-          nft:
-            $ref: '#/components/schemas/Nft'
       required:
-      - buyer
       - chain
-      - closing_date
       - event_timestamp
       - event_type
+      - from_address
       - quantity
-      - seller
-    CollectionStatsResponse:
-      type: object
-      properties:
-        total:
-          $ref: '#/components/schemas/Total'
-        intervals:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntervalStat'
-      required:
-      - intervals
-      - total
-    AssetEventsResponse:
-      type: object
-      properties:
-        asset_events:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/OrderEvent'
-            - $ref: '#/components/schemas/SaleEvent'
-            - $ref: '#/components/schemas/TransferEvent'
-        next:
-          type: string
-      required:
-      - asset_events
+      - to_address
+      - transfer_type
     OrderEvent:
       allOf:
       - $ref: '#/components/schemas/Event'
@@ -575,6 +465,65 @@ components:
       - maker
       - order_type
       - quantity
+    AssetEventsResponse:
+      type: object
+      properties:
+        asset_events:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrderEvent'
+            - $ref: '#/components/schemas/SaleEvent'
+            - $ref: '#/components/schemas/TransferEvent'
+        next:
+          type: string
+      required:
+      - asset_events
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    IntervalStat:
+      type: object
+      properties:
+        interval:
+          type: string
+        volume:
+          type: number
+          format: double
+        sales:
+          type: integer
+          format: int32
+      required:
+      - interval
+      - sales
+      - volume
     Total:
       type: object
       properties:
@@ -598,21 +547,68 @@ components:
       - num_owners
       - sales
       - volume
-    IntervalStat:
+    CollectionStatsResponse:
       type: object
       properties:
-        interval:
-          type: string
-        volume:
-          type: number
-          format: double
-        sales:
-          type: integer
-          format: int32
+        total:
+          $ref: '#/components/schemas/Total'
+        intervals:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalStat'
       required:
-      - interval
-      - sales
-      - volume
+      - intervals
+      - total
+    Nft:
+      type: object
+      properties:
+        identifier:
+          type: string
+        collection:
+          type: string
+        contract:
+          type: string
+        token_standard:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        display_image_url:
+          type: string
+        display_animation_url:
+          type: string
+        metadata_url:
+          type: string
+        opensea_url:
+          type: string
+        updated_at:
+          type: string
+        is_disabled:
+          type: boolean
+        is_nsfw:
+          type: boolean
+        original_image_url:
+          type: string
+        original_animation_url:
+          type: string
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trait'
+      required:
+      - collection
+      - contract
+      - identifier
+      - is_disabled
+      - is_nsfw
+      - opensea_url
+      - token_standard
+      - traits
+      - updated_at
+    Event: {}
     Payment:
       type: object
       properties:
@@ -630,35 +626,7 @@ components:
       - quantity
       - symbol
       - token_address
-    Event: {}
-    CollectionInner:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    NumericTraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        min:
-          type: number
-          format: float
-        max:
-          type: number
-          format: float
-      required:
-      - type
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    TransferEvent:
+    SaleEvent:
       allOf:
       - $ref: '#/components/schemas/Event'
       - type: object
@@ -678,25 +646,57 @@ components:
             type: string
           payment:
             $ref: '#/components/schemas/Payment'
-          transfer_type:
+          closing_date:
+            type: integer
+            format: int64
+          seller:
             type: string
-          from_address:
+          buyer:
             type: string
-          to_address:
-            type: string
-          nft:
-            $ref: '#/components/schemas/Nft'
           quantity:
             type: integer
             format: int64
+          nft:
+            $ref: '#/components/schemas/Nft'
       required:
+      - buyer
       - chain
+      - closing_date
       - event_timestamp
       - event_type
-      - from_address
       - quantity
-      - to_address
-      - transfer_type
+      - seller
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    NotFound:
+      description: Resource not found
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

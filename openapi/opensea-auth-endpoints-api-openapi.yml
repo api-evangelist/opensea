@@ -49,6 +49,35 @@ paths:
                 $ref: '#/components/schemas/V1ErrorWrapper'
 components:
   schemas:
+    RateLimitsResponse:
+      type: object
+      description: Rate limits for the API key
+      properties:
+        read:
+          type: string
+          description: Read rate limit
+          example: 60/m
+        write:
+          type: string
+          description: Write rate limit
+          example: 5/m
+        fulfillment:
+          type: string
+          description: Fulfillment rate limit
+          example: 5/m
+      required:
+      - fulfillment
+      - read
+      - write
+    V1ErrorWrapper:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
     InstantApiKeyResponse:
       type: object
       description: Instant API key response
@@ -75,35 +104,6 @@ components:
       - name
       - rate_limits
       - upgrade_url
-    V1ErrorWrapper:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-    RateLimitsResponse:
-      type: object
-      description: Rate limits for the API key
-      properties:
-        read:
-          type: string
-          description: Read rate limit
-          example: 60/m
-        write:
-          type: string
-          description: Write rate limit
-          example: 5/m
-        fulfillment:
-          type: string
-          description: Fulfillment rate limit
-          example: 5/m
-      required:
-      - fulfillment
-      - read
-      - write
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
