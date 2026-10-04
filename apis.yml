@@ -265,6 +265,9 @@ apis:
   - type: Documentation
     url: https://docs.opensea.io/reference/api-overview
 common:
+  - type: CapabilityMap
+    url: capabilities/opensea-capability-edges.yml
+    name: OpenSea Business Capability Map
   - type: Website
     url: https://www.opensea.io/
   - type: AgentCard
