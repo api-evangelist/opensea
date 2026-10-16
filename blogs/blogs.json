@@ -2,11 +2,11 @@
   "repo": "opensea",
   "feeds": [
     {
-      "source": "https://support.opensea.io",
-      "feed_url": "https://support.opensea.io/feed.xml",
+      "source": "https://opensea.io/blog",
+      "feed_url": "https://opensea.io/blog",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "none"
     },
     {
       "source": "https://support.opensea.io/feed.xml",
@@ -17,7 +17,7 @@
     }
   ],
   "post_count": 49,
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
