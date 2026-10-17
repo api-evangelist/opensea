@@ -99,56 +99,19 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    CancelResponse:
-      type: object
-      properties:
-        last_signature_issued_valid_until:
-          type: string
-      required:
-      - last_signature_issued_valid_until
-    ListingPrice:
-      type: object
-      properties:
-        current:
-          $ref: '#/components/schemas/Price'
-      required:
-      - current
-    TraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
-    NumericTraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        min:
-          type: number
-          format: float
-        max:
-          type: number
-          format: float
-      required:
-      - type
     CancelRequest:
       type: object
       properties:
         offererSignature:
           type: string
     ListingOrOffer: {}
-    CollectionInner:
+    ContractInner:
       type: object
       properties:
-        slug:
+        address:
           type: string
       required:
-      - slug
+      - address
     Parameters:
       type: object
       properties:
@@ -195,63 +158,28 @@ components:
       - totalOriginalConsiderationItems
       - zone
       - zoneHash
-    GetOrderResponse:
+    NumericTraitData:
       type: object
       properties:
-        order:
-          oneOf:
-          - $ref: '#/components/schemas/Listing'
-          - $ref: '#/components/schemas/Offer'
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
       required:
-      - order
-    OrderAsset:
+      - type
+    ProtocolData:
       type: object
       properties:
-        identifier:
-          type: string
-        contract:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
           type: string
       required:
-      - contract
-    Offer:
-      allOf:
-      - $ref: '#/components/schemas/ListingOrOffer'
-      - type: object
-        properties:
-          order_hash:
-            type: string
-          chain:
-            type: string
-          protocol_data:
-            $ref: '#/components/schemas/ProtocolData'
-          protocol_address:
-            type: string
-          asset:
-            $ref: '#/components/schemas/OrderAsset'
-          remaining_quantity:
-            type: integer
-            format: int64
-          order_created_at:
-            type: integer
-            format: int64
-          criteria:
-            $ref: '#/components/schemas/Criteria'
-          price:
-            $ref: '#/components/schemas/Price'
-          status:
-            type: string
-            enum:
-            - ACTIVE
-            - INACTIVE
-            - FULFILLED
-            - EXPIRED
-            - CANCELLED
-      required:
-      - chain
-      - order_hash
-      - price
-      - remaining_quantity
-      - status
+      - parameters
     ConsiderationItem:
       type: object
       properties:
@@ -275,59 +203,6 @@ components:
       - recipient
       - startAmount
       - token
-    Item:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - startAmount
-      - token
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    Criteria:
-      type: object
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionInner'
-        contract:
-          $ref: '#/components/schemas/ContractInner'
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/TraitData'
-        numeric_traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/NumericTraitData'
-        encoded_token_ids:
-          type: string
-    ProtocolData:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        signature:
-          type: string
-      required:
-      - parameters
     Listing:
       allOf:
       - $ref: '#/components/schemas/ListingOrOffer'
@@ -368,6 +243,42 @@ components:
       - remaining_quantity
       - status
       - type
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    OrderAsset:
+      type: object
+      properties:
+        identifier:
+          type: string
+        contract:
+          type: string
+      required:
+      - contract
+    ListingPrice:
+      type: object
+      properties:
+        current:
+          $ref: '#/components/schemas/Price'
+      required:
+      - current
     Price:
       type: object
       properties:
@@ -381,6 +292,95 @@ components:
       required:
       - currency
       - decimals
+      - value
+    CancelResponse:
+      type: object
+      properties:
+        last_signature_issued_valid_until:
+          type: string
+      required:
+      - last_signature_issued_valid_until
+    Offer:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          price:
+            $ref: '#/components/schemas/Price'
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+    Criteria:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionInner'
+        contract:
+          $ref: '#/components/schemas/ContractInner'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitData'
+        numeric_traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitData'
+        encoded_token_ids:
+          type: string
+    GetOrderResponse:
+      type: object
+      properties:
+        order:
+          oneOf:
+          - $ref: '#/components/schemas/Listing'
+          - $ref: '#/components/schemas/Offer'
+      required:
+      - order
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
       - value
   responses:
     BadRequest:

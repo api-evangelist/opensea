@@ -211,29 +211,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    NotFound:
-      description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
   schemas:
-    ToolAccessResponse:
-      type: object
-      properties:
-        open_access:
-          type: boolean
-        logic:
-          type: string
-        requirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolRequirementResponse'
-      required:
-      - logic
-      - open_access
-      - requirements
     RegisteredToolResponse:
       type: object
       properties:
@@ -303,6 +281,132 @@ components:
       required:
       - address
       - chain
+    ToolUsageRequest:
+      type: object
+      properties:
+        verification_type:
+          type: string
+        tool_chain_id:
+          type: integer
+          format: int64
+        tool_registry_address:
+          type: string
+        tool_onchain_id:
+          type: integer
+          format: int64
+        latency_ms:
+          type: integer
+          format: int64
+        eip3009:
+          $ref: '#/components/schemas/Eip3009Fields'
+        x402:
+          $ref: '#/components/schemas/X402SettlementFields'
+    ToolListItemResponse:
+      type: object
+      properties:
+        tool_id:
+          type: string
+        registry_chain:
+          type: string
+        registry_addr:
+          type: string
+        creator:
+          type: string
+        metadata_uri:
+          type: string
+        manifest_hash:
+          type: string
+        endpoint_url:
+          type: string
+        endpoint_domain:
+          type: string
+        manifest_hash_verified:
+          type: boolean
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+      - created_at
+      - creator
+      - is_active
+      - manifest_hash
+      - manifest_hash_verified
+      - metadata_uri
+      - registry_addr
+      - registry_chain
+      - tool_id
+      - updated_at
+    ToolUsageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        verified:
+          type: boolean
+        verification_type:
+          type: string
+      required:
+      - id
+      - verification_type
+      - verified
+    ToolCollectionResponse:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        image_url:
+          type: string
+        opensea_url:
+          type: string
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contract'
+      required:
+      - contracts
+      - name
+      - opensea_url
+      - slug
+    ToolPaymentStatsResponse:
+      type: object
+      properties:
+        total_payments:
+          type: integer
+          format: int64
+        total_volume_usd:
+          type: number
+          format: double
+        unique_buyers:
+          type: integer
+          format: int64
+        payments_last_24h:
+          type: integer
+          format: int64
+        payments_last_7d:
+          type: integer
+          format: int64
+      required:
+      - payments_last_24h
+      - payments_last_7d
+      - total_payments
+      - total_volume_usd
+      - unique_buyers
+    ToolSearchPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolSearchResultResponse'
+        next:
+          type: string
+      required:
+      - results
     ToolSearchResultResponse:
       type: object
       properties:
@@ -360,187 +464,21 @@ components:
         chain_id:
           type: integer
           format: int64
-    ToolPricingRecipientResponse:
+    ToolAccessResponse:
       type: object
       properties:
-        recipient:
-          type: string
-        payment_chain:
-          type: string
-        asset:
-          type: string
-        protocol:
-          type: string
-        amount_per_call:
-          type: string
-        created_at:
-          type: string
-      required:
-      - amount_per_call
-      - asset
-      - created_at
-      - payment_chain
-      - protocol
-      - recipient
-    ToolUsageRequest:
-      type: object
-      properties:
-        verification_type:
-          type: string
-        tool_chain_id:
-          type: integer
-          format: int64
-        tool_registry_address:
-          type: string
-        tool_onchain_id:
-          type: integer
-          format: int64
-        latency_ms:
-          type: integer
-          format: int64
-        eip3009:
-          $ref: '#/components/schemas/Eip3009Fields'
-        x402:
-          $ref: '#/components/schemas/X402SettlementFields'
-    ToolUsageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        verified:
+        open_access:
           type: boolean
-        verification_type:
+        logic:
           type: string
-      required:
-      - id
-      - verification_type
-      - verified
-    ToolSearchPaginatedResponse:
-      type: object
-      properties:
-        results:
+        requirements:
           type: array
           items:
-            $ref: '#/components/schemas/ToolSearchResultResponse'
-        next:
-          type: string
+            $ref: '#/components/schemas/ToolRequirementResponse'
       required:
-      - results
-    ToolListItemResponse:
-      type: object
-      properties:
-        tool_id:
-          type: string
-        registry_chain:
-          type: string
-        registry_addr:
-          type: string
-        creator:
-          type: string
-        metadata_uri:
-          type: string
-        manifest_hash:
-          type: string
-        endpoint_url:
-          type: string
-        endpoint_domain:
-          type: string
-        manifest_hash_verified:
-          type: boolean
-        is_active:
-          type: boolean
-        created_at:
-          type: string
-        updated_at:
-          type: string
-      required:
-      - created_at
-      - creator
-      - is_active
-      - manifest_hash
-      - manifest_hash_verified
-      - metadata_uri
-      - registry_addr
-      - registry_chain
-      - tool_id
-      - updated_at
-    ToolListPaginatedResponse:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolListItemResponse'
-        next:
-          type: string
-      required:
-      - tools
-    ToolCollectionResponse:
-      type: object
-      properties:
-        slug:
-          type: string
-        name:
-          type: string
-        image_url:
-          type: string
-        opensea_url:
-          type: string
-        contracts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contract'
-      required:
-      - contracts
-      - name
-      - opensea_url
-      - slug
-    ToolPaymentStatsResponse:
-      type: object
-      properties:
-        total_payments:
-          type: integer
-          format: int64
-        total_volume_usd:
-          type: number
-          format: double
-        unique_buyers:
-          type: integer
-          format: int64
-        payments_last_24h:
-          type: integer
-          format: int64
-        payments_last_7d:
-          type: integer
-          format: int64
-      required:
-      - payments_last_24h
-      - payments_last_7d
-      - total_payments
-      - total_volume_usd
-      - unique_buyers
-    Eip3009Fields:
-      type: object
-      properties:
-        caller_address:
-          type: string
-        signature:
-          type: string
-        chain_id:
-          type: integer
-          format: int64
-        from:
-          type: string
-        to:
-          type: string
-        value:
-          type: integer
-        valid_after:
-          type: integer
-        valid_before:
-          type: integer
-        nonce:
-          type: string
+      - logic
+      - open_access
+      - requirements
     ToolRequirementResponse:
       type: object
       properties:
@@ -572,6 +510,68 @@ components:
       required:
       - kind
       - type
+    Eip3009Fields:
+      type: object
+      properties:
+        caller_address:
+          type: string
+        signature:
+          type: string
+        chain_id:
+          type: integer
+          format: int64
+        from:
+          type: string
+        to:
+          type: string
+        value:
+          type: integer
+        valid_after:
+          type: integer
+        valid_before:
+          type: integer
+        nonce:
+          type: string
+    ToolPricingRecipientResponse:
+      type: object
+      properties:
+        recipient:
+          type: string
+        payment_chain:
+          type: string
+        asset:
+          type: string
+        protocol:
+          type: string
+        amount_per_call:
+          type: string
+        created_at:
+          type: string
+      required:
+      - amount_per_call
+      - asset
+      - created_at
+      - payment_chain
+      - protocol
+      - recipient
+    ToolListPaginatedResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolListItemResponse'
+        next:
+          type: string
+      required:
+      - tools
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    NotFound:
+      description: Resource not found
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

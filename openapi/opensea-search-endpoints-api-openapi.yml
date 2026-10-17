@@ -68,65 +68,58 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    NftSearchResponse:
+    AccountSearchResponse:
       type: object
-      description: NFT search result
+      description: Account search result
       properties:
-        identifier:
+        address:
           type: string
-          description: Token ID of the NFT
-          example: 1234
-        collection:
+          description: Primary wallet address of the account
+        username:
           type: string
-          description: Collection slug the NFT belongs to
-          example: bored-ape-yacht-club
-        contract:
+          description: Username of the account
+        profile_image_url:
           type: string
-          description: Contract address of the NFT
-        name:
-          type: string
-          description: Name of the NFT
-        image_url:
-          type: string
-          description: URL of the NFT image
+          description: URL of the account's profile image
         opensea_url:
           type: string
-          description: URL to the NFT on OpenSea
+          description: URL to the account on OpenSea
       required:
-      - collection
-      - contract
-      - identifier
+      - address
       - opensea_url
-    CollectionSearchResponse:
+    SearchResponse:
       type: object
-      description: Collection search result
+      description: Search results response
       properties:
-        collection:
-          type: string
-          description: The collection slug
-          example: bored-ape-yacht-club
-        name:
-          type: string
-          description: The collection name
-          example: Bored Ape Yacht Club
-        image_url:
-          type: string
-          description: URL of the collection image
-        is_disabled:
-          type: boolean
-          description: Whether trading is disabled for this collection
-        is_nsfw:
-          type: boolean
-          description: Whether this collection is marked as NSFW
-        opensea_url:
-          type: string
-          description: URL to the collection on OpenSea
+        results:
+          type: array
+          description: List of search results ranked by relevance
+          items:
+            $ref: '#/components/schemas/SearchResultResponse'
       required:
-      - collection
-      - is_disabled
-      - is_nsfw
-      - name
-      - opensea_url
+      - results
+    SearchResultResponse:
+      type: object
+      description: A single search result with a type discriminator and the corresponding typed object
+      properties:
+        type:
+          type: string
+          description: The type of search result
+          example: collection
+        collection:
+          $ref: '#/components/schemas/CollectionSearchResponse'
+          description: Collection details, present when type is 'collection'
+        token:
+          $ref: '#/components/schemas/TokenSearchResponse'
+          description: Token details, present when type is 'token'
+        nft:
+          $ref: '#/components/schemas/NftSearchResponse'
+          description: NFT details, present when type is 'nft'
+        account:
+          $ref: '#/components/schemas/AccountSearchResponse'
+          description: Account details, present when type is 'account'
+      required:
+      - type
     ChainIdentifier:
       type: string
       default: ethereum
@@ -203,63 +196,70 @@ components:
       - opensea_url
       - symbol
       - usd_price
-    AccountSearchResponse:
+    NftSearchResponse:
       type: object
-      description: Account search result
+      description: NFT search result
       properties:
-        address:
+        identifier:
           type: string
-          description: Primary wallet address of the account
-        username:
+          description: Token ID of the NFT
+          example: 1234
+        collection:
           type: string
-          description: Username of the account
-        profile_image_url:
+          description: Collection slug the NFT belongs to
+          example: bored-ape-yacht-club
+        contract:
           type: string
-          description: URL of the account's profile image
+          description: Contract address of the NFT
+        name:
+          type: string
+          description: Name of the NFT
+        image_url:
+          type: string
+          description: URL of the NFT image
         opensea_url:
           type: string
-          description: URL to the account on OpenSea
+          description: URL to the NFT on OpenSea
       required:
-      - address
+      - collection
+      - contract
+      - identifier
       - opensea_url
-    SearchResultResponse:
+    CollectionSearchResponse:
       type: object
-      description: A single search result with a type discriminator and the corresponding typed object
+      description: Collection search result
       properties:
-        type:
-          type: string
-          description: The type of search result
-          example: collection
         collection:
-          $ref: '#/components/schemas/CollectionSearchResponse'
-          description: Collection details, present when type is 'collection'
-        token:
-          $ref: '#/components/schemas/TokenSearchResponse'
-          description: Token details, present when type is 'token'
-        nft:
-          $ref: '#/components/schemas/NftSearchResponse'
-          description: NFT details, present when type is 'nft'
-        account:
-          $ref: '#/components/schemas/AccountSearchResponse'
-          description: Account details, present when type is 'account'
+          type: string
+          description: The collection slug
+          example: bored-ape-yacht-club
+        name:
+          type: string
+          description: The collection name
+          example: Bored Ape Yacht Club
+        image_url:
+          type: string
+          description: URL of the collection image
+        is_disabled:
+          type: boolean
+          description: Whether trading is disabled for this collection
+        is_nsfw:
+          type: boolean
+          description: Whether this collection is marked as NSFW
+        opensea_url:
+          type: string
+          description: URL to the collection on OpenSea
       required:
-      - type
-    SearchResponse:
-      type: object
-      description: Search results response
-      properties:
-        results:
-          type: array
-          description: List of search results ranked by relevance
-          items:
-            $ref: '#/components/schemas/SearchResultResponse'
-      required:
-      - results
+      - collection
+      - is_disabled
+      - is_nsfw
+      - name
+      - opensea_url
   responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
     BadRequest:
       description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

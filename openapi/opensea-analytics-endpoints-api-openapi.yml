@@ -377,108 +377,6 @@ components:
       required:
       - trait_type
       - value
-    TransferEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          transfer_type:
-            type: string
-          from_address:
-            type: string
-          to_address:
-            type: string
-          nft:
-            $ref: '#/components/schemas/Nft'
-          quantity:
-            type: integer
-            format: int64
-      required:
-      - chain
-      - event_timestamp
-      - event_type
-      - from_address
-      - quantity
-      - to_address
-      - transfer_type
-    OrderEvent:
-      allOf:
-      - $ref: '#/components/schemas/Event'
-      - type: object
-        properties:
-          event_type:
-            type: string
-          event_timestamp:
-            type: integer
-            format: int64
-          transaction:
-            type: string
-          order_hash:
-            type: string
-          protocol_address:
-            type: string
-          chain:
-            type: string
-          payment:
-            $ref: '#/components/schemas/Payment'
-          order_type:
-            type: string
-          start_date:
-            type: integer
-            format: int64
-          expiration_date:
-            type: integer
-            format: int64
-          asset:
-            $ref: '#/components/schemas/Nft'
-          quantity:
-            type: integer
-            format: int64
-          maker:
-            type: string
-          taker:
-            type: string
-          criteria:
-            $ref: '#/components/schemas/Criteria'
-          is_private_listing:
-            type: boolean
-      required:
-      - chain
-      - event_timestamp
-      - event_type
-      - is_private_listing
-      - maker
-      - order_type
-      - quantity
-    AssetEventsResponse:
-      type: object
-      properties:
-        asset_events:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/OrderEvent'
-            - $ref: '#/components/schemas/SaleEvent'
-            - $ref: '#/components/schemas/TransferEvent'
-        next:
-          type: string
-      required:
-      - asset_events
     TraitData:
       type: object
       properties:
@@ -489,6 +387,13 @@ components:
       required:
       - type
       - value
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
     NumericTraitData:
       type: object
       properties:
@@ -502,13 +407,47 @@ components:
           format: float
       required:
       - type
-    CollectionInner:
-      type: object
-      properties:
-        slug:
-          type: string
+    SaleEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          closing_date:
+            type: integer
+            format: int64
+          seller:
+            type: string
+          buyer:
+            type: string
+          quantity:
+            type: integer
+            format: int64
+          nft:
+            $ref: '#/components/schemas/Nft'
       required:
-      - slug
+      - buyer
+      - chain
+      - closing_date
+      - event_timestamp
+      - event_type
+      - quantity
+      - seller
+    Event: {}
     IntervalStat:
       type: object
       properties:
@@ -524,6 +463,37 @@ components:
       - interval
       - sales
       - volume
+    AssetEventsResponse:
+      type: object
+      properties:
+        asset_events:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrderEvent'
+            - $ref: '#/components/schemas/SaleEvent'
+            - $ref: '#/components/schemas/TransferEvent'
+        next:
+          type: string
+      required:
+      - asset_events
+    Payment:
+      type: object
+      properties:
+        quantity:
+          type: string
+        token_address:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+        symbol:
+          type: string
+      required:
+      - decimals
+      - quantity
+      - symbol
+      - token_address
     Total:
       type: object
       properties:
@@ -608,25 +578,7 @@ components:
       - token_standard
       - traits
       - updated_at
-    Event: {}
-    Payment:
-      type: object
-      properties:
-        quantity:
-          type: string
-        token_address:
-          type: string
-        decimals:
-          type: integer
-          format: int32
-        symbol:
-          type: string
-      required:
-      - decimals
-      - quantity
-      - symbol
-      - token_address
-    SaleEvent:
+    OrderEvent:
       allOf:
       - $ref: '#/components/schemas/Event'
       - type: object
@@ -646,33 +598,35 @@ components:
             type: string
           payment:
             $ref: '#/components/schemas/Payment'
-          closing_date:
+          order_type:
+            type: string
+          start_date:
             type: integer
             format: int64
-          seller:
-            type: string
-          buyer:
-            type: string
+          expiration_date:
+            type: integer
+            format: int64
+          asset:
+            $ref: '#/components/schemas/Nft'
           quantity:
             type: integer
             format: int64
-          nft:
-            $ref: '#/components/schemas/Nft'
+          maker:
+            type: string
+          taker:
+            type: string
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          is_private_listing:
+            type: boolean
       required:
-      - buyer
       - chain
-      - closing_date
       - event_timestamp
       - event_type
+      - is_private_listing
+      - maker
+      - order_type
       - quantity
-      - seller
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
     Criteria:
       type: object
       properties:
@@ -690,11 +644,57 @@ components:
             $ref: '#/components/schemas/NumericTraitData'
         encoded_token_ids:
           type: string
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    TransferEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          event_type:
+            type: string
+          event_timestamp:
+            type: integer
+            format: int64
+          transaction:
+            type: string
+          order_hash:
+            type: string
+          protocol_address:
+            type: string
+          chain:
+            type: string
+          payment:
+            $ref: '#/components/schemas/Payment'
+          transfer_type:
+            type: string
+          from_address:
+            type: string
+          to_address:
+            type: string
+          nft:
+            $ref: '#/components/schemas/Nft'
+          quantity:
+            type: integer
+            format: int64
+      required:
+      - chain
+      - event_timestamp
+      - event_type
+      - from_address
+      - quantity
+      - to_address
+      - transfer_type
   responses:
-    BadRequest:
-      description: For error reasons, review the response data.
     NotFound:
       description: Resource not found
+    BadRequest:
+      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:

@@ -430,6 +430,323 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    SeaportProtocolDataModel:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SeaportParameters'
+        signature:
+          type: string
+      required:
+      - parameters
+      - signature
+    CriteriaObject:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionObject'
+        trait:
+          $ref: '#/components/schemas/TraitObject'
+          deprecated: true
+          description: 'Deprecated: Use ''traits'' array instead which supports both single and multiple traits.'
+        traits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitObject'
+        numericTraits:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumericTraitCriteria'
+      required:
+      - collection
+    SeaportRequest:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SeaportParameters'
+        protocol_address:
+          type: string
+        signature:
+          type: string
+      required:
+      - parameters
+      - protocol_address
+      - signature
+    ListingOrOffer: {}
+    ContractInner:
+      type: object
+      properties:
+        address:
+          type: string
+      required:
+      - address
+    PartialParameters:
+      type: object
+      properties:
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consideration'
+        zone:
+          type: string
+        zoneHash:
+          type: string
+      required:
+      - consideration
+      - zone
+      - zoneHash
+    TransactionData:
+      type: object
+      properties:
+        function:
+          type: string
+        chain:
+          type: integer
+          format: int32
+        to:
+          type: string
+        value:
+          type: string
+        input_data:
+          oneOf:
+          - $ref: '#/components/schemas/FulfillAdvancedOrder'
+          - $ref: '#/components/schemas/FulfillAvailableAdvancedOrders'
+          - $ref: '#/components/schemas/FulfillAvailableOrders'
+          - $ref: '#/components/schemas/FulfillBasicOrder'
+          - $ref: '#/components/schemas/FulfillOrder'
+          - $ref: '#/components/schemas/MatchAdvancedOrders'
+          - $ref: '#/components/schemas/MatchOrders'
+      required:
+      - chain
+      - function
+      - input_data
+      - to
+      - value
+    FulfillOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          order:
+            $ref: '#/components/schemas/Order'
+          fulfillerConduitKey:
+            type: string
+      required:
+      - fulfillerConduitKey
+      - order
+    Parameters:
+      type: object
+      properties:
+        offerer:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        startTime:
+          type: string
+        endTime:
+          type: string
+        orderType:
+          type: integer
+          format: int32
+        zone:
+          type: string
+        zoneHash:
+          type: string
+        salt:
+          type: string
+        conduitKey:
+          type: string
+        totalOriginalConsiderationItems:
+          type: integer
+          format: int32
+        counter:
+          type: integer
+      required:
+      - conduitKey
+      - consideration
+      - counter
+      - endTime
+      - offer
+      - offerer
+      - orderType
+      - salt
+      - startTime
+      - totalOriginalConsiderationItems
+      - zone
+      - zoneHash
+    OfferObject:
+      type: object
+      properties:
+        hash:
+          type: string
+        chain:
+          type: string
+        protocol_address:
+          type: string
+      required:
+      - chain
+      - hash
+      - protocol_address
+    CollectionCriteria:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    Uint256:
+      type: object
+      properties:
+        value:
+          type: integer
+        bitSize:
+          type: integer
+          format: int32
+        typeAsString:
+          type: string
+    NumericTraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        min:
+          type: number
+          format: float
+        max:
+          type: number
+          format: float
+      required:
+      - type
+    MatchOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+      required:
+      - fulfillments
+      - orders
+    BuildOfferRequest:
+      type: object
+      properties:
+        offerer:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        criteria:
+          $ref: '#/components/schemas/CriteriaObject'
+        protocol_address:
+          type: string
+        offer_protection_enabled:
+          type: boolean
+      required:
+      - criteria
+      - offer_protection_enabled
+      - offerer
+      - protocol_address
+      - quantity
+    ConsiderationItem:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+        recipient:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - recipient
+      - startAmount
+      - token
+    ProtocolData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+    CriteriaRequest:
+      type: object
+      description: Criteria for collection or trait offers. When traits are specified, the offer targets NFTs matching those traits. For supported collections, the identifierOrCriteria (merkle root) will be '0' and trait matching is validated server-side at fulfillment time.
+      properties:
+        collection:
+          $ref: '#/components/schemas/CollectionCriteria'
+        contract:
+          $ref: '#/components/schemas/ContractCriteria'
+        trait:
+          $ref: '#/components/schemas/TraitCriteria'
+          deprecated: true
+          description: 'Deprecated: Use ''traits'' array instead which supports both single and multiple traits.'
+        traits:
+          type: array
+          description: Trait criteria for the offer. Each trait specifies a type and value that target NFTs must match. These traits are validated server-side at fulfillment time.
+          items:
+            $ref: '#/components/schemas/TraitCriteria'
+        numericTraits:
+          type: array
+          description: Numeric trait criteria for the offer. Each entry specifies a trait type with optional min/max range bounds. Can be combined with categorical traits.
+          items:
+            $ref: '#/components/schemas/NumericTraitCriteria'
+      required:
+      - collection
+    CollectionObject:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    Consideration:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+          description: For criteria-based offers, this is the merkle root of eligible token IDs. For trait offers on supported collections, this will be '0' — trait matching is validated server-side at fulfillment time instead of via onchain merkle proof.
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+        recipient:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - recipient
+      - startAmount
+      - token
+    SeaportCall: {}
     BasicOrderParameters:
       type: object
       properties:
@@ -484,18 +801,93 @@ components:
         nativeValueCopy:
           type: array
           items: {}
-    FulfillmentData:
+    ConsiderationObject:
       type: object
       properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionData'
-        orders:
+        asset_contract_address:
+          type: string
+        token_id:
+          type: string
+      required:
+      - asset_contract_address
+      - token_id
+    Item:
+      type: object
+      properties:
+        itemType:
+          type: integer
+          format: int32
+        token:
+          type: string
+        identifierOrCriteria:
+          type: string
+        startAmount:
+          type: string
+        endAmount:
+          type: string
+      required:
+      - endAmount
+      - identifierOrCriteria
+      - itemType
+      - startAmount
+      - token
+    AdvancedOrder:
+      type: object
+      properties:
+        value:
           type: array
           items:
-            $ref: '#/components/schemas/OrderData'
+            $ref: '#/components/schemas/Type'
+        parameters:
+          $ref: '#/components/schemas/OrderParameters'
+        numerator:
+          type: integer
+        denominator:
+          type: integer
+        signature:
+          type: string
+          format: byte
+        extraData:
+          type: string
+          format: byte
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    OrderAsset:
+      type: object
+      properties:
+        identifier:
+          type: string
+        contract:
+          type: string
       required:
+      - contract
+    MatchAdvancedOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Fulfillment'
+          recipient:
+            $ref: '#/components/schemas/Address'
+      required:
+      - criteriaResolvers
+      - fulfillments
       - orders
-      - transaction
+      - recipient
     OfferItem:
       type: object
       properties:
@@ -516,26 +908,6 @@ components:
       - itemType
       - startAmount
       - token
-    FulfillAdvancedOrder:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          advancedOrder:
-            $ref: '#/components/schemas/AdvancedOrder'
-          criteriaResolvers:
-            type: array
-            items:
-              $ref: '#/components/schemas/CriteriaResolver'
-          fulfillerConduitKey:
-            type: string
-          recipient:
-            $ref: '#/components/schemas/Address'
-      required:
-      - advancedOrder
-      - criteriaResolvers
-      - fulfillerConduitKey
-      - recipient
     NumericTraitCriteria:
       type: object
       properties:
@@ -549,7 +921,7 @@ components:
           format: double
       required:
       - type
-    TraitObject:
+    TraitCriteria:
       type: object
       properties:
         type:
@@ -559,42 +931,104 @@ components:
       required:
       - type
       - value
-    SeaportProtocolDataModel:
+    FulfillerObject:
       type: object
       properties:
-        parameters:
-          $ref: '#/components/schemas/SeaportParameters'
-        signature:
+        address:
           type: string
       required:
-      - parameters
-      - signature
-    AdditionalRecipient:
+      - address
+    FulfillAvailableOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/Order'
+          offerFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          considerationFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          fulfillerConduitKey:
+            type: string
+          maximumFulfilled:
+            $ref: '#/components/schemas/Uint256'
+      required:
+      - considerationFulfillments
+      - fulfillerConduitKey
+      - maximumFulfilled
+      - offerFulfillments
+      - orders
+    Address:
       type: object
       properties:
         value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        amount:
-          type: integer
-        recipient:
           type: string
         typeAsString:
           type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    ConsiderationObject:
+    Price:
       type: object
       properties:
-        asset_contract_address:
+        currency:
           type: string
-        token_id:
+        decimals:
+          type: integer
+          format: int32
+        value:
           type: string
       required:
-      - asset_contract_address
-      - token_id
+      - currency
+      - decimals
+      - value
+    FulfillAvailableAdvancedOrders:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          orders:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          offerFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          considerationFulfillments:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/FulfillmentComponent'
+          fulfillerConduitKey:
+            type: string
+          recipient:
+            $ref: '#/components/schemas/Address'
+          maximumFulfilled:
+            $ref: '#/components/schemas/Uint256'
+      required:
+      - considerationFulfillments
+      - criteriaResolvers
+      - fulfillerConduitKey
+      - maximumFulfilled
+      - offerFulfillments
+      - orders
+      - recipient
     FullfillmentDataRequest:
       type: object
       properties:
@@ -615,53 +1049,34 @@ components:
       required:
       - fulfiller
       - offer
-    Type:
+    OffersResponse:
       type: object
       properties:
-        value: {}
-        typeAsString:
-          type: string
-    Consideration:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-          description: For criteria-based offers, this is the merkle root of eligible token IDs. For trait offers on supported collections, this will be '0' — trait matching is validated server-side at fulfillment time instead of via onchain merkle proof.
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-        recipient:
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Offer'
+        next:
           type: string
       required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - recipient
-      - startAmount
-      - token
-    Address:
+      - offers
+    TraitObject:
       type: object
       properties:
+        type:
+          type: string
         value:
           type: string
-        typeAsString:
-          type: string
-    FulfillListingResponse:
+      required:
+      - type
+      - value
+    ContractCriteria:
       type: object
       properties:
-        protocol:
+        address:
           type: string
-        fulfillment_data:
-          $ref: '#/components/schemas/FulfillmentData'
       required:
-      - fulfillment_data
-      - protocol
+      - address
     CriteriaResolver:
       type: object
       properties:
@@ -687,6 +1102,210 @@ components:
         nativeValueCopy:
           type: array
           items: {}
+    AdditionalRecipient:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        amount:
+          type: integer
+        recipient:
+          type: string
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    Fulfillment:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        offerComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        considerationComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentComponent'
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    Order:
+      type: object
+      properties:
+        order_hash:
+          type: string
+        chain:
+          type: string
+        protocol_data:
+          $ref: '#/components/schemas/ProtocolData'
+        protocol_address:
+          type: string
+        asset:
+          $ref: '#/components/schemas/OrderAsset'
+        remaining_quantity:
+          type: integer
+          format: int64
+        order_created_at:
+          type: integer
+          format: int64
+      required:
+      - chain
+      - order_hash
+      - remaining_quantity
+    FulfillAdvancedOrder:
+      allOf:
+      - $ref: '#/components/schemas/SeaportCall'
+      - type: object
+        properties:
+          advancedOrder:
+            $ref: '#/components/schemas/AdvancedOrder'
+          criteriaResolvers:
+            type: array
+            items:
+              $ref: '#/components/schemas/CriteriaResolver'
+          fulfillerConduitKey:
+            type: string
+          recipient:
+            $ref: '#/components/schemas/Address'
+      required:
+      - advancedOrder
+      - criteriaResolvers
+      - fulfillerConduitKey
+      - recipient
+    Type:
+      type: object
+      properties:
+        value: {}
+        typeAsString:
+          type: string
+    FulfillmentComponent:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        orderIndex:
+          type: integer
+        itemIndex:
+          type: integer
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    FulfillListingResponse:
+      type: object
+      properties:
+        protocol:
+          type: string
+        fulfillment_data:
+          $ref: '#/components/schemas/FulfillmentData'
+      required:
+      - fulfillment_data
+      - protocol
+    Offer:
+      allOf:
+      - $ref: '#/components/schemas/ListingOrOffer'
+      - type: object
+        properties:
+          order_hash:
+            type: string
+          chain:
+            type: string
+          protocol_data:
+            $ref: '#/components/schemas/ProtocolData'
+          protocol_address:
+            type: string
+          asset:
+            $ref: '#/components/schemas/OrderAsset'
+          remaining_quantity:
+            type: integer
+            format: int64
+          order_created_at:
+            type: integer
+            format: int64
+          criteria:
+            $ref: '#/components/schemas/Criteria'
+          price:
+            $ref: '#/components/schemas/Price'
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - INACTIVE
+            - FULFILLED
+            - EXPIRED
+            - CANCELLED
+      required:
+      - chain
+      - order_hash
+      - price
+      - remaining_quantity
+      - status
+    OrderParameters:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        offerer:
+          type: string
+        zone:
+          type: string
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItem'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsiderationItem'
+        orderType:
+          type: integer
+        startTime:
+          type: integer
+        endTime:
+          type: integer
+        zoneHash:
+          type: string
+          format: byte
+        salt:
+          type: integer
+        conduitKey:
+          type: string
+          format: byte
+        totalOriginalConsiderationItems:
+          type: integer
+        typeAsString:
+          type: string
+        nativeValueCopy:
+          type: array
+          items: {}
+    BuildOfferResponse:
+      type: object
+      properties:
+        partialParameters:
+          $ref: '#/components/schemas/PartialParameters'
+        criteria:
+          $ref: '#/components/schemas/CriteriaRequest'
+          description: The criteria to pass through to the POST /api/v2/offers submit step. Includes collection and trait information so trait offers are not accidentally submitted as collection offers.
+        encodedTokenIds:
+          type: string
+          description: Encoded token IDs that can be used to fulfill the criteria offer. When identifierOrCriteria is '0', this field is informational only and not required for order construction.
+      required:
+      - criteria
+      - partialParameters
     SeaportParameters:
       type: object
       properties:
@@ -732,492 +1351,6 @@ components:
       - startTime
       - totalOriginalConsiderationItems
       - zoneHash
-    Order:
-      type: object
-      properties:
-        order_hash:
-          type: string
-        chain:
-          type: string
-        protocol_data:
-          $ref: '#/components/schemas/ProtocolData'
-        protocol_address:
-          type: string
-        asset:
-          $ref: '#/components/schemas/OrderAsset'
-        remaining_quantity:
-          type: integer
-          format: int64
-        order_created_at:
-          type: integer
-          format: int64
-      required:
-      - chain
-      - order_hash
-      - remaining_quantity
-    TraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
-    Fulfillment:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        offerComponents:
-          type: array
-          items:
-            $ref: '#/components/schemas/FulfillmentComponent'
-        considerationComponents:
-          type: array
-          items:
-            $ref: '#/components/schemas/FulfillmentComponent'
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    ListingOrOffer: {}
-    NumericTraitData:
-      type: object
-      properties:
-        type:
-          type: string
-        min:
-          type: number
-          format: float
-        max:
-          type: number
-          format: float
-      required:
-      - type
-    BuildOfferRequest:
-      type: object
-      properties:
-        offerer:
-          type: string
-        quantity:
-          type: integer
-          format: int32
-        criteria:
-          $ref: '#/components/schemas/CriteriaObject'
-        protocol_address:
-          type: string
-        offer_protection_enabled:
-          type: boolean
-      required:
-      - criteria
-      - offer_protection_enabled
-      - offerer
-      - protocol_address
-      - quantity
-    SeaportCall: {}
-    OrderData:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        signature:
-          type: string
-      required:
-      - parameters
-      - signature
-    CollectionInner:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    Parameters:
-      type: object
-      properties:
-        offerer:
-          type: string
-        offer:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        consideration:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConsiderationItem'
-        startTime:
-          type: string
-        endTime:
-          type: string
-        orderType:
-          type: integer
-          format: int32
-        zone:
-          type: string
-        zoneHash:
-          type: string
-        salt:
-          type: string
-        conduitKey:
-          type: string
-        totalOriginalConsiderationItems:
-          type: integer
-          format: int32
-        counter:
-          type: integer
-      required:
-      - conduitKey
-      - consideration
-      - counter
-      - endTime
-      - offer
-      - offerer
-      - orderType
-      - salt
-      - startTime
-      - totalOriginalConsiderationItems
-      - zone
-      - zoneHash
-    FulfillOrder:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          order:
-            $ref: '#/components/schemas/Order'
-          fulfillerConduitKey:
-            type: string
-      required:
-      - fulfillerConduitKey
-      - order
-    OrderAsset:
-      type: object
-      properties:
-        identifier:
-          type: string
-        contract:
-          type: string
-      required:
-      - contract
-    TraitCriteria:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
-    CriteriaObject:
-      type: object
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionObject'
-        trait:
-          $ref: '#/components/schemas/TraitObject'
-          deprecated: true
-          description: 'Deprecated: Use ''traits'' array instead which supports both single and multiple traits.'
-        traits:
-          type: array
-          items:
-            $ref: '#/components/schemas/TraitObject'
-        numericTraits:
-          type: array
-          items:
-            $ref: '#/components/schemas/NumericTraitCriteria'
-      required:
-      - collection
-    PartialParameters:
-      type: object
-      properties:
-        consideration:
-          type: array
-          items:
-            $ref: '#/components/schemas/Consideration'
-        zone:
-          type: string
-        zoneHash:
-          type: string
-      required:
-      - consideration
-      - zone
-      - zoneHash
-    Price:
-      type: object
-      properties:
-        currency:
-          type: string
-        decimals:
-          type: integer
-          format: int32
-        value:
-          type: string
-      required:
-      - currency
-      - decimals
-      - value
-    Offer:
-      allOf:
-      - $ref: '#/components/schemas/ListingOrOffer'
-      - type: object
-        properties:
-          order_hash:
-            type: string
-          chain:
-            type: string
-          protocol_data:
-            $ref: '#/components/schemas/ProtocolData'
-          protocol_address:
-            type: string
-          asset:
-            $ref: '#/components/schemas/OrderAsset'
-          remaining_quantity:
-            type: integer
-            format: int64
-          order_created_at:
-            type: integer
-            format: int64
-          criteria:
-            $ref: '#/components/schemas/Criteria'
-          price:
-            $ref: '#/components/schemas/Price'
-          status:
-            type: string
-            enum:
-            - ACTIVE
-            - INACTIVE
-            - FULFILLED
-            - EXPIRED
-            - CANCELLED
-      required:
-      - chain
-      - order_hash
-      - price
-      - remaining_quantity
-      - status
-    Uint256:
-      type: object
-      properties:
-        value:
-          type: integer
-        bitSize:
-          type: integer
-          format: int32
-        typeAsString:
-          type: string
-    ConsiderationItem:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-        recipient:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - recipient
-      - startAmount
-      - token
-    MatchOrders:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/Order'
-          fulfillments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Fulfillment'
-      required:
-      - fulfillments
-      - orders
-    BuildOfferResponse:
-      type: object
-      properties:
-        partialParameters:
-          $ref: '#/components/schemas/PartialParameters'
-        criteria:
-          $ref: '#/components/schemas/CriteriaRequest'
-          description: The criteria to pass through to the POST /api/v2/offers submit step. Includes collection and trait information so trait offers are not accidentally submitted as collection offers.
-        encodedTokenIds:
-          type: string
-          description: Encoded token IDs that can be used to fulfill the criteria offer. When identifierOrCriteria is '0', this field is informational only and not required for order construction.
-      required:
-      - criteria
-      - partialParameters
-    CollectionCriteria:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    FulfillAvailableOrders:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/Order'
-          offerFulfillments:
-            type: array
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/FulfillmentComponent'
-          considerationFulfillments:
-            type: array
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/FulfillmentComponent'
-          fulfillerConduitKey:
-            type: string
-          maximumFulfilled:
-            $ref: '#/components/schemas/Uint256'
-      required:
-      - considerationFulfillments
-      - fulfillerConduitKey
-      - maximumFulfilled
-      - offerFulfillments
-      - orders
-    Item:
-      type: object
-      properties:
-        itemType:
-          type: integer
-          format: int32
-        token:
-          type: string
-        identifierOrCriteria:
-          type: string
-        startAmount:
-          type: string
-        endAmount:
-          type: string
-      required:
-      - endAmount
-      - identifierOrCriteria
-      - itemType
-      - startAmount
-      - token
-    ContractCriteria:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    OffersResponse:
-      type: object
-      properties:
-        offers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Offer'
-        next:
-          type: string
-      required:
-      - offers
-    ContractInner:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    CriteriaRequest:
-      type: object
-      description: Criteria for collection or trait offers. When traits are specified, the offer targets NFTs matching those traits. For supported collections, the identifierOrCriteria (merkle root) will be '0' and trait matching is validated server-side at fulfillment time.
-      properties:
-        collection:
-          $ref: '#/components/schemas/CollectionCriteria'
-        contract:
-          $ref: '#/components/schemas/ContractCriteria'
-        trait:
-          $ref: '#/components/schemas/TraitCriteria'
-          deprecated: true
-          description: 'Deprecated: Use ''traits'' array instead which supports both single and multiple traits.'
-        traits:
-          type: array
-          description: Trait criteria for the offer. Each trait specifies a type and value that target NFTs must match. These traits are validated server-side at fulfillment time.
-          items:
-            $ref: '#/components/schemas/TraitCriteria'
-        numericTraits:
-          type: array
-          description: Numeric trait criteria for the offer. Each entry specifies a trait type with optional min/max range bounds. Can be combined with categorical traits.
-          items:
-            $ref: '#/components/schemas/NumericTraitCriteria'
-      required:
-      - collection
-    CollectionObject:
-      type: object
-      properties:
-        slug:
-          type: string
-      required:
-      - slug
-    FulfillerObject:
-      type: object
-      properties:
-        address:
-          type: string
-      required:
-      - address
-    MatchAdvancedOrders:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/AdvancedOrder'
-          criteriaResolvers:
-            type: array
-            items:
-              $ref: '#/components/schemas/CriteriaResolver'
-          fulfillments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Fulfillment'
-          recipient:
-            $ref: '#/components/schemas/Address'
-      required:
-      - criteriaResolvers
-      - fulfillments
-      - orders
-      - recipient
-    FulfillBasicOrder:
-      allOf:
-      - $ref: '#/components/schemas/SeaportCall'
-      - type: object
-        properties:
-          parameters:
-            $ref: '#/components/schemas/BasicOrderParameters'
-      required:
-      - parameters
     OfferWithCriteriaRequest:
       type: object
       properties:
@@ -1231,132 +1364,6 @@ components:
       - criteria
       - protocol_address
       - protocol_data
-    AdvancedOrder:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        parameters:
-          $ref: '#/components/schemas/OrderParameters'
-        numerator:
-          type: integer
-        denominator:
-          type: integer
-        signature:
-          type: string
-          format: byte
-        extraData:
-          type: string
-          format: byte
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    OrderParameters:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        offerer:
-          type: string
-        zone:
-          type: string
-        offer:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfferItem'
-        consideration:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConsiderationItem'
-        orderType:
-          type: integer
-        startTime:
-          type: integer
-        endTime:
-          type: integer
-        zoneHash:
-          type: string
-          format: byte
-        salt:
-          type: integer
-        conduitKey:
-          type: string
-          format: byte
-        totalOriginalConsiderationItems:
-          type: integer
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    OfferObject:
-      type: object
-      properties:
-        hash:
-          type: string
-        chain:
-          type: string
-        protocol_address:
-          type: string
-      required:
-      - chain
-      - hash
-      - protocol_address
-    ProtocolData:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        signature:
-          type: string
-      required:
-      - parameters
-    TransactionData:
-      type: object
-      properties:
-        function:
-          type: string
-        chain:
-          type: integer
-          format: int32
-        to:
-          type: string
-        value:
-          type: string
-        input_data:
-          oneOf:
-          - $ref: '#/components/schemas/FulfillAdvancedOrder'
-          - $ref: '#/components/schemas/FulfillAvailableAdvancedOrders'
-          - $ref: '#/components/schemas/FulfillAvailableOrders'
-          - $ref: '#/components/schemas/FulfillBasicOrder'
-          - $ref: '#/components/schemas/FulfillOrder'
-          - $ref: '#/components/schemas/MatchAdvancedOrders'
-          - $ref: '#/components/schemas/MatchOrders'
-      required:
-      - chain
-      - function
-      - input_data
-      - to
-      - value
-    SeaportRequest:
-      type: object
-      properties:
-        parameters:
-          $ref: '#/components/schemas/SeaportParameters'
-        protocol_address:
-          type: string
-        signature:
-          type: string
-      required:
-      - parameters
-      - protocol_address
-      - signature
     Criteria:
       type: object
       properties:
@@ -1374,66 +1381,59 @@ components:
             $ref: '#/components/schemas/NumericTraitData'
         encoded_token_ids:
           type: string
-    FulfillmentComponent:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Type'
-        orderIndex:
-          type: integer
-        itemIndex:
-          type: integer
-        typeAsString:
-          type: string
-        nativeValueCopy:
-          type: array
-          items: {}
-    FulfillAvailableAdvancedOrders:
+    FulfillBasicOrder:
       allOf:
       - $ref: '#/components/schemas/SeaportCall'
       - type: object
         properties:
-          orders:
-            type: array
-            items:
-              $ref: '#/components/schemas/AdvancedOrder'
-          criteriaResolvers:
-            type: array
-            items:
-              $ref: '#/components/schemas/CriteriaResolver'
-          offerFulfillments:
-            type: array
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/FulfillmentComponent'
-          considerationFulfillments:
-            type: array
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/FulfillmentComponent'
-          fulfillerConduitKey:
-            type: string
-          recipient:
-            $ref: '#/components/schemas/Address'
-          maximumFulfilled:
-            $ref: '#/components/schemas/Uint256'
+          parameters:
+            $ref: '#/components/schemas/BasicOrderParameters'
       required:
-      - considerationFulfillments
-      - criteriaResolvers
-      - fulfillerConduitKey
-      - maximumFulfilled
-      - offerFulfillments
+      - parameters
+    FulfillmentData:
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionData'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderData'
+      required:
       - orders
-      - recipient
+      - transaction
+    OrderData:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        signature:
+          type: string
+      required:
+      - parameters
+      - signature
+    CollectionInner:
+      type: object
+      properties:
+        slug:
+          type: string
+      required:
+      - slug
+    TraitData:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
   responses:
-    BadRequest:
-      description: For error reasons, review the response data.
     NotFound:
       description: Resource not found
+    BadRequest:
+      description: For error reasons, review the response data.
     InternalError:
       description: Internal server error. Please open a support ticket so OpenSea can investigate.
   securitySchemes:

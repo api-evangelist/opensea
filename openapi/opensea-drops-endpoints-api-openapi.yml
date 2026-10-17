@@ -211,63 +211,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    NotFound:
-      description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
   schemas:
-    DropDeployResponse:
-      type: object
-      description: Ready-to-sign deploy contract transaction data
-      properties:
-        to:
-          type: string
-          description: Transaction target contract address
-        data:
-          type: string
-          description: Encoded transaction data (hex)
-        value:
-          type: string
-          description: Transaction value in wei (hex)
-        chain:
-          type: string
-          description: Chain identifier
-      required:
-      - chain
-      - data
-      - to
-      - value
-    V1ErrorWrapper:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-    DropMintRequest:
-      type: object
-      description: Mint request parameters
-      properties:
-        minter:
-          type: string
-          description: Wallet address that will receive the minted tokens
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-          minLength: 1
-        quantity:
-          type: integer
-          format: int32
-          description: Number of tokens to mint
-          example: 1
-          maximum: 100
-          minimum: 1
-      required:
-      - minter
-      - quantity
     DropStageResponse:
       type: object
       description: A mint stage within a drop
@@ -304,63 +248,101 @@ components:
       - stage_type
       - start_time
       - uuid
-    DropDetailedResponse:
+    DropMintRequest:
       type: object
-      description: Detailed drop information including stages and supply
+      description: Mint request parameters
       properties:
-        collection_slug:
+        minter:
           type: string
-          description: Collection slug
-          example: cool-cats
-        collection_name:
+          description: Wallet address that will receive the minted tokens
+          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+          minLength: 1
+        quantity:
+          type: integer
+          format: int32
+          description: Number of tokens to mint
+          example: 1
+          maximum: 100
+          minimum: 1
+      required:
+      - minter
+      - quantity
+    DropMintResponse:
+      type: object
+      description: Ready-to-sign mint transaction data
+      properties:
+        to:
           type: string
-          description: Collection name
-          example: Cool Cats
+          description: Transaction target contract address
+        data:
+          type: string
+          description: Encoded transaction data (hex)
+        value:
+          type: string
+          description: Transaction value in wei (hex)
         chain:
           type: string
-          description: Blockchain the drop is on
-          example: ethereum
-        contract_address:
-          type: string
-          description: Contract address
-        drop_type:
-          type: string
-          description: Drop type
-          example: seadrop_v1_erc721
-        is_minting:
-          type: boolean
-          description: Whether the drop is currently minting
-        image_url:
-          type: string
-          description: Collection image URL
-        opensea_url:
-          type: string
-          description: OpenSea URL for the drop
-        active_stage:
-          $ref: '#/components/schemas/DropStageResponse'
-          description: The currently-minting stage, if the drop is live. Null if not minting.
-        next_stage:
-          $ref: '#/components/schemas/DropStageResponse'
-          description: The earliest upcoming stage by start_time when the drop is not currently minting (e.g. before it starts or between stages). Null if the drop is live or has no future stages.
-        stages:
-          type: array
-          description: Drop stages (public sale, presale, etc.)
-          items:
-            $ref: '#/components/schemas/DropStageResponse'
-        total_supply:
-          type: string
-          description: Total minted supply
-        max_supply:
-          type: string
-          description: Maximum supply
+          description: Chain identifier
       required:
       - chain
-      - collection_slug
-      - contract_address
+      - data
+      - to
+      - value
+    DropDeployRequest:
+      type: object
+      description: Deploy contract request parameters
+      properties:
+        chain:
+          type: string
+          description: Chain slug (e.g. "ethereum", "base")
+          example: ethereum
+          minLength: 1
+        contract_name:
+          type: string
+          description: Name for the new contract
+          example: My NFT Collection
+          minLength: 1
+        contract_symbol:
+          type: string
+          description: Symbol for the new contract
+          example: MNFT
+          minLength: 1
+        drop_type:
+          type: string
+          description: Drop type (see validation error for supported values)
+          example: seadrop_v1_erc721
+          minLength: 1
+        token_type:
+          type: string
+          description: Token type (see validation error for supported values)
+          example: erc721_standard
+          minLength: 1
+        sender:
+          type: string
+          description: Deployer wallet address
+          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+          minLength: 1
+      required:
+      - chain
+      - contract_name
+      - contract_symbol
       - drop_type
-      - is_minting
-      - opensea_url
-      - stages
+      - sender
+      - token_type
+    DropPaginatedResponse:
+      type: object
+      description: Paginated list of drops
+      properties:
+        drops:
+          type: array
+          description: List of drops
+          items:
+            $ref: '#/components/schemas/DropResponse'
+        next:
+          type: string
+          description: Cursor for the next page. May be present even when drops is empty if all items in the page were filtered by visibility rules; continue paginating until next is null.
+      required:
+      - drops
     ChainIdentifier:
       type: string
       default: ethereum
@@ -394,20 +376,6 @@ components:
       - megaeth
       - ink
       example: ethereum
-    DropPaginatedResponse:
-      type: object
-      description: Paginated list of drops
-      properties:
-        drops:
-          type: array
-          description: List of drops
-          items:
-            $ref: '#/components/schemas/DropResponse'
-        next:
-          type: string
-          description: Cursor for the next page. May be present even when drops is empty if all items in the page were filtered by visibility rules; continue paginating until next is null.
-      required:
-      - drops
     DropDeployReceiptResponse:
       type: object
       description: Deploy contract receipt status
@@ -472,9 +440,9 @@ components:
       - drop_type
       - is_minting
       - opensea_url
-    DropMintResponse:
+    DropDeployResponse:
       type: object
-      description: Ready-to-sign mint transaction data
+      description: Ready-to-sign deploy contract transaction data
       properties:
         to:
           type: string
@@ -493,47 +461,79 @@ components:
       - data
       - to
       - value
-    DropDeployRequest:
+    DropDetailedResponse:
       type: object
-      description: Deploy contract request parameters
+      description: Detailed drop information including stages and supply
       properties:
+        collection_slug:
+          type: string
+          description: Collection slug
+          example: cool-cats
+        collection_name:
+          type: string
+          description: Collection name
+          example: Cool Cats
         chain:
           type: string
-          description: Chain slug (e.g. "ethereum", "base")
+          description: Blockchain the drop is on
           example: ethereum
-          minLength: 1
-        contract_name:
+        contract_address:
           type: string
-          description: Name for the new contract
-          example: My NFT Collection
-          minLength: 1
-        contract_symbol:
-          type: string
-          description: Symbol for the new contract
-          example: MNFT
-          minLength: 1
+          description: Contract address
         drop_type:
           type: string
-          description: Drop type (see validation error for supported values)
+          description: Drop type
           example: seadrop_v1_erc721
-          minLength: 1
-        token_type:
+        is_minting:
+          type: boolean
+          description: Whether the drop is currently minting
+        image_url:
           type: string
-          description: Token type (see validation error for supported values)
-          example: erc721_standard
-          minLength: 1
-        sender:
+          description: Collection image URL
+        opensea_url:
           type: string
-          description: Deployer wallet address
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-          minLength: 1
+          description: OpenSea URL for the drop
+        active_stage:
+          $ref: '#/components/schemas/DropStageResponse'
+          description: The currently-minting stage, if the drop is live. Null if not minting.
+        next_stage:
+          $ref: '#/components/schemas/DropStageResponse'
+          description: The earliest upcoming stage by start_time when the drop is not currently minting (e.g. before it starts or between stages). Null if the drop is live or has no future stages.
+        stages:
+          type: array
+          description: Drop stages (public sale, presale, etc.)
+          items:
+            $ref: '#/components/schemas/DropStageResponse'
+        total_supply:
+          type: string
+          description: Total minted supply
+        max_supply:
+          type: string
+          description: Maximum supply
       required:
       - chain
-      - contract_name
-      - contract_symbol
+      - collection_slug
+      - contract_address
       - drop_type
-      - sender
-      - token_type
+      - is_minting
+      - opensea_url
+      - stages
+    V1ErrorWrapper:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    NotFound:
+      description: Resource not found
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

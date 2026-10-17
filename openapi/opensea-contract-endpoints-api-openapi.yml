@@ -83,14 +83,26 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error. Please open a support ticket so OpenSea can investigate.
-    NotFound:
-      description: Resource not found
-    BadRequest:
-      description: For error reasons, review the response data.
   schemas:
+    ContractResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        chain:
+          type: string
+        collection:
+          type: string
+        contract_standard:
+          type: string
+        name:
+          type: string
+      required:
+      - address
+      - chain
+      - collection
+      - contract_standard
+      - name
     PaymentToken:
       type: object
       properties:
@@ -120,25 +132,13 @@ components:
       - name
       - symbol
       - usd_price
-    ContractResponse:
-      type: object
-      properties:
-        address:
-          type: string
-        chain:
-          type: string
-        collection:
-          type: string
-        contract_standard:
-          type: string
-        name:
-          type: string
-      required:
-      - address
-      - chain
-      - collection
-      - contract_standard
-      - name
+  responses:
+    BadRequest:
+      description: For error reasons, review the response data.
+    InternalError:
+      description: Internal server error. Please open a support ticket so OpenSea can investigate.
+    NotFound:
+      description: Resource not found
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
