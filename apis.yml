@@ -265,6 +265,8 @@ apis:
   - type: Documentation
     url: https://docs.opensea.io/reference/api-overview
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/opensea/overview
   - type: CapabilityMap
     url: capabilities/opensea-capability-edges.yml
     name: OpenSea Business Capability Map
