@@ -1,187 +1,188 @@
 {
+  "info": {
+    "_postman_id": "38ab9fb0-e0fb-4326-923f-bfa988063e8b",
+    "name": "OpenSea Chain Endpoints API",
+    "description": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:16:08.000Z",
+    "updatedAt": "2026-10-21T21:16:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-38ab9fb0-e0fb-4326-923f-bfa988063e8b"
+  },
   "item": [
     {
-      "id": "1ca30946-49e7-4cd6-a2b3-66e5674d62a0",
-      "name": "Chain Endpoints",
-      "description": {
-        "content": "Chain endpoints to discover supported blockchains and their capabilities",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "99ae9f8d-355b-4e9a-9b5f-a41c5b3d1784",
-          "name": "Get supported chains",
-          "request": {
-            "name": "Get supported chains",
-            "description": {
-              "content": "Get all supported blockchain chains with metadata including name, native currency symbol, swap support, and block explorer information.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "chains"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "def614df-1eea-4d3d-9915-25194f6cbb6e",
-              "name": "List of supported chains",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "chains"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
+              "name": "chains",
+              "item": [
+                {
+                  "name": "Get supported chains",
+                  "id": "1e53bbb2-fcaf-46f0-91f3-c82ac92e8a34",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"chains\": [\n    {\n      \"block_explorer\": \"Etherscan\",\n      \"block_explorer_url\": \"https://etherscan.io\",\n      \"chain\": \"ethereum\",\n      \"name\": \"Ethereum\",\n      \"supports_swaps\": true,\n      \"symbol\": \"ETH\"\n    },\n    {\n      \"block_explorer\": \"Etherscan\",\n      \"block_explorer_url\": \"https://etherscan.io\",\n      \"chain\": \"ethereum\",\n      \"name\": \"Ethereum\",\n      \"supports_swaps\": true,\n      \"symbol\": \"ETH\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d63e09f3-79d1-4851-abea-7afb353007bd",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "chains"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/chains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "chains"
+                      ]
                     },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ff8b024b-5364-4440-9fda-3019a97851ef",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "chains"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    "description": "Get all supported blockchain chains with metadata including name, native currency symbol, swap support, and block explorer information."
+                  },
+                  "response": [
+                    {
+                      "id": "7a743cbb-00e8-4098-bd78-50946c59529a",
+                      "name": "List of supported chains",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/chains",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "chains"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"chains\": [\n    {\n      \"block_explorer\": \"<string>\",\n      \"block_explorer_url\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"name\": \"<string>\",\n      \"supports_swaps\": \"<boolean>\",\n      \"symbol\": \"<string>\"\n    },\n    {\n      \"block_explorer\": \"<string>\",\n      \"block_explorer_url\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"name\": \"<string>\",\n      \"supports_swaps\": \"<boolean>\",\n      \"symbol\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T21:16:09.000Z",
+                      "updatedAt": "2026-10-21T21:16:09.000Z",
+                      "uid": "35240-7a743cbb-00e8-4098-bd78-50946c59529a"
                     },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "62e186c1-c070-490a-9a5b-b0ec11742888",
+                      "name": "For error reasons, review the response data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/chains",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "chains"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:16:09.000Z",
+                      "updatedAt": "2026-10-21T21:16:09.000Z",
+                      "uid": "35240-62e186c1-c070-490a-9a5b-b0ec11742888"
+                    },
+                    {
+                      "id": "ac724e3b-2f60-4580-a25c-f52f2614a0b0",
+                      "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/chains",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "chains"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:16:09.000Z",
+                      "updatedAt": "2026-10-21T21:16:09.000Z",
+                      "uid": "35240-ac724e3b-2f60-4580-a25c-f52f2614a0b0"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:16:09.000Z",
+                  "updatedAt": "2026-10-21T21:16:09.000Z",
+                  "uid": "35240-1e53bbb2-fcaf-46f0-91f3-c82ac92e8a34"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "53af8eec-68d9-4057-8371-4920169557fa",
+              "createdAt": "2026-10-21T21:16:09.000Z",
+              "updatedAt": "2026-10-21T21:16:09.000Z",
+              "uid": "35240-53af8eec-68d9-4057-8371-4920169557fa"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5a8e7764-9ae2-4c0e-9635-0808af4758d9",
+          "createdAt": "2026-10-21T21:16:09.000Z",
+          "updatedAt": "2026-10-21T21:16:09.000Z",
+          "uid": "35240-5a8e7764-9ae2-4c0e-9635-0808af4758d9"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.opensea.io",
-      "key": "baseUrl"
+      "id": "f3727a7a-b7a3-4b58-bb6a-c675ca8af551",
+      "createdAt": "2026-10-21T21:16:09.000Z",
+      "updatedAt": "2026-10-21T21:16:09.000Z",
+      "uid": "35240-f3727a7a-b7a3-4b58-bb6a-c675ca8af551"
     }
   ],
   "auth": {
@@ -189,25 +190,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "d7b4dee3-97ee-42a5-b107-e0eed60e0c41",
-    "name": "OpenSea Account Endpoints Chain Endpoints API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.opensea.io"
     }
-  }
+  ]
 }

@@ -1,1414 +1,1405 @@
 {
+  "info": {
+    "_postman_id": "ecf08571-f358-4a1b-b3b9-69ba7b773e8d",
+    "name": "OpenSea Drops Endpoints API",
+    "description": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:16:30.000Z",
+    "updatedAt": "2026-10-21T21:16:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ecf08571-f358-4a1b-b3b9-69ba7b773e8d"
+  },
   "item": [
     {
-      "id": "4c665880-df67-49be-91db-ef8bad10405a",
-      "name": "Drops Endpoints",
-      "description": {
-        "content": "Endpoints for discovering drops, checking mint eligibility, and building mint transactions",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "ef8cf3e0-d5b1-44a7-9c88-663350b3af8e",
-          "name": "Build mint transaction data for a drop",
-          "request": {
-            "name": "Build mint transaction data for a drop",
-            "description": {
-              "content": "Returns ready-to-sign transaction data for minting tokens from a drop. The caller is responsible for signing and submitting the transaction. No wallet authentication is required — only an API key. The minter address in the request body determines who will receive the tokens. Stage selection is handled automatically by the backend — if multiple stages are active, the first eligible stage is used.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "drops",
-                ":slug",
-                "mint"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "slug",
-                  "description": "(Required) The collection slug identifying the drop"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "8740617d-a307-4439-8007-0e9dc77f1bc5",
-              "name": "Ready-to-sign transaction data including target contract, calldata, and value",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "drops",
+              "item": [
+                {
+                  "name": "{slug}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "name": "mint",
+                      "item": [
+                        {
+                          "name": "Build mint transaction data for a drop",
+                          "id": "5e45d150-49ed-41d6-9b58-c3569c333c1a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                ":slug",
+                                "mint"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "074026e1-fa68-456e-b063-89518ac2814a",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) The collection slug identifying the drop"
+                                }
+                              ]
+                            },
+                            "description": "Returns ready-to-sign transaction data for minting tokens from a drop. The caller is responsible for signing and submitting the transaction. No wallet authentication is required \u2014 only an API key. The minter address in the request body determines who will receive the tokens. Stage selection is handled automatically by the backend \u2014 if multiple stages are active, the first eligible stage is used."
+                          },
+                          "response": [
+                            {
+                              "id": "b0fe4b1e-88a4-479a-ae03-8e45d41cf43b",
+                              "name": "Ready-to-sign transaction data including target contract, calldata, and value",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"chain\": \"<string>\",\n  \"data\": \"<string>\",\n  \"to\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-b0fe4b1e-88a4-479a-ae03-8e45d41cf43b"
+                            },
+                            {
+                              "id": "beccbfcb-91dc-4d1f-bd30-e1f27b04429d",
+                              "name": "Invalid request: bad address format, invalid quantity, or missing required fields",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-beccbfcb-91dc-4d1f-bd30-e1f27b04429d"
+                            },
+                            {
+                              "id": "1445e0c9-2416-4386-8a17-a0bb1ce5e9ea",
+                              "name": "Drop or collection not found for the given slug",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-1445e0c9-2416-4386-8a17-a0bb1ce5e9ea"
+                            },
+                            {
+                              "id": "9f424a9b-949d-4809-a648-abc6ec2a598f",
+                              "name": "Drop is not currently active for minting (not started, ended, or paused)",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-9f424a9b-949d-4809-a648-abc6ec2a598f"
+                            },
+                            {
+                              "id": "4ee9cfb3-2375-4266-a294-3dce70f04324",
+                              "name": "Minting precondition failed: wallet not in allowlist, mint limit exceeded, or supply exhausted",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-4ee9cfb3-2375-4266-a294-3dce70f04324"
+                            },
+                            {
+                              "id": "f6cbb2d4-3cef-46a0-ba43-dab53527d895",
+                              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"minter\": \"<string>\",\n  \"quantity\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/drops/:slug/mint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "drops",
+                                    ":slug",
+                                    "mint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-f6cbb2d4-3cef-46a0-ba43-dab53527d895"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-5e45d150-49ed-41d6-9b58-c3569c333c1a"
+                        }
+                      ],
+                      "id": "f757d883-5ab8-4dae-84b2-b50c12148c31",
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-f757d883-5ab8-4dae-84b2-b50c12148c31"
                     },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
+                    {
+                      "name": "Get drop by collection slug",
+                      "id": "05baf5b0-2737-466b-a53c-608fb4fd13b5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/drops/:slug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "drops",
+                            ":slug"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3487460d-40e1-4bfe-b36c-f5ccca87998a",
+                              "key": "slug",
+                              "value": "<string>",
+                              "description": "(Required) Collection slug"
+                            }
+                          ]
+                        },
+                        "description": "Get detailed drop information for a collection, including stages and supply."
+                      },
+                      "response": [
+                        {
+                          "id": "9bd77377-fae4-489d-b684-52f5a69f49ad",
+                          "name": "Detailed drop information",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"chain\": \"<string>\",\n  \"collection_slug\": \"<string>\",\n  \"contract_address\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"is_minting\": \"<boolean>\",\n  \"opensea_url\": \"<string>\",\n  \"stages\": [\n    {\n      \"end_time\": \"<string>\",\n      \"max_per_wallet\": \"<string>\",\n      \"price_currency_address\": \"<string>\",\n      \"stage_type\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"uuid\": \"<string>\",\n      \"label\": \"<string>\",\n      \"price\": \"<string>\"\n    },\n    {\n      \"end_time\": \"<string>\",\n      \"max_per_wallet\": \"<string>\",\n      \"price_currency_address\": \"<string>\",\n      \"stage_type\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"uuid\": \"<string>\",\n      \"label\": \"<string>\",\n      \"price\": \"<string>\"\n    }\n  ],\n  \"collection_name\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"active_stage\": {\n    \"end_time\": \"<string>\",\n    \"max_per_wallet\": \"<string>\",\n    \"price_currency_address\": \"<string>\",\n    \"stage_type\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"uuid\": \"<string>\",\n    \"label\": \"<string>\",\n    \"price\": \"<string>\"\n  },\n  \"next_stage\": {\n    \"end_time\": \"<string>\",\n    \"max_per_wallet\": \"<string>\",\n    \"price_currency_address\": \"<string>\",\n    \"stage_type\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"uuid\": \"<string>\",\n    \"label\": \"<string>\",\n    \"price\": \"<string>\"\n  },\n  \"total_supply\": \"<string>\",\n  \"max_supply\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-9bd77377-fae4-489d-b684-52f5a69f49ad"
+                        },
+                        {
+                          "id": "ff6fa864-8b4c-4d37-b7d0-30f2ed89901c",
+                          "name": "For error reasons, review the response data.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-ff6fa864-8b4c-4d37-b7d0-30f2ed89901c"
+                        },
+                        {
+                          "id": "041bb479-a27f-41c7-961f-c77a1c646a4b",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-041bb479-a27f-41c7-961f-c77a1c646a4b"
+                        },
+                        {
+                          "id": "80e8975f-1ed7-40a9-a255-0107716aac09",
+                          "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-80e8975f-1ed7-40a9-a255-0107716aac09"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-05baf5b0-2737-466b-a53c-608fb4fd13b5"
+                    }
+                  ],
+                  "id": "1cd155ff-5881-4066-b8b0-c38ddba6711a",
+                  "createdAt": "2026-10-21T21:16:30.000Z",
+                  "updatedAt": "2026-10-21T21:16:30.000Z",
+                  "uid": "35240-1cd155ff-5881-4066-b8b0-c38ddba6711a"
+                },
+                {
+                  "name": "deploy",
+                  "item": [
+                    {
+                      "name": "{chain}",
+                      "item": [
+                        {
+                          "name": "{tx_hash}",
+                          "item": [
+                            {
+                              "name": "receipt",
+                              "item": [
+                                {
+                                  "name": "Get deploy contract receipt",
+                                  "id": "05bedd22-5d04-4ecb-9478-71a092231256",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/drops/deploy/:chain/:tx_hash/receipt",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "drops",
+                                        "deploy",
+                                        ":chain",
+                                        ":tx_hash",
+                                        "receipt"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "ef2a410b-c1a3-47b7-8887-a3be5a81c848",
+                                          "key": "chain",
+                                          "value": "<string>",
+                                          "description": "(Required) Chain slug (e.g. ethereum, base)"
+                                        },
+                                        {
+                                          "id": "dda718f1-bcbe-4eb1-8c66-7b7434b4bdd0",
+                                          "key": "tx_hash",
+                                          "value": "<string>",
+                                          "description": "(Required) Transaction hash of the deployment transaction"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Check the status of a contract deployment transaction. Returns the deployment status and, on success, the deployed contract address and linked collection slug."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "32aae2b6-f215-4d03-98b0-dd097f6fac0e",
+                                      "name": "Deployment receipt status",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "*/*"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "x-api-key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/drops/deploy/:chain/:tx_hash/receipt",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "drops",
+                                            "deploy",
+                                            ":chain",
+                                            ":tx_hash",
+                                            "receipt"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "chain"
+                                            },
+                                            {
+                                              "key": "tx_hash"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "*/*"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"status\": \"<string>\",\n  \"contract_address\": \"<string>\",\n  \"chain\": \"<string>\",\n  \"collection_slug\": \"<string>\"\n}",
+                                      "createdAt": "2026-10-21T21:16:30.000Z",
+                                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                                      "uid": "35240-32aae2b6-f215-4d03-98b0-dd097f6fac0e"
+                                    },
+                                    {
+                                      "id": "4074f2ef-34e8-4c24-86b0-f0a83cf814b3",
+                                      "name": "For error reasons, review the response data.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "x-api-key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/drops/deploy/:chain/:tx_hash/receipt",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "drops",
+                                            "deploy",
+                                            ":chain",
+                                            ":tx_hash",
+                                            "receipt"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "chain"
+                                            },
+                                            {
+                                              "key": "tx_hash"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:16:30.000Z",
+                                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                                      "uid": "35240-4074f2ef-34e8-4c24-86b0-f0a83cf814b3"
+                                    },
+                                    {
+                                      "id": "12971c06-38c1-4cac-a4a7-e464abc2060e",
+                                      "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "x-api-key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/drops/deploy/:chain/:tx_hash/receipt",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "drops",
+                                            "deploy",
+                                            ":chain",
+                                            ":tx_hash",
+                                            "receipt"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "chain"
+                                            },
+                                            {
+                                              "key": "tx_hash"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:16:30.000Z",
+                                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                                      "uid": "35240-12971c06-38c1-4cac-a4a7-e464abc2060e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:16:30.000Z",
+                                  "updatedAt": "2026-10-21T21:16:30.000Z",
+                                  "uid": "35240-05bedd22-5d04-4ecb-9478-71a092231256"
+                                }
+                              ],
+                              "id": "de23bd51-6dec-4240-bae5-665a038ba972",
+                              "createdAt": "2026-10-21T21:16:30.000Z",
+                              "updatedAt": "2026-10-21T21:16:30.000Z",
+                              "uid": "35240-de23bd51-6dec-4240-bae5-665a038ba972"
+                            }
+                          ],
+                          "id": "752a34c9-9855-45df-bede-f69282fea001",
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-752a34c9-9855-45df-bede-f69282fea001"
+                        }
+                      ],
+                      "id": "70bddad4-6785-41c5-8959-367a5c5cf76e",
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-70bddad4-6785-41c5-8959-367a5c5cf76e"
+                    },
+                    {
+                      "name": "Build deploy contract transaction data",
+                      "id": "8cb4df05-1cb0-409d-a241-6bfce8efcd4a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"chain\": \"<string>\",\n  \"contract_name\": \"<string>\",\n  \"contract_symbol\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"sender\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/drops/deploy",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "drops",
+                            "deploy"
+                          ]
+                        },
+                        "description": "Returns ready-to-sign transaction data for deploying a new NFT drop contract. The caller is responsible for signing and submitting the transaction."
+                      },
+                      "response": [
+                        {
+                          "id": "83e7f561-2b96-4018-8a4a-10e68b2458aa",
+                          "name": "Ready-to-sign transaction data for contract deployment",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chain\": \"<string>\",\n  \"contract_name\": \"<string>\",\n  \"contract_symbol\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"sender\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/deploy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                "deploy"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"chain\": \"<string>\",\n  \"data\": \"<string>\",\n  \"to\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-83e7f561-2b96-4018-8a4a-10e68b2458aa"
+                        },
+                        {
+                          "id": "31d484e5-09b4-4d98-bfae-88af3e9c3286",
+                          "name": "Invalid request: unsupported drop_type/token_type combination, bad address format, or missing required fields",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chain\": \"<string>\",\n  \"contract_name\": \"<string>\",\n  \"contract_symbol\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"sender\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/deploy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                "deploy"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-31d484e5-09b4-4d98-bfae-88af3e9c3286"
+                        },
+                        {
+                          "id": "eff2e0ce-2c98-474e-89fe-07aa4f6a0d70",
+                          "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chain\": \"<string>\",\n  \"contract_name\": \"<string>\",\n  \"contract_symbol\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"sender\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/drops/deploy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "drops",
+                                "deploy"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:16:30.000Z",
+                          "updatedAt": "2026-10-21T21:16:30.000Z",
+                          "uid": "35240-eff2e0ce-2c98-474e-89fe-07aa4f6a0d70"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-8cb4df05-1cb0-409d-a241-6bfce8efcd4a"
+                    }
+                  ],
+                  "id": "2ac2e59c-4430-44b9-9750-628524bfa627",
+                  "createdAt": "2026-10-21T21:16:30.000Z",
+                  "updatedAt": "2026-10-21T21:16:30.000Z",
+                  "uid": "35240-2ac2e59c-4430-44b9-9750-628524bfa627"
+                },
+                {
+                  "name": "Get drops",
+                  "id": "992836ee-b0d3-4c33-8aa2-bba4dd4f28b5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"chain\": \"string\",\n  \"data\": \"string\",\n  \"to\": \"string\",\n  \"value\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7d050503-17de-4f53-894f-45d4653d9538",
-              "name": "Invalid request: bad address format, invalid quantity, or missing required fields",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/drops?type=featured&limit=20&chains=ethereum&chains=ethereum&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "drops"
+                      ],
+                      "query": [
+                        {
+                          "description": "Drop calendar type: featured, upcoming, or recently_minted",
+                          "key": "type",
+                          "value": "featured"
+                        },
+                        {
+                          "description": "Number of results to return (1-100, default: 20)",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains.",
+                          "key": "chains",
+                          "value": "ethereum"
+                        },
+                        {
+                          "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains.",
+                          "key": "chains",
+                          "value": "ethereum"
+                        },
+                        {
+                          "description": "Pagination cursor for next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
                     },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
+                    "description": "Get a list of NFT drops (mints) by type: featured, upcoming, or recently_minted. Results may be fewer than the requested limit due to post-fetch filtering."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dff2f737-0994-49cb-bee7-80e8a2882bed",
-              "name": "Drop or collection not found for the given slug",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "209b0339-c339-4470-afef-d0584a2f190d",
-              "name": "Drop is not currently active for minting (not started, ended, or paused)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bfc4bd01-ebb8-4fcf-9341-b84513ab9959",
-              "name": "Minting precondition failed: wallet not in allowlist, mint limit exceeded, or supply exhausted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e3c9d562-9792-4159-8042-1b8006aebd20",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug",
-                    "mint"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) The collection slug identifying the drop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"minter\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"quantity\": 1\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c6d16387-e215-4457-ac95-f77d2019b837",
-          "name": "Build deploy contract transaction data",
-          "request": {
-            "name": "Build deploy contract transaction data",
-            "description": {
-              "content": "Returns ready-to-sign transaction data for deploying a new NFT drop contract. The caller is responsible for signing and submitting the transaction.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "drops",
-                "deploy"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"chain\": \"<string>\",\n  \"contract_name\": \"<string>\",\n  \"contract_symbol\": \"<string>\",\n  \"drop_type\": \"<string>\",\n  \"sender\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1af95f11-6a45-40bc-9463-c763158b2666",
-              "name": "Ready-to-sign transaction data for contract deployment",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"chain\": \"ethereum\",\n  \"contract_name\": \"My NFT Collection\",\n  \"contract_symbol\": \"MNFT\",\n  \"drop_type\": \"seadrop_v1_erc721\",\n  \"sender\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"token_type\": \"erc721_standard\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"chain\": \"string\",\n  \"data\": \"string\",\n  \"to\": \"string\",\n  \"value\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2d570441-0583-412d-95a8-4b28c0ffb684",
-              "name": "Invalid request: unsupported drop_type/token_type combination, bad address format, or missing required fields",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"chain\": \"ethereum\",\n  \"contract_name\": \"My NFT Collection\",\n  \"contract_symbol\": \"MNFT\",\n  \"drop_type\": \"seadrop_v1_erc721\",\n  \"sender\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"token_type\": \"erc721_standard\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c1e843ec-a80a-478f-950c-d11e9935c680",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"chain\": \"ethereum\",\n  \"contract_name\": \"My NFT Collection\",\n  \"contract_symbol\": \"MNFT\",\n  \"drop_type\": \"seadrop_v1_erc721\",\n  \"sender\": \"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\",\n  \"token_type\": \"erc721_standard\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c62a4229-7ca3-4bcf-ace4-b5b8bb495d4f",
-          "name": "Get drops",
-          "request": {
-            "name": "Get drops",
-            "description": {
-              "content": "Get a list of NFT drops (mints) by type: featured, upcoming, or recently_minted. Results may be fewer than the requested limit due to post-fetch filtering.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "drops"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "featured",
-                  "description": "Drop calendar type: featured, upcoming, or recently_minted"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "20",
-                  "description": "Number of results to return (1-100, default: 20)"
-                },
-                {
-                  "disabled": false,
-                  "key": "chains",
-                  "value": "ethereum",
-                  "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains."
-                },
-                {
-                  "disabled": false,
-                  "key": "chains",
-                  "value": "ethereum",
-                  "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains."
-                },
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "Pagination cursor for next page"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "20f65084-0479-4bc2-8600-052e9a5b8e0e",
-              "name": "Paginated list of drops",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "featured"
+                      "id": "00216941-682d-4c09-ac70-eb31a748f034",
+                      "name": "Paginated list of drops",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/drops?type=featured&limit=20&chains=ethereum&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "drops"
+                          ],
+                          "query": [
+                            {
+                              "description": "Drop calendar type: featured, upcoming, or recently_minted",
+                              "key": "type",
+                              "value": "featured"
+                            },
+                            {
+                              "description": "Number of results to return (1-100, default: 20)",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains.",
+                              "key": "chains",
+                              "value": "ethereum"
+                            },
+                            {
+                              "description": "Pagination cursor for next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"drops\": [\n    {\n      \"chain\": \"<string>\",\n      \"collection_slug\": \"<string>\",\n      \"contract_address\": \"<string>\",\n      \"drop_type\": \"<string>\",\n      \"is_minting\": \"<boolean>\",\n      \"opensea_url\": \"<string>\",\n      \"collection_name\": \"<string>\",\n      \"image_url\": \"<string>\",\n      \"active_stage\": {\n        \"end_time\": \"<string>\",\n        \"max_per_wallet\": \"<string>\",\n        \"price_currency_address\": \"<string>\",\n        \"stage_type\": \"<string>\",\n        \"start_time\": \"<string>\",\n        \"uuid\": \"<string>\",\n        \"label\": \"<string>\",\n        \"price\": \"<string>\"\n      },\n      \"next_stage\": {\n        \"end_time\": \"<string>\",\n        \"max_per_wallet\": \"<string>\",\n        \"price_currency_address\": \"<string>\",\n        \"stage_type\": \"<string>\",\n        \"start_time\": \"<string>\",\n        \"uuid\": \"<string>\",\n        \"label\": \"<string>\",\n        \"price\": \"<string>\"\n      }\n    },\n    {\n      \"chain\": \"<string>\",\n      \"collection_slug\": \"<string>\",\n      \"contract_address\": \"<string>\",\n      \"drop_type\": \"<string>\",\n      \"is_minting\": \"<boolean>\",\n      \"opensea_url\": \"<string>\",\n      \"collection_name\": \"<string>\",\n      \"image_url\": \"<string>\",\n      \"active_stage\": {\n        \"end_time\": \"<string>\",\n        \"max_per_wallet\": \"<string>\",\n        \"price_currency_address\": \"<string>\",\n        \"stage_type\": \"<string>\",\n        \"start_time\": \"<string>\",\n        \"uuid\": \"<string>\",\n        \"label\": \"<string>\",\n        \"price\": \"<string>\"\n      },\n      \"next_stage\": {\n        \"end_time\": \"<string>\",\n        \"max_per_wallet\": \"<string>\",\n        \"price_currency_address\": \"<string>\",\n        \"stage_type\": \"<string>\",\n        \"start_time\": \"<string>\",\n        \"uuid\": \"<string>\",\n        \"label\": \"<string>\",\n        \"price\": \"<string>\"\n      }\n    }\n  ],\n  \"next\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-00216941-682d-4c09-ac70-eb31a748f034"
                     },
                     {
-                      "key": "limit",
-                      "value": "20"
+                      "id": "f29fd7fe-4a7c-479c-8a3e-c2577f2789a7",
+                      "name": "For error reasons, review the response data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/drops?type=featured&limit=20&chains=ethereum&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "drops"
+                          ],
+                          "query": [
+                            {
+                              "description": "Drop calendar type: featured, upcoming, or recently_minted",
+                              "key": "type",
+                              "value": "featured"
+                            },
+                            {
+                              "description": "Number of results to return (1-100, default: 20)",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains.",
+                              "key": "chains",
+                              "value": "ethereum"
+                            },
+                            {
+                              "description": "Pagination cursor for next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-f29fd7fe-4a7c-479c-8a3e-c2577f2789a7"
                     },
                     {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
+                      "id": "3cd7fabf-de41-4fab-8095-6fe0762d0918",
+                      "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/drops?type=featured&limit=20&chains=ethereum&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "drops"
+                          ],
+                          "query": [
+                            {
+                              "description": "Drop calendar type: featured, upcoming, or recently_minted",
+                              "key": "type",
+                              "value": "featured"
+                            },
+                            {
+                              "description": "Number of results to return (1-100, default: 20)",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Comma-separated list of chains to filter by (e.g. ethereum, base). Omit to return drops on all chains.",
+                              "key": "chains",
+                              "value": "ethereum"
+                            },
+                            {
+                              "description": "Pagination cursor for next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:16:30.000Z",
+                      "updatedAt": "2026-10-21T21:16:30.000Z",
+                      "uid": "35240-3cd7fabf-de41-4fab-8095-6fe0762d0918"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
+                  "createdAt": "2026-10-21T21:16:30.000Z",
+                  "updatedAt": "2026-10-21T21:16:30.000Z",
+                  "uid": "35240-992836ee-b0d3-4c33-8aa2-bba4dd4f28b5"
                 }
               ],
-              "body": "{\n  \"drops\": [\n    {\n      \"chain\": \"ethereum\",\n      \"collection_slug\": \"cool-cats\",\n      \"contract_address\": \"string\",\n      \"drop_type\": \"seadrop_v1_erc721\",\n      \"is_minting\": false,\n      \"opensea_url\": \"string\",\n      \"collection_name\": \"Cool Cats\",\n      \"image_url\": \"string\",\n      \"active_stage\": {\n        \"end_time\": \"string\",\n        \"max_per_wallet\": \"string\",\n        \"price_currency_address\": \"string\",\n        \"stage_type\": \"public_sale\",\n        \"start_time\": \"string\",\n        \"uuid\": \"string\",\n        \"label\": \"string\",\n        \"price\": \"string\"\n      },\n      \"next_stage\": {\n        \"end_time\": \"string\",\n        \"max_per_wallet\": \"string\",\n        \"price_currency_address\": \"string\",\n        \"stage_type\": \"public_sale\",\n        \"start_time\": \"string\",\n        \"uuid\": \"string\",\n        \"label\": \"string\",\n        \"price\": \"string\"\n      }\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"collection_slug\": \"cool-cats\",\n      \"contract_address\": \"string\",\n      \"drop_type\": \"seadrop_v1_erc721\",\n      \"is_minting\": false,\n      \"opensea_url\": \"string\",\n      \"collection_name\": \"Cool Cats\",\n      \"image_url\": \"string\",\n      \"active_stage\": {\n        \"end_time\": \"string\",\n        \"max_per_wallet\": \"string\",\n        \"price_currency_address\": \"string\",\n        \"stage_type\": \"public_sale\",\n        \"start_time\": \"string\",\n        \"uuid\": \"string\",\n        \"label\": \"string\",\n        \"price\": \"string\"\n      },\n      \"next_stage\": {\n        \"end_time\": \"string\",\n        \"max_per_wallet\": \"string\",\n        \"price_currency_address\": \"string\",\n        \"stage_type\": \"public_sale\",\n        \"start_time\": \"string\",\n        \"uuid\": \"string\",\n        \"label\": \"string\",\n        \"price\": \"string\"\n      }\n    }\n  ],\n  \"next\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "62cad37a-4895-491d-b6d6-88cb08c38b1d",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "featured"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a1b2e0cd-7507-43ff-a179-441cde9eea9c",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "featured"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "chains",
-                      "value": "ethereum"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6ab08cf7-b71c-4105-b9ba-be39a215db87",
-          "name": "Get drop by collection slug",
-          "request": {
-            "name": "Get drop by collection slug",
-            "description": {
-              "content": "Get detailed drop information for a collection, including stages and supply.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "drops",
-                ":slug"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "slug",
-                  "description": "(Required) Collection slug"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a6a43994-be0e-4563-8e1b-3e5c55d27eb8",
-              "name": "Detailed drop information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) Collection slug"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"chain\": \"ethereum\",\n  \"collection_slug\": \"cool-cats\",\n  \"contract_address\": \"string\",\n  \"drop_type\": \"seadrop_v1_erc721\",\n  \"is_minting\": true,\n  \"opensea_url\": \"string\",\n  \"stages\": [\n    {\n      \"end_time\": \"string\",\n      \"max_per_wallet\": \"string\",\n      \"price_currency_address\": \"string\",\n      \"stage_type\": \"public_sale\",\n      \"start_time\": \"string\",\n      \"uuid\": \"string\",\n      \"label\": \"string\",\n      \"price\": \"string\"\n    },\n    {\n      \"end_time\": \"string\",\n      \"max_per_wallet\": \"string\",\n      \"price_currency_address\": \"string\",\n      \"stage_type\": \"public_sale\",\n      \"start_time\": \"string\",\n      \"uuid\": \"string\",\n      \"label\": \"string\",\n      \"price\": \"string\"\n    }\n  ],\n  \"collection_name\": \"Cool Cats\",\n  \"image_url\": \"string\",\n  \"active_stage\": {\n    \"end_time\": \"string\",\n    \"max_per_wallet\": \"string\",\n    \"price_currency_address\": \"string\",\n    \"stage_type\": \"public_sale\",\n    \"start_time\": \"string\",\n    \"uuid\": \"string\",\n    \"label\": \"string\",\n    \"price\": \"string\"\n  },\n  \"next_stage\": {\n    \"end_time\": \"string\",\n    \"max_per_wallet\": \"string\",\n    \"price_currency_address\": \"string\",\n    \"stage_type\": \"public_sale\",\n    \"start_time\": \"string\",\n    \"uuid\": \"string\",\n    \"label\": \"string\",\n    \"price\": \"string\"\n  },\n  \"total_supply\": \"string\",\n  \"max_supply\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "86900ccc-043e-40cd-9925-07f7daaa5884",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) Collection slug"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "16489ce1-00a6-43f1-9b86-8b2fef178368",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) Collection slug"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "639e4dd5-2609-4c31-9add-3b2bf6727f29",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    ":slug"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "slug",
-                      "description": "(Required) Collection slug"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2f0559a0-4fa2-46b5-9d9e-4feafc0392ed",
-          "name": "Get deploy contract receipt",
-          "request": {
-            "name": "Get deploy contract receipt",
-            "description": {
-              "content": "Check the status of a contract deployment transaction. Returns the deployment status and, on success, the deployed contract address and linked collection slug.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "drops",
-                "deploy",
-                ":chain",
-                ":tx_hash",
-                "receipt"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "chain",
-                  "description": "(Required) Chain slug (e.g. ethereum, base)"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tx_hash",
-                  "description": "(Required) Transaction hash of the deployment transaction"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "73b9f0fe-b0cd-4119-9761-5e3883f06684",
-              "name": "Deployment receipt status",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy",
-                    ":chain",
-                    ":tx_hash",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Chain slug (e.g. ethereum, base)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tx_hash",
-                      "description": "(Required) Transaction hash of the deployment transaction"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"status\": \"success\",\n  \"contract_address\": \"string\",\n  \"chain\": \"string\",\n  \"collection_slug\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "05858f81-3826-4087-bc1d-ffc834584679",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy",
-                    ":chain",
-                    ":tx_hash",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Chain slug (e.g. ethereum, base)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tx_hash",
-                      "description": "(Required) Transaction hash of the deployment transaction"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "87dcf04c-fca5-43c3-9e9e-aa190fdd6782",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "drops",
-                    "deploy",
-                    ":chain",
-                    ":tx_hash",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Chain slug (e.g. ethereum, base)"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tx_hash",
-                      "description": "(Required) Transaction hash of the deployment transaction"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "9be4b136-868a-4f43-b256-1c776fab5863",
+              "createdAt": "2026-10-21T21:16:30.000Z",
+              "updatedAt": "2026-10-21T21:16:30.000Z",
+              "uid": "35240-9be4b136-868a-4f43-b256-1c776fab5863"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f8c11074-8861-4f90-95b4-fb8558dddc47",
+          "createdAt": "2026-10-21T21:16:30.000Z",
+          "updatedAt": "2026-10-21T21:16:30.000Z",
+          "uid": "35240-f8c11074-8861-4f90-95b4-fb8558dddc47"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.opensea.io",
-      "key": "baseUrl"
+      "id": "49044bad-bf31-41cc-9f11-de247b25a364",
+      "createdAt": "2026-10-21T21:16:30.000Z",
+      "updatedAt": "2026-10-21T21:16:30.000Z",
+      "uid": "35240-49044bad-bf31-41cc-9f11-de247b25a364"
     }
   ],
   "auth": {
@@ -1416,25 +1407,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "42e19972-f018-4b54-9b0b-0fda1bd5bfee",
-    "name": "OpenSea Account Endpoints Drops Endpoints API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.opensea.io"
     }
-  }
+  ]
 }

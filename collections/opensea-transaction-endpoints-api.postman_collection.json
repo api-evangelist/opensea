@@ -1,228 +1,257 @@
 {
+  "info": {
+    "_postman_id": "786581e2-5be0-4b6b-a9ac-4b9f4c6b0aff",
+    "name": "OpenSea Transaction Endpoints API",
+    "description": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:17:28.000Z",
+    "updatedAt": "2026-10-21T21:17:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-786581e2-5be0-4b6b-a9ac-4b9f4c6b0aff"
+  },
   "item": [
     {
-      "id": "5cd39a88-7113-4681-8e69-6c9667d375f2",
-      "name": "Transaction Endpoints",
-      "description": {
-        "content": "Transaction endpoints for checking transaction receipts and status",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "ec81b46b-6706-4419-b942-b2eded98a2fa",
-          "name": "Get transaction receipt",
-          "request": {
-            "name": "Get transaction receipt",
-            "description": {
-              "content": "Get the receipt/status for a submitted transaction. Works for all transaction types including listing fulfillments, cross-chain buys, sweeps, offer fulfillments, and token swaps. Poll this endpoint after submitting transactions to check completion status.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "transactions",
-                "receipt"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "238f2c2e-d598-47b5-bcad-e1bf64bad1c5",
-              "name": "Transaction receipt retrieved",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "transactions",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "transactions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "*/*"
+                  "name": "receipt",
+                  "item": [
+                    {
+                      "name": "Get transaction receipt",
+                      "id": "41668ad9-4a76-434c-a97f-02a3f77e3014",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/transactions/receipt",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "transactions",
+                            "receipt"
+                          ]
+                        },
+                        "description": "Get the receipt/status for a submitted transaction. Works for all transaction types including listing fulfillments, cross-chain buys, sweeps, offer fulfillments, and token swaps. Poll this endpoint after submitting transactions to check completion status."
+                      },
+                      "response": [
+                        {
+                          "id": "0509534a-c249-4fba-888f-b17a0b6516d1",
+                          "name": "Transaction receipt retrieved",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/transactions/receipt",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "transactions",
+                                "receipt"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"asset_receipts\": [\n    {\n      \"asset\": {\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      \"price\": {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<string>\"\n    },\n    {\n      \"asset\": {\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      \"price\": {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<string>\"\n    }\n  ],\n  \"failed_asset_receipts\": [\n    {\n      \"asset\": {\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      \"price\": {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<string>\"\n    },\n    {\n      \"asset\": {\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      \"price\": {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<string>\"\n    }\n  ],\n  \"missing_assets\": [\n    {\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\",\n      \"token_id\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"contract\": \"<string>\",\n      \"token_id\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"total_spent\": {\n    \"price_per_token\": [\n      {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"usd\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    ]\n  },\n  \"fail_reason\": \"<string>\",\n  \"cross_chain_refunded\": \"<boolean>\"\n}",
+                          "createdAt": "2026-10-21T21:17:29.000Z",
+                          "updatedAt": "2026-10-21T21:17:29.000Z",
+                          "uid": "35240-0509534a-c249-4fba-888f-b17a0b6516d1"
+                        },
+                        {
+                          "id": "bb364963-fb66-4f9a-b870-030ff0e839bf",
+                          "name": "For error reasons, review the response data.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/transactions/receipt",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "transactions",
+                                "receipt"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:17:29.000Z",
+                          "updatedAt": "2026-10-21T21:17:29.000Z",
+                          "uid": "35240-bb364963-fb66-4f9a-b870-030ff0e839bf"
+                        },
+                        {
+                          "id": "4da1a8b0-6e68-461b-ae8f-0b9fac122d56",
+                          "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<string>\",\n        \"chain\": \"<string>\",\n        \"contract\": \"<string>\",\n        \"token_id\": \"<string>\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    },\n    {\n      \"chain\": \"<string>\",\n      \"transaction_hash\": \"<string>\",\n      \"swap_provider\": \"<string>\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/transactions/receipt",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "transactions",
+                                "receipt"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:17:29.000Z",
+                          "updatedAt": "2026-10-21T21:17:29.000Z",
+                          "uid": "35240-4da1a8b0-6e68-461b-ae8f-0b9fac122d56"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:17:29.000Z",
+                      "updatedAt": "2026-10-21T21:17:29.000Z",
+                      "uid": "35240-41668ad9-4a76-434c-a97f-02a3f77e3014"
+                    }
+                  ],
+                  "id": "376140cf-d2c8-4f9e-80c1-b73ea61cd2a4",
+                  "createdAt": "2026-10-21T21:17:29.000Z",
+                  "updatedAt": "2026-10-21T21:17:29.000Z",
+                  "uid": "35240-376140cf-d2c8-4f9e-80c1-b73ea61cd2a4"
                 }
               ],
-              "body": "{\n  \"asset_receipts\": [\n    {\n      \"asset\": {\n        \"chain\": \"ethereum\",\n        \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n        \"token_id\": \"string\"\n      },\n      \"price\": {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      },\n      \"quantity\": \"string\"\n    },\n    {\n      \"asset\": {\n        \"chain\": \"ethereum\",\n        \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n        \"token_id\": \"string\"\n      },\n      \"price\": {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      },\n      \"quantity\": \"string\"\n    }\n  ],\n  \"failed_asset_receipts\": [\n    {\n      \"asset\": {\n        \"chain\": \"ethereum\",\n        \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n        \"token_id\": \"string\"\n      },\n      \"price\": {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      },\n      \"quantity\": \"string\"\n    },\n    {\n      \"asset\": {\n        \"chain\": \"ethereum\",\n        \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n        \"token_id\": \"string\"\n      },\n      \"price\": {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      },\n      \"quantity\": \"string\"\n    }\n  ],\n  \"missing_assets\": [\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n      \"token_id\": \"string\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"contract\": \"0xBd3531dA5CF5857e7CfAA92426877b022e612cf8\",\n      \"token_id\": \"string\"\n    }\n  ],\n  \"status\": \"SUCCESS\",\n  \"total_spent\": {\n    \"price_per_token\": [\n      {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      },\n      {\n        \"amount\": \"string\",\n        \"usd\": \"string\",\n        \"currency\": \"ETH\"\n      }\n    ]\n  },\n  \"fail_reason\": \"string\",\n  \"cross_chain_refunded\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e0a9cb50-859c-48ea-8bde-d613b9dfa960",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "transactions",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "339f03d4-2917-454a-8190-83a7b7b11afc",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "transactions",
-                    "receipt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"swap_quote\": {\n    \"from_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ],\n    \"to_assets\": [\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      },\n      {\n        \"amount\": \"string\",\n        \"chain\": \"ethereum\",\n        \"contract\": \"0x0000000000000000000000000000000000000000\",\n        \"token_id\": \"string\"\n      }\n    ]\n  },\n  \"transaction_identifiers\": [\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    },\n    {\n      \"chain\": \"ethereum\",\n      \"transaction_hash\": \"0xabc123...\",\n      \"swap_provider\": \"RELAY\"\n    }\n  ],\n  \"relay_request_id\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "bbd34e78-0b09-4954-8021-bd770fbed2a7",
+              "createdAt": "2026-10-21T21:17:29.000Z",
+              "updatedAt": "2026-10-21T21:17:29.000Z",
+              "uid": "35240-bbd34e78-0b09-4954-8021-bd770fbed2a7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a8ee0a59-6984-4d46-a97b-d73417fddf37",
+          "createdAt": "2026-10-21T21:17:29.000Z",
+          "updatedAt": "2026-10-21T21:17:29.000Z",
+          "uid": "35240-a8ee0a59-6984-4d46-a97b-d73417fddf37"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.opensea.io",
-      "key": "baseUrl"
+      "id": "9da6cb3d-5632-4e09-b32b-9af9c6e8bf88",
+      "createdAt": "2026-10-21T21:17:29.000Z",
+      "updatedAt": "2026-10-21T21:17:29.000Z",
+      "uid": "35240-9da6cb3d-5632-4e09-b32b-9af9c6e8bf88"
     }
   ],
   "auth": {
@@ -230,25 +259,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "0d46aa77-8c46-4816-8e79-090eef762a55",
-    "name": "OpenSea Account Endpoints Transaction Endpoints API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.opensea.io"
     }
-  }
+  ]
 }

@@ -1,632 +1,611 @@
 {
+  "info": {
+    "_postman_id": "5685b3f9-7232-4504-a532-e9e70c8f6034",
+    "name": "OpenSea Order Endpoints API",
+    "description": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:16:57.000Z",
+    "updatedAt": "2026-10-21T21:16:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5685b3f9-7232-4504-a532-e9e70c8f6034"
+  },
   "item": [
     {
-      "id": "212a4b5e-fac1-4577-8e44-b41cbfc1fb1d",
-      "name": "Order Endpoints",
-      "description": {
-        "content": "Order endpoints for looking up and canceling individual orders",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "90a52229-e841-4ce0-b0e6-cd54c4edd71b",
-          "name": "Cancel an order",
-          "request": {
-            "name": "Cancel an order",
-            "description": {
-              "content": "Offchain cancel a single order, offer or listing, by its order hash when protected by the SignedZone. Protocol and Chain are required to prevent hash collisions. Please note cancellation is only assured if a fulfillment signature was not vended prior to cancellation.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "orders",
-                "chain",
-                ":chain",
-                "protocol",
-                ":protocol_address",
-                ":order_hash",
-                "cancel"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "chain",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "protocol_address",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "order_hash",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-Api-Key",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "076ae70d-24c0-4d38-a7bb-542a665c84df",
-              "name": "Order cancelled successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash",
-                    "cancel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-Api-Key",
-                    "value": "<string>",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "orders",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "*/*"
+                  "name": "chain",
+                  "item": [
+                    {
+                      "name": "{chain}",
+                      "item": [
+                        {
+                          "name": "protocol",
+                          "item": [
+                            {
+                              "name": "{protocol_address}",
+                              "item": [
+                                {
+                                  "name": "{order_hash}",
+                                  "item": [
+                                    {
+                                      "name": "cancel",
+                                      "item": [
+                                        {
+                                          "name": "Cancel an order",
+                                          "id": "15ca0558-ed31-4953-8194-49bf21d276ef",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "X-Api-Key",
+                                                "value": "<string>"
+                                              },
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash/cancel",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v2",
+                                                "orders",
+                                                "chain",
+                                                ":chain",
+                                                "protocol",
+                                                ":protocol_address",
+                                                ":order_hash",
+                                                "cancel"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "1a0d5c39-ce97-4aa2-8082-b9ad246f3fcd",
+                                                  "key": "chain",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "8ce1aae2-4dbb-4ef2-b57c-04aeed646438",
+                                                  "key": "protocol_address",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "9cf9a8e5-46e8-4cab-b76d-58afcda9fdf4",
+                                                  "key": "order_hash",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Offchain cancel a single order, offer or listing, by its order hash when protected by the SignedZone. Protocol and Chain are required to prevent hash collisions. Please note cancellation is only assured if a fulfillment signature was not vended prior to cancellation."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "6127b939-18f3-4eb5-bea4-6c4d3649e213",
+                                              "name": "Order cancelled successfully",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "X-Api-Key",
+                                                    "value": "<string>"
+                                                  },
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "*/*"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "x-api-key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v2",
+                                                    "orders",
+                                                    "chain",
+                                                    ":chain",
+                                                    "protocol",
+                                                    ":protocol_address",
+                                                    ":order_hash",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "chain"
+                                                    },
+                                                    {
+                                                      "key": "protocol_address"
+                                                    },
+                                                    {
+                                                      "key": "order_hash"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "*/*"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"last_signature_issued_valid_until\": \"<string>\"\n}",
+                                              "createdAt": "2026-10-21T21:16:58.000Z",
+                                              "updatedAt": "2026-10-21T21:16:58.000Z",
+                                              "uid": "35240-6127b939-18f3-4eb5-bea4-6c4d3649e213"
+                                            },
+                                            {
+                                              "id": "2d74f118-36bf-4320-9616-416095f138a1",
+                                              "name": "For error reasons, review the response data.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "X-Api-Key",
+                                                    "value": "<string>"
+                                                  },
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "x-api-key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v2",
+                                                    "orders",
+                                                    "chain",
+                                                    ":chain",
+                                                    "protocol",
+                                                    ":protocol_address",
+                                                    ":order_hash",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "chain"
+                                                    },
+                                                    {
+                                                      "key": "protocol_address"
+                                                    },
+                                                    {
+                                                      "key": "order_hash"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Bad Request",
+                                              "code": 400,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:16:58.000Z",
+                                              "updatedAt": "2026-10-21T21:16:58.000Z",
+                                              "uid": "35240-2d74f118-36bf-4320-9616-416095f138a1"
+                                            },
+                                            {
+                                              "id": "965dceb2-a41b-4201-a21f-88b076e64065",
+                                              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "X-Api-Key",
+                                                    "value": "<string>"
+                                                  },
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "x-api-key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v2",
+                                                    "orders",
+                                                    "chain",
+                                                    ":chain",
+                                                    "protocol",
+                                                    ":protocol_address",
+                                                    ":order_hash",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "chain"
+                                                    },
+                                                    {
+                                                      "key": "protocol_address"
+                                                    },
+                                                    {
+                                                      "key": "order_hash"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Internal Server Error",
+                                              "code": 500,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:16:58.000Z",
+                                              "updatedAt": "2026-10-21T21:16:58.000Z",
+                                              "uid": "35240-965dceb2-a41b-4201-a21f-88b076e64065"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T21:16:58.000Z",
+                                          "updatedAt": "2026-10-21T21:16:58.000Z",
+                                          "uid": "35240-15ca0558-ed31-4953-8194-49bf21d276ef"
+                                        }
+                                      ],
+                                      "id": "11db659d-18cc-4f1e-af0e-d55f5a34a669",
+                                      "createdAt": "2026-10-21T21:16:58.000Z",
+                                      "updatedAt": "2026-10-21T21:16:58.000Z",
+                                      "uid": "35240-11db659d-18cc-4f1e-af0e-d55f5a34a669"
+                                    },
+                                    {
+                                      "name": "Get an order",
+                                      "id": "06b074e4-1a62-4577-a29c-fc1bd474a335",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "*/*"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "orders",
+                                            "chain",
+                                            ":chain",
+                                            "protocol",
+                                            ":protocol_address",
+                                            ":order_hash"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "e05cd25b-94e6-467c-9d38-5233d4e5e4ed",
+                                              "key": "chain",
+                                              "value": "<string>",
+                                              "description": "(Required) Blockchain chain identifier"
+                                            },
+                                            {
+                                              "id": "7a93fbcb-d2c6-408d-9767-47517e87208c",
+                                              "key": "protocol_address",
+                                              "value": "<string>",
+                                              "description": "(Required) Protocol contract address"
+                                            },
+                                            {
+                                              "id": "343c23c6-9794-4a60-8ee1-7801518b1f50",
+                                              "key": "order_hash",
+                                              "value": "<string>",
+                                              "description": "(Required) Order hash"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Get a single order by its order hash."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "d2f29c3f-3fc0-496b-820b-ac928bc28ef6",
+                                          "name": "Order details retrieved successfully",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v2",
+                                                "orders",
+                                                "chain",
+                                                ":chain",
+                                                "protocol",
+                                                ":protocol_address",
+                                                ":order_hash"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "chain"
+                                                },
+                                                {
+                                                  "key": "protocol_address"
+                                                },
+                                                {
+                                                  "key": "order_hash"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "*/*"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"order\": {\n    \"chain\": \"<string>\",\n    \"order_hash\": \"<string>\",\n    \"price\": {\n      \"current\": {\n        \"currency\": \"<string>\",\n        \"decimals\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    },\n    \"remaining_quantity\": \"<long>\",\n    \"status\": \"ACTIVE\",\n    \"type\": \"<string>\",\n    \"protocol_data\": {\n      \"parameters\": {\n        \"conduitKey\": \"<string>\",\n        \"consideration\": [\n          {\n            \"endAmount\": \"<string>\",\n            \"identifierOrCriteria\": \"<string>\",\n            \"itemType\": \"<integer>\",\n            \"recipient\": \"<string>\",\n            \"startAmount\": \"<string>\",\n            \"token\": \"<string>\"\n          },\n          {\n            \"endAmount\": \"<string>\",\n            \"identifierOrCriteria\": \"<string>\",\n            \"itemType\": \"<integer>\",\n            \"recipient\": \"<string>\",\n            \"startAmount\": \"<string>\",\n            \"token\": \"<string>\"\n          }\n        ],\n        \"counter\": \"<integer>\",\n        \"endTime\": \"<string>\",\n        \"offer\": [\n          {\n            \"endAmount\": \"<string>\",\n            \"identifierOrCriteria\": \"<string>\",\n            \"itemType\": \"<integer>\",\n            \"startAmount\": \"<string>\",\n            \"token\": \"<string>\"\n          },\n          {\n            \"endAmount\": \"<string>\",\n            \"identifierOrCriteria\": \"<string>\",\n            \"itemType\": \"<integer>\",\n            \"startAmount\": \"<string>\",\n            \"token\": \"<string>\"\n          }\n        ],\n        \"offerer\": \"<string>\",\n        \"orderType\": \"<integer>\",\n        \"salt\": \"<string>\",\n        \"startTime\": \"<string>\",\n        \"totalOriginalConsiderationItems\": \"<integer>\",\n        \"zone\": \"<string>\",\n        \"zoneHash\": \"<string>\"\n      },\n      \"signature\": \"<string>\"\n    },\n    \"protocol_address\": \"<string>\",\n    \"asset\": {\n      \"contract\": \"<string>\",\n      \"identifier\": \"<string>\"\n    },\n    \"order_created_at\": \"<long>\"\n  }\n}",
+                                          "createdAt": "2026-10-21T21:16:58.000Z",
+                                          "updatedAt": "2026-10-21T21:16:58.000Z",
+                                          "uid": "35240-d2f29c3f-3fc0-496b-820b-ac928bc28ef6"
+                                        },
+                                        {
+                                          "id": "dc5aabc3-94df-4f24-bb14-6b8879e777d6",
+                                          "name": "For error reasons, review the response data.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v2",
+                                                "orders",
+                                                "chain",
+                                                ":chain",
+                                                "protocol",
+                                                ":protocol_address",
+                                                ":order_hash"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "chain"
+                                                },
+                                                {
+                                                  "key": "protocol_address"
+                                                },
+                                                {
+                                                  "key": "order_hash"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T21:16:58.000Z",
+                                          "updatedAt": "2026-10-21T21:16:58.000Z",
+                                          "uid": "35240-dc5aabc3-94df-4f24-bb14-6b8879e777d6"
+                                        },
+                                        {
+                                          "id": "37a9b226-5b97-426f-9ace-9ca9c4dab161",
+                                          "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v2/orders/chain/:chain/protocol/:protocol_address/:order_hash",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v2",
+                                                "orders",
+                                                "chain",
+                                                ":chain",
+                                                "protocol",
+                                                ":protocol_address",
+                                                ":order_hash"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "chain"
+                                                },
+                                                {
+                                                  "key": "protocol_address"
+                                                },
+                                                {
+                                                  "key": "order_hash"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T21:16:58.000Z",
+                                          "updatedAt": "2026-10-21T21:16:58.000Z",
+                                          "uid": "35240-37a9b226-5b97-426f-9ace-9ca9c4dab161"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T21:16:58.000Z",
+                                      "updatedAt": "2026-10-21T21:16:58.000Z",
+                                      "uid": "35240-06b074e4-1a62-4577-a29c-fc1bd474a335"
+                                    }
+                                  ],
+                                  "id": "1d511653-8838-4d90-81db-a8b4fcaeb3b5",
+                                  "createdAt": "2026-10-21T21:16:58.000Z",
+                                  "updatedAt": "2026-10-21T21:16:58.000Z",
+                                  "uid": "35240-1d511653-8838-4d90-81db-a8b4fcaeb3b5"
+                                }
+                              ],
+                              "id": "e9515e16-1cb3-47ad-88c2-2a592b263df6",
+                              "createdAt": "2026-10-21T21:16:58.000Z",
+                              "updatedAt": "2026-10-21T21:16:58.000Z",
+                              "uid": "35240-e9515e16-1cb3-47ad-88c2-2a592b263df6"
+                            }
+                          ],
+                          "id": "f6df26d9-b3dd-4764-b32e-ceb26244e4f8",
+                          "createdAt": "2026-10-21T21:16:58.000Z",
+                          "updatedAt": "2026-10-21T21:16:58.000Z",
+                          "uid": "35240-f6df26d9-b3dd-4764-b32e-ceb26244e4f8"
+                        }
+                      ],
+                      "id": "0dcc18ff-ff53-4ba2-885d-8ff793be1544",
+                      "createdAt": "2026-10-21T21:16:58.000Z",
+                      "updatedAt": "2026-10-21T21:16:58.000Z",
+                      "uid": "35240-0dcc18ff-ff53-4ba2-885d-8ff793be1544"
+                    }
+                  ],
+                  "id": "bbfc4f26-019c-4598-8d0e-7d683f8ca852",
+                  "createdAt": "2026-10-21T21:16:58.000Z",
+                  "updatedAt": "2026-10-21T21:16:58.000Z",
+                  "uid": "35240-bbfc4f26-019c-4598-8d0e-7d683f8ca852"
                 }
               ],
-              "body": "{\n  \"last_signature_issued_valid_until\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1f1a9521-42c3-49af-9465-6ead2f8e09bd",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash",
-                    "cancel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-Api-Key",
-                    "value": "<string>",
-                    "description": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7f1619dd-d021-4737-9fb2-0af1cb8eb5e9",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash",
-                    "cancel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-Api-Key",
-                    "value": "<string>",
-                    "description": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"offererSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3723c73f-ae79-4cc2-afb9-c5758ca369c5",
-          "name": "Get an order",
-          "request": {
-            "name": "Get an order",
-            "description": {
-              "content": "Get a single order by its order hash.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "orders",
-                "chain",
-                ":chain",
-                "protocol",
-                ":protocol_address",
-                ":order_hash"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "chain",
-                  "description": "(Required) Blockchain chain identifier"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "protocol_address",
-                  "description": "(Required) Protocol contract address"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "order_hash",
-                  "description": "(Required) Order hash"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "67cbb9ac-cc2b-4982-89b2-c7cb8953861a",
-              "name": "Order details retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Blockchain chain identifier"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) Protocol contract address"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) Order hash"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"order\": {\n    \"chain\": \"string\",\n    \"order_hash\": \"string\",\n    \"price\": {\n      \"current\": {\n        \"currency\": \"string\",\n        \"decimals\": 6532,\n        \"value\": \"string\"\n      }\n    },\n    \"remaining_quantity\": 7055,\n    \"status\": \"ACTIVE\",\n    \"type\": \"string\",\n    \"protocol_data\": {\n      \"parameters\": {\n        \"conduitKey\": \"string\",\n        \"consideration\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"counter\": 1417,\n        \"endTime\": \"string\",\n        \"offer\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"offerer\": \"string\",\n        \"orderType\": 5773,\n        \"salt\": \"string\",\n        \"startTime\": \"string\",\n        \"totalOriginalConsiderationItems\": 3817,\n        \"zone\": \"string\",\n        \"zoneHash\": \"string\"\n      },\n      \"signature\": \"string\"\n    },\n    \"protocol_address\": \"string\",\n    \"asset\": {\n      \"contract\": \"string\",\n      \"identifier\": \"string\"\n    },\n    \"order_created_at\": 5567\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "80b69a83-1a51-453f-850d-b6486c7a4712",
-              "name": "For error reasons, review the response data.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Blockchain chain identifier"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) Protocol contract address"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) Order hash"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "02a6c18d-5720-4844-81a9-0223f88da5eb",
-              "name": "Internal server error. Please open a support ticket so OpenSea can investigate.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "orders",
-                    "chain",
-                    ":chain",
-                    "protocol",
-                    ":protocol_address",
-                    ":order_hash"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chain",
-                      "description": "(Required) Blockchain chain identifier"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "protocol_address",
-                      "description": "(Required) Protocol contract address"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "order_hash",
-                      "description": "(Required) Order hash"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "e2364598-3c8d-411f-b075-b35da94efc96",
+              "createdAt": "2026-10-21T21:16:58.000Z",
+              "updatedAt": "2026-10-21T21:16:58.000Z",
+              "uid": "35240-e2364598-3c8d-411f-b075-b35da94efc96"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e210d9e4-0275-455f-b981-760e0f1ce453",
+          "createdAt": "2026-10-21T21:16:58.000Z",
+          "updatedAt": "2026-10-21T21:16:58.000Z",
+          "uid": "35240-e210d9e4-0275-455f-b981-760e0f1ce453"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.opensea.io",
-      "key": "baseUrl"
+      "id": "6d6b2dbe-6ab2-4e08-bb1d-ee77c3fe4f7b",
+      "createdAt": "2026-10-21T21:16:58.000Z",
+      "updatedAt": "2026-10-21T21:16:58.000Z",
+      "uid": "35240-6d6b2dbe-6ab2-4e08-bb1d-ee77c3fe4f7b"
     }
   ],
   "auth": {
@@ -634,25 +613,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "93cab042-3d71-44ef-a8e3-480daeace52d",
-    "name": "OpenSea Account Endpoints Order Endpoints API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The API for OpenSea\n\nContact Support:\n Name: OpenSea\n Email: contact@opensea.io",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.opensea.io"
     }
-  }
+  ]
 }
